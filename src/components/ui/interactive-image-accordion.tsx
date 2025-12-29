@@ -36,7 +36,18 @@ const accordionItems = [
 ];
 
 // --- Accordion Item Component ---
-const AccordionItem = React.memo(({ item, isActive, onMouseEnter }) => {
+interface AccordionItemProps {
+  item: {
+    id: number;
+    title: string;
+    imageUrl: string;
+    description: string;
+  };
+  isActive: boolean;
+  onMouseEnter: () => void;
+}
+
+const AccordionItem = React.memo(({ item, isActive, onMouseEnter }: AccordionItemProps) => {
   return (
     <div
       className={`
@@ -52,7 +63,11 @@ const AccordionItem = React.memo(({ item, isActive, onMouseEnter }) => {
         alt={item.title}
         loading="lazy"
         className="absolute inset-0 w-full h-full object-cover object-left"
-        onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/400x450/2d3748/ffffff?text=Image+Error'; }}
+        onError={(e) => {
+          const target = e.target as HTMLImageElement;
+          target.onerror = null;
+          target.src = 'https://placehold.co/400x450/2d3748/ffffff?text=Image+Error';
+        }}
       />
       {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -90,7 +105,7 @@ AccordionItem.displayName = 'AccordionItem';
 export function InteractiveImageAccordion() {
   const [activeIndex, setActiveIndex] = useState(2);
 
-  const handleItemHover = (index) => {
+  const handleItemHover = (index: number) => {
     setActiveIndex(index);
   };
 

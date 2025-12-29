@@ -63,7 +63,7 @@ const Box = ({ position, rotation }: { position: [number, number, number], rotat
 const AnimatedBoxes = () => {
     const groupRef = useRef<any>();
 
-    useFrame((state, delta) => {
+    useFrame((_state, delta) => {
         if (groupRef.current) {
             groupRef.current.rotation.x += delta * 0.15;
             groupRef.current.rotation.y += delta * 0.08;

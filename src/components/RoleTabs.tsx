@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { RoleVideo } from './ui/role-video';
 import { GlowButton } from '@/components/ui/glow-button';
 
 const AGENCY_OWNER_VIDEO_SRC =

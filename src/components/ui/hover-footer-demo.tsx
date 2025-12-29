@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import {
   Mail,
   Phone,
@@ -12,15 +11,15 @@ function HoverFooter() {
     {
       title: "About Us",
       links: [
-        { label: "Our Story", href: "#" },
-        { label: "Leadership Team", href: "#" },
+        { label: "Our Story", href: "#", pulse: false },
+        { label: "Leadership Team", href: "#", pulse: false },
       ],
     },
     {
       title: "Helpful Links",
       links: [
-        { label: "FAQs", href: "#" },
-        { label: "Support", href: "#" },
+        { label: "FAQs", href: "#", pulse: false },
+        { label: "Support", href: "#", pulse: false },
       ],
     },
   ];

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 function cn(...classes: Array<string | false | null | undefined>) {
@@ -54,7 +54,7 @@ const fadeUpVariants = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.12 + 0.2, duration: 0.55, ease: "easeInOut" },
+    transition: { delay: i * 0.12 + 0.2, duration: 0.55 },
   }),
 };
 

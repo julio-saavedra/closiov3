@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 
 interface GlowButtonProps {
   label?: string;
-  onClick?(): void;
+  onClick?(e?: React.MouseEvent): void;
   className?: string;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
@@ -14,11 +14,11 @@ export const GlowButton = forwardRef<HTMLButtonElement, GlowButtonProps>(
   ({ label, onClick, className, disabled = false, type = 'button', children }, ref) => {
     const [isClicked, setIsClicked] = useState(false);
 
-    const handleClick = () => {
+    const handleClick = (e: React.MouseEvent) => {
       if (disabled) return;
       setIsClicked(true);
       setTimeout(() => setIsClicked(false), 200);
-      onClick?.();
+      onClick?.(e);
     };
 
     return (
