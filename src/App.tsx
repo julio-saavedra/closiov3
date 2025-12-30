@@ -4,7 +4,6 @@ import ValueProps from './components/ValueProps';
 import { InteractiveImageAccordion } from './components/ui/interactive-image-accordion';
 import DealMap from './components/DealMap';
 import RoleTabs from './components/RoleTabs';
-import KPIWall from './components/KPIWall';
 import SecurityTiles from './components/SecurityTiles';
 import ComparisonTable from './components/ComparisonTable';
 import AuroraPricing from './components/ui/aurora-pricing';
@@ -40,10 +39,6 @@ function App() {
 
       <SectionWrapper>
         <RoleTabs />
-      </SectionWrapper>
-
-      <SectionWrapper>
-        <KPIWall />
       </SectionWrapper>
 
       <SectionWrapper>
