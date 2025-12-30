@@ -29,7 +29,7 @@ function App() {
         <ValueProps />
       </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="!bg-[#1A2428] !bg-none">
         <InteractiveImageAccordion />
       </SectionWrapper>
 
