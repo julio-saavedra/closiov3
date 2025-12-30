@@ -6,7 +6,7 @@ const accordionItems = [
   {
     id: 1,
     title: 'Dashboard',
-    imageUrl: 'https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    imageUrl: '/main_dashboard-_closio_website.png',
     description: 'Get a complete overview of your agency performance at a glance'
   },
   {
