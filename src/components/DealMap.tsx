@@ -60,7 +60,7 @@ export default function DealMap() {
           >
             <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#0d1117] to-[#161b22]">
               <img
-                src="/deal-map.png"
+                src="/image.png"
                 alt="Deal Map - Policies Submitted Per State"
                 className="w-full h-auto"
               />
