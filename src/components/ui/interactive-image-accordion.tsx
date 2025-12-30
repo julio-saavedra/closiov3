@@ -5,45 +5,33 @@ import { GlowButton } from '@/components/ui/glow-button';
 const accordionItems = [
   {
     id: 1,
-    title: 'Unified Pipeline Management',
+    title: 'Book of Business',
     imageUrl: '/book-of-business.png',
-    description: 'Complete visibility from lead generation to issue paid'
+    description: 'Track all your clients, policies, and deals in one place'
   },
   {
     id: 2,
-    title: 'Commission Tracking',
-    imageUrl: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2070&auto=format&fit=crop',
-    description: 'Transparent commission calculations and splits management'
+    title: 'Commission',
+    imageUrl: 'https://images.pexels.com/photos/6694543/pexels-photo-6694543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    description: 'Real-time commission tracking and split calculations'
   },
   {
     id: 3,
-    title: 'Agent Performance Analytics',
-    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
-    description: 'Real-time performance metrics and coaching insights'
+    title: 'Leaderboard',
+    imageUrl: 'https://images.pexels.com/photos/7413891/pexels-photo-7413891.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    description: 'Motivate your team with live performance rankings'
   },
   {
     id: 4,
-    title: 'Client Communication Hub',
-    imageUrl: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1974&auto=format&fit=crop',
-    description: 'Centralized client interactions and follow-ups'
+    title: 'Team Hierarchy',
+    imageUrl: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    description: 'Visualize and manage your entire agency structure'
   },
   {
     id: 5,
-    title: 'Compliance & Security',
-    imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop',
-    description: 'Enterprise-grade security and regulatory compliance'
-  },
-  {
-    id: 6,
-    title: 'Policy Document Management',
-    imageUrl: 'https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    description: 'Organize and access all policy documents instantly'
-  },
-  {
-    id: 7,
-    title: 'Automated Workflows',
-    imageUrl: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    description: 'Streamline repetitive tasks with intelligent automation'
+    title: 'Carrier Management',
+    imageUrl: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    description: 'Organize carriers, products, and contracting levels'
   },
 ];
 
@@ -65,11 +53,10 @@ const AccordionItem = React.memo(({ item, isActive, onClick }: AccordionItemProp
       className={`
         relative h-[450px] rounded-2xl overflow-hidden cursor-pointer
         transition-all duration-700 ease-in-out
-        ${isActive ? 'w-[380px]' : 'w-[70px]'}
+        ${isActive ? 'w-[420px]' : 'w-[80px]'}
       `}
       onClick={onClick}
     >
-      {/* Background Image */}
       <img
         src={item.imageUrl}
         alt={item.title}
@@ -81,31 +68,26 @@ const AccordionItem = React.memo(({ item, isActive, onClick }: AccordionItemProp
           target.src = 'https://placehold.co/400x450/2d3748/ffffff?text=Image+Error';
         }}
       />
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-      
-      {/* Gradient overlay for better text contrast */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+      <div className={`absolute inset-0 ${isActive ? 'bg-black/40' : 'bg-black/60'} transition-all duration-500`} />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
-      {/* Caption Text */}
       <div
         className={`
           absolute text-white transition-all duration-500 ease-in-out
           ${
             isActive
-              ? 'bottom-6 left-6 right-6 rotate-0' // Active state: horizontal, bottom
-              : 'bottom-12 left-1/2 -translate-x-1/2 rotate-90 whitespace-nowrap' // Inactive: vertical
+              ? 'bottom-6 left-6 right-6 rotate-0'
+              : 'bottom-8 left-1/2 -translate-x-1/2 origin-center -rotate-90 whitespace-nowrap'
           }
         `}
+        style={!isActive ? { transformOrigin: 'center center' } : undefined}
       >
-        <h3 className={`font-bold ${isActive ? 'text-xl mb-2' : 'text-lg'}`}>
+        <h3 className={`font-semibold tracking-tight ${isActive ? 'text-2xl mb-3' : 'text-base'}`}>
           {item.title}
         </h3>
-        {isActive && (
-          <p className="text-sm text-gray-200 opacity-90">
-            {item.description}
-          </p>
-        )}
+        <p className={`text-sm text-white/80 leading-relaxed transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-0 h-0'}`}>
+          {item.description}
+        </p>
       </div>
     </div>
   );
@@ -115,7 +97,7 @@ AccordionItem.displayName = 'AccordionItem';
 
 // --- Main Component ---
 export function InteractiveImageAccordion() {
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const handleItemClick = (index: number) => {
     setActiveIndex(index);
