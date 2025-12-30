@@ -55,7 +55,7 @@ const RoleTabs: React.FC = () => {
   return (
     <section className="py-16 md:py-20 bg-black relative overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -120,7 +120,7 @@ const RoleTabs: React.FC = () => {
           </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-[1fr_1.3fr] gap-12 items-center">
+        <div className="grid lg:grid-cols-[1fr_1.8fr] gap-12 items-center">
           <div className="order-2 lg:order-1">
             <AnimatePresence mode="wait">
               <motion.div
@@ -178,29 +178,11 @@ const RoleTabs: React.FC = () => {
                 <div className="absolute -inset-[1px] bg-gradient-to-br from-[#2C66FF]/50 via-transparent to-[#1E4FD9]/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-[#0d1117]">
-                  <div className="relative">
-                    <img
-                      src={currentRole.image}
-                      alt={currentRole.title}
-                      className="w-full h-auto block"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/80 via-transparent to-transparent pointer-events-none" />
-                  </div>
-
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="flex items-center gap-2">
-                      {roles.map((role) => (
-                        <div
-                          key={role.id}
-                          className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                            role.id === activeRole
-                              ? 'w-8 bg-[#2C66FF]'
-                              : 'bg-white/30'
-                          }`}
-                        />
-                      ))}
-                    </div>
-                  </div>
+                  <img
+                    src={currentRole.image}
+                    alt={currentRole.title}
+                    className="w-full h-auto block"
+                  />
                 </div>
               </motion.div>
             </AnimatePresence>
