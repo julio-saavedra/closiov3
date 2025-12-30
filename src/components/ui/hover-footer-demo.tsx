@@ -44,7 +44,7 @@ function HoverFooter() {
   ];
 
   return (
-    <footer className="bg-[#0F0F11]/10 relative h-fit rounded-3xl overflow-hidden m-4 sm:m-6 md:m-8">
+    <footer className="bg-black relative h-fit overflow-hidden">
       <div className="max-w-7xl mx-auto p-6 sm:p-8 md:p-10 lg:p-14 z-40 relative">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-16 pb-8 sm:pb-10 md:pb-12">
           <div className="flex flex-col space-y-4 text-center sm:text-left">
