@@ -101,7 +101,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               aria-label="Closio - Back to top"
             >
               <img
-                src="/chatgpt_image_dec_18,_2025,_03_32_05_pm.png"
+                src="/67ff5f5f-fc49-493f-8cb5-0467588c2623.png"
                 alt="Closio"
                 className="h-12 w-auto select-none"
                 draggable={false}
