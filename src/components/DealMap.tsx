@@ -21,7 +21,7 @@ export default function DealMap() {
             transition={{ delay: 0.1 }}
             className="text-4xl lg:text-5xl font-bold mb-4"
           >
-            Deal Map
+            Policy Map
           </motion.h2>
 
           <motion.p
