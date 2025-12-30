@@ -33,7 +33,10 @@ const ValueProps: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="order-1 flex items-center justify-center"
           >
-            <div className="rounded-2xl overflow-hidden border-2 border-[#6ad4f2] shadow-2xl shadow-[#6ad4f2]/20 w-full lg:scale-110 lg:origin-left">
+            <div
+              className="rounded-2xl overflow-hidden border-2 border-[#6ad4f2] w-full lg:scale-110 lg:origin-left"
+              style={{ boxShadow: '0 0 40px rgba(106, 212, 242, 0.4), 0 0 80px rgba(106, 212, 242, 0.2), 0 0 120px rgba(106, 212, 242, 0.1)' }}
+            >
               <video
                 src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
                 autoPlay
