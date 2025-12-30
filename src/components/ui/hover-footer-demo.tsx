@@ -149,12 +149,10 @@ function HoverFooter() {
         </div>
 
         <hr className="border-t border-gray-700 my-6 sm:my-8" />
+      </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs sm:text-sm space-y-4 md:space-y-0 text-gray-400">
-          <p className="text-center md:text-left">
-            &copy; {new Date().getFullYear()} Closio. All rights reserved.
-          </p>
-        </div>
+      <div className="flex justify-center items-center text-xs sm:text-sm text-gray-400 pt-4 relative z-50">
+        <p>&copy; {new Date().getFullYear()} Closio. All rights reserved.</p>
       </div>
 
       <div className="hidden lg:flex h-[30rem] -mt-52 -mb-36">
