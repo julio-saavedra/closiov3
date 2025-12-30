@@ -57,7 +57,10 @@ const ValueProps: React.FC = () => {
               className="mb-10 sm:mb-12"
             >
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-                Why CLOS<span className="italic">I</span>O
+                Why CLOS<span
+                  className="italic mx-1"
+                  style={{ WebkitTextStroke: '1.5px currentColor', WebkitTextFillColor: 'transparent' }}
+                >I</span>O
               </h2>
               <p className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-lg">
                 A CRM built thoughtfully for the workflows and operational demands of life-insurance teams.
