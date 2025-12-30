@@ -22,16 +22,28 @@ const accordionItems = [
     description: 'Real-time performance metrics and coaching insights'
   },
   {
-    id: 5,
+    id: 4,
     title: 'Client Communication Hub',
     imageUrl: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1974&auto=format&fit=crop',
     description: 'Centralized client interactions and follow-ups'
   },
   {
-    id: 6,
+    id: 5,
     title: 'Compliance & Security',
     imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=2070&auto=format&fit=crop',
     description: 'Enterprise-grade security and regulatory compliance'
+  },
+  {
+    id: 6,
+    title: 'Policy Document Management',
+    imageUrl: 'https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    description: 'Organize and access all policy documents instantly'
+  },
+  {
+    id: 7,
+    title: 'Automated Workflows',
+    imageUrl: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    description: 'Streamline repetitive tasks with intelligent automation'
   },
 ];
 
@@ -44,18 +56,18 @@ interface AccordionItemProps {
     description: string;
   };
   isActive: boolean;
-  onMouseEnter: () => void;
+  onClick: () => void;
 }
 
-const AccordionItem = React.memo(({ item, isActive, onMouseEnter }: AccordionItemProps) => {
+const AccordionItem = React.memo(({ item, isActive, onClick }: AccordionItemProps) => {
   return (
     <div
       className={`
         relative h-[450px] rounded-2xl overflow-hidden cursor-pointer
         transition-all duration-700 ease-in-out
-        ${isActive ? 'w-[400px]' : 'w-[80px]'}
+        ${isActive ? 'w-[380px]' : 'w-[70px]'}
       `}
-      onMouseEnter={onMouseEnter}
+      onClick={onClick}
     >
       {/* Background Image */}
       <img
@@ -105,7 +117,7 @@ AccordionItem.displayName = 'AccordionItem';
 export function InteractiveImageAccordion() {
   const [activeIndex, setActiveIndex] = useState(2);
 
-  const handleItemHover = (index: number) => {
+  const handleItemClick = (index: number) => {
     setActiveIndex(index);
   };
 
@@ -113,7 +125,7 @@ export function InteractiveImageAccordion() {
     <section id="product" className="py-20">
       <div className="max-w-[calc(100vw-12rem)] mx-auto px-6">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-          
+
           {/* Left Side: Text Content */}
           <div className="w-full lg:w-2/5 text-center lg:text-left">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
@@ -161,7 +173,7 @@ export function InteractiveImageAccordion() {
                   key={item.id}
                   item={item}
                   isActive={index === activeIndex}
-                  onMouseEnter={() => handleItemHover(index)}
+                  onClick={() => handleItemClick(index)}
                 />
               ))}
             </div>
