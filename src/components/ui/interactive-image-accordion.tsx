@@ -76,16 +76,19 @@ const AccordionItem = React.memo(({ item, isActive, onClick }: AccordionItemProp
           absolute text-white transition-all duration-500 ease-in-out
           ${
             isActive
-              ? 'bottom-6 left-6 right-6 rotate-0'
-              : 'bottom-8 left-1/2 -translate-x-1/2 origin-center -rotate-90 whitespace-nowrap'
+              ? 'bottom-6 left-6 right-6'
+              : 'left-1/2 bottom-6 -translate-x-1/2 whitespace-nowrap'
           }
         `}
-        style={!isActive ? { transformOrigin: 'center center' } : undefined}
+        style={!isActive ? {
+          writingMode: 'vertical-rl',
+          transform: 'translateX(-50%) rotate(180deg)'
+        } : undefined}
       >
-        <h3 className={`font-semibold tracking-tight ${isActive ? 'text-2xl mb-3' : 'text-base'}`}>
+        <h3 className={`font-semibold tracking-tight transition-all duration-500 ${isActive ? 'text-2xl mb-3' : 'text-sm'}`}>
           {item.title}
         </h3>
-        <p className={`text-sm text-white/80 leading-relaxed transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-0 h-0'}`}>
+        <p className={`text-sm text-white/80 leading-relaxed transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
           {item.description}
         </p>
       </div>
