@@ -1,167 +1,134 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { GlowButton } from '@/components/ui/glow-button';
+import React, { useState } from 'react';
 
-const AGENCY_OWNER_VIDEO_SRC =
-  "https://www.dropbox.com/scl/fi/0t7iwsxpmx3uwbm1d5x9k/closio-navbar-vertical.mp4?rlkey=9w69pohfb6s87rx7k0xvpmtg4&raw=1";
-
-function AgencyOwnerVideo({ isActive }: { isActive: boolean }) {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const isPlayingRef = useRef(false);
-
-  useEffect(() => {
-    if (!isActive || !videoRef.current) return;
-
-    const video = videoRef.current;
-    video.currentTime = 0;
-
-    const play = async () => {
-      if (isPlayingRef.current) return;
-      try {
-        isPlayingRef.current = true;
-        await video.play();
-      } catch {
-        isPlayingRef.current = false;
-      }
-    };
-
-    play();
-
-    return () => {
-      isPlayingRef.current = false;
-    };
-  }, [isActive]);
-
-  const handleEnded = () => {
-    isPlayingRef.current = false;
-  };
-
-  const handlePause = () => {
-    isPlayingRef.current = false;
-  };
-
-  return (
-    <div className="flex items-center justify-center">
-      <div className="w-[420px] h-[420px] rounded-2xl backdrop-blur-[20px] bg-white/[0.03] border border-white/5 flex items-center justify-center">
-        <video
-          ref={videoRef}
-          src={AGENCY_OWNER_VIDEO_SRC}
-          className="w-[95%] h-[95%] max-w-[380px] max-h-[640px] object-contain rounded-xl"
-          muted
-          playsInline
-          onEnded={handleEnded}
-          onPause={handlePause}
-        />
-      </div>
-    </div>
-  );
+interface Role {
+  id: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  benefits: string[];
 }
+
+const roles: Role[] = [
+  {
+    id: 'owner',
+    title: 'Agency Owner',
+    subtitle: 'Full visibility and control over your entire operation',
+    image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    benefits: [
+      'Complete visibility across all agents and pipelines',
+      'Commission split management and automated payouts',
+      'Performance analytics and team productivity metrics',
+      'Revenue forecasting and business intelligence'
+    ]
+  },
+  {
+    id: 'manager',
+    title: 'Manager',
+    subtitle: 'Lead your team with data-driven insights',
+    image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    benefits: [
+      'Agent coaching tools and performance tracking',
+      'Pipeline forecasting and conversion analytics',
+      'Team goal setting and progress monitoring',
+      'Activity reports and leaderboard rankings'
+    ]
+  },
+  {
+    id: 'agent',
+    title: 'Agent',
+    subtitle: 'Everything you need to close more deals',
+    image: 'https://images.pexels.com/photos/3760069/pexels-photo-3760069.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    benefits: [
+      'Personal pipeline and activity management',
+      'Commission tracking and earning projections',
+      'Client communication and follow-up automation',
+      'Mobile-ready access to your entire book of business'
+    ]
+  }
+];
 
 const RoleTabs: React.FC = () => {
   const [activeRole, setActiveRole] = useState('owner');
-
-  const roles = [
-    {
-      id: 'owner',
-      title: 'Agency Owner',
-      screenshot: 'Agency Dashboard Overview',
-      benefits: [
-        'Complete visibility across all agents and pipelines',
-        'Commission split management and reporting',
-        'Performance analytics and team productivity metrics'
-      ]
-    },
-    {
-      id: 'leader',
-      title: 'Sales Leader',
-      screenshot: 'Team Performance Dashboard',
-      benefits: [
-        'Agent coaching tools and performance tracking',
-        'Pipeline forecasting and conversion analytics',
-        'Team goal setting and progress monitoring'
-      ]
-    },
-    {
-      id: 'agent',
-      title: 'Agent',
-      screenshot: 'Individual Agent Workspace',
-      benefits: [
-        'Personal pipeline and activity management',
-        'Commission tracking and earning projections',
-        'Client communication and follow-up automation'
-      ]
-    }
-  ];
+  const currentRole = roles.find(r => r.id === activeRole) || roles[0];
 
   return (
-    <section className="py-12 sm:py-16 md:py-20">
+    <section className="py-16 md:py-24">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 sm:mb-12 md:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-4">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             Tailored to Your Role
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-[#A8B3C7] max-w-3xl mx-auto leading-relaxed px-4">
-            Every user gets exactly what they need to be successful in their role
+          <p className="text-lg text-[#A8B3C7] max-w-2xl mx-auto">
+            Every user gets exactly what they need to be successful
           </p>
         </div>
 
-        {/* Role Tabs */}
-        <div className="flex justify-center mb-8 sm:mb-10 md:mb-12 overflow-x-auto px-4">
-          <div className="bg-white/6 backdrop-blur-xl border border-white/12 rounded-2xl p-1.5 sm:p-2 inline-flex">
-            <div className="flex space-x-1 sm:space-x-2">
-              {roles.map((role) => (
-                activeRole === role.id ? (
-                  <GlowButton
-                    key={role.id}
-                    onClick={() => setActiveRole(role.id)}
-                    label={role.title}
-                    className="whitespace-nowrap px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-xl text-sm sm:text-base"
-                  />
-                ) : (
-                  <button
-                    key={role.id}
-                    onClick={() => setActiveRole(role.id)}
-                    className="flex items-center whitespace-nowrap px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 rounded-xl transition-all text-sm sm:text-base text-[#A8B3C7] hover:text-white hover:bg-white/10"
-                  >
-                    <span className="font-semibold">{role.title}</span>
-                  </button>
-                )
-              ))}
-            </div>
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex p-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+            {roles.map((role) => (
+              <button
+                key={role.id}
+                onClick={() => setActiveRole(role.id)}
+                className={`
+                  relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-300
+                  ${activeRole === role.id
+                    ? 'text-white'
+                    : 'text-[#A8B3C7] hover:text-white'
+                  }
+                `}
+              >
+                {activeRole === role.id && (
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#2C66FF] to-[#1E4FD9] rounded-full" />
+                )}
+                <span className="relative z-10">{role.title}</span>
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Content Display */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
-          {/* Screenshot Mock / Video */}
-          <div className="order-2 lg:order-1">
-            <div className="info-card info-card--outline info-card--hover info-card--roomy glow-hover">
-              {activeRole === 'owner' ? (
-                <AgencyOwnerVideo isActive={activeRole === 'owner'} />
-              ) : (
-                <div className="aspect-video bg-gradient-to-br from-[#2C66FF]/20 to-[#2B4FB3]/20 rounded-lg flex items-center justify-center px-4">
-                  <div className="text-center">
-                    <h3 className="text-lg sm:text-xl font-semibold">
-                      {roles.find(r => r.id === activeRole)?.screenshot}
-                    </h3>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#2C66FF]/30 to-[#1E4FD9]/30 rounded-2xl blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-[#0A0F1A]">
+              <div className="aspect-[4/3] relative">
+                <img
+                  src={currentRole.image}
+                  alt={currentRole.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1A] via-transparent to-transparent" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#2C66FF] to-[#1E4FD9] flex items-center justify-center">
+                    <span className="text-white text-sm font-bold">
+                      {currentRole.title.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">{currentRole.title}</h4>
+                    <p className="text-[#A8B3C7] text-sm">{currentRole.subtitle}</p>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           </div>
 
-          {/* Benefits */}
-          <div className="order-1 lg:order-2 text-center lg:text-left">
-            <h3 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8">
-              Built for {roles.find(r => r.id === activeRole)?.title}s
+          <div>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-8">
+              Built for {currentRole.title}s
             </h3>
 
-            <div className="space-y-4 sm:space-y-6">
-              {roles.find(r => r.id === activeRole)?.benefits.map((benefit, index) => (
-                <div key={index} className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="w-6 h-6 bg-gradient-to-br from-[#2C66FF] to-[#2B4FB3] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 sm:mt-1">
-                    <span className="text-white text-xs font-bold">{index + 1}</span>
+            <div className="space-y-5">
+              {currentRole.benefits.map((benefit, index) => (
+                <div
+                  key={index}
+                  className="flex items-start gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/10 hover:bg-white/[0.04] transition-all duration-300"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2C66FF] to-[#1E4FD9] flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-sm font-bold">{index + 1}</span>
                   </div>
-                  <p className="text-[#A8B3C7] text-sm sm:text-base leading-relaxed text-left">{benefit}</p>
+                  <p className="text-[#E8EEF5] leading-relaxed pt-1">{benefit}</p>
                 </div>
               ))}
             </div>
