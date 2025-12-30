@@ -1,65 +1,107 @@
-import React, { useMemo } from 'react';
-import { GlassInfoCard } from '@/components/ui/glass-info-card';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-const ValueCard = React.memo(({ title, description }: { title: string; description: string }) => (
-  <GlassInfoCard className="text-center">
-    <div className="relative z-10 p-6">
-      <h3 className="card-title text-lg font-semibold mb-3">{title}</h3>
-      <p className="card-text text-sm leading-relaxed">{description}</p>
-    </div>
-  </GlassInfoCard>
-));
-
-ValueCard.displayName = 'ValueCard';
+const valueItems = [
+  {
+    number: '01',
+    title: 'Purpose-built for life insurance workflows'
+  },
+  {
+    number: '02',
+    title: 'Automated commission tracking and splits'
+  },
+  {
+    number: '03',
+    title: 'Fast onboarding with pre-built templates'
+  },
+  {
+    number: '04',
+    title: 'Complete visibility across your agency'
+  }
+];
 
 const ValueProps: React.FC = () => {
-  const valueProps = useMemo(() => [
-    {
-      title: 'Purpose-Built for Life Insurance',
-      description: 'Closio reflects the real structure of a life-insurance business — leads, policies, renewals, commission tracking, and carrier requirements — all in one place.'
-    },
-    {
-      title: 'Workflow Automation',
-      description: 'Workflow tools are built directly into the platform. Closio supports common industry processes like renewal tracking, policy review reminders, draft-date alerts, and internal task routing without external tools.'
-    },
-    {
-      title: 'Clear, Accurate Commission Tracking',
-      description: 'Agents and managers can see advances, renewals, residuals, chargebacks, and splits with simple, accurate reporting — giving everyone visibility into their performance and earnings.'
-    },
-    {
-      title: 'Fast Onboarding',
-      description: 'Pre-configured templates and structured workflows help new agents get productive faster, while managers maintain clarity on activity, progress, and pipeline health.'
-    }
-  ], []);
-
   return (
-    <section id="why-closio" className="py-12 sm:py-16 md:py-20 lg:py-28">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 sm:gap-10 lg:gap-20 grid-cols-1 lg:grid-cols-12 items-center">
+    <section id="why-closio" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-black">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:gap-16 grid-cols-1 lg:grid-cols-2 items-center">
 
-          <div className="wc-cards order-2 lg:order-1 lg:col-span-7 lg:pr-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
-              {valueProps.map((prop, index) => (
-                <ValueCard key={index} title={prop.title} description={prop.description} />
-              ))}
-            </div>
+          <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] order-1">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="absolute top-0 left-0 w-[55%] sm:w-[50%] z-10"
+            >
+              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50">
+                <img
+                  src="/image copy copy.png"
+                  alt="Closio Dashboard"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="absolute bottom-0 right-0 sm:right-8 w-[60%] sm:w-[55%] z-20"
+            >
+              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/50">
+                <img
+                  src="/image copy copy copy.png"
+                  alt="Closio Features"
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+            </motion.div>
           </div>
 
-          <div className="wc-header order-1 lg:order-2 lg:col-span-5 lg:pl-4 text-center lg:text-right px-4 sm:px-0">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 sm:mb-6 text-center lg:text-right flex items-center justify-center lg:justify-end gap-3">
-              Why{" "}
-              <img
-                src="/67ff5f5f-fc49-493f-8cb5-0467588c2623 copy.png"
-                alt="Closio"
-                className="h-16 sm:h-20 md:h-24 w-auto inline-block"
-              />
-            </h2>
-            <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-4 sm:mb-6 text-center lg:text-right">
-              A CRM built thoughtfully for the workflows, responsibilities, and operational demands of life-insurance teams.
-            </p>
-            <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed text-center lg:text-right max-w-lg mx-auto lg:ml-auto lg:mr-0">
-              Closio is designed around the way life-insurance agencies actually work. It brings organization, consistency, and visibility to every part of the sales process — from tracking policies and renewals to understanding performance, compliance, and communication.
-            </p>
+          <div className="order-2 lg:pl-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mb-10 sm:mb-12"
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 flex items-center gap-4">
+                Why{" "}
+                <img
+                  src="/67ff5f5f-fc49-493f-8cb5-0467588c2623 copy.png"
+                  alt="Closio"
+                  className="h-12 sm:h-16 md:h-20 w-auto inline-block"
+                />
+              </h2>
+              <p className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-lg">
+                A CRM built thoughtfully for the workflows and operational demands of life-insurance teams.
+              </p>
+            </motion.div>
+
+            <div className="space-y-0">
+              {valueItems.map((item, index) => (
+                <motion.div
+                  key={item.number}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className="group py-5 border-b border-white/20 last:border-b-0"
+                >
+                  <div className="flex items-start gap-4 sm:gap-6">
+                    <span className="text-[#3ca2fa] text-sm font-semibold tracking-wider pt-1">
+                      {item.number}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-medium text-white group-hover:text-[#3ca2fa] transition-colors duration-300">
+                      {item.title}
+                    </h3>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
         </div>
