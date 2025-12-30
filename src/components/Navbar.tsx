@@ -101,7 +101,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               <img
                 src="/67ff5f5f-fc49-493f-8cb5-0467588c2623.png"
                 alt="Closio"
-                className="h-20 w-auto select-none"
+                className="h-24 w-auto select-none"
                 draggable={false}
               />
             </a>
