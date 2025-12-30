@@ -97,7 +97,7 @@ const AccordionItem = React.memo(({ item, isActive, onClick }: AccordionItemProp
           transform: 'translateX(-50%) rotate(180deg)'
         } : undefined}
       >
-        <h3 className={`font-semibold tracking-tight transition-all duration-500 ${isActive ? 'text-2xl mb-3' : 'text-sm'}`}>
+        <h3 className={`font-semibold tracking-tight transition-all duration-500 ${isActive ? 'text-2xl mb-3' : 'text-base'}`}>
           {item.title}
         </h3>
         <p className={`text-sm text-white/80 leading-relaxed transition-all duration-300 ${isActive ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
