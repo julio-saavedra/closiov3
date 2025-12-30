@@ -128,31 +128,39 @@ export function InteractiveImageAccordion() {
 
           {/* Left Side: Text Content */}
           <div className="w-full lg:w-2/5 text-center lg:text-left">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#2C66FF]/10 border border-[#2C66FF]/20 mb-6">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#2C66FF] animate-pulse" />
+              <span className="text-[#2C66FF] text-xs font-medium tracking-wide uppercase">All-in-One Platform</span>
+            </div>
+
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4 leading-tight">
               Your Command Center
             </h2>
-            <p className="text-xl text-[#A8B3C7] mb-8 leading-relaxed">
-              Everything you need to manage your life insurance business in one powerful, purpose-built platform
+            <p className="text-lg text-[#A8B3C7] mb-8">
+              One unified platform. Complete control over your agency.
             </p>
-            
-            {/* Feature highlights */}
-            <div className="space-y-4 mb-8">
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-[#2C66FF] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#A8B3C7] text-sm">Built specifically for life insurance workflows</p>
-              </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-[#2C66FF] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#A8B3C7] text-sm">Built-in workflow tools with no external plugins</p>
-              </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-[#2C66FF] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#A8B3C7] text-sm">Real-time analytics and performance tracking</p>
-              </div>
-              <div className="flex items-start space-x-3">
-                <div className="w-2 h-2 bg-[#2C66FF] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#A8B3C7] text-sm">Enterprise-grade security and compliance</p>
-              </div>
+
+            <div className="flex flex-wrap gap-2 mb-8">
+              {[
+                'Dashboard',
+                'Leaderboard',
+                'Book of Business',
+                'Commission',
+                'Admin Payout',
+                'Agent Payout',
+                'Team Hierarchy',
+                'User Management',
+                'Reminders',
+                'Carrier Management',
+                'Quick Links'
+              ].map((feature) => (
+                <span
+                  key={feature}
+                  className="px-3 py-1.5 text-xs font-medium rounded-lg bg-white/[0.03] border border-white/10 text-[#A8B3C7] hover:bg-white/[0.06] hover:border-white/20 hover:text-white transition-all duration-200 cursor-default"
+                >
+                  {feature}
+                </span>
+              ))}
             </div>
 
             <GlowButton
@@ -160,7 +168,7 @@ export function InteractiveImageAccordion() {
                 const element = document.getElementById('contact');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
-              label="Explore Features"
+              label="Get Started"
               className="px-8 py-4"
             />
           </div>
