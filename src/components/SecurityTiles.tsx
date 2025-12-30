@@ -14,7 +14,7 @@ const SecurityTiles: React.FC = () => {
                        shadow-[0_18px_45px_rgba(0,0,0,0.6)]"
           >
             <video
-              src="https://www.dropbox.com/scl/fi/g5umukhp9y6s8zloj9330/Theme-Closio.mp4?rlkey=2vd4dj8ja6yptwy111cde6lzn&st=16vpdngf&raw=1"
+              src="https://www.dropbox.com/scl/fi/bg4jywewzx467cdv0fyo1/Screen-Recording-2025-12-30-112836.mp4?rlkey=4rkbf0hfuu09o9autts0ux0cp&st=wtjctzuk&raw=1"
               className="h-full w-full object-cover"
               autoPlay
               muted
