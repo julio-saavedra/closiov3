@@ -6,7 +6,6 @@ import DealMap from './components/DealMap';
 import RoleTabs from './components/RoleTabs';
 import SecurityTiles from './components/SecurityTiles';
 import ComparisonTable from './components/ComparisonTable';
-import AuroraPricing from './components/ui/aurora-pricing';
 import TestimonialsCarousel from './components/TestimonialsCarousel';
 import RoadmapTimeline from './components/RoadmapTimeline';
 import FAQAccordion from './components/FAQAccordion';
@@ -47,10 +46,6 @@ function App() {
 
       <SectionWrapper>
         <ComparisonTable />
-      </SectionWrapper>
-
-      <SectionWrapper>
-        <AuroraPricing />
       </SectionWrapper>
 
       <SectionWrapper>
