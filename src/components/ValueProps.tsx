@@ -40,7 +40,7 @@ const ValueProps: React.FC = () => {
                 loop
                 muted
                 playsInline
-                className="w-full max-w-[550px] h-auto object-cover"
+                className="w-full h-auto object-cover"
               />
             </div>
           </motion.div>
