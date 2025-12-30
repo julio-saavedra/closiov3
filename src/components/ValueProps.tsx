@@ -8,7 +8,7 @@ const valueItems = [
   },
   {
     number: '02',
-    title: 'Automated commission tracking and splits'
+    title: 'Manage your book of business with ease'
   },
   {
     number: '03',
