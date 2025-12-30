@@ -168,7 +168,7 @@ export function InteractiveImageAccordion() {
                 const element = document.getElementById('contact');
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
-              label="Get Started"
+              label="Book a Demo"
               className="px-8 py-4"
             />
           </div>
