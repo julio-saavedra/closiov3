@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 
 const benefits = [
-  { title: 'Geographic Insights', description: 'See exactly where your team is closing deals across the country' },
-  { title: 'Territory Planning', description: 'Identify underserved markets and expansion opportunities' },
-  { title: 'Performance Tracking', description: 'Monitor regional performance and agent coverage' },
-  { title: 'Real-Time Updates', description: 'Watch deals appear on the map as they close' },
+  { title: 'Geographic Insights', description: 'Track deals across the country' },
+  { title: 'Territory Planning', description: 'Find underserved markets' },
+  { title: 'Performance Tracking', description: 'Monitor regional coverage' },
+  { title: 'Real-Time Updates', description: 'See deals as they close' },
 ];
 
 export default function DealMap() {
@@ -50,13 +50,13 @@ export default function DealMap() {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative max-w-[700px] mx-auto w-full rounded-2xl overflow-hidden"
+            className="relative w-full rounded-2xl overflow-hidden"
           >
             <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#0d1117] to-[#161b22]">
               <img
@@ -76,17 +76,13 @@ export default function DealMap() {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <h3 className="text-2xl lg:text-3xl font-bold mb-4">
+              <h3 className="text-2xl lg:text-3xl font-bold">
                 See Your Business<br />
                 <span className="text-[#2C66FF]">Come to Life</span>
               </h3>
-              <p className="text-[#A8B3C7] leading-relaxed">
-                The Deal Map gives agency owners, managers, and agents complete visibility into where policies are being sold.
-                Track your team's geographic reach, identify growth opportunities, and celebrate wins as they happen.
-              </p>
             </motion.div>
 
-            <div className="grid gap-4">
+            <div className="grid gap-3">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={benefit.title}
@@ -94,13 +90,11 @@ export default function DealMap() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 + index * 0.1 }}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-[#2C66FF]/10 border border-[#2C66FF]/20 flex items-center justify-center flex-shrink-0">
-                    <div className="w-2 h-2 rounded-full bg-[#2C66FF]" />
-                  </div>
+                  <div className="w-[3px] h-10 bg-[#2C66FF] rounded-full flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-white mb-1">{benefit.title}</h4>
+                    <h4 className="font-semibold text-white mb-0.5">{benefit.title}</h4>
                     <p className="text-sm text-[#A8B3C7]">{benefit.description}</p>
                   </div>
                 </motion.div>
