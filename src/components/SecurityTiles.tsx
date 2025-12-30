@@ -10,22 +10,17 @@ const SecurityTiles: React.FC = () => {
         {/* LEFT COLUMN: VIDEO CARD */}
         <div className="w-full lg:w-[55%]">
           <div
-            className="relative aspect-video w-full overflow-hidden rounded-2xl bg-black
+            className="relative aspect-video w-full overflow-hidden rounded-2xl
                        shadow-[0_18px_45px_rgba(0,0,0,0.6)]"
           >
-            {/* VIDEO - inner frame */}
-            <div className="relative z-10 flex h-full w-full items-center justify-center bg-black">
-              <div className="relative flex h-[90%] w-[90%] items-center justify-center overflow-hidden rounded-xl bg-black">
-                <video
-                  src="https://www.dropbox.com/scl/fi/g5umukhp9y6s8zloj9330/Theme-Closio.mp4?rlkey=2vd4dj8ja6yptwy111cde6lzn&raw=1"
-                  className="h-full w-auto object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
-              </div>
-            </div>
+            <video
+              src="https://www.dropbox.com/scl/fi/g5umukhp9y6s8zloj9330/Theme-Closio.mp4?rlkey=2vd4dj8ja6yptwy111cde6lzn&raw=1"
+              className="h-full w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
           </div>
         </div>
 
