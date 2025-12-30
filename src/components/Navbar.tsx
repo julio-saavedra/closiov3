@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { GlowButton } from '@/components/ui/glow-button';
 
 interface NavbarProps {
   activeSection?: string;
@@ -130,14 +129,15 @@ const Navbar: React.FC<NavbarProps> = () => {
 
             {/* CTA Buttons - Right */}
             <div className="hidden lg:flex items-center space-x-3">
-              <GlowButton
+              <button
                 onClick={handleNavClick('contact')}
-                label="Book a Demo"
-                className="px-5 py-2 text-sm whitespace-nowrap"
-              />
+                className="bg-white text-black font-medium px-5 py-2 text-sm whitespace-nowrap rounded-lg hover:bg-white/90 transition-colors"
+              >
+                Book a Demo
+              </button>
               <button
                 onClick={() => window.location.href = 'https://closio.com/login'}
-                className="glass-btn-lite glass-btn-lite--default px-5 py-2 text-sm whitespace-nowrap"
+                className="bg-white text-black font-medium px-5 py-2 text-sm whitespace-nowrap rounded-lg hover:bg-white/90 transition-colors"
               >
                 Log In
               </button>
@@ -178,14 +178,15 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </button>
               ))}
               <div className="pt-4 px-4 space-y-3 border-t border-white/10 mt-4">
-                <GlowButton
+                <button
                   onClick={handleNavClick('contact')}
-                  label="Book a Demo"
-                  className="w-full px-5 py-2.5 text-sm"
-                />
+                  className="bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-lg hover:bg-white/90 transition-colors"
+                >
+                  Book a Demo
+                </button>
                 <button
                   onClick={() => window.location.href = 'https://closio.com/login'}
-                  className="glass-btn-lite glass-btn-lite--default w-full px-5 py-2.5 text-sm"
+                  className="bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-lg hover:bg-white/90 transition-colors"
                 >
                   Log In
                 </button>
