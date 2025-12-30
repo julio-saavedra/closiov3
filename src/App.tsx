@@ -25,7 +25,7 @@ function App() {
           <Hero />
         </SectionWrapper>
 
-      <SectionWrapper>
+      <SectionWrapper className="!bg-black !bg-none">
         <ValueProps />
       </SectionWrapper>
 
