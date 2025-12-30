@@ -52,7 +52,7 @@ const RoleTabs: React.FC = () => {
   const currentRole = roles.find(r => r.id === activeRole) || roles[0];
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-16 md:py-24 bg-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
