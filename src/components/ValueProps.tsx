@@ -53,13 +53,8 @@ const ValueProps: React.FC = () => {
               transition={{ duration: 0.5 }}
               className="mb-10 sm:mb-12"
             >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 flex items-center gap-4">
-                Why{" "}
-                <img
-                  src="/67ff5f5f-fc49-493f-8cb5-0467588c2623 copy.png"
-                  alt="Closio"
-                  className="h-16 sm:h-20 md:h-28 lg:h-32 w-auto inline-block"
-                />
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+                Why CLOS<span className="italic">I</span>O
               </h2>
               <p className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-lg">
                 A CRM built thoughtfully for the workflows and operational demands of life-insurance teams.
