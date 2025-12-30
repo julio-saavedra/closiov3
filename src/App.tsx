@@ -29,7 +29,7 @@ function App() {
         <ValueProps />
       </SectionWrapper>
 
-      <SectionWrapper className="!bg-black !bg-none">
+      <SectionWrapper className="!bg-black !bg-none !from-black !via-black !to-black">
         <MobileSection />
       </SectionWrapper>
 
