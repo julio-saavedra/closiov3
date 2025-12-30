@@ -48,7 +48,7 @@ const ValueProps: React.FC = () => {
             </div>
           </motion.div>
 
-          <div className="order-2 lg:pl-8">
+          <div className="order-2 lg:pl-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
