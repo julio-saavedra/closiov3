@@ -14,7 +14,7 @@ const roles: Role[] = [
     id: 'owner',
     title: 'Agency Owner',
     subtitle: 'Full visibility and control over your entire operation',
-    image: '/image copy.png',
+    image: '/image copy copy.png',
     benefits: [
       'Complete visibility across all agents and pipelines',
       'Commission split management and automated payouts',
@@ -178,14 +178,13 @@ const RoleTabs: React.FC = () => {
                 <div className="absolute -inset-[1px] bg-gradient-to-br from-[#2C66FF]/50 via-transparent to-[#1E4FD9]/50 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-[#0A1628]">
-                  <div className="aspect-[16/10] relative">
+                  <div className="aspect-[16/10] relative bg-[#0d1117]">
                     <img
                       src={currentRole.image}
                       alt={currentRole.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/20 to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#0A1628]/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-transparent to-transparent pointer-events-none" />
                   </div>
 
                   <div className="absolute bottom-0 left-0 right-0 p-6">
