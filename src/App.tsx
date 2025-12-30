@@ -1,6 +1,5 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import CompanyLogos from './components/CompanyLogos';
 import ValueProps from './components/ValueProps';
 import { InteractiveImageAccordion } from './components/ui/interactive-image-accordion';
 import RoleTabs from './components/RoleTabs';
@@ -25,8 +24,6 @@ function App() {
         <SectionWrapper>
           <Hero />
         </SectionWrapper>
-
-      <CompanyLogos />
 
       <SectionWrapper>
         <ValueProps />
