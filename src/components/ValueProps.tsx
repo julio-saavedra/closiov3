@@ -51,7 +51,7 @@ const ValueProps: React.FC = () => {
               <img
                 src="/67ff5f5f-fc49-493f-8cb5-0467588c2623 copy.png"
                 alt="Closio"
-                className="h-10 sm:h-12 md:h-14 w-auto inline-block"
+                className="h-16 sm:h-20 md:h-24 w-auto inline-block"
               />
             </h2>
             <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-4 sm:mb-6 text-center lg:text-right">
