@@ -14,7 +14,7 @@ const roles: Role[] = [
     id: 'owner',
     title: 'Agency Owner',
     subtitle: 'Full visibility and control over your entire operation',
-    image: 'https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    image: '/image copy.png',
     benefits: [
       'Complete visibility across all agents and pipelines',
       'Commission split management and automated payouts',
