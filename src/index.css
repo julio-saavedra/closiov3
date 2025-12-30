@@ -1019,6 +1019,39 @@ html, body {
   }
 }
 
+.glow-btn-black {
+  background: #000 !important;
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.1),
+    0 0 40px rgba(255, 255, 255, 0.05),
+    0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.glow-btn-black::before {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3),
+    rgba(200, 200, 200, 0.2),
+    rgba(255, 255, 255, 0.3)
+  ) !important;
+  opacity: 0.5;
+}
+
+.glow-btn-black::after {
+  background: #000 !important;
+}
+
+.glow-btn-black:hover {
+  box-shadow:
+    0 0 30px rgba(255, 255, 255, 0.15),
+    0 0 60px rgba(255, 255, 255, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.glow-btn-black:hover::before {
+  opacity: 0.7;
+}
+
 /* ================= PREMIUM NAV UNDERLINE GLOW ================= */
 .nav-underline-glow {
   position: relative;
