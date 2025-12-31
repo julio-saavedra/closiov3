@@ -19,12 +19,12 @@ const VerticalLine: React.FC = () => {
         </filter>
       </defs>
       <path
-        d="M 50 1000
-           L 50 550
-           Q 50 480, 120 480
-           L 350 480
-           Q 430 480, 430 410
-           L 430 -100"
+        d="M 350 -50
+           L 350 200
+           Q 350 280, 270 280
+           L 120 280
+           Q 50 280, 50 360
+           L 50 1000"
         fill="none"
         stroke="white"
         strokeWidth="16"
@@ -33,12 +33,12 @@ const VerticalLine: React.FC = () => {
         filter="url(#valueLineGlow)"
       />
       <path
-        d="M 50 1000
-           L 50 550
-           Q 50 480, 120 480
-           L 350 480
-           Q 430 480, 430 410
-           L 430 -100"
+        d="M 350 -50
+           L 350 200
+           Q 350 280, 270 280
+           L 120 280
+           Q 50 280, 50 360
+           L 50 1000"
         fill="none"
         stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="32"
