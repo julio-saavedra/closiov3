@@ -19,7 +19,7 @@ export default function DealMap() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl lg:text-5xl font-bold mb-4"
+            className="text-4xl lg:text-5xl font-bold mb-4 text-black"
           >
             Policy Map
           </motion.h2>
@@ -29,7 +29,7 @@ export default function DealMap() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-[#A8B3C7] max-w-2xl mx-auto"
+            className="text-lg text-black max-w-2xl mx-auto"
           >
             Visualize your agency's reach in real-time. Watch as policies are sold across the nation.
           </motion.p>
@@ -61,9 +61,9 @@ export default function DealMap() {
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <h3 className="text-2xl lg:text-3xl font-bold">
+              <h3 className="text-2xl lg:text-3xl font-bold text-black">
                 See Your Business<br />
-                <span className="text-[#2C66FF]">Come to Life</span>
+                <span className="text-black">Come to Life</span>
               </h3>
             </motion.div>
 
@@ -77,10 +77,10 @@ export default function DealMap() {
                   transition={{ delay: 0.5 + index * 0.1 }}
                   className="flex items-center gap-4 py-3"
                 >
-                  <div className="w-[3px] h-10 bg-[#2C66FF] rounded-full flex-shrink-0" />
+                  <div className="w-[3px] h-10 bg-black rounded-full flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-white mb-0.5">{benefit.title}</h4>
-                    <p className="text-sm text-[#A8B3C7]">{benefit.description}</p>
+                    <h4 className="font-semibold text-black mb-0.5">{benefit.title}</h4>
+                    <p className="text-sm text-black">{benefit.description}</p>
                   </div>
                 </motion.div>
               ))}
