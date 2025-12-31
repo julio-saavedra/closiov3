@@ -13,6 +13,14 @@ const ComparisonTable: React.FC = () => {
     {
       title: 'CARRIER INTEGRATION READY',
       description: 'Pre-built connections to major life insurance carriers for seamless data flow.'
+    },
+    {
+      title: 'TEAM HIERARCHY VISUALIZATION',
+      description: 'Visual org chart with agent and manager tracking built right into your dashboard.'
+    },
+    {
+      title: 'BOOK OF BUSINESS MANAGEMENT',
+      description: 'Manage your entire book of business directly from your account with full visibility.'
     }
   ];
 
@@ -28,6 +36,14 @@ const ComparisonTable: React.FC = () => {
     {
       title: 'COMPLEX CUSTOM INTEGRATIONS',
       description: 'Expensive and time-consuming custom development required for carrier connections.'
+    },
+    {
+      title: 'BASIC CONTACT LISTS',
+      description: 'Simple contact management without insurance-specific hierarchies or relationships.'
+    },
+    {
+      title: 'SCATTERED CLIENT DATA',
+      description: 'Policy information stored across multiple systems requiring constant switching.'
     }
   ];
 
