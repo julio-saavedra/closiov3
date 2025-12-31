@@ -11,21 +11,28 @@ const HeroDrainLines: React.FC = () => {
     >
       <defs>
         <filter id="heroGlowWhite">
-          <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
           <feMerge>
             <feMergeNode in="coloredBlur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
         <filter id="heroGlowTeal">
-          <feGaussianBlur stdDeviation="5" result="coloredBlur" />
+          <feGaussianBlur stdDeviation="4" result="coloredBlur" />
           <feMerge>
             <feMergeNode in="coloredBlur" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
         <filter id="heroGlowPink">
-          <feGaussianBlur stdDeviation="5" result="coloredBlur" />
+          <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <filter id="heroGlowBlack">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
           <feMerge>
             <feMergeNode in="coloredBlur" />
             <feMergeNode in="SourceGraphic" />
@@ -34,95 +41,133 @@ const HeroDrainLines: React.FC = () => {
       </defs>
 
       <path
-        d="M 80 700 L 80 250 Q 80 200, 130 200 L 280 200 Q 330 200, 330 250 L 330 700"
+        d="M 120 700 L 120 280 Q 120 230, 70 230 L -100 230"
         fill="none"
-        stroke="rgba(106, 212, 242, 0.15)"
-        strokeWidth="20"
+        stroke="rgba(106, 212, 242, 0.12)"
+        strokeWidth="28"
         strokeLinecap="round"
         strokeLinejoin="round"
         className="blur-md"
       />
       <path
-        d="M 80 700 L 80 250 Q 80 200, 130 200 L 280 200 Q 330 200, 330 250 L 330 700"
+        d="M 120 700 L 120 280 Q 120 230, 70 230 L -100 230"
         fill="none"
         stroke="#6ad4f2"
-        strokeWidth="5"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
         filter="url(#heroGlowTeal)"
       />
 
       <path
-        d="M 350 700 L 350 150 Q 350 100, 400 100 L 550 100 Q 600 100, 600 150 L 600 700"
+        d="M 320 700 L 320 160 Q 320 110, 270 110 L -100 110"
         fill="none"
-        stroke="rgba(255, 255, 255, 0.12)"
-        strokeWidth="22"
+        stroke="rgba(255, 255, 255, 0.1)"
+        strokeWidth="28"
         strokeLinecap="round"
         strokeLinejoin="round"
         className="blur-md"
       />
       <path
-        d="M 350 700 L 350 150 Q 350 100, 400 100 L 550 100 Q 600 100, 600 150 L 600 700"
+        d="M 320 700 L 320 160 Q 320 110, 270 110 L -100 110"
         fill="none"
         stroke="white"
-        strokeWidth="5"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
         filter="url(#heroGlowWhite)"
       />
 
       <path
-        d="M 720 700 L 720 180 Q 720 130, 770 130 L 870 130 Q 920 130, 920 180 L 920 700"
+        d="M 520 700 L 520 200 Q 520 150, 470 150 L -100 150"
         fill="none"
-        stroke="rgba(213, 147, 192, 0.15)"
-        strokeWidth="20"
+        stroke="rgba(30, 30, 30, 0.3)"
+        strokeWidth="26"
         strokeLinecap="round"
         strokeLinejoin="round"
         className="blur-md"
       />
       <path
-        d="M 720 700 L 720 180 Q 720 130, 770 130 L 870 130 Q 920 130, 920 180 L 920 700"
+        d="M 520 700 L 520 200 Q 520 150, 470 150 L -100 150"
+        fill="none"
+        stroke="rgba(40, 40, 40, 0.9)"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        filter="url(#heroGlowBlack)"
+      />
+
+      <path
+        d="M 720 700 L 720 120 Q 720 70, 770 70 L 1700 70"
+        fill="none"
+        stroke="rgba(213, 147, 192, 0.12)"
+        strokeWidth="28"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="blur-md"
+      />
+      <path
+        d="M 720 700 L 720 120 Q 720 70, 770 70 L 1700 70"
         fill="none"
         stroke="#d593c0"
-        strokeWidth="5"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
         filter="url(#heroGlowPink)"
       />
 
       <path
-        d="M 1000 700 L 1000 220 Q 1000 170, 1050 170 L 1200 170 Q 1250 170, 1250 220 L 1250 700"
+        d="M 920 700 L 920 180 Q 920 130, 970 130 L 1700 130"
         fill="none"
         stroke="rgba(255, 255, 255, 0.1)"
-        strokeWidth="20"
+        strokeWidth="28"
         strokeLinecap="round"
         strokeLinejoin="round"
         className="blur-md"
       />
       <path
-        d="M 1000 700 L 1000 220 Q 1000 170, 1050 170 L 1200 170 Q 1250 170, 1250 220 L 1250 700"
+        d="M 920 700 L 920 180 Q 920 130, 970 130 L 1700 130"
         fill="none"
         stroke="white"
-        strokeWidth="5"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
         filter="url(#heroGlowWhite)"
       />
 
       <path
-        d="M 1350 700 L 1350 280 Q 1350 230, 1400 230 L 1500 230 Q 1550 230, 1550 280 L 1550 700"
+        d="M 1180 700 L 1180 240 Q 1180 190, 1230 190 L 1700 190"
         fill="none"
-        stroke="rgba(106, 212, 242, 0.12)"
-        strokeWidth="18"
+        stroke="rgba(30, 30, 30, 0.3)"
+        strokeWidth="26"
         strokeLinecap="round"
         strokeLinejoin="round"
         className="blur-md"
       />
       <path
-        d="M 1350 700 L 1350 280 Q 1350 230, 1400 230 L 1500 230 Q 1550 230, 1550 280 L 1550 700"
+        d="M 1180 700 L 1180 240 Q 1180 190, 1230 190 L 1700 190"
+        fill="none"
+        stroke="rgba(40, 40, 40, 0.9)"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        filter="url(#heroGlowBlack)"
+      />
+
+      <path
+        d="M 1380 700 L 1380 300 Q 1380 250, 1430 250 L 1700 250"
+        fill="none"
+        stroke="rgba(106, 212, 242, 0.12)"
+        strokeWidth="28"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="blur-md"
+      />
+      <path
+        d="M 1380 700 L 1380 300 Q 1380 250, 1430 250 L 1700 250"
         fill="none"
         stroke="#6ad4f2"
-        strokeWidth="5"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
         filter="url(#heroGlowTeal)"
