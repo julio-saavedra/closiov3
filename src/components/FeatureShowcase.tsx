@@ -41,35 +41,37 @@ const FeatureShowcase: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className={`flex flex-col gap-8 items-center ${
-                feature.reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
-              }`}
+              className="bg-[#1a1d23] rounded-3xl overflow-hidden shadow-2xl"
             >
-              {/* Text Content */}
-              <div className={`w-full lg:w-1/2 space-y-6 ${
-                feature.reversed ? 'lg:pl-12' : 'lg:pr-12'
+              <div className={`flex flex-col ${
+                feature.reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
               }`}>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
-                  {feature.title}
-                </h2>
-                <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-
-              {/* Image Area with Gradient */}
-              <div className="w-full lg:w-1/2">
-                <div className="relative rounded-3xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] shadow-2xl">
-                  {/* Placeholder for image - user will add images later */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center text-white/90">
-                      <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
-                      <div className="text-sm opacity-70">Image placeholder</div>
-                    </div>
+                {/* Text Content */}
+                <div className="w-full lg:w-1/2 p-8 md:p-12 lg:p-16 flex items-center">
+                  <div className="space-y-6">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                      {feature.title}
+                    </h2>
+                    <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+                      {feature.description}
+                    </p>
                   </div>
+                </div>
 
-                  {/* Subtle overlay pattern */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+                {/* Image Area with Gradient */}
+                <div className="w-full lg:w-1/2">
+                  <div className="relative aspect-[4/3] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0]">
+                    {/* Placeholder for image - user will add images later */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-center text-white/90">
+                        <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
+                        <div className="text-sm opacity-70">Image placeholder</div>
+                      </div>
+                    </div>
+
+                    {/* Subtle overlay pattern */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+                  </div>
                 </div>
               </div>
             </motion.div>
