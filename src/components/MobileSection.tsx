@@ -84,12 +84,12 @@ const MobileSection: React.FC = () => {
     <section id="mobile" className="h-[500px] sm:h-[600px] lg:h-[700px] overflow-hidden relative">
       <AngularLine />
       <IOImprint />
-      <div className="absolute inset-0 flex items-center justify-end">
-        <div className="relative w-full h-full flex items-center justify-end pr-8 sm:pr-12 lg:pr-16">
+      <div className="absolute inset-0 flex items-end justify-end">
+        <div className="relative w-full h-full flex items-end justify-end pr-0">
           <img
             src="/new_mobile_digital.png"
             alt="Closio mobile application showcasing dashboard, leaderboard, and login screens"
-            className="h-[85%] sm:h-[80%] lg:h-[75%] w-auto max-w-none object-contain drop-shadow-2xl"
+            className="h-[95%] sm:h-[92%] lg:h-[90%] w-auto max-w-none object-contain drop-shadow-2xl"
           />
         </div>
       </div>
