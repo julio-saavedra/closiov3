@@ -4,8 +4,8 @@ const AngularLine: React.FC = () => {
   return (
     <svg
       viewBox="0 0 800 700"
-      className="absolute left-0 top-0 h-full w-[60%] opacity-90"
-      style={{ filter: 'drop-shadow(0 0 20px rgba(255, 255, 255, 0.3))' }}
+      className="absolute left-0 top-0 h-full w-[60%]"
+      style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
       preserveAspectRatio="xMidYMin slice"
     >
       <defs>
@@ -16,7 +16,7 @@ const AngularLine: React.FC = () => {
           <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
         </linearGradient>
         <filter id="lineGlow">
-          <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
           <feMerge>
             <feMergeNode in="coloredBlur" />
             <feMergeNode in="SourceGraphic" />
@@ -85,7 +85,6 @@ const MobileSection: React.FC = () => {
       <AngularLine />
       <IOImprint />
       <div className="absolute inset-0 flex items-center justify-end">
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[70%] h-full bg-gradient-to-l from-[#2C66FF]/10 to-transparent blur-3xl opacity-40" />
         <div className="relative w-full h-full flex items-end justify-end">
           <img
             src="/new_mobile_compatible-_closio_website.png"
