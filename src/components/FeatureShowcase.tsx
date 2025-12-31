@@ -23,7 +23,7 @@ const features: FeatureSection[] = [
     reversed: true
   },
   {
-    title: 'Team Performance',
+    title: 'Team Hierarchy',
     description: 'Visualize your agency structure and monitor performance at every level. Empower your team with the insights they need to succeed.',
     imagePlaceholder: 'Team Analytics',
     image: '/commercial_event_website_in_black_turquoise_bold_gradient_style.png',
