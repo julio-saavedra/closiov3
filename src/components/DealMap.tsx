@@ -9,11 +9,11 @@ const benefits = [
 
 export default function DealMap() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-[#d593c0]" />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-12">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -35,13 +35,13 @@ export default function DealMap() {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-[1.5fr_0.5fr] gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative w-full rounded-2xl overflow-hidden"
+            className="relative w-full max-w-xl mx-auto rounded-2xl overflow-hidden"
           >
             <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#0d1117] to-[#161b22]">
               <img
