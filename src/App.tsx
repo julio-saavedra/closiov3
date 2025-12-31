@@ -6,6 +6,7 @@ import { InteractiveImageAccordion } from './components/ui/interactive-image-acc
 import DealMap from './components/DealMap';
 import RoleTabs from './components/RoleTabs';
 import SecurityTiles from './components/SecurityTiles';
+import FeatureShowcase from './components/FeatureShowcase';
 import ComparisonTable from './components/ComparisonTable';
 import TestimonialsCarousel from './components/TestimonialsCarousel';
 import RoadmapTimeline from './components/RoadmapTimeline';
@@ -48,6 +49,8 @@ function App() {
       <SectionWrapper>
         <SecurityTiles />
       </SectionWrapper>
+
+      <FeatureShowcase />
 
       <SectionWrapper>
         <ComparisonTable />
