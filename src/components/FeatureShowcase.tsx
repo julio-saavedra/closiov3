@@ -32,7 +32,7 @@ const features: FeatureSection[] = [
 const FeatureShowcase: React.FC = () => {
   return (
     <section className="bg-white py-20 md:py-28">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-[95%] mx-auto px-24">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,7 +52,7 @@ const FeatureShowcase: React.FC = () => {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="bg-[#1a1d23] rounded-3xl overflow-hidden shadow-2xl"
             >
-              <div className={`flex flex-col ${
+              <div className={`relative flex flex-col ${
                 feature.reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
               }`}>
                 {/* Text Content */}
@@ -66,6 +66,9 @@ const FeatureShowcase: React.FC = () => {
                     </p>
                   </div>
                 </div>
+
+                {/* Rounded Divider Line */}
+                <div className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[2px] h-[calc(100%-4rem)] bg-white/20 rounded-full" />
 
                 {/* Image Area with Gradient */}
                 <div className="w-full lg:w-1/2">
