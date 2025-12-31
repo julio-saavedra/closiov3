@@ -26,10 +26,10 @@ const AngularLine: React.FC = () => {
       </defs>
       <path
         d="M 50 0
-           L 50 200
-           Q 50 280, 130 280
-           L 380 280
-           Q 460 280, 460 360
+           L 50 160
+           Q 50 240, 130 240
+           L 380 240
+           Q 460 240, 460 320
            L 460 700"
         fill="none"
         stroke="url(#angularGradient)"
@@ -40,10 +40,10 @@ const AngularLine: React.FC = () => {
       />
       <path
         d="M 50 0
-           L 50 200
-           Q 50 280, 130 280
-           L 380 280
-           Q 460 280, 460 360
+           L 50 160
+           Q 50 240, 130 240
+           L 380 240
+           Q 460 240, 460 320
            L 460 700"
         fill="none"
         stroke="rgba(255, 255, 255, 0.08)"
@@ -91,7 +91,7 @@ const MobileSection: React.FC = () => {
           <img
             src="/new_mobile_compatible-_closio_website.png"
             alt="Closio mobile application showcasing dashboard, leaderboard, and login screens"
-            className="h-[95%] w-auto max-w-none object-contain drop-shadow-2xl translate-x-[1%]"
+            className="h-[90%] sm:h-[85%] lg:h-[82%] w-auto max-w-none object-contain drop-shadow-2xl translate-x-[1%]"
           />
         </div>
       </div>
