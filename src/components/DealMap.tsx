@@ -35,7 +35,7 @@ export default function DealMap() {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-center">
+        <div className="grid lg:grid-cols-[1.5fr_0.5fr] gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -43,7 +43,7 @@ export default function DealMap() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="relative w-full rounded-2xl overflow-hidden"
           >
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-[#0d1117] to-[#161b22]">
+            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#0d1117] to-[#161b22]">
               <img
                 src="/cover_(1).png"
                 alt="Deal Map - Policies Submitted Per State"
