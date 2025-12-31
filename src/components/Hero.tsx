@@ -226,9 +226,9 @@ const Hero: React.FC = () => {
               <motion.span
                 ref={line1Ref}
                 className="inline-block"
-                initial={{ x: -200, opacity: 0 }}
+                initial={{ x: '-100vw', opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+                transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 Close More.
               </motion.span>
@@ -236,9 +236,9 @@ const Hero: React.FC = () => {
               <motion.span
                 ref={line2Ref}
                 className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#d593c0] to-[#6ad4f2]"
-                initial={{ x: 200, opacity: 0 }}
+                initial={{ x: '100vw', opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 }}
+                transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 }}
               >
                 Close Smarter.
               </motion.span>
