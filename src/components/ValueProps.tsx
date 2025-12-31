@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 const VerticalLine: React.FC = () => {
   return (
     <svg
-      viewBox="0 0 600 900"
-      className="absolute left-0 top-0 h-full w-[50%] pointer-events-none"
+      viewBox="0 0 400 900"
+      className="absolute left-0 top-0 h-full w-[25vw] pointer-events-none"
       style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
-      preserveAspectRatio="xMinYMid slice"
+      preserveAspectRatio="none"
     >
       <defs>
         <filter id="valueLineGlow">
@@ -19,12 +19,12 @@ const VerticalLine: React.FC = () => {
         </filter>
       </defs>
       <path
-        d="M 60 1000
-           L 60 550
-           Q 60 480, 130 480
-           L 297 480
-           Q 367 480, 367 410
-           L 367 -100"
+        d="M 50 1000
+           L 50 550
+           Q 50 480, 120 480
+           L 280 480
+           Q 350 480, 350 410
+           L 350 -100"
         fill="none"
         stroke="white"
         strokeWidth="16"
@@ -33,12 +33,12 @@ const VerticalLine: React.FC = () => {
         filter="url(#valueLineGlow)"
       />
       <path
-        d="M 60 1000
-           L 60 550
-           Q 60 480, 130 480
-           L 297 480
-           Q 367 480, 367 410
-           L 367 -100"
+        d="M 50 1000
+           L 50 550
+           Q 50 480, 120 480
+           L 280 480
+           Q 350 480, 350 410
+           L 350 -100"
         fill="none"
         stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="32"

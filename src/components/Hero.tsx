@@ -2,12 +2,51 @@ import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useScrambleOnView } from '@/hooks/useScrambleOnView';
 
+const HeroWhiteLine: React.FC = () => {
+  return (
+    <svg
+      viewBox="0 0 400 700"
+      className="absolute left-0 top-0 h-full w-[25vw] pointer-events-none"
+      preserveAspectRatio="none"
+      style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
+    >
+      <defs>
+        <filter id="heroWhiteGlow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <path
+        d="M -50 10 L 280 10 Q 350 10, 350 80 L 350 750"
+        fill="none"
+        stroke="rgba(255, 255, 255, 0.15)"
+        strokeWidth="32"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="blur-md"
+      />
+      <path
+        d="M -50 10 L 280 10 Q 350 10, 350 80 L 350 750"
+        fill="none"
+        stroke="white"
+        strokeWidth="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        filter="url(#heroWhiteGlow)"
+      />
+    </svg>
+  );
+};
+
 const HeroDrainLines: React.FC = () => {
   return (
     <svg
       viewBox="0 0 1600 700"
       className="absolute inset-0 w-full h-full pointer-events-none"
-      preserveAspectRatio="xMinYMid slice"
+      preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
     >
       <defs>
@@ -118,25 +157,6 @@ const HeroDrainLines: React.FC = () => {
       />
 
       <path
-        d="M -100 10 L 420 10 Q 490 10, 490 80 L 490 700"
-        fill="none"
-        stroke="rgba(255, 255, 255, 0.15)"
-        strokeWidth="32"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="blur-md"
-      />
-      <path
-        d="M -100 10 L 420 10 Q 490 10, 490 80 L 490 700"
-        fill="none"
-        stroke="white"
-        strokeWidth="16"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        filter="url(#heroGlowWhite)"
-      />
-
-      <path
         d="M 1450 700 L 1450 400 Q 1450 330, 1520 330 L 1700 330"
         fill="none"
         stroke="rgba(30, 30, 30, 0.25)"
@@ -215,6 +235,7 @@ const Hero: React.FC = () => {
   return (
     <section id="hero" className="min-h-[70vh] w-full text-white flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative overflow-hidden">
       <HeroDrainLines />
+      <HeroWhiteLine />
       <div className="w-full max-w-6xl mx-auto space-y-8 sm:space-y-12 relative z-10">
         <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-8 lg:space-y-0 lg:space-x-12 lg:justify-center">
           <div className="lg:w-[15%]"></div>
