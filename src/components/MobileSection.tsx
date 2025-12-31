@@ -24,12 +24,12 @@ const AngularLine: React.FC = () => {
         </filter>
       </defs>
       <path
-        d="M 50 0
-           L 50 160
-           Q 50 240, 130 240
-           L 260 240
-           Q 340 240, 340 320
-           L 340 700"
+        d="M 83 0
+           L 83 160
+           Q 83 240, 163 240
+           L 293 240
+           Q 373 240, 373 320
+           L 373 700"
         fill="none"
         stroke="white"
         strokeWidth="16"
@@ -38,12 +38,12 @@ const AngularLine: React.FC = () => {
         filter="url(#lineGlow)"
       />
       <path
-        d="M 50 0
-           L 50 160
-           Q 50 240, 130 240
-           L 260 240
-           Q 340 240, 340 320
-           L 340 700"
+        d="M 83 0
+           L 83 160
+           Q 83 240, 163 240
+           L 293 240
+           Q 373 240, 373 320
+           L 373 700"
         fill="none"
         stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="32"
