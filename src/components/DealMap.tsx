@@ -35,13 +35,13 @@ export default function DealMap() {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="grid lg:grid-cols-[1.3fr_0.7fr] gap-8 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative w-full max-w-xl mx-auto rounded-2xl overflow-hidden"
+            className="relative w-full rounded-2xl overflow-hidden"
           >
             <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#0d1117] to-[#161b22]">
               <img
