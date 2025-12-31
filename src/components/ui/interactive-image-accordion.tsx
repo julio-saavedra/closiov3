@@ -36,7 +36,7 @@ const accordionItems = [
   {
     id: 6,
     title: 'Team Hierarchy',
-    imageUrl: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    imageUrl: '/team_hierarchy-_closio_website.png',
     description: 'Visualize and manage your entire agency structure'
   },
   {
