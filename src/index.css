@@ -1250,54 +1250,74 @@ html, body {
 /* ================= HERO DRAIN LINES ================= */
 .hero-drain-lines {
   position: absolute;
-  inset: -50%;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image:
-    repeating-linear-gradient(
-      -35deg,
-      rgba(106, 212, 242, 0.08) 0px,
-      rgba(106, 212, 242, 0.08) 1px,
-      transparent 1px,
-      transparent 80px
-    ),
-    repeating-linear-gradient(
-      35deg,
-      rgba(213, 147, 192, 0.06) 0px,
-      rgba(213, 147, 192, 0.06) 1px,
-      transparent 1px,
-      transparent 120px
-    ),
-    repeating-linear-gradient(
-      -55deg,
-      rgba(106, 212, 242, 0.05) 0px,
-      rgba(106, 212, 242, 0.05) 1px,
-      transparent 1px,
-      transparent 160px
-    );
-  background-size: 200% 200%;
-  opacity: 0.7;
-  animation: hero-drain-flow 25s linear infinite;
+  overflow: hidden;
 }
 
-@keyframes hero-drain-flow {
-  0% {
-    transform: translate3d(-5%, -5%, 0);
-    background-position: 0% 0%, 100% 100%, 50% 50%;
-  }
-  50% {
-    transform: translate3d(5%, 5%, 0);
-    background-position: 50% 100%, 0% 50%, 100% 0%;
-  }
-  100% {
-    transform: translate3d(-5%, -5%, 0);
-    background-position: 0% 0%, 100% 100%, 50% 50%;
-  }
+.hero-drain-lines::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.2) 15%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.2) 85%, transparent 100%);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-drain-lines {
-    animation: none !important;
-  }
+.hero-drain-line {
+  position: absolute;
+  width: 1px;
+  transform-origin: bottom center;
+  pointer-events: none;
+}
+
+.hero-drain-line--white-1 {
+  height: 65%;
+  bottom: 0;
+  left: 15%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.04) 40%, rgba(255,255,255,0.15) 100%);
+  transform: rotate(-25deg);
+}
+
+.hero-drain-line--teal-1 {
+  height: 75%;
+  bottom: 0;
+  left: 28%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(106,212,242,0.04) 40%, rgba(106,212,242,0.14) 100%);
+  transform: rotate(-15deg);
+}
+
+.hero-drain-line--white-2 {
+  height: 85%;
+  bottom: 0;
+  left: 42%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.12) 100%);
+  transform: rotate(-6deg);
+}
+
+.hero-drain-line--pink-1 {
+  height: 80%;
+  bottom: 0;
+  left: 58%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(213,147,192,0.04) 40%, rgba(213,147,192,0.14) 100%);
+  transform: rotate(6deg);
+}
+
+.hero-drain-line--white-3 {
+  height: 70%;
+  bottom: 0;
+  left: 72%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.12) 100%);
+  transform: rotate(15deg);
+}
+
+.hero-drain-line--teal-2 {
+  height: 60%;
+  bottom: 0;
+  left: 85%;
+  background: linear-gradient(to bottom, transparent 0%, rgba(106,212,242,0.03) 40%, rgba(106,212,242,0.12) 100%);
+  transform: rotate(25deg);
 }
 
