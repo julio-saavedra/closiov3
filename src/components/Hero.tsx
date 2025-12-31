@@ -23,6 +23,9 @@ const Hero: React.FC = () => {
         <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-8 lg:space-y-0 lg:space-x-12">
           <div className="flex-1 lg:flex-none"></div>
           <div className="space-y-4 sm:space-y-6 flex items-center justify-center flex-col text-center lg:text-right lg:items-end flex-1">
+            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-neutral-400 font-medium">
+              Closio was built for you
+            </span>
             <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight max-w-4xl leading-[1.05] -tracking-[0.02em]">
               <span ref={line1Ref} className="inline-block">
                 Close More.
@@ -35,8 +38,8 @@ const Hero: React.FC = () => {
                 Close Smarter.
               </span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-neutral-300 max-w-3xl leading-relaxed px-4 sm:px-0">
-              The proprietary CRM built exclusively for the life-insurance industry—taking you from lead to issue paid with unprecedented clarity and control.
+            <p className="text-base sm:text-lg md:text-xl text-neutral-300 max-w-xl leading-relaxed px-4 sm:px-0">
+              The life insurance CRM that takes you from lead to issue paid.
             </p>
           </div>
         </div>
