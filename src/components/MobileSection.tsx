@@ -28,9 +28,9 @@ const AngularLine: React.FC = () => {
         d="M 50 0
            L 50 160
            Q 50 240, 130 240
-           L 380 240
-           Q 460 240, 460 320
-           L 460 700"
+           L 260 240
+           Q 340 240, 340 320
+           L 340 700"
         fill="none"
         stroke="url(#angularGradient)"
         strokeWidth="16"
@@ -42,9 +42,9 @@ const AngularLine: React.FC = () => {
         d="M 50 0
            L 50 160
            Q 50 240, 130 240
-           L 380 240
-           Q 460 240, 460 320
-           L 460 700"
+           L 260 240
+           Q 340 240, 340 320
+           L 340 700"
         fill="none"
         stroke="rgba(255, 255, 255, 0.08)"
         strokeWidth="28"
