@@ -134,9 +134,9 @@ const RoleTabs: React.FC = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="group flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/[0.06] hover:border-[#2C66FF]/30 hover:from-[#2C66FF]/[0.08] hover:to-[#2C66FF]/[0.02] transition-all duration-300"
+                      className="group flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/[0.06] hover:border-white/30 hover:from-white/[0.08] hover:to-white/[0.02] transition-all duration-300"
                     >
-                      <div className="w-5 h-[2px] bg-white flex-shrink-0 group-hover:bg-[#2C66FF] transition-colors" />
+                      <div className="w-5 h-[2px] bg-white flex-shrink-0 group-hover:bg-white transition-colors" />
                       <p className="text-[#C4CCD9] leading-relaxed group-hover:text-white transition-colors">{benefit}</p>
                     </motion.div>
                   ))}
