@@ -27,9 +27,9 @@ const AngularLine: React.FC = () => {
         d="M 50 -50
            L 50 160
            Q 50 240, 130 240
-           L 270 240
-           Q 350 240, 350 320
-           L 350 750"
+           L 340 240
+           Q 420 240, 420 320
+           L 420 750"
         fill="none"
         stroke="white"
         strokeWidth="16"
@@ -41,9 +41,9 @@ const AngularLine: React.FC = () => {
         d="M 50 -50
            L 50 160
            Q 50 240, 130 240
-           L 270 240
-           Q 350 240, 350 320
-           L 350 750"
+           L 340 240
+           Q 420 240, 420 320
+           L 420 750"
         fill="none"
         stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="32"
