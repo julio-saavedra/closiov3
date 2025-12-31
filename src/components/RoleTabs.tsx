@@ -100,7 +100,7 @@ const RoleTabs: React.FC = () => {
                 {activeRole === role.id && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-[#0cc0df] rounded-xl shadow-lg shadow-[#0cc0df]/30"
+                    className="absolute inset-0 bg-[#d593c0] rounded-xl shadow-lg shadow-[#d593c0]/30"
                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                   />
                 )}
