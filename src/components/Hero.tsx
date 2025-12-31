@@ -4,47 +4,40 @@ import { useScrambleOnView } from '@/hooks/useScrambleOnView';
 
 const HeroWhiteLine: React.FC = () => {
   return (
-    <div
-      className="absolute left-0 top-0 h-full pointer-events-none"
-      style={{ width: '22vw' }}
+    <svg
+      viewBox="0 0 400 700"
+      className="absolute left-0 top-0 h-full w-[25vw] pointer-events-none"
+      preserveAspectRatio="none"
+      style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
     >
-      <svg
-        viewBox="0 0 220 100"
-        className="absolute left-0 top-0 w-full h-full"
-        preserveAspectRatio="none"
-        style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
-      >
-        <defs>
-          <filter id="heroWhiteGlow">
-            <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        <path
-          d="M -10 2 L 190 2 Q 210 2, 210 12 L 210 110"
-          fill="none"
-          stroke="rgba(255, 255, 255, 0.15)"
-          strokeWidth="6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="blur-sm"
-          vectorEffect="non-scaling-stroke"
-        />
-        <path
-          d="M -10 2 L 190 2 Q 210 2, 210 12 L 210 110"
-          fill="none"
-          stroke="white"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          filter="url(#heroWhiteGlow)"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
-    </div>
+      <defs>
+        <filter id="heroWhiteGlow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <path
+        d="M -50 10 L 280 10 Q 350 10, 350 80 L 350 750"
+        fill="none"
+        stroke="rgba(255, 255, 255, 0.15)"
+        strokeWidth="32"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="blur-md"
+      />
+      <path
+        d="M -50 10 L 280 10 Q 350 10, 350 80 L 350 750"
+        fill="none"
+        stroke="white"
+        strokeWidth="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        filter="url(#heroWhiteGlow)"
+      />
+    </svg>
   );
 };
 

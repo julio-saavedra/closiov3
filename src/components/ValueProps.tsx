@@ -3,57 +3,50 @@ import { motion } from 'framer-motion';
 
 const VerticalLine: React.FC = () => {
   return (
-    <div
-      className="absolute left-0 top-0 h-full pointer-events-none"
-      style={{ width: '22vw' }}
+    <svg
+      viewBox="0 0 400 900"
+      className="absolute left-0 top-0 h-full w-[25vw] pointer-events-none"
+      style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
+      preserveAspectRatio="none"
     >
-      <svg
-        viewBox="0 0 220 100"
-        className="absolute left-0 top-0 w-full h-full"
-        preserveAspectRatio="none"
-        style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
-      >
-        <defs>
-          <filter id="valueLineGlow">
-            <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        <path
-          d="M 30 110
-             L 30 60
-             Q 30 50, 50 50
-             L 190 50
-             Q 210 50, 210 40
-             L 210 -10"
-          fill="none"
-          stroke="rgba(255, 255, 255, 0.15)"
-          strokeWidth="6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="blur-sm"
-          vectorEffect="non-scaling-stroke"
-        />
-        <path
-          d="M 30 110
-             L 30 60
-             Q 30 50, 50 50
-             L 190 50
-             Q 210 50, 210 40
-             L 210 -10"
-          fill="none"
-          stroke="white"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          filter="url(#valueLineGlow)"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
-    </div>
+      <defs>
+        <filter id="valueLineGlow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <path
+        d="M 50 1000
+           L 50 550
+           Q 50 480, 120 480
+           L 280 480
+           Q 350 480, 350 410
+           L 350 -100"
+        fill="none"
+        stroke="white"
+        strokeWidth="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        filter="url(#valueLineGlow)"
+      />
+      <path
+        d="M 50 1000
+           L 50 550
+           Q 50 480, 120 480
+           L 280 480
+           Q 350 480, 350 410
+           L 350 -100"
+        fill="none"
+        stroke="rgba(255, 255, 255, 0.15)"
+        strokeWidth="32"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="blur-md"
+      />
+    </svg>
   );
 };
 

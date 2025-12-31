@@ -2,57 +2,56 @@ import React from 'react';
 
 const AngularLine: React.FC = () => {
   return (
-    <div
-      className="absolute left-0 top-0 h-full pointer-events-none"
-      style={{ width: '22vw' }}
+    <svg
+      viewBox="0 0 400 700"
+      className="absolute left-0 top-0 h-full w-[25vw]"
+      style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
+      preserveAspectRatio="none"
     >
-      <svg
-        viewBox="0 0 220 100"
-        className="absolute left-0 top-0 w-full h-full"
-        preserveAspectRatio="none"
-        style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
-      >
-        <defs>
-          <filter id="lineGlow">
-            <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        <path
-          d="M 30 -10
-             L 30 25
-             Q 30 35, 50 35
-             L 190 35
-             Q 210 35, 210 45
-             L 210 110"
-          fill="none"
-          stroke="rgba(255, 255, 255, 0.15)"
-          strokeWidth="6"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="blur-sm"
-          vectorEffect="non-scaling-stroke"
-        />
-        <path
-          d="M 30 -10
-             L 30 25
-             Q 30 35, 50 35
-             L 190 35
-             Q 210 35, 210 45
-             L 210 110"
-          fill="none"
-          stroke="white"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          filter="url(#lineGlow)"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
-    </div>
+      <defs>
+        <linearGradient id="angularGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="rgba(255, 255, 255, 0)" />
+          <stop offset="5%" stopColor="rgba(255, 255, 255, 1)" />
+          <stop offset="95%" stopColor="rgba(255, 255, 255, 1)" />
+          <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
+        </linearGradient>
+        <filter id="lineGlow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+      <path
+        d="M 50 0
+           L 50 160
+           Q 50 240, 130 240
+           L 270 240
+           Q 350 240, 350 320
+           L 350 750"
+        fill="none"
+        stroke="white"
+        strokeWidth="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        filter="url(#lineGlow)"
+      />
+      <path
+        d="M 50 0
+           L 50 160
+           Q 50 240, 130 240
+           L 270 240
+           Q 350 240, 350 320
+           L 350 750"
+        fill="none"
+        stroke="rgba(255, 255, 255, 0.15)"
+        strokeWidth="32"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="blur-md"
+      />
+    </svg>
   );
 };
 
