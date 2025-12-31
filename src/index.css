@@ -1247,3 +1247,57 @@ html, body {
     );
 }
 
+/* ================= HERO DRAIN LINES ================= */
+.hero-drain-lines {
+  position: absolute;
+  inset: -50%;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    repeating-linear-gradient(
+      -35deg,
+      rgba(106, 212, 242, 0.08) 0px,
+      rgba(106, 212, 242, 0.08) 1px,
+      transparent 1px,
+      transparent 80px
+    ),
+    repeating-linear-gradient(
+      35deg,
+      rgba(213, 147, 192, 0.06) 0px,
+      rgba(213, 147, 192, 0.06) 1px,
+      transparent 1px,
+      transparent 120px
+    ),
+    repeating-linear-gradient(
+      -55deg,
+      rgba(106, 212, 242, 0.05) 0px,
+      rgba(106, 212, 242, 0.05) 1px,
+      transparent 1px,
+      transparent 160px
+    );
+  background-size: 200% 200%;
+  opacity: 0.7;
+  animation: hero-drain-flow 25s linear infinite;
+}
+
+@keyframes hero-drain-flow {
+  0% {
+    transform: translate3d(-5%, -5%, 0);
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+  }
+  50% {
+    transform: translate3d(5%, 5%, 0);
+    background-position: 50% 100%, 0% 50%, 100% 0%;
+  }
+  100% {
+    transform: translate3d(-5%, -5%, 0);
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-drain-lines {
+    animation: none !important;
+  }
+}
+
