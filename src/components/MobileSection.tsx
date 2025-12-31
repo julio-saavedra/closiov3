@@ -3,8 +3,8 @@ import React from 'react';
 const AngularLine: React.FC = () => {
   return (
     <svg
-      viewBox="0 0 400 700"
-      className="absolute left-0 top-0 h-full w-[25vw]"
+      viewBox="0 0 500 700"
+      className="absolute left-0 top-0 h-full w-[30vw]"
       style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
       preserveAspectRatio="none"
     >
@@ -24,12 +24,12 @@ const AngularLine: React.FC = () => {
         </filter>
       </defs>
       <path
-        d="M 50 0
-           L 50 160
-           Q 50 240, 130 240
-           L 270 240
-           Q 350 240, 350 320
-           L 350 750"
+        d="M 130 0
+           L 130 160
+           Q 130 240, 210 240
+           L 350 240
+           Q 430 240, 430 320
+           L 430 750"
         fill="none"
         stroke="white"
         strokeWidth="16"
@@ -38,12 +38,12 @@ const AngularLine: React.FC = () => {
         filter="url(#lineGlow)"
       />
       <path
-        d="M 50 0
-           L 50 160
-           Q 50 240, 130 240
-           L 270 240
-           Q 350 240, 350 320
-           L 350 750"
+        d="M 130 0
+           L 130 160
+           Q 130 240, 210 240
+           L 350 240
+           Q 430 240, 430 320
+           L 430 750"
         fill="none"
         stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="32"
