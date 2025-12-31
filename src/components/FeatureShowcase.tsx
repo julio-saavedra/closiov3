@@ -26,7 +26,7 @@ const features: FeatureSection[] = [
     title: 'Team Hierarchy',
     description: 'Visualize your agency structure and monitor performance at every level. Empower your team with the insights they need to succeed.',
     imagePlaceholder: 'Team Analytics',
-    image: '/commercial_event_website_in_black_turquoise_bold_gradient_style.png',
+    image: '/image copy copy copy copy copy copy.png',
     reversed: false
   }
 ];
@@ -79,7 +79,7 @@ const FeatureShowcase: React.FC = () => {
                       <img
                         src={feature.image}
                         alt={feature.title}
-                        className="absolute inset-0 w-full h-full object-contain"
+                        className="absolute inset-0 w-full h-full object-contain rounded-2xl"
                       />
                     ) : (
                       <>
