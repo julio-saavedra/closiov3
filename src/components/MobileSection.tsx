@@ -58,7 +58,7 @@ const AngularLine: React.FC = () => {
 
 const IOImprint: React.FC = () => {
   return (
-    <div className="absolute left-12 sm:left-16 lg:left-24 top-[58%] -translate-y-1/2 flex items-baseline gap-4 sm:gap-6 lg:gap-8">
+    <div className="absolute left-12 sm:left-16 lg:left-24 top-[75%] -translate-y-1/2 flex items-baseline gap-4 sm:gap-6 lg:gap-8">
       <span
         className="text-[120px] sm:text-[160px] lg:text-[200px] font-bold italic text-transparent"
         style={{
