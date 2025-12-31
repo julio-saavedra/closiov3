@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <img
-              src="/closio_main_logo.png"
+              src="/closio_main_logo copy.png"
               alt="Closio"
               className="h-24 w-auto select-none mb-4"
               draggable={false}
