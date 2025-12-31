@@ -89,9 +89,9 @@ const MobileSection: React.FC = () => {
         <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[70%] h-full bg-gradient-to-l from-[#2C66FF]/10 to-transparent blur-3xl opacity-40" />
         <div className="relative w-full h-full flex items-end justify-end">
           <img
-            src="/purple_pink_gradient_mobile_application_presentation_(3).png"
+            src="/new_mobile_compatible-_closio_website.png"
             alt="Closio mobile application showcasing dashboard, leaderboard, and login screens"
-            className="h-[85%] w-auto max-w-none object-contain drop-shadow-2xl translate-x-[1%]"
+            className="h-[95%] w-auto max-w-none object-contain drop-shadow-2xl translate-x-[1%]"
           />
         </div>
       </div>
