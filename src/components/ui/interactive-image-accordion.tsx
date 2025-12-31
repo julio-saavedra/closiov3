@@ -11,36 +11,42 @@ const accordionItems = [
   },
   {
     id: 2,
-    title: 'Book of Business',
-    imageUrl: '/bofb-_closio_website.png',
-    description: 'Track all your clients, policies, and deals in one place'
-  },
-  {
-    id: 3,
-    title: 'Commission',
-    imageUrl: '/commission-_closio_website.png',
-    description: 'Real-time commission tracking and split calculations'
-  },
-  {
-    id: 4,
     title: 'Leaderboard',
     imageUrl: '/image copy copy copy copy copy.png',
     description: 'Motivate your team with live performance rankings'
   },
   {
+    id: 3,
+    title: 'Book of Business',
+    imageUrl: '/bofb-_closio_website.png',
+    description: 'Track all your clients, policies, and deals in one place'
+  },
+  {
+    id: 4,
+    title: 'Commission',
+    imageUrl: '/commission-_closio_website.png',
+    description: 'Real-time commission tracking and split calculations'
+  },
+  {
     id: 5,
+    title: 'Estimated Payout',
+    imageUrl: '/estimated_payouts-_closio_website.png',
+    description: 'View projected earnings and payout calculations for your team'
+  },
+  {
+    id: 6,
     title: 'Team Hierarchy',
     imageUrl: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     description: 'Visualize and manage your entire agency structure'
   },
   {
-    id: 6,
+    id: 7,
     title: 'User Management',
     imageUrl: 'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     description: 'Control access, permissions, and roles for your entire team'
   },
   {
-    id: 7,
+    id: 8,
     title: 'Carrier Management',
     imageUrl: 'https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     description: 'Organize carriers, products, and contracting levels'
