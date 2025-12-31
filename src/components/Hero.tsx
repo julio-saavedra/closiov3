@@ -5,8 +5,8 @@ import { useScrambleOnView } from '@/hooks/useScrambleOnView';
 const HeroWhiteLine: React.FC = () => {
   return (
     <svg
-      viewBox="0 0 600 700"
-      className="absolute left-0 top-0 h-full w-[35vw] pointer-events-none"
+      viewBox="0 0 500 700"
+      className="absolute left-0 top-0 h-full w-[30vw] pointer-events-none"
       preserveAspectRatio="none"
       style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
     >
@@ -20,7 +20,7 @@ const HeroWhiteLine: React.FC = () => {
         </filter>
       </defs>
       <path
-        d="M 540 750 L 540 80 Q 540 10, 470 10 L -50 10"
+        d="M 440 750 L 440 80 Q 440 10, 370 10 L -50 10"
         fill="none"
         stroke="rgba(255, 255, 255, 0.15)"
         strokeWidth="32"
@@ -29,7 +29,7 @@ const HeroWhiteLine: React.FC = () => {
         className="blur-md"
       />
       <path
-        d="M 540 750 L 540 80 Q 540 10, 470 10 L -50 10"
+        d="M 440 750 L 440 80 Q 440 10, 370 10 L -50 10"
         fill="none"
         stroke="white"
         strokeWidth="16"
