@@ -62,14 +62,14 @@ const IOImprint: React.FC = () => {
       <span
         className="text-[120px] sm:text-[160px] lg:text-[200px] font-bold italic text-transparent"
         style={{
-          WebkitTextStroke: '2px rgba(255, 255, 255, 0.12)',
+          WebkitTextStroke: '2px rgba(255, 255, 255, 0.22)',
           letterSpacing: '-0.02em'
         }}
       >
         I
       </span>
       <span
-        className="text-[120px] sm:text-[160px] lg:text-[200px] font-bold text-white/[0.08]"
+        className="text-[120px] sm:text-[160px] lg:text-[200px] font-bold text-white/[0.15]"
         style={{
           letterSpacing: '-0.02em'
         }}
