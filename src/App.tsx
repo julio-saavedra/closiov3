@@ -21,7 +21,7 @@ function App() {
       <Navbar />
 
       <div className="pt-20">
-        <SectionWrapper className="!bg-[#1A2428] !bg-none">
+        <SectionWrapper className="!bg-[#0F1214] !bg-none">
           <Hero />
         </SectionWrapper>
 
