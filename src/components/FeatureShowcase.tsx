@@ -5,6 +5,7 @@ interface FeatureSection {
   title: string;
   description: string;
   imagePlaceholder: string;
+  image?: string;
   reversed?: boolean;
 }
 
@@ -25,6 +26,7 @@ const features: FeatureSection[] = [
     title: 'Team Performance',
     description: 'Visualize your agency structure and monitor performance at every level. Empower your team with the insights they need to succeed.',
     imagePlaceholder: 'Team Analytics',
+    image: '/team_hierarchy.png',
     reversed: false
   }
 ];
@@ -73,16 +75,26 @@ const FeatureShowcase: React.FC = () => {
                 {/* Image Area with Gradient */}
                 <div className="w-full lg:w-[55%]">
                   <div className="relative aspect-[4/3] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0]">
-                    {/* Placeholder for image - user will add images later */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-white/90">
-                        <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
-                        <div className="text-sm opacity-70">Image placeholder</div>
-                      </div>
-                    </div>
+                    {feature.image ? (
+                      <img
+                        src={feature.image}
+                        alt={feature.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    ) : (
+                      <>
+                        {/* Placeholder for image - user will add images later */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-center text-white/90">
+                            <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
+                            <div className="text-sm opacity-70">Image placeholder</div>
+                          </div>
+                        </div>
 
-                    {/* Subtle overlay pattern */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+                        {/* Subtle overlay pattern */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
