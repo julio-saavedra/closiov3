@@ -175,7 +175,7 @@ const HeroDrainLines: React.FC = () => {
       />
 
       <path
-        d="M 1380 700 L 1380 520 Q 1380 450, 1450 450 L 1700 450"
+        d="M 1380 700 L 1380 400 Q 1380 330, 1310 330 L 1100 330"
         fill="none"
         stroke="rgba(213, 147, 192, 0.15)"
         strokeWidth="32"
@@ -184,7 +184,7 @@ const HeroDrainLines: React.FC = () => {
         className="blur-md"
       />
       <path
-        d="M 1380 700 L 1380 520 Q 1380 450, 1450 450 L 1700 450"
+        d="M 1380 700 L 1380 400 Q 1380 330, 1310 330 L 1100 330"
         fill="none"
         stroke="#d593c0"
         strokeWidth="16"
