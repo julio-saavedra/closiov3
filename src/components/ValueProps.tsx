@@ -96,13 +96,14 @@ const ValueProps: React.FC = () => {
                 boxShadow: '0 0 30px rgba(106, 212, 242, 0.25), 0 0 60px rgba(106, 212, 242, 0.15), 0 0 100px rgba(106, 212, 242, 0.08)'
               }}
             >
-              <div className="rounded-xl overflow-hidden">
+              <div className="rounded-xl overflow-hidden bg-[#0a0a0a]">
                 <video
                   src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
                   autoPlay
                   loop
                   muted
                   playsInline
+                  preload="auto"
                   className="w-full h-auto object-cover"
                 />
               </div>
