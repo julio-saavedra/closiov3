@@ -12,7 +12,7 @@ const accordionItems = [
   {
     id: 2,
     title: 'Book of Business',
-    imageUrl: '/book-of-business.png',
+    imageUrl: '/bofb-_closio_website.png',
     description: 'Track all your clients, policies, and deals in one place'
   },
   {
