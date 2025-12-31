@@ -214,7 +214,7 @@ const Hero: React.FC = () => {
   });
 
   return (
-    <section id="hero" className="min-h-[70vh] w-full text-white flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative overflow-hidden">
+    <section id="hero" className="min-h-[70vh] w-full text-white flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-32 pb-12 sm:pt-36 sm:pb-16 relative overflow-hidden">
       <HeroDrainLines />
       <HeroWhiteLine />
       <div className="w-full max-w-6xl mx-auto space-y-8 sm:space-y-12 relative z-10">

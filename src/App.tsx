@@ -20,7 +20,7 @@ function App() {
       <div id="top" />
       <Navbar />
 
-      <div className="pt-20">
+      <div>
         <SectionWrapper className="!bg-[#0F1214] !bg-none">
           <Hero />
         </SectionWrapper>
