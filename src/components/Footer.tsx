@@ -62,9 +62,12 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
-            <div className="text-3xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#2C66FF] to-[#2B4FB3]">
-              CLOSIO
-            </div>
+            <img
+              src="/67ff5f5f-fc49-493f-8cb5-0467588c2623.png"
+              alt="Closio"
+              className="h-24 w-auto select-none mb-4"
+              draggable={false}
+            />
             <p className="text-[#A8B3C7] mb-6 leading-relaxed">
               The proprietary CRM built exclusively for life insurance professionals. 
               Close more deals, track commissions clearly, and grow your agency with confidence.
