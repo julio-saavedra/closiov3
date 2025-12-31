@@ -31,12 +31,6 @@ const ComparisonTable: React.FC = () => {
       closio: true,
       generic: false,
       description: 'Pre-built for life insurance carriers'
-    },
-    {
-      feature: 'Persistency Analytics',
-      closio: true,
-      generic: false,
-      description: 'Policy retention and lapse tracking'
     }
   ];
 
