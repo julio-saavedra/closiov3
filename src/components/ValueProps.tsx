@@ -83,35 +83,30 @@ const ValueProps: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="order-1 flex items-center justify-center"
           >
-            <div className="relative w-full lg:scale-105 lg:origin-left">
+            <div className="relative w-full lg:scale-110 lg:origin-left">
               <div
-                className="absolute -inset-[1px] rounded-2xl opacity-60"
+                className="relative rounded-2xl overflow-hidden"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(106, 212, 242, 0.4) 0%, rgba(106, 212, 242, 0.1) 25%, rgba(255, 255, 255, 0.05) 50%, rgba(106, 212, 242, 0.1) 75%, rgba(106, 212, 242, 0.3) 100%)',
-                }}
-              />
-              <div
-                className="relative rounded-2xl overflow-hidden p-[1px]"
-                style={{
-                  background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%)',
+                  background: 'linear-gradient(160deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%)',
+                  padding: '1px',
                 }}
               >
                 <div
-                  className="rounded-[15px] overflow-hidden"
+                  className="rounded-[15px] overflow-hidden relative"
                   style={{
-                    background: 'linear-gradient(180deg, rgba(15, 25, 35, 0.95) 0%, rgba(8, 15, 25, 0.98) 100%)',
-                    backdropFilter: 'blur(20px)',
-                    boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.3), 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 80px rgba(106, 212, 242, 0.08)',
+                    background: 'rgba(12, 18, 25, 0.85)',
+                    backdropFilter: 'blur(24px)',
+                    boxShadow: '0 32px 64px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06) inset',
                   }}
                 >
                   <div
                     className="absolute inset-x-0 top-0 h-[1px]"
                     style={{
-                      background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.2) 80%, transparent 100%)',
+                      background: 'linear-gradient(90deg, transparent 5%, rgba(255, 255, 255, 0.15) 30%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.15) 70%, transparent 95%)',
                     }}
                   />
-                  <div className="p-3 sm:p-4">
-                    <div className="rounded-xl overflow-hidden bg-[#0a0a0a]">
+                  <div className="p-4 sm:p-5">
+                    <div className="rounded-xl overflow-hidden">
                       <video
                         src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
                         autoPlay
@@ -125,13 +120,6 @@ const ValueProps: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div
-                className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[70%] h-8 rounded-full"
-                style={{
-                  background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.15) 0%, transparent 70%)',
-                  filter: 'blur(12px)',
-                }}
-              />
             </div>
           </motion.div>
 
