@@ -74,7 +74,7 @@ const ValueProps: React.FC = () => {
     <section id="why-closio" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-black relative overflow-hidden">
       <VerticalLine />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid gap-12 lg:gap-16 grid-cols-1 lg:grid-cols-[1.3fr_1fr] items-center">
+        <div className="grid gap-12 lg:gap-20 grid-cols-1 lg:grid-cols-[1.5fr_1fr] items-center">
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -83,7 +83,7 @@ const ValueProps: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="order-1 flex items-center justify-center"
           >
-            <div className="relative w-full lg:scale-110 lg:origin-left">
+            <div className="relative w-full lg:scale-[1.15] lg:origin-left">
               <div
                 className="relative rounded-2xl overflow-hidden"
                 style={{
