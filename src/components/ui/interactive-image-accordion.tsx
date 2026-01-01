@@ -69,9 +69,9 @@ const AccordionItem = React.memo(({ item, isActive, onClick }: AccordionItemProp
   return (
     <div
       className={`
-        relative h-[450px] rounded-2xl overflow-hidden cursor-pointer
+        relative h-[500px] rounded-2xl overflow-hidden cursor-pointer
         transition-all duration-700 ease-in-out
-        ${isActive ? 'w-[420px]' : 'w-[80px]'}
+        ${isActive ? 'w-[480px]' : 'w-[80px]'}
       `}
       onClick={onClick}
     >
