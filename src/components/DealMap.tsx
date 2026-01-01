@@ -103,7 +103,7 @@ export default function DealMap() {
           >
             <DesktopMonitor>
               <img
-                src="/image.png"
+                src="/image copy copy copy copy copy copy copy.png"
                 alt="Deal Map - Policies Submitted Per State"
                 className="w-full h-auto block"
               />
