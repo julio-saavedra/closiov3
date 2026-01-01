@@ -83,31 +83,55 @@ const ValueProps: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="order-1 flex items-center justify-center"
           >
-            <div
-              className="rounded-2xl overflow-hidden border border-[#6ad4f2]/40 w-full lg:scale-110 lg:origin-left p-1.5 bg-[#050d18]"
-              style={{
-                boxShadow: '0 0 30px rgba(106, 212, 242, 0.25), 0 0 60px rgba(106, 212, 242, 0.15), 0 0 100px rgba(106, 212, 242, 0.08)'
-              }}
-            >
-              <div className="rounded-xl overflow-hidden bg-[#0a0a0a]">
-                <video
-                  src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                  className="w-full h-auto object-cover"
-                />
+            <div className="relative w-full lg:scale-105 lg:origin-left">
+              <div
+                className="absolute -inset-[1px] rounded-2xl opacity-60"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(106, 212, 242, 0.4) 0%, rgba(106, 212, 242, 0.1) 25%, rgba(255, 255, 255, 0.05) 50%, rgba(106, 212, 242, 0.1) 75%, rgba(106, 212, 242, 0.3) 100%)',
+                }}
+              />
+              <div
+                className="relative rounded-2xl overflow-hidden p-[1px]"
+                style={{
+                  background: 'linear-gradient(145deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%)',
+                }}
+              >
+                <div
+                  className="rounded-[15px] overflow-hidden"
+                  style={{
+                    background: 'linear-gradient(180deg, rgba(15, 25, 35, 0.95) 0%, rgba(8, 15, 25, 0.98) 100%)',
+                    backdropFilter: 'blur(20px)',
+                    boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.3), 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 80px rgba(106, 212, 242, 0.08)',
+                  }}
+                >
+                  <div
+                    className="absolute inset-x-0 top-0 h-[1px]"
+                    style={{
+                      background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.2) 80%, transparent 100%)',
+                    }}
+                  />
+                  <div className="p-3 sm:p-4">
+                    <div className="rounded-xl overflow-hidden bg-[#0a0a0a]">
+                      <video
+                        src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="auto"
+                        className="w-full h-auto object-cover rounded-lg"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="h-[1px] bg-gradient-to-r from-transparent via-[#6ad4f2]/30 to-transparent my-1.5" />
-              <div className="rounded-xl overflow-hidden">
-                <img
-                  src="/wall_art_for_closio.png"
-                  alt="Closio Dashboard Features"
-                  className="w-full h-auto object-cover"
-                />
-              </div>
+              <div
+                className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[70%] h-8 rounded-full"
+                style={{
+                  background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.15) 0%, transparent 70%)',
+                  filter: 'blur(12px)',
+                }}
+              />
             </div>
           </motion.div>
 
