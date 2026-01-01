@@ -9,33 +9,40 @@ const benefits = [
 
 const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="relative pb-4">
+    <div className="relative pb-6">
       <div
         className="relative mx-auto"
         style={{
           maxWidth: '100%',
-          filter: 'drop-shadow(0 30px 60px rgba(0, 0, 0, 0.12)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.08))'
+          filter: 'drop-shadow(0 40px 80px rgba(0, 0, 0, 0.25)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15))'
         }}
       >
         <div
-          className="relative rounded-[16px] md:rounded-[20px] overflow-hidden"
+          className="relative rounded-[12px] md:rounded-[16px] overflow-hidden"
           style={{
-            background: 'linear-gradient(180deg, #e8e8ed 0%, #d8d8dd 50%, #c8c8cd 100%)',
-            padding: '6px 6px 20px 6px',
+            background: 'linear-gradient(180deg, #3d4249 0%, #2e3238 40%, #252930 100%)',
+            padding: '4px 4px 16px 4px',
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.3)',
           }}
         >
           <div
-            className="absolute top-[8px] md:top-[10px] left-1/2 -translate-x-1/2 w-[6px] h-[6px] md:w-[8px] md:h-[8px] rounded-full"
+            className="absolute inset-x-0 top-0 h-[1px]"
             style={{
-              background: 'radial-gradient(circle at 30% 30%, #3a3a3a 0%, #1a1a1a 60%, #0a0a0a 100%)',
-              boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.15), 0 1px 1px rgba(0,0,0,0.3)'
+              background: 'linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.12) 50%, transparent 90%)',
             }}
           />
           <div
-            className="rounded-[8px] md:rounded-[10px] overflow-hidden mt-3 md:mt-4"
+            className="absolute top-[6px] md:top-[8px] left-1/2 -translate-x-1/2 w-[5px] h-[5px] md:w-[6px] md:h-[6px] rounded-full"
             style={{
-              background: '#000',
-              boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.05)'
+              background: 'radial-gradient(circle at 35% 35%, #1a1a1a 0%, #0a0a0a 100%)',
+              boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.1), 0 1px 2px rgba(0,0,0,0.5), inset 0 0 4px rgba(0,0,0,0.8)'
+            }}
+          />
+          <div
+            className="rounded-[6px] md:rounded-[8px] overflow-hidden mt-3 md:mt-4"
+            style={{
+              background: '#0a0a0a',
+              boxShadow: 'inset 0 0 0 1px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03)'
             }}
           >
             {children}
@@ -46,15 +53,18 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
           <div
             className="relative"
             style={{
-              width: '8px',
-              height: '50px',
-              background: 'linear-gradient(90deg, #b8b8bd 0%, #d8d8dd 30%, #e8e8ed 50%, #d8d8dd 70%, #b8b8bd 100%)',
-              boxShadow: '-2px 0 4px rgba(0,0,0,0.1), 2px 0 4px rgba(0,0,0,0.1)',
+              width: '10px',
+              height: '45px',
+              background: 'linear-gradient(90deg, #1e2126 0%, #2e3238 25%, #3a3f46 50%, #2e3238 75%, #1e2126 100%)',
+              boxShadow: '-3px 0 6px rgba(0,0,0,0.2), 3px 0 6px rgba(0,0,0,0.2), inset 1px 0 0 rgba(255,255,255,0.05)',
             }}
           />
-          <div className="hidden md:block absolute top-0 left-1/2 -translate-x-1/2 w-[12px] h-[50px]"
+          <div
+            className="absolute top-0 left-1/2 -translate-x-1/2"
             style={{
-              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%)',
+              width: '14px',
+              height: '45px',
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%)',
             }}
           />
         </div>
@@ -62,29 +72,35 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
         <div
           className="relative mx-auto overflow-hidden"
           style={{
-            width: '140px',
-            height: '10px',
-            background: 'linear-gradient(180deg, #d0d0d5 0%, #c0c0c5 50%, #b0b0b5 100%)',
-            borderRadius: '0 0 8px 8px',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.3)',
+            width: '160px',
+            height: '12px',
+            background: 'linear-gradient(180deg, #3a3f46 0%, #2e3238 40%, #252930 100%)',
+            borderRadius: '0 0 6px 6px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)',
           }}
         >
           <div
+            className="absolute inset-x-0 top-0 h-[1px]"
+            style={{
+              background: 'linear-gradient(90deg, transparent 5%, rgba(255,255,255,0.08) 50%, transparent 95%)',
+            }}
+          />
+          <div
             className="absolute inset-0"
             style={{
-              background: 'linear-gradient(90deg, rgba(0,0,0,0.05) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.05) 100%)',
+              background: 'linear-gradient(90deg, rgba(0,0,0,0.15) 0%, transparent 15%, transparent 85%, rgba(0,0,0,0.15) 100%)',
             }}
           />
         </div>
       </div>
 
       <div
-        className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-[50%]"
+        className="absolute -bottom-1 left-1/2 -translate-x-1/2"
         style={{
-          width: '120px',
-          height: '8px',
-          background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, transparent 70%)',
-          filter: 'blur(4px)',
+          width: '180px',
+          height: '12px',
+          background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, transparent 70%)',
+          filter: 'blur(6px)',
         }}
       />
     </div>
