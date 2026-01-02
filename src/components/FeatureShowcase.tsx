@@ -14,7 +14,7 @@ const features: FeatureSection[] = [
     title: 'Track Every Deal',
     description: 'Manage your pipeline from first contact to policy issue. See exactly where each deal stands and what needs to happen next.',
     imagePlaceholder: 'Dashboard Preview',
-    image: '/new_art_for_book_of_business.png',
+    image: '/main_track_your_deal_post.png',
     reversed: false
   },
   {
