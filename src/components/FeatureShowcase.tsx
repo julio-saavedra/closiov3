@@ -23,9 +23,9 @@ const CommissionImageSwitcher: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative aspect-[16/10] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] p-8">
+    <div className="relative aspect-[16/10] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] p-6">
       {/* Glass overlay effect matching the design */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-2xl" />
 
       <div className="relative w-full h-full">
         <AnimatePresence mode="wait">
@@ -38,11 +38,11 @@ const CommissionImageSwitcher: React.FC = () => {
             className="absolute inset-0"
           >
             {/* Glass border container */}
-            <div className="w-full h-full rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl p-4">
+            <div className="w-full h-full rounded-2xl bg-white/10 backdrop-blur-sm border-2 border-white/30 shadow-2xl p-3">
               <img
                 src={images[currentImage]}
                 alt={`Commission Clarity ${currentImage + 1}`}
-                className="w-full h-full object-contain rounded-xl opacity-85"
+                className="w-full h-full object-contain rounded-xl"
               />
             </div>
           </motion.div>
@@ -122,27 +122,29 @@ const FeatureShowcase: React.FC = () => {
                     // Commission Clarity section with image switcher
                     <CommissionImageSwitcher />
                   ) : (
-                    <div className="relative aspect-[4/3] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0]">
-                      {feature.image ? (
-                        <img
-                          src={feature.image}
-                          alt={feature.title}
-                          className="absolute inset-0 w-full h-full object-cover"
-                        />
-                      ) : (
-                        <>
-                          {/* Placeholder for image - user will add images later */}
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="text-center text-white/90">
-                              <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
-                              <div className="text-sm opacity-70">Image placeholder</div>
-                            </div>
-                          </div>
+                    <div className="relative aspect-[16/10] bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] p-6">
+                      {/* Glass overlay effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-2xl" />
 
-                          {/* Subtle overlay pattern */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
-                        </>
-                      )}
+                      <div className="relative w-full h-full">
+                        {/* Glass border container */}
+                        <div className="w-full h-full rounded-2xl bg-white/10 backdrop-blur-sm border-2 border-white/30 shadow-2xl p-3">
+                          {feature.image ? (
+                            <img
+                              src={feature.image}
+                              alt={feature.title}
+                              className="w-full h-full object-contain rounded-xl"
+                            />
+                          ) : (
+                            <div className="w-full h-full rounded-xl flex items-center justify-center bg-white/5">
+                              <div className="text-center text-white/90">
+                                <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
+                                <div className="text-sm opacity-70">Image placeholder</div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
