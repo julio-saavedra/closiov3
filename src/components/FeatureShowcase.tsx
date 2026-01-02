@@ -72,16 +72,16 @@ const FeatureShowcase: React.FC = () => {
                 </div>
 
                 {/* Image Area */}
-                <div className="w-full lg:w-[55%] overflow-hidden">
+                <div className="w-full lg:w-[55%] overflow-hidden rounded-2xl m-4">
                   <div className="relative aspect-[4/3]">
                     {feature.image ? (
                       <img
                         src={feature.image}
                         alt={feature.title}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover rounded-2xl"
                       />
                     ) : (
-                      <div className="w-full h-full bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] flex items-center justify-center">
+                      <div className="w-full h-full bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] flex items-center justify-center rounded-2xl">
                         <div className="text-center text-white/90">
                           <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
                           <div className="text-sm opacity-70">Image placeholder</div>
