@@ -14,6 +14,7 @@ const features: FeatureSection[] = [
     title: 'Track Every Deal',
     description: 'Manage your pipeline from first contact to policy issue. See exactly where each deal stands and what needs to happen next.',
     imagePlaceholder: 'Dashboard Preview',
+    image: '/new_art_for_book_of_business.png',
     reversed: false
   },
   {
@@ -79,7 +80,7 @@ const FeatureShowcase: React.FC = () => {
                       <img
                         src={feature.image}
                         alt={feature.title}
-                        className="absolute inset-0 w-full h-full object-contain rounded-2xl"
+                        className="absolute inset-0 w-full h-full object-cover"
                       />
                     ) : (
                       <>
