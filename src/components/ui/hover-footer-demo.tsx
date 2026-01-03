@@ -3,7 +3,7 @@ import {
   Mail,
   Phone,
 } from "lucide-react";
-import { FooterBackgroundGradient, TextHoverEffect } from "@/components/ui/hover-footer";
+import { FooterBackgroundGradient } from "@/components/ui/hover-footer";
 
 const TwitterIcon = ({ size = 18, className = "" }: { size?: number; className?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -157,10 +157,6 @@ function HoverFooter() {
         </div>
 
         <hr className="border-t border-gray-700 my-6 sm:my-8" />
-      </div>
-
-      <div className="hidden lg:flex h-[30rem] -mt-52 -mb-36">
-        <TextHoverEffect text="CLOSIO" className="z-50" />
       </div>
 
       <FooterBackgroundGradient />
