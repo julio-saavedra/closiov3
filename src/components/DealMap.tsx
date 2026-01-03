@@ -109,17 +109,17 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
 
 export default function DealMap() {
   return (
-    <section className="py-24 md:py-20 relative overflow-hidden">
+    <section className="py-16 md:py-12 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f8f9fa] to-white" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16 md:mb-12">
+        <div className="text-center mb-10 md:mb-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl lg:text-5xl font-bold mb-4 text-[#1a1a2e]"
+            className="text-3xl lg:text-4xl font-bold mb-3 text-[#1a1a2e]"
           >
             Policy Map
           </motion.h2>
@@ -129,13 +129,13 @@ export default function DealMap() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-lg text-[#4a4a5a] max-w-2xl mx-auto"
+            className="text-base text-[#4a4a5a] max-w-2xl mx-auto"
           >
             Visualize your agency's reach in real-time. Watch as policies are sold across the nation.
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-[1.4fr_0.6fr] gap-16 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-[1.4fr_0.6fr] gap-12 lg:gap-10 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -152,20 +152,20 @@ export default function DealMap() {
             </DesktopMonitor>
           </motion.div>
 
-          <div className="space-y-8 md:space-y-6">
+          <div className="space-y-5 md:space-y-4">
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
-              <h3 className="text-2xl lg:text-3xl font-bold text-[#1a1a2e]">
+              <h3 className="text-xl lg:text-2xl font-bold text-[#1a1a2e]">
                 See Your Business<br />
                 <span className="text-[#3a7ca5]">Come to Life</span>
               </h3>
             </motion.div>
 
-            <div className="grid gap-5 md:gap-4">
+            <div className="grid gap-3 md:gap-2.5">
               {benefits.map((benefit, index) => (
                 <motion.div
                   key={benefit.title}
@@ -173,12 +173,12 @@ export default function DealMap() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 + index * 0.1 }}
-                  className="flex items-center gap-4 py-4 md:py-3"
+                  className="flex items-center gap-3 py-2.5 md:py-2"
                 >
-                  <div className="w-[3px] h-12 md:h-10 bg-gradient-to-b from-[#3a7ca5] to-[#2d5f7a] rounded-full flex-shrink-0" />
+                  <div className="w-[3px] h-10 md:h-8 bg-gradient-to-b from-[#3a7ca5] to-[#2d5f7a] rounded-full flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-[#1a1a2e] mb-1 md:mb-0.5">{benefit.title}</h4>
-                    <p className="text-sm text-[#6a6a7a]">{benefit.description}</p>
+                    <h4 className="font-semibold text-[#1a1a2e] text-sm mb-0.5">{benefit.title}</h4>
+                    <p className="text-xs text-[#6a6a7a]">{benefit.description}</p>
                   </div>
                 </motion.div>
               ))}
