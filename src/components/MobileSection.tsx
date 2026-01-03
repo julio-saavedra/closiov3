@@ -81,15 +81,15 @@ const IOImprint: React.FC = () => {
 
 const MobileSection: React.FC = () => {
   return (
-    <section id="mobile" className="relative">
+    <section id="mobile" className="h-[450px] sm:h-[500px] lg:h-[550px] overflow-hidden relative">
       <AngularLine />
       <IOImprint />
-      <div className="flex items-end justify-end">
-        <div className="relative w-full flex items-end justify-end">
+      <div className="absolute inset-0 flex items-start justify-end pt-0">
+        <div className="relative w-full h-full flex items-start justify-end pr-0">
           <img
             src="/purple_pink_gradient_mobile_application_presentation_(6).png"
             alt="Closio mobile application showcasing dashboard, leaderboard, and login screens"
-            className="w-auto max-w-none object-contain drop-shadow-2xl"
+            className="h-[100%] w-auto max-w-none object-contain drop-shadow-2xl"
           />
         </div>
       </div>
