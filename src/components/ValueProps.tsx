@@ -88,19 +88,19 @@ const ValueProps: React.FC = () => {
               <div
                 className="relative"
                 style={{
-                  transform: 'rotateY(-8deg) rotateX(2deg)',
+                  transform: 'rotateY(8deg) rotateX(2deg)',
                   transformStyle: 'preserve-3d'
                 }}
               >
-                {/* Monitor Bezel */}
-                <div className="relative bg-gradient-to-b from-[#E8E8E8] to-[#CECECE] rounded-[20px] p-[14px] shadow-2xl">
+                {/* Monitor Bezel - Ultra Slim */}
+                <div className="relative bg-gradient-to-b from-white via-[#F5F5F5] to-[#E8E8E8] rounded-[16px] p-[6px] shadow-2xl">
                   {/* Screen Reflection Overlay */}
-                  <div className="absolute inset-0 rounded-[20px] bg-gradient-to-br from-white/5 via-transparent to-black/10 pointer-events-none z-10"></div>
+                  <div className="absolute inset-0 rounded-[16px] bg-gradient-to-br from-white/10 via-transparent to-black/5 pointer-events-none z-10"></div>
 
-                  {/* Inner Black Bezel */}
-                  <div className="relative bg-black rounded-[12px] p-[8px]">
+                  {/* Ultra Slim Inner Bezel */}
+                  <div className="relative bg-black rounded-[12px] p-[3px]">
                     {/* Screen */}
-                    <div className="relative rounded-[8px] overflow-hidden bg-black">
+                    <div className="relative rounded-[10px] overflow-hidden bg-black">
                       <video
                         src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
                         autoPlay
@@ -111,24 +111,39 @@ const ValueProps: React.FC = () => {
                         className="w-full h-auto"
                       />
                       {/* Screen Glare */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-transparent to-transparent pointer-events-none"></div>
                     </div>
                   </div>
 
-                  {/* Bottom Notch */}
+                  {/* Bottom Chin - Minimal */}
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full">
-                    <div className="w-40 h-2 bg-gradient-to-b from-[#CECECE] to-[#B0B0B0] rounded-b-lg"></div>
+                    <div className="w-32 h-[6px] bg-gradient-to-b from-[#E8E8E8] to-[#D0D0D0] rounded-b-md"></div>
                   </div>
                 </div>
 
                 {/* Monitor Stand */}
                 <div className="relative mt-2 flex flex-col items-center">
-                  {/* Stand Neck */}
-                  <div className="w-12 h-16 bg-gradient-to-r from-[#CECECE] via-[#E8E8E8] to-[#CECECE] rounded-b-md shadow-lg"></div>
-                  {/* Stand Base */}
-                  <div className="w-48 h-3 bg-gradient-to-r from-[#B0B0B0] via-[#E8E8E8] to-[#B0B0B0] rounded-full shadow-2xl -mt-1"></div>
+                  {/* Stand Neck with IO Logo */}
+                  <div className="relative w-16 h-20 bg-gradient-to-r from-[#D8D8D8] via-white to-[#D8D8D8] rounded-b-lg shadow-xl flex items-center justify-center">
+                    {/* IO Logo */}
+                    <div className="text-black font-bold text-xl tracking-tight flex items-center">
+                      <span
+                        className="italic mr-[-2px]"
+                        style={{
+                          WebkitTextStroke: '0.5px black',
+                          WebkitTextFillColor: 'transparent',
+                          fontStyle: 'italic'
+                        }}
+                      >
+                        I
+                      </span>
+                      <span>O</span>
+                    </div>
+                  </div>
+                  {/* Stand Base - Circular */}
+                  <div className="w-52 h-[10px] bg-gradient-to-r from-[#C0C0C0] via-white to-[#C0C0C0] rounded-full shadow-2xl -mt-1"></div>
                   {/* Shadow under base */}
-                  <div className="w-40 h-2 bg-black/20 rounded-full blur-md mt-1"></div>
+                  <div className="w-44 h-[6px] bg-black/15 rounded-full blur-lg mt-[2px]"></div>
                 </div>
 
                 {/* Ambient Shadow */}
