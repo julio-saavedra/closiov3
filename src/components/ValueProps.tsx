@@ -84,41 +84,16 @@ const ValueProps: React.FC = () => {
             className="order-1 flex items-center justify-start"
           >
             <div className="relative w-full">
-              <div
-                className="relative rounded-2xl overflow-hidden"
-                style={{
-                  background: 'linear-gradient(160deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%)',
-                  padding: '1px',
-                }}
-              >
-                <div
-                  className="rounded-[15px] overflow-hidden relative"
-                  style={{
-                    background: 'rgba(12, 18, 25, 0.85)',
-                    backdropFilter: 'blur(24px)',
-                    boxShadow: '0 32px 64px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.06) inset',
-                  }}
-                >
-                  <div
-                    className="absolute inset-x-0 top-0 h-[1px]"
-                    style={{
-                      background: 'linear-gradient(90deg, transparent 5%, rgba(255, 255, 255, 0.15) 30%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.15) 70%, transparent 95%)',
-                    }}
-                  />
-                  <div className="p-5 sm:p-6 md:p-7">
-                    <div className="rounded-xl overflow-hidden">
-                      <video
-                        src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="auto"
-                        className="w-full h-auto rounded-lg"
-                      />
-                    </div>
-                  </div>
-                </div>
+              <div className="rounded-xl overflow-hidden">
+                <video
+                  src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="w-full h-auto"
+                />
               </div>
             </div>
           </motion.div>
