@@ -53,8 +53,6 @@ function HomePage() {
           <DealMap />
         </SectionWrapper>
 
-        <FullWidthVideo />
-
         <SectionWrapper>
           <RoleTabs />
         </SectionWrapper>
@@ -62,6 +60,8 @@ function HomePage() {
         <SectionWrapper>
           <SecurityTiles />
         </SectionWrapper>
+
+        <FullWidthVideo />
 
         <FeatureShowcase />
 
