@@ -113,8 +113,7 @@ const ComparisonTable: React.FC = () => {
         </div>
 
         <div className="text-center">
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#6ad4f2]/10 via-[#d593c0]/10 to-[#6ad4f2]/10 p-8 sm:p-10 backdrop-blur-sm">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#6ad4f2]/5 to-[#d593c0]/5" />
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black p-8 sm:p-10">
             <div className="relative z-10">
               <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-white">The Bottom Line</h3>
               <p className="text-base sm:text-lg mb-6 text-slate-300 max-w-2xl mx-auto">
