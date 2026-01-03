@@ -35,7 +35,7 @@ const features: FeatureSection[] = [
 
 const FeatureShowcase: React.FC = () => {
   return (
-    <section className="bg-white py-20 md:py-28 rounded-3xl">
+    <section className="bg-[#f8f9fa] py-20 md:py-28 rounded-3xl">
       <div className="max-w-[95%] mx-auto px-24">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

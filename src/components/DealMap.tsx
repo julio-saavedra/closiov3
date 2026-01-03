@@ -110,7 +110,7 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
 export default function DealMap() {
   return (
     <section className="py-16 md:py-12 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f8f9fa] to-white" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#f8f9fa] via-[#f8f9fa] to-[#f8f9fa]" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-10 md:mb-8">
