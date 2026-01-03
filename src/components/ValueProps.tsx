@@ -88,7 +88,7 @@ const ValueProps: React.FC = () => {
               <div
                 className="relative"
                 style={{
-                  transform: 'rotateY(14deg) rotateX(2deg)',
+                  transform: 'rotateY(6deg) rotateX(4deg)',
                   transformStyle: 'preserve-3d'
                 }}
               >
