@@ -7,6 +7,7 @@ interface FeatureSection {
   imagePlaceholder: string;
   image?: string;
   reversed?: boolean;
+  replaces: string[];
 }
 
 const features: FeatureSection[] = [
@@ -15,21 +16,24 @@ const features: FeatureSection[] = [
     description: 'Manage your pipeline from first contact to policy issue. See exactly where each deal stands and what needs to happen next.',
     imagePlaceholder: 'Dashboard Preview',
     image: '/final_bob_main_art.png',
-    reversed: false
+    reversed: false,
+    replaces: ['Google Sheets tracking', 'Manual pipeline spreadsheets', 'Email deal tracking']
   },
   {
     title: 'Commission Clarity',
     description: 'Know your earnings in real-time. Track splits, overrides, and payouts with complete transparency across your entire team.',
     imagePlaceholder: 'Commission Tracking',
     image: '/new_cover.png',
-    reversed: true
+    reversed: true,
+    replaces: ['Commission calculators', 'Excel spreadsheets', 'Manual payout tracking']
   },
   {
     title: 'Team Hierarchy',
     description: 'Visualize your agency structure and monitor performance at every level. Empower your team with the insights they need to succeed.',
     imagePlaceholder: 'Team Analytics',
     image: '/image copy copy copy copy copy copy.png',
-    reversed: false
+    reversed: false,
+    replaces: ['Org chart tools', 'Performance spreadsheets', 'Manual reporting systems']
   }
 ];
 
@@ -68,6 +72,23 @@ const FeatureShowcase: React.FC = () => {
                     <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
                       {feature.description}
                     </p>
+
+                    {/* Replaces Section */}
+                    <div className="pt-4 border-t border-gray-300/50">
+                      <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                        Replaces
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {feature.replaces.map((item, idx) => (
+                          <span
+                            key={idx}
+                            className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-gradient-to-r from-gray-900/10 to-gray-800/5 text-gray-700 border border-gray-300/30 backdrop-blur-sm"
+                          >
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
