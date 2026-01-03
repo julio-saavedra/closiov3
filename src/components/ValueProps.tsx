@@ -106,7 +106,7 @@ const ValueProps: React.FC = () => {
                     }}
                   />
                   <div className="p-5 sm:p-6 md:p-7">
-                    <div className="rounded-xl overflow-hidden min-h-[550px]">
+                    <div className="rounded-xl overflow-hidden">
                       <video
                         src="https://www.dropbox.com/scl/fi/im3lveaj0bz8pe0un87u5/new-video-fro-laptop-display.mp4?rlkey=gaj2fuvzalyfyup0abzhscs1w&st=gyl2lmoj&raw=1"
                         autoPlay
@@ -114,7 +114,7 @@ const ValueProps: React.FC = () => {
                         muted
                         playsInline
                         preload="auto"
-                        className="w-full min-h-[550px] object-cover rounded-lg"
+                        className="w-full h-auto rounded-lg"
                       />
                     </div>
                   </div>
