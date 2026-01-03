@@ -152,21 +152,21 @@ const ValueProps: React.FC = () => {
             </div>
           </motion.div>
 
-          <div className="order-2 lg:pl-16">
+          <div className="order-2 lg:pl-16 lg:max-w-md">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="mb-10 sm:mb-12"
+              className="mb-8"
             >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3">
                 Why CLOS<span
                   className="italic mx-1"
                   style={{ WebkitTextStroke: '1.5px currentColor', WebkitTextFillColor: 'transparent' }}
                 >I</span>O
               </h2>
-              <p className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-lg">
+              <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
                 A CRM built thoughtfully for the workflows and operational demands of life-insurance teams.
               </p>
             </motion.div>
@@ -179,14 +179,14 @@ const ValueProps: React.FC = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
-                  className="group py-5 border-b border-white/20 last:border-b-0"
+                  className="group py-4 border-b border-white/20 last:border-b-0"
                 >
-                  <div className="flex items-start gap-4 sm:gap-6">
-                    <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-sm font-semibold tracking-wider pt-1 transition-colors duration-300">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-xs font-semibold tracking-wider pt-1 transition-colors duration-300">
                       {item.number}
                     </span>
                     <h3
-                      className="text-xl sm:text-2xl md:text-3xl font-medium text-white transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
+                      className="text-lg sm:text-xl font-medium text-white transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
                     >
                       {item.title}
                     </h3>
@@ -200,14 +200,14 @@ const ValueProps: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className="mt-10"
+              className="mt-8"
             >
               <button
                 onClick={() => {
                   const element = document.getElementById('contact');
                   if (element) element.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="w-48 py-3 bg-white text-black font-semibold rounded-lg hover:bg-white/90 transition-all duration-300"
+                className="w-44 py-2.5 bg-white text-black font-semibold rounded-lg hover:bg-white/90 transition-all duration-300 text-sm"
               >
                 Book a Demo
               </button>
