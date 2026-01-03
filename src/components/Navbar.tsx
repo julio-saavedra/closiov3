@@ -15,14 +15,14 @@ const NAV_ITEMS = [
 ];
 
 const FEATURES_ITEMS = [
-  { path: '/features/dashboard', label: 'Dashboard' },
-  { path: '/features/leaderboard', label: 'Leaderboard' },
-  { path: '/features/book-of-business', label: 'Book of Business' },
-  { path: '/features/commission', label: 'Commission' },
-  { path: '/features/estimated-payouts', label: 'Estimated Payouts' },
-  { path: '/features/team-hierarchy', label: 'Team Hierarchy' },
-  { path: '/features/user-management', label: 'User Management' },
-  { path: '/features/reminders', label: 'Reminders & More' }
+  { path: '/features/dashboard', label: 'Dashboard', description: 'Real-time insights at a glance' },
+  { path: '/features/leaderboard', label: 'Leaderboard', description: 'Track top performers' },
+  { path: '/features/book-of-business', label: 'Book of Business', description: 'Manage your portfolio' },
+  { path: '/features/commission', label: 'Commission', description: 'Calculate earnings instantly' },
+  { path: '/features/estimated-payouts', label: 'Estimated Payouts', description: 'Forecast your income' },
+  { path: '/features/team-hierarchy', label: 'Team Hierarchy', description: 'Visualize team structure' },
+  { path: '/features/user-management', label: 'User Management', description: 'Control access & roles' },
+  { path: '/features/reminders', label: 'Reminders & More', description: 'Never miss important dates' }
 ];
 
 const DOCS_ITEMS = [
@@ -218,21 +218,32 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </button>
 
                 {featuresDropdownOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 py-2 bg-black/90 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl">
-                    {FEATURES_ITEMS.map((item) => (
-                      <Link
-                        key={item.path}
-                        to={item.path}
-                        onClick={() => setFeaturesDropdownOpen(false)}
-                        className={`block px-4 py-2.5 text-sm transition-colors ${
-                          location.pathname === item.path
-                            ? 'text-[#6ad4f2] bg-[#6ad4f2]/10'
-                            : 'text-white/70 hover:text-white hover:bg-white/5'
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[720px] p-6 bg-black/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl">
+                    <div className="grid grid-cols-3 gap-4">
+                      {FEATURES_ITEMS.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          onClick={() => setFeaturesDropdownOpen(false)}
+                          className={`group flex flex-col p-4 rounded-xl transition-all duration-200 ${
+                            location.pathname === item.path
+                              ? 'bg-[#6ad4f2]/10 border border-[#6ad4f2]/30'
+                              : 'bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/20'
+                          }`}
+                        >
+                          <span className={`text-sm font-semibold mb-1.5 transition-colors ${
+                            location.pathname === item.path
+                              ? 'text-[#6ad4f2]'
+                              : 'text-white group-hover:text-[#6ad4f2]'
+                          }`}>
+                            {item.label}
+                          </span>
+                          <span className="text-xs text-white/50 leading-relaxed">
+                            {item.description}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -352,13 +363,14 @@ const Navbar: React.FC<NavbarProps> = () => {
                     key={item.path}
                     to={item.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`w-full block text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                    className={`w-full flex flex-col text-left px-4 py-3 rounded-xl transition-colors ${
                       location.pathname === item.path
                         ? 'bg-[#6ad4f2]/20 text-[#6ad4f2]'
                         : 'text-gray-300 hover:bg-white/5 hover:text-white'
                     }`}
                   >
-                    {item.label}
+                    <span className="text-sm font-medium">{item.label}</span>
+                    <span className="text-xs text-white/40 mt-0.5">{item.description}</span>
                   </Link>
                 ))}
               </div>
