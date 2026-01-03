@@ -48,12 +48,12 @@ function HomePage() {
           <InteractiveImageAccordion />
         </SectionWrapper>
 
-        <SectionWrapper>
-          <DealMap />
-        </SectionWrapper>
-
         <SectionWrapper className="!bg-black !bg-none">
           <TestimonialSection />
+        </SectionWrapper>
+
+        <SectionWrapper>
+          <DealMap />
         </SectionWrapper>
 
         <FullWidthVideo />
