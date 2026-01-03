@@ -7,7 +7,7 @@ interface NavbarProps {
 }
 
 const NAV_ITEMS = [
-  { id: 'product', label: 'Product' },
+  { id: 'home', label: 'Home' },
   { id: 'contact', label: 'Contact' }
 ];
 
@@ -116,16 +116,27 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   const handleNavClick = (id: string) => (e: React.MouseEvent) => {
     e.preventDefault();
-    if (!isHomePage) {
-      navigate('/');
-      setTimeout(() => {
+    if (id === 'home') {
+      if (!isHomePage) {
+        navigate('/');
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 100);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else {
+      if (!isHomePage) {
+        navigate('/');
+        setTimeout(() => {
+          const el = document.getElementById(id);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      } else {
+        setActiveSection(id);
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
-    } else {
-      setActiveSection(id);
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
     setMobileMenuOpen(false);
   };
