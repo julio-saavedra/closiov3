@@ -126,9 +126,9 @@ const ValueProps: React.FC = () => {
                   {/* Stand Neck with IO Logo */}
                   <div className="relative w-16 h-20 bg-gradient-to-r from-[#D8D8D8] via-white to-[#D8D8D8] rounded-b-lg shadow-xl flex items-center justify-center">
                     {/* IO Logo */}
-                    <div className="text-black font-bold text-xl tracking-tight flex items-center">
+                    <div className="text-black font-bold text-xl tracking-tight flex items-center gap-1">
                       <span
-                        className="italic mr-[-2px]"
+                        className="italic"
                         style={{
                           WebkitTextStroke: '0.5px black',
                           WebkitTextFillColor: 'transparent',
