@@ -125,7 +125,7 @@ export function InteractiveImageAccordion() {
   };
 
   return (
-    <section id="product" className="py-28 lg:py-32">
+    <section id="product" className="py-28 lg:py-32 bg-white">
       <div className="max-w-[calc(100vw-4rem)] lg:max-w-[calc(100vw-6rem)] mx-auto px-4 lg:px-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
 
@@ -146,13 +146,13 @@ export function InteractiveImageAccordion() {
           {/* Right Side: Text Content */}
           <div className="w-full lg:w-[38%] text-center lg:text-left lg:pr-8">
             <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-[#2C66FF]/10 mb-6">
-              <span className="text-white text-xs font-medium tracking-wide uppercase">ALL IN ONE HUB FOR YOU</span>
+              <span className="text-black text-xs font-medium tracking-wide uppercase">ALL IN ONE HUB FOR YOU</span>
             </div>
 
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4 leading-tight">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-4 leading-tight text-black">
               Your Command Center
             </h2>
-            <p className="text-lg text-[#A8B3C7] mb-8">
+            <p className="text-lg text-gray-700 mb-8">
               One unified platform. Complete control over your agency.
             </p>
 
@@ -162,7 +162,7 @@ export function InteractiveImageAccordion() {
                 if (element) element.scrollIntoView({ behavior: 'smooth' });
               }}
               label="Book a Demo"
-              className="px-24 py-5 text-lg glow-btn-white"
+              className="px-24 py-5 text-lg bg-black text-white hover:bg-gray-900"
             />
           </div>
         </div>
