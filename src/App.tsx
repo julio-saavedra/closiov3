@@ -64,10 +64,6 @@ function HomePage() {
         </SectionWrapper>
 
         <SectionWrapper>
-          <FAQAccordion />
-        </SectionWrapper>
-
-        <SectionWrapper>
           <ContactSplit />
         </SectionWrapper>
 
