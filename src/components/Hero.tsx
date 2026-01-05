@@ -63,9 +63,14 @@ const Hero: React.FC = () => {
       className="min-h-screen w-full text-white flex items-center relative overflow-visible"
     >
       <motion.div
-        className="absolute right-0 top-[20%] w-[65%] lg:w-[70%] h-auto z-0 pointer-events-none hidden md:block"
+        className="absolute right-0 top-[15%] w-[70%] lg:w-[75%] h-auto z-0 hidden md:block cursor-pointer"
         initial={{ opacity: 0, x: 100, scale: 0.95 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
+        whileHover={{
+          scale: 1.02,
+          y: -8,
+          transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
+        }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
       >
         <img
