@@ -182,8 +182,16 @@ const FeatureGrid: React.FC = () => {
       description: 'Forecast your earnings with intelligent payout predictions based on your pipeline.',
       image: '/estimated_payouts-_closio_website.png',
       imagePosition: 'top' as const,
-      size: 'medium' as const,
-      className: '',
+      size: 'large' as const,
+      className: 'lg:row-span-2',
+    },
+    {
+      title: 'Leaderboard',
+      description: 'Track top performers and motivate your team with real-time rankings and achievements.',
+      image: '/leaderboard-_closio_website.png',
+      imagePosition: 'top' as const,
+      size: 'large' as const,
+      className: 'lg:row-span-2',
     },
   ];
 
