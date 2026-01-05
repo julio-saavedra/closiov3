@@ -48,13 +48,13 @@ const ComparisonTable: React.FC = () => {
   ];
 
   return (
-    <section className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 bg-white">
+    <section className="relative w-full py-12 sm:py-16 md:py-20 lg:py-28 bg-black">
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-5 text-black">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-5 text-white">
             Quick Plan Recap
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-white/60 max-w-2xl mx-auto">
             A quick recap of what each solution does best
           </p>
         </div>
