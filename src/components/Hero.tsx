@@ -1,201 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 
-const HeroWhiteLine: React.FC = () => {
-  return (
-    <svg
-      viewBox="0 0 500 700"
-      className="absolute left-0 top-0 h-full w-[30vw] pointer-events-none"
-      preserveAspectRatio="none"
-      style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
-    >
-      <defs>
-        <filter id="heroWhiteGlow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <path
-        d="M 440 750 L 440 200 Q 440 130, 370 130 L -50 130"
-        fill="none"
-        stroke="rgba(255, 255, 255, 0.15)"
-        strokeWidth="32"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="blur-md"
-      />
-      <path
-        d="M 440 750 L 440 200 Q 440 130, 370 130 L -50 130"
-        fill="none"
-        stroke="white"
-        strokeWidth="16"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        filter="url(#heroWhiteGlow)"
-      />
-    </svg>
-  );
-};
-
-const HeroDrainLines: React.FC = () => {
-  return (
-    <svg
-      viewBox="0 0 1600 700"
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-    >
-      <defs>
-        <filter id="heroGlowWhite">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-        <filter id="heroGlowTeal">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-        <filter id="heroGlowPink">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-        <filter id="heroGlowBlack">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-
-      <path
-        d="M 80 700 L 80 420 Q 80 350, 150 350 L 350 350 Q 420 350, 420 280 L 420 -100"
-        fill="none"
-        stroke="rgba(106, 212, 242, 0.15)"
-        strokeWidth="32"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="blur-md"
-      />
-      <path
-        d="M 80 700 L 80 420 Q 80 350, 150 350 L 350 350 Q 420 350, 420 280 L 420 -100"
-        fill="none"
-        stroke="#6ad4f2"
-        strokeWidth="16"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        filter="url(#heroGlowTeal)"
-      />
-
-      <path
-        d="M 320 700 L 320 200 Q 320 130, 250 130 L -100 130"
-        fill="none"
-        stroke="rgba(30, 30, 30, 0.25)"
-        strokeWidth="32"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="blur-md"
-      />
-      <path
-        d="M 320 700 L 320 200 Q 320 130, 250 130 L -100 130"
-        fill="none"
-        stroke="rgba(50, 50, 50, 0.95)"
-        strokeWidth="16"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        filter="url(#heroGlowBlack)"
-      />
-
-      <path
-        d="M 480 700 L 480 300 Q 480 230, 550 230 L 680 230 Q 750 230, 750 160 L 750 -100"
-        fill="none"
-        stroke="rgba(213, 147, 192, 0.15)"
-        strokeWidth="32"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="blur-md"
-      />
-      <path
-        d="M 480 700 L 480 300 Q 480 230, 550 230 L 680 230 Q 750 230, 750 160 L 750 -100"
-        fill="none"
-        stroke="#d593c0"
-        strokeWidth="16"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        filter="url(#heroGlowPink)"
-      />
-
-      <path
-        d="M 1450 700 L 1450 400 Q 1450 330, 1520 330 L 1700 330"
-        fill="none"
-        stroke="rgba(30, 30, 30, 0.25)"
-        strokeWidth="32"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="blur-md"
-      />
-      <path
-        d="M 1450 700 L 1450 400 Q 1450 330, 1520 330 L 1700 330"
-        fill="none"
-        stroke="rgba(50, 50, 50, 0.95)"
-        strokeWidth="16"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        filter="url(#heroGlowBlack)"
-      />
-
-      <path
-        d="M 1550 700 L 1550 200 Q 1550 130, 1480 130 L 1350 130 Q 1280 130, 1280 60 L 1280 -100"
-        fill="none"
-        stroke="rgba(106, 212, 242, 0.15)"
-        strokeWidth="32"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="blur-md"
-      />
-      <path
-        d="M 1550 700 L 1550 200 Q 1550 130, 1480 130 L 1350 130 Q 1280 130, 1280 60 L 1280 -100"
-        fill="none"
-        stroke="#6ad4f2"
-        strokeWidth="16"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        filter="url(#heroGlowTeal)"
-      />
-
-      <path
-        d="M 1380 700 L 1380 400 Q 1380 330, 1450 330 L 1700 330"
-        fill="none"
-        stroke="rgba(213, 147, 192, 0.15)"
-        strokeWidth="32"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="blur-md"
-      />
-      <path
-        d="M 1380 700 L 1380 400 Q 1380 330, 1450 330 L 1700 330"
-        fill="none"
-        stroke="#d593c0"
-        strokeWidth="16"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        filter="url(#heroGlowPink)"
-      />
-    </svg>
-  );
-};
-
 const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, delay = 0 }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [started, setStarted] = useState(false);
@@ -305,8 +110,6 @@ const MagneticButton: React.FC = () => {
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isInHeroArea, setIsInHeroArea] = useState(false);
 
   const springConfig = { damping: 25, stiffness: 120, mass: 0.5 };
   const buttonX = useSpring(useMotionValue(0), springConfig);
@@ -331,64 +134,86 @@ const Hero: React.FC = () => {
 
     buttonX.set(clampedX);
     buttonY.set(clampedY);
-    setIsInHeroArea(true);
-    setMousePos({ x: e.clientX, y: e.clientY });
   };
 
   const handleHeroMouseLeave = () => {
     buttonX.set(0);
     buttonY.set(0);
-    setIsInHeroArea(false);
   };
 
   return (
     <section
       ref={heroRef}
       id="hero"
-      className="min-h-[85vh] w-full text-white flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-40 pb-20 sm:pt-48 sm:pb-24 relative overflow-hidden"
+      className="min-h-screen w-full text-white flex items-center relative overflow-hidden"
       onMouseMove={handleHeroMouseMove}
       onMouseLeave={handleHeroMouseLeave}
     >
-      <HeroWhiteLine />
-      <div className="w-full max-w-6xl mx-auto space-y-8 sm:space-y-12 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start space-y-8 lg:space-y-0 lg:space-x-12 lg:justify-center">
-          <div className="lg:w-[15%]"></div>
-          <div className="space-y-4 sm:space-y-6 flex items-center justify-center flex-col text-center lg:text-right lg:items-end">
-            <span className="text-xs sm:text-sm uppercase tracking-[0.2em] text-neutral-600 font-medium">
-              CLOS<em className="italic">I</em>O WAS BUILT FOR YOU
-            </span>
-            <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight max-w-4xl leading-[1.05] -tracking-[0.02em] overflow-hidden">
-              <motion.span
-                className="inline-block"
-                initial={{ x: '-100vw', opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-              >
-                Close More.
-              </motion.span>
-              <br />
-              <motion.span
-                className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#d593c0] to-[#6ad4f2]"
-                initial={{ x: '100vw', opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
-              >
-                Close Smarter.
-              </motion.span>
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-neutral-300 max-w-xl leading-relaxed px-4 sm:px-0">
-              The life insurance CRM that takes you from lead to issue paid.
-            </p>
+      <motion.div
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-[55%] lg:w-[60%] h-auto z-0 pointer-events-none hidden md:block"
+        initial={{ opacity: 0, x: 100, scale: 0.95 }}
+        animate={{ opacity: 1, x: 0, scale: 1 }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+      >
+        <img
+          src="/transparent_hero_photo.png"
+          alt="Closio Dashboard"
+          className="w-full h-auto object-contain drop-shadow-2xl"
+          style={{
+            filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5))',
+          }}
+        />
+      </motion.div>
 
-            <motion.div
-              className="pt-6"
-              style={{ x: buttonX, y: buttonY }}
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10 py-32 lg:py-0">
+        <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl lg:max-w-2xl">
+          <motion.span
+            className="text-xs sm:text-sm uppercase tracking-[0.2em] text-neutral-500 font-medium mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+          >
+            CLOS<em className="italic">I</em>O WAS BUILT FOR YOU
+          </motion.span>
+
+          <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.05] -tracking-[0.02em] overflow-hidden mb-6">
+            <motion.span
+              className="inline-block"
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             >
-              <MagneticButton />
-            </motion.div>
-          </div>
+              Close More.
+            </motion.span>
+            <br />
+            <motion.span
+              className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#d593c0] to-[#6ad4f2]"
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            >
+              Close Smarter.
+            </motion.span>
+          </h1>
+
+          <motion.p
+            className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-md leading-relaxed mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            The life insurance CRM that takes you from lead to issue paid.
+          </motion.p>
+
+          <motion.div
+            style={{ x: buttonX, y: buttonY }}
+          >
+            <MagneticButton />
+          </motion.div>
         </div>
       </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none" />
     </section>
   );
 };
