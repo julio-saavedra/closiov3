@@ -10,157 +10,314 @@ interface FeatureCardProps {
 
 const HierarchyIllustration: React.FC = () => {
   return (
-    <div className="w-full h-32 relative">
-      <svg viewBox="0 0 200 120" className="w-full h-full">
+    <div className="w-full h-36 relative">
+      <svg viewBox="0 0 240 140" className="w-full h-full">
         <motion.g
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
           <motion.line
-            x1="100"
-            y1="25"
+            x1="120"
+            y1="28"
+            x2="120"
+            y2="45"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
+          />
+
+          <motion.line
+            x1="40"
+            y1="45"
+            x2="200"
+            y2="45"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
+          />
+
+          <motion.line
+            x1="40"
+            y1="45"
+            x2="40"
+            y2="70"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
+          />
+          <motion.line
+            x1="120"
+            y1="45"
+            x2="120"
+            y2="70"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
+          />
+          <motion.line
+            x1="200"
+            y1="45"
+            x2="200"
+            y2="70"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
+          />
+
+          <motion.line
+            x1="40"
+            y1="88"
+            x2="40"
+            y2="105"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
+          />
+
+          <motion.line
+            x1="20"
+            y1="105"
             x2="60"
-            y2="60"
+            y2="105"
             stroke="currentColor"
-            strokeWidth="1.5"
-            className="text-[#6ad4f2]/40"
-            whileHover={{ strokeWidth: 2, opacity: 1 }}
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
           />
+
+          <motion.line
+            x1="20"
+            y1="105"
+            x2="20"
+            y2="125"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
+          />
+          <motion.line
+            x1="60"
+            y1="105"
+            x2="60"
+            y2="125"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
+          />
+
+          <motion.line
+            x1="120"
+            y1="88"
+            x2="120"
+            y2="105"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
+          />
+
           <motion.line
             x1="100"
-            y1="25"
+            y1="105"
             x2="140"
-            y2="60"
+            y2="105"
             stroke="currentColor"
-            strokeWidth="1.5"
-            className="text-[#6ad4f2]/40"
-            whileHover={{ strokeWidth: 2, opacity: 1 }}
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
           />
+
           <motion.line
-            x1="60"
-            y1="60"
-            x2="30"
-            y2="95"
+            x1="100"
+            y1="105"
+            x2="100"
+            y2="125"
             stroke="currentColor"
-            strokeWidth="1.5"
-            className="text-[#6ad4f2]/40"
-            whileHover={{ strokeWidth: 2, opacity: 1 }}
-          />
-          <motion.line
-            x1="60"
-            y1="60"
-            x2="90"
-            y2="95"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            className="text-[#6ad4f2]/40"
-            whileHover={{ strokeWidth: 2, opacity: 1 }}
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
           />
           <motion.line
             x1="140"
-            y1="60"
-            x2="110"
-            y2="95"
+            y1="105"
+            x2="140"
+            y2="125"
             stroke="currentColor"
-            strokeWidth="1.5"
-            className="text-[#6ad4f2]/40"
-            whileHover={{ strokeWidth: 2, opacity: 1 }}
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
+          />
+
+          <motion.line
+            x1="200"
+            y1="88"
+            x2="200"
+            y2="105"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
+          />
+
+          <motion.line
+            x1="180"
+            y1="105"
+            x2="220"
+            y2="105"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
+          />
+
+          <motion.line
+            x1="180"
+            y1="105"
+            x2="180"
+            y2="125"
+            stroke="currentColor"
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
           />
           <motion.line
-            x1="140"
-            y1="60"
-            x2="170"
-            y2="95"
+            x1="220"
+            y1="105"
+            x2="220"
+            y2="125"
             stroke="currentColor"
-            strokeWidth="1.5"
-            className="text-[#6ad4f2]/40"
-            whileHover={{ strokeWidth: 2, opacity: 1 }}
+            strokeWidth="2"
+            className="text-[#6ad4f2]/50"
+            whileHover={{ strokeWidth: 3, className: "text-[#6ad4f2]" }}
           />
 
           <motion.circle
-            cx="100"
+            cx="120"
             cy="20"
-            r="8"
+            r="9"
             fill="currentColor"
             className="text-[#6ad4f2]"
             whileHover={{
-              scale: 1.3,
-              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
+              scale: 1.4,
+              filter: "drop-shadow(0 0 12px rgba(106, 212, 242, 1))",
             }}
             transition={{ type: "spring", stiffness: 300 }}
           />
 
           <motion.circle
-            cx="60"
-            cy="60"
-            r="7"
+            cx="40"
+            cy="79"
+            r="8"
             fill="currentColor"
-            className="text-[#6ad4f2]/80"
+            className="text-[#6ad4f2]/85"
             whileHover={{
-              scale: 1.3,
-              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
+              scale: 1.4,
+              filter: "drop-shadow(0 0 12px rgba(106, 212, 242, 1))",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+          <motion.circle
+            cx="120"
+            cy="79"
+            r="8"
+            fill="currentColor"
+            className="text-[#6ad4f2]/85"
+            whileHover={{
+              scale: 1.4,
+              filter: "drop-shadow(0 0 12px rgba(106, 212, 242, 1))",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+          <motion.circle
+            cx="200"
+            cy="79"
+            r="8"
+            fill="currentColor"
+            className="text-[#6ad4f2]/85"
+            whileHover={{
+              scale: 1.4,
+              filter: "drop-shadow(0 0 12px rgba(106, 212, 242, 1))",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+
+          <motion.circle
+            cx="20"
+            cy="130"
+            r="6"
+            fill="currentColor"
+            className="text-[#6ad4f2]/65"
+            whileHover={{
+              scale: 1.4,
+              filter: "drop-shadow(0 0 12px rgba(106, 212, 242, 1))",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+          <motion.circle
+            cx="60"
+            cy="130"
+            r="6"
+            fill="currentColor"
+            className="text-[#6ad4f2]/65"
+            whileHover={{
+              scale: 1.4,
+              filter: "drop-shadow(0 0 12px rgba(106, 212, 242, 1))",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+          <motion.circle
+            cx="100"
+            cy="130"
+            r="6"
+            fill="currentColor"
+            className="text-[#6ad4f2]/65"
+            whileHover={{
+              scale: 1.4,
+              filter: "drop-shadow(0 0 12px rgba(106, 212, 242, 1))",
             }}
             transition={{ type: "spring", stiffness: 300 }}
           />
           <motion.circle
             cx="140"
-            cy="60"
-            r="7"
-            fill="currentColor"
-            className="text-[#6ad4f2]/80"
-            whileHover={{
-              scale: 1.3,
-              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
-            }}
-            transition={{ type: "spring", stiffness: 300 }}
-          />
-
-          <motion.circle
-            cx="30"
-            cy="100"
+            cy="130"
             r="6"
             fill="currentColor"
-            className="text-[#6ad4f2]/60"
+            className="text-[#6ad4f2]/65"
             whileHover={{
-              scale: 1.3,
-              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
+              scale: 1.4,
+              filter: "drop-shadow(0 0 12px rgba(106, 212, 242, 1))",
             }}
             transition={{ type: "spring", stiffness: 300 }}
           />
           <motion.circle
-            cx="90"
-            cy="100"
+            cx="180"
+            cy="130"
             r="6"
             fill="currentColor"
-            className="text-[#6ad4f2]/60"
+            className="text-[#6ad4f2]/65"
             whileHover={{
-              scale: 1.3,
-              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
+              scale: 1.4,
+              filter: "drop-shadow(0 0 12px rgba(106, 212, 242, 1))",
             }}
             transition={{ type: "spring", stiffness: 300 }}
           />
           <motion.circle
-            cx="110"
-            cy="100"
+            cx="220"
+            cy="130"
             r="6"
             fill="currentColor"
-            className="text-[#6ad4f2]/60"
+            className="text-[#6ad4f2]/65"
             whileHover={{
-              scale: 1.3,
-              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
-            }}
-            transition={{ type: "spring", stiffness: 300 }}
-          />
-          <motion.circle
-            cx="170"
-            cy="100"
-            r="6"
-            fill="currentColor"
-            className="text-[#6ad4f2]/60"
-            whileHover={{
-              scale: 1.3,
-              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
+              scale: 1.4,
+              filter: "drop-shadow(0 0 12px rgba(106, 212, 242, 1))",
             }}
             transition={{ type: "spring", stiffness: 300 }}
           />
