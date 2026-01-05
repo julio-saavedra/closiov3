@@ -41,135 +41,137 @@ interface StackingCardProps {
   feature: FeatureSection;
   index: number;
   totalCards: number;
+  progress: ReturnType<typeof useTransform<number, number>>;
 }
 
-const StackingCard: React.FC<StackingCardProps> = ({ feature, index, totalCards }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
+const StackingCard: React.FC<StackingCardProps> = ({ feature, index, totalCards, progress }) => {
   const isLast = index === totalCards - 1;
 
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ['start end', 'end start']
-  });
+  const cardStart = index / totalCards;
+  const cardEnd = (index + 1) / totalCards;
+  const cardMid = cardStart + (cardEnd - cardStart) * 0.5;
 
   const scale = useTransform(
-    scrollYProgress,
-    [0, 0.3, 0.5],
-    [0.9, 1, 1]
+    progress,
+    [cardStart, cardMid, cardEnd],
+    isLast ? [1, 1, 1] : [1, 1, 0.92]
   );
 
-  const cardOpacity = useTransform(
-    scrollYProgress,
-    isLast
-      ? [0, 0.2, 0.4, 1]
-      : [0, 0.2, 0.4, 0.7, 0.85],
-    isLast
-      ? [0, 0.5, 1, 1]
-      : [0, 0.5, 1, 1, 0]
+  const opacity = useTransform(
+    progress,
+    [cardStart, cardMid, cardEnd],
+    isLast ? [1, 1, 1] : [1, 1, 0.5]
   );
 
-  const y = useTransform(
-    scrollYProgress,
-    [0, 0.3],
-    [100, 0]
+  const yOffset = useTransform(
+    progress,
+    [cardStart, cardMid, cardEnd],
+    isLast ? [0, 0, 0] : [0, 0, -30]
   );
+
+  const topPosition = 100 + index * 20;
 
   return (
-    <div
-      ref={cardRef}
-      className="h-[100vh] w-full"
-      style={{ marginBottom: isLast ? 0 : '-20vh' }}
+    <motion.div
+      className="sticky w-full flex items-start justify-center px-4 md:px-8"
+      style={{
+        top: `${topPosition}px`,
+        zIndex: index + 1,
+        scale,
+        opacity,
+        y: yOffset
+      }}
     >
-      <motion.div
-        className="sticky top-[15vh] w-full flex items-start justify-center px-4 md:px-8"
-        style={{
-          zIndex: index + 1,
-          opacity: cardOpacity,
-          scale,
-          y
-        }}
-      >
-        <div className="w-full max-w-[90%] lg:max-w-[85%] mx-auto">
-          <div
-            className="bg-[#0f1419] backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10"
-            style={{
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)'
-            }}
-          >
-            <div className={`relative flex flex-col ${
-              feature.reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
-            }`}>
-              <div className="w-full lg:w-[45%] p-8 md:p-12 lg:p-14 flex items-center">
-                <div className="space-y-6">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-                    {feature.title}
-                  </h2>
-                  <p className="text-base md:text-lg text-gray-400 leading-relaxed">
-                    {feature.description}
-                  </p>
+      <div className="w-full max-w-[90%] lg:max-w-[85%] mx-auto">
+        <div
+          className="bg-[#0f1419] backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10"
+          style={{
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+          }}
+        >
+          <div className={`relative flex flex-col ${
+            feature.reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
+          }`}>
+            <div className="w-full lg:w-[45%] p-8 md:p-12 lg:p-14 flex items-center">
+              <div className="space-y-6">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                  {feature.title}
+                </h2>
+                <p className="text-base md:text-lg text-gray-400 leading-relaxed">
+                  {feature.description}
+                </p>
 
-                  <div className="pt-4 border-t border-white/10">
-                    <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                      Replaces
-                    </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {feature.replaces.map((item, idx) => (
-                        <span
-                          key={idx}
-                          className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-white/5 text-gray-400 border border-white/10"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
+                <div className="pt-4 border-t border-white/10">
+                  <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                    Replaces
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {feature.replaces.map((item, idx) => (
+                      <span
+                        key={idx}
+                        className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-white/5 text-gray-400 border border-white/10"
+                      >
+                        {item}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="w-full lg:w-[55%] p-4">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                  {feature.image ? (
-                    <img
-                      src={feature.image}
-                      alt={feature.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] flex items-center justify-center">
-                      <div className="text-center text-white/90">
-                        <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
-                        <div className="text-sm opacity-70">Image placeholder</div>
-                      </div>
+            <div className="w-full lg:w-[55%] p-4">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+                {feature.image ? (
+                  <img
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] flex items-center justify-center">
+                    <div className="text-center text-white/90">
+                      <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
+                      <div className="text-sm opacity-70">Image placeholder</div>
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </motion.div>
   );
 };
 
 const FeatureShowcase: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end']
+  });
 
   return (
-    <section ref={sectionRef} className="relative bg-white">
-      <div className="sticky top-0 z-50 pt-8 md:pt-12 pb-6 bg-gradient-to-b from-white via-white to-white/0">
+    <section className="relative bg-white">
+      <div className="sticky top-0 z-[100] pt-8 md:pt-12 pb-6 bg-gradient-to-b from-white via-white to-white/0">
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0f1419] text-center">
           No Limits on what you can do
         </h2>
       </div>
 
-      <div className="relative">
+      <div
+        ref={containerRef}
+        className="relative"
+        style={{ height: `${features.length * 100}vh` }}
+      >
         {features.map((feature, index) => (
           <StackingCard
             key={index}
             feature={feature}
             index={index}
             totalCards={features.length}
+            progress={scrollYProgress}
           />
         ))}
       </div>
