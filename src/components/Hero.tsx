@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
       className="min-h-screen w-full text-white flex items-center relative overflow-visible"
     >
       <motion.div
-        className="absolute right-0 top-[15%] w-[70%] lg:w-[75%] h-auto z-20 hidden md:block"
+        className="absolute right-0 top-[8%] w-[70%] lg:w-[75%] h-auto z-20 hidden md:block"
         initial={{ opacity: 0, x: 100, scale: 0.95 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
