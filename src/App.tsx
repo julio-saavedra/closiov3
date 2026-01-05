@@ -16,6 +16,7 @@ import { SectionWrapper } from './components/ui/section-wrapper';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 import FAQsPage from './pages/FAQsPage';
+import ContactUs from './pages/ContactUs';
 import Dashboard from './pages/features/Dashboard';
 import Leaderboard from './pages/features/Leaderboard';
 import BookOfBusiness from './pages/features/BookOfBusiness';
@@ -83,6 +84,7 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-conditions" element={<TermsConditions />} />
         <Route path="/faqs" element={<FAQsPage />} />
+        <Route path="/contact" element={<ContactUs />} />
         <Route path="/features/dashboard" element={<Dashboard />} />
         <Route path="/features/leaderboard" element={<Leaderboard />} />
         <Route path="/features/book-of-business" element={<BookOfBusiness />} />
