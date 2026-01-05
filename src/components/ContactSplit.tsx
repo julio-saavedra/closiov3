@@ -35,11 +35,11 @@ const ContactSplit = React.memo(() => {
   };
 
   return (
-    <section id="contact" className="py-32 relative bg-black overflow-hidden">
+    <section id="contact" className="py-20 relative bg-black overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="relative min-h-[800px]">
-          <div className="absolute -bottom-96 left-0 pointer-events-none select-none z-0 opacity-90">
-            <div className="text-[320px] sm:text-[400px] md:text-[500px] lg:text-[600px] xl:text-[700px] font-bold tracking-tight flex items-center leading-none gap-8 md:gap-16 lg:gap-24">
+        <div className="relative min-h-[500px]">
+          <div className="absolute -bottom-64 left-0 pointer-events-none select-none z-0 opacity-90">
+            <div className="text-[200px] sm:text-[280px] md:text-[350px] lg:text-[420px] xl:text-[500px] font-bold tracking-tight flex items-center leading-none gap-6 md:gap-12 lg:gap-16">
               <span
                 className="italic"
                 style={{
@@ -61,7 +61,7 @@ const ContactSplit = React.memo(() => {
             </div>
           </div>
 
-          <div className="relative z-10 flex items-center justify-center min-h-[800px]">
+          <div className="relative z-10 flex items-center justify-center min-h-[500px]">
             <div className="max-w-3xl mx-auto text-center px-8">
               <h2 className="text-4xl sm:text-5xl font-bold mb-4">
                 Stay in the Loop with{' '}

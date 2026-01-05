@@ -357,14 +357,15 @@ const Navbar: React.FC<NavbarProps> = () => {
             >
               <button
                 onClick={handleNavClick('contact')}
-                className="bg-white text-black font-medium whitespace-nowrap rounded-xl hover:bg-white/90"
+                className="demo-btn bg-white text-black font-medium whitespace-nowrap rounded-xl hover:bg-white/90"
                 style={{
                   padding: isScrolled ? '6px 16px' : '8px 20px',
                   fontSize: isScrolled ? '12px' : '14px',
-                  transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
+                  transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)',
+                  perspective: '600px'
                 }}
               >
-                Book a Demo
+                <span className="demo-btn-text">Book a Demo</span>
               </button>
               <button
                 onClick={() => window.location.href = 'https://closio.com/login'}
@@ -463,9 +464,10 @@ const Navbar: React.FC<NavbarProps> = () => {
               <div className="pt-4 px-4 space-y-3 border-t border-white/10 mt-4">
                 <button
                   onClick={handleNavClick('contact')}
-                  className="bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-xl hover:bg-white/90 transition-colors"
+                  className="demo-btn bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-xl hover:bg-white/90 transition-colors"
+                  style={{ perspective: '600px' }}
                 >
-                  Book a Demo
+                  <span className="demo-btn-text">Book a Demo</span>
                 </button>
                 <button
                   onClick={() => window.location.href = 'https://closio.com/login'}
