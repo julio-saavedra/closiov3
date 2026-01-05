@@ -197,7 +197,7 @@ const FeatureGrid: React.FC = () => {
 
   return (
     <section className="relative py-20 bg-black overflow-hidden">
-      <div className="absolute left-0 top-0 bottom-0 w-px bg-white/20" />
+      <div className="absolute left-0 top-0 bottom-0 w-px bg-white" />
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
