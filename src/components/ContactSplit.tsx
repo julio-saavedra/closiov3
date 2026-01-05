@@ -35,19 +35,30 @@ const ContactSplit = React.memo(() => {
   };
 
   return (
-    <section id="contact" className="py-32 relative bg-black overflow-hidden">
+    <section id="contact" className="pt-32 pb-0 relative bg-black overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20"
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-15"
           style={{
             background: 'radial-gradient(circle, rgba(106, 212, 242, 0.4) 0%, transparent 70%)',
-            filter: 'blur(80px)'
+            filter: 'blur(100px)'
           }}
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex items-center justify-center min-h-[500px]">
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-[35%] w-full max-w-4xl pointer-events-none z-0">
+        <img
+          src="/new_laptop_.png"
+          alt=""
+          className="w-full h-auto opacity-70"
+          style={{
+            filter: 'drop-shadow(0 -20px 60px rgba(106, 212, 242, 0.15))'
+          }}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10 pb-72">
+        <div className="flex items-center justify-center min-h-[400px]">
           <div
             className="relative max-w-2xl w-full mx-auto rounded-3xl p-10 sm:p-14"
             style={{
