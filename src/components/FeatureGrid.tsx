@@ -207,9 +207,8 @@ const FeatureGrid: React.FC = () => {
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-5">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6ad4f2] to-[#5ac3e1]">
-              Everything You Need
-            </span>{' '}
-            <span className="text-white">to Win</span>
+              Core Features
+            </span>
           </h2>
           <p className="text-white/50 text-lg max-w-2xl mx-auto">
             Purpose-built tools designed specifically for life insurance agents and agencies to streamline workflows and maximize productivity.
