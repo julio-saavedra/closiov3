@@ -92,8 +92,8 @@ const CommissionIllustration: React.FC<{ isDark?: boolean }> = ({ isDark = true 
 
 const BookOfBusinessIllustration: React.FC = () => {
   return (
-    <div className="w-full h-32 relative flex items-center justify-center">
-      <svg viewBox="0 0 120 100" className="w-32 h-32" style={{ filter: 'drop-shadow(0 0 20px rgba(106, 212, 242, 0.4))' }}>
+    <div className="w-full h-24 relative flex items-center justify-center">
+      <svg viewBox="0 0 120 100" className="w-24 h-24" style={{ filter: 'drop-shadow(0 0 15px rgba(106, 212, 242, 0.4))' }}>
         <motion.rect
           x="20"
           y="20"
@@ -183,8 +183,8 @@ const BookOfBusinessIllustration: React.FC = () => {
 
 const DashboardIllustration: React.FC = () => {
   return (
-    <div className="w-full h-32 relative flex items-center justify-center">
-      <svg viewBox="0 0 120 100" className="w-32 h-32">
+    <div className="w-full h-24 relative flex items-center justify-center">
+      <svg viewBox="0 0 120 100" className="w-24 h-24">
         <motion.rect
           x="20"
           y="55"
@@ -243,8 +243,8 @@ const DashboardIllustration: React.FC = () => {
 
 const PayoutsIllustration: React.FC = () => {
   return (
-    <div className="w-full h-32 relative flex items-center justify-center">
-      <svg viewBox="0 0 120 100" className="w-32 h-32" style={{ filter: 'drop-shadow(0 0 20px rgba(106, 212, 242, 0.4))' }}>
+    <div className="w-full h-24 relative flex items-center justify-center">
+      <svg viewBox="0 0 120 100" className="w-24 h-24" style={{ filter: 'drop-shadow(0 0 15px rgba(106, 212, 242, 0.4))' }}>
         <motion.polyline
           points="15,75 35,55 60,40 90,20"
           fill="none"
@@ -599,8 +599,8 @@ const LeaderboardIllustration: React.FC = () => {
 
 const HierarchyIllustration: React.FC = () => {
   return (
-    <div className="w-full h-32 relative flex items-center justify-center">
-      <svg viewBox="0 0 240 140" className="w-48 h-32" style={{ filter: 'drop-shadow(0 0 20px rgba(106, 212, 242, 0.4))' }}>
+    <div className="w-full h-24 relative flex items-center justify-center">
+      <svg viewBox="0 0 240 140" className="w-36 h-24" style={{ filter: 'drop-shadow(0 0 15px rgba(106, 212, 242, 0.4))' }}>
         <motion.g
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -920,56 +920,110 @@ const HierarchyIllustration: React.FC = () => {
   );
 };
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, delay = 0, isLarge = false, isHighlighted = false }) => {
+interface GridPosition {
+  colStart?: number;
+  colSpan?: number;
+  rowStart?: number;
+  rowSpan?: number;
+}
+
+const FeatureCard: React.FC<FeatureCardProps & { gridPosition?: GridPosition }> = ({
+  title,
+  description,
+  icon,
+  delay = 0,
+  isLarge = false,
+  isHighlighted = false,
+  gridPosition
+}) => {
+  const gridStyle = gridPosition ? {
+    gridColumn: gridPosition.colSpan ? `${gridPosition.colStart} / span ${gridPosition.colSpan}` : gridPosition.colStart,
+    gridRow: gridPosition.rowSpan ? `${gridPosition.rowStart} / span ${gridPosition.rowSpan}` : gridPosition.rowStart,
+  } : {};
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5, delay }}
-      className={`group relative rounded-3xl overflow-hidden h-full ${isLarge ? 'row-span-2' : ''}`}
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{
+        duration: 0.7,
+        delay,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
+      whileHover={{
+        y: -10,
+        scale: 1.02,
+        transition: { duration: 0.4, ease: "easeOut" }
+      }}
+      style={gridStyle}
+      className="group relative rounded-3xl overflow-hidden h-full"
     >
       {isHighlighted ? (
         <>
-          <div className="absolute inset-0 bg-gradient-to-br from-white/95 to-white/90" />
-          <div className="absolute inset-0 shadow-[0_0_80px_rgba(255,255,255,0.6),inset_0_0_60px_rgba(106,212,242,0.2)]" />
-          <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-b from-white to-[#f0f9ff]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-white to-[#f8fcff]" />
+          <div className="absolute inset-0 shadow-[0_0_100px_rgba(255,255,255,0.7),0_0_40px_rgba(106,212,242,0.3)]" />
 
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#6ad4f2]/10 via-white/95 to-white/90" />
-            <div className="absolute inset-0 shadow-[0_0_100px_rgba(255,255,255,0.9),inset_0_0_80px_rgba(106,212,242,0.3)] rounded-3xl" />
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent"
+            initial={{ x: '-100%' }}
+            animate={{ x: '100%' }}
+            transition={{ duration: 3, repeat: Infinity, repeatDelay: 2, ease: "easeInOut" }}
+          />
+
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#6ad4f2]/15 via-white to-white" />
+            <div className="absolute inset-0 shadow-[0_0_120px_rgba(255,255,255,1),0_0_60px_rgba(106,212,242,0.5)] rounded-3xl" />
           </div>
 
-          <div className={`relative ${isLarge ? 'p-12' : 'p-10'} h-full flex flex-col backdrop-blur-sm border border-white/40 rounded-3xl`}>
+          <div className={`relative ${isLarge ? 'p-10' : 'p-8'} h-full flex flex-col border border-white/60 rounded-3xl`}>
             {icon && (
-              <div className={`${isLarge ? 'mb-10' : 'mb-8'} text-[#0A0F1A] opacity-100 transition-all duration-300 w-full flex items-center justify-center group-hover:scale-105`}>
+              <motion.div
+                className={`${isLarge ? 'mb-auto' : 'mb-6'} text-[#0A0F1A] w-full flex items-center justify-center`}
+                whileHover={{ scale: 1.1 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              >
                 {icon}
-              </div>
+              </motion.div>
             )}
-            <h3 className={`${isLarge ? 'text-3xl' : 'text-2xl'} font-bold text-black mb-4 group-hover:text-[#0A0F1A] transition-colors duration-300`}>{title}</h3>
-            <p className={`text-black/70 ${isLarge ? 'text-lg' : 'text-base'} leading-relaxed group-hover:text-black/90 transition-colors duration-300`}>{description}</p>
+            <div className="mt-auto">
+              <h3 className={`${isLarge ? 'text-3xl' : 'text-xl'} font-bold text-black mb-3`}>{title}</h3>
+              <p className={`text-black/60 ${isLarge ? 'text-base' : 'text-sm'} leading-relaxed`}>{description}</p>
+            </div>
           </div>
         </>
       ) : (
         <>
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0A0F1A]/80 to-[#000000]/90 backdrop-blur-xl" />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#6ad4f2]/5 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0d1117] to-[#0A0F1A]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#6ad4f2]/8 via-transparent to-transparent" />
 
-          <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-b from-[#6ad4f2]/30 to-transparent opacity-50" />
+          <div className="absolute inset-[1px] rounded-3xl border border-[#6ad4f2]/20" />
 
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#6ad4f2]/20 via-[#6ad4f2]/10 to-transparent" />
-            <div className="absolute inset-0 shadow-[0_0_50px_rgba(106,212,242,0.3)] rounded-3xl" />
+          <motion.div
+            className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-[#6ad4f2]/60 to-transparent"
+            initial={{ opacity: 0.3 }}
+            whileHover={{ opacity: 1 }}
+          />
+
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#6ad4f2]/15 via-[#6ad4f2]/5 to-transparent" />
+            <div className="absolute inset-0 shadow-[0_0_60px_rgba(106,212,242,0.25),inset_0_0_40px_rgba(106,212,242,0.1)] rounded-3xl" />
           </div>
 
-          <div className={`relative ${isLarge ? 'p-12' : 'p-8'} h-full flex flex-col backdrop-blur-sm border border-[#6ad4f2]/10 rounded-3xl`}>
+          <div className={`relative ${isLarge ? 'p-10' : 'p-6'} h-full flex flex-col rounded-3xl`}>
             {icon && (
-              <div className={`${isLarge ? 'mb-10' : 'mb-6'} text-[#6ad4f2] opacity-90 group-hover:opacity-100 transition-all duration-300 w-full flex items-center justify-center group-hover:scale-105`}>
+              <motion.div
+                className={`${isLarge ? 'mb-auto' : 'mb-4'} text-[#6ad4f2] w-full flex items-center justify-center`}
+                whileHover={{ scale: 1.08 }}
+                transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              >
                 {icon}
-              </div>
+              </motion.div>
             )}
-            <h3 className={`${isLarge ? 'text-3xl' : 'text-xl'} font-bold text-white mb-4 group-hover:text-[#6ad4f2] transition-colors duration-300`}>{title}</h3>
-            <p className={`text-white/60 ${isLarge ? 'text-lg' : 'text-sm'} leading-relaxed group-hover:text-white/80 transition-colors duration-300`}>{description}</p>
+            <div className="mt-auto">
+              <h3 className={`${isLarge ? 'text-2xl' : 'text-lg'} font-bold text-white mb-2 group-hover:text-[#6ad4f2] transition-colors duration-300`}>{title}</h3>
+              <p className={`text-white/50 ${isLarge ? 'text-base' : 'text-sm'} leading-relaxed group-hover:text-white/70 transition-colors duration-300`}>{description}</p>
+            </div>
           </div>
         </>
       )}
@@ -985,6 +1039,7 @@ const FeatureGrid: React.FC = () => {
       icon: <CommissionIllustration isDark={false} />,
       isLarge: true,
       isHighlighted: true,
+      gridPosition: { colStart: 1, rowStart: 1, rowSpan: 2 },
     },
     {
       title: "Book of Business",
@@ -992,6 +1047,7 @@ const FeatureGrid: React.FC = () => {
       icon: <BookOfBusinessIllustration />,
       isLarge: false,
       isHighlighted: false,
+      gridPosition: { colStart: 2, rowStart: 1 },
     },
     {
       title: "Team Hierarchy",
@@ -999,6 +1055,7 @@ const FeatureGrid: React.FC = () => {
       icon: <HierarchyIllustration />,
       isLarge: false,
       isHighlighted: false,
+      gridPosition: { colStart: 3, rowStart: 1 },
     },
     {
       title: "Dashboard Analytics",
@@ -1006,6 +1063,7 @@ const FeatureGrid: React.FC = () => {
       icon: <DashboardIllustration />,
       isLarge: false,
       isHighlighted: false,
+      gridPosition: { colStart: 2, rowStart: 2 },
     },
     {
       title: "Estimated Payouts",
@@ -1013,6 +1071,7 @@ const FeatureGrid: React.FC = () => {
       icon: <PayoutsIllustration />,
       isLarge: false,
       isHighlighted: false,
+      gridPosition: { colStart: 3, rowStart: 2 },
     },
     {
       title: "Automated Reminders",
@@ -1020,6 +1079,7 @@ const FeatureGrid: React.FC = () => {
       icon: <RemindersIllustration />,
       isLarge: true,
       isHighlighted: false,
+      gridPosition: { colStart: 1, rowStart: 3, rowSpan: 2 },
     },
   ];
 
@@ -1048,16 +1108,17 @@ const FeatureGrid: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 grid-rows-[repeat(4,minmax(250px,1fr))]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:grid-rows-[repeat(4,220px)]">
           {features.map((feature, index) => (
             <FeatureCard
               key={index}
               title={feature.title}
               description={feature.description}
               icon={feature.icon}
-              delay={index * 0.1}
+              delay={index * 0.08}
               isLarge={feature.isLarge}
               isHighlighted={feature.isHighlighted}
+              gridPosition={feature.gridPosition}
             />
           ))}
         </div>
