@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const VerticalLine: React.FC = () => {
   return (
@@ -76,13 +75,7 @@ const ValueProps: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid gap-12 lg:gap-20 grid-cols-1 lg:grid-cols-[1.5fr_1fr] items-center">
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="order-1 flex items-center justify-start"
-          >
+          <div className="order-1 flex items-center justify-start">
             <div className="relative w-full max-w-5xl" style={{ perspective: '2000px' }}>
               {/* Mac Monitor Frame */}
               <div
@@ -150,16 +143,10 @@ const ValueProps: React.FC = () => {
                 <div className="absolute inset-0 -z-10 bg-gradient-radial from-transparent via-transparent to-black/30 blur-3xl" style={{ transform: 'translateZ(-50px) scale(1.1)' }}></div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           <div className="order-2 lg:pl-16 lg:max-w-md">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
-            >
+            <div className="mb-8">
               <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3">
                 Why CLOS<span
                   className="italic mx-1"
@@ -169,16 +156,12 @@ const ValueProps: React.FC = () => {
               <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
                 A CRM built thoughtfully for the workflows and operational demands of life-insurance teams.
               </p>
-            </motion.div>
+            </div>
 
             <div className="space-y-0">
-              {valueItems.map((item, index) => (
-                <motion.div
+              {valueItems.map((item) => (
+                <div
                   key={item.number}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   className="group py-4 border-b border-white/20 last:border-b-0"
                 >
                   <div className="flex items-start gap-3 sm:gap-4">
@@ -191,17 +174,11 @@ const ValueProps: React.FC = () => {
                       {item.title}
                     </h3>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="mt-8"
-            >
+            <div className="mt-8">
               <button
                 onClick={() => {
                   const element = document.getElementById('contact');
@@ -211,7 +188,7 @@ const ValueProps: React.FC = () => {
               >
                 Book a Demo
               </button>
-            </motion.div>
+            </div>
           </div>
 
         </div>
