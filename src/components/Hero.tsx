@@ -40,58 +40,6 @@ const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, dela
   );
 };
 
-const HeroVerticalLine: React.FC = () => {
-  return (
-    <motion.div
-      className="absolute left-[calc(50%-280px)] sm:left-[calc(8%+100px)] md:left-[calc(12%+100px)] lg:left-[calc(12%+115px)] bottom-0 w-[500px] h-[600px] pointer-events-none z-[5]"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1, delay: 1.8 }}
-    >
-      <svg
-        viewBox="0 0 500 600"
-        className="w-full h-full"
-        style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.3))' }}
-        preserveAspectRatio="none"
-      >
-        <defs>
-          <filter id="heroLineGlow">
-            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        <path
-          d="M 100 600
-             L 100 100
-             Q 100 50, 150 50
-             L 350 50"
-          fill="none"
-          stroke="white"
-          strokeWidth="12"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          filter="url(#heroLineGlow)"
-        />
-        <path
-          d="M 100 600
-             L 100 100
-             Q 100 50, 150 50
-             L 350 50"
-          fill="none"
-          stroke="rgba(255, 255, 255, 0.15)"
-          strokeWidth="24"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="blur-md"
-        />
-      </svg>
-    </motion.div>
-  );
-};
-
 const StaticButton: React.FC = () => {
   return (
     <motion.button
@@ -172,8 +120,6 @@ const Hero: React.FC = () => {
           <StaticButton />
         </div>
       </div>
-
-      <HeroVerticalLine />
 
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-20" />
     </section>
