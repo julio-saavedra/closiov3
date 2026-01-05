@@ -195,9 +195,9 @@ const Navbar: React.FC<NavbarProps> = () => {
 
             {/* Desktop Nav Links - Center */}
             <div
-              className="hidden lg:flex items-center"
+              className="hidden lg:flex items-center justify-center"
               style={{
-                gap: isScrolled ? '16px' : '32px',
+                gap: isScrolled ? '20px' : '32px',
                 transition: 'gap 700ms cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
@@ -208,7 +208,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     key={item.id}
                     href={`#${item.id}`}
                     onClick={handleNavClick(item.id)}
-                    className={`nav-underline-glow font-medium ${
+                    className={`nav-underline-glow font-medium inline-flex items-center h-8 ${
                       !isActive ? 'text-white/80 hover:text-white' : 'text-[#6ad4f2]'
                     } ${isActive ? 'is-active' : ''}`}
                     style={{
@@ -223,14 +223,14 @@ const Navbar: React.FC<NavbarProps> = () => {
 
               {/* Features Dropdown */}
               <div
-                className="relative"
+                className="relative flex items-center h-8"
                 ref={featuresDropdownRef}
                 onMouseEnter={() => setFeaturesDropdownOpen(true)}
                 onMouseLeave={() => setFeaturesDropdownOpen(false)}
               >
                 <button
                   onClick={() => setFeaturesDropdownOpen(!featuresDropdownOpen)}
-                  className={`nav-underline-glow font-medium inline-flex items-center gap-1 ${
+                  className={`nav-underline-glow font-medium inline-flex items-center gap-1 h-8 ${
                     FEATURES_ITEMS.some(item => item.path === location.pathname)
                       ? 'text-[#6ad4f2] is-active'
                       : 'text-white/80 hover:text-white'
@@ -242,12 +242,12 @@ const Navbar: React.FC<NavbarProps> = () => {
                 >
                   Features
                   <svg
-                    width="12"
-                    height="12"
+                    width="10"
+                    height="10"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2"
+                    strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     className={`transition-transform duration-300 ${featuresDropdownOpen ? 'rotate-180' : ''}`}
@@ -291,14 +291,14 @@ const Navbar: React.FC<NavbarProps> = () => {
 
               {/* Docs & FAQs Dropdown */}
               <div
-                className="relative"
+                className="relative flex items-center h-8"
                 ref={docsDropdownRef}
                 onMouseEnter={() => setDocsDropdownOpen(true)}
                 onMouseLeave={() => setDocsDropdownOpen(false)}
               >
                 <button
                   onClick={() => setDocsDropdownOpen(!docsDropdownOpen)}
-                  className={`nav-underline-glow font-medium inline-flex items-center gap-1 ${
+                  className={`nav-underline-glow font-medium inline-flex items-center gap-1 h-8 ${
                     DOCS_ITEMS.some(item => item.path === location.pathname)
                       ? 'text-[#6ad4f2] is-active'
                       : 'text-white/80 hover:text-white'
@@ -310,12 +310,12 @@ const Navbar: React.FC<NavbarProps> = () => {
                 >
                   Docs & FAQs
                   <svg
-                    width="12"
-                    height="12"
+                    width="10"
+                    height="10"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2"
+                    strokeWidth="2.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     className={`transition-transform duration-300 ${docsDropdownOpen ? 'rotate-180' : ''}`}
