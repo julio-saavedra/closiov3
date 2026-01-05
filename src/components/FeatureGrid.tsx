@@ -8,7 +8,171 @@ interface FeatureCardProps {
   delay?: number;
 }
 
+const HierarchyIllustration: React.FC = () => {
+  return (
+    <div className="w-full h-32 relative">
+      <svg viewBox="0 0 200 120" className="w-full h-full">
+        <motion.g
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
+          <motion.line
+            x1="100"
+            y1="25"
+            x2="60"
+            y2="60"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            className="text-[#6ad4f2]/40"
+            whileHover={{ strokeWidth: 2, opacity: 1 }}
+          />
+          <motion.line
+            x1="100"
+            y1="25"
+            x2="140"
+            y2="60"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            className="text-[#6ad4f2]/40"
+            whileHover={{ strokeWidth: 2, opacity: 1 }}
+          />
+          <motion.line
+            x1="60"
+            y1="60"
+            x2="30"
+            y2="95"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            className="text-[#6ad4f2]/40"
+            whileHover={{ strokeWidth: 2, opacity: 1 }}
+          />
+          <motion.line
+            x1="60"
+            y1="60"
+            x2="90"
+            y2="95"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            className="text-[#6ad4f2]/40"
+            whileHover={{ strokeWidth: 2, opacity: 1 }}
+          />
+          <motion.line
+            x1="140"
+            y1="60"
+            x2="110"
+            y2="95"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            className="text-[#6ad4f2]/40"
+            whileHover={{ strokeWidth: 2, opacity: 1 }}
+          />
+          <motion.line
+            x1="140"
+            y1="60"
+            x2="170"
+            y2="95"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            className="text-[#6ad4f2]/40"
+            whileHover={{ strokeWidth: 2, opacity: 1 }}
+          />
+
+          <motion.circle
+            cx="100"
+            cy="20"
+            r="8"
+            fill="currentColor"
+            className="text-[#6ad4f2]"
+            whileHover={{
+              scale: 1.3,
+              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+
+          <motion.circle
+            cx="60"
+            cy="60"
+            r="7"
+            fill="currentColor"
+            className="text-[#6ad4f2]/80"
+            whileHover={{
+              scale: 1.3,
+              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+          <motion.circle
+            cx="140"
+            cy="60"
+            r="7"
+            fill="currentColor"
+            className="text-[#6ad4f2]/80"
+            whileHover={{
+              scale: 1.3,
+              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+
+          <motion.circle
+            cx="30"
+            cy="100"
+            r="6"
+            fill="currentColor"
+            className="text-[#6ad4f2]/60"
+            whileHover={{
+              scale: 1.3,
+              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+          <motion.circle
+            cx="90"
+            cy="100"
+            r="6"
+            fill="currentColor"
+            className="text-[#6ad4f2]/60"
+            whileHover={{
+              scale: 1.3,
+              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+          <motion.circle
+            cx="110"
+            cy="100"
+            r="6"
+            fill="currentColor"
+            className="text-[#6ad4f2]/60"
+            whileHover={{
+              scale: 1.3,
+              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+          <motion.circle
+            cx="170"
+            cy="100"
+            r="6"
+            fill="currentColor"
+            className="text-[#6ad4f2]/60"
+            whileHover={{
+              scale: 1.3,
+              filter: "drop-shadow(0 0 8px rgba(106, 212, 242, 0.8))",
+            }}
+            transition={{ type: "spring", stiffness: 300 }}
+          />
+        </motion.g>
+      </svg>
+    </div>
+  );
+};
+
 const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, delay = 0 }) => {
+  const isHierarchyCard = title === "Team Hierarchy";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -23,7 +187,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ title, description, icon, del
 
       <div className="relative p-8 h-full flex flex-col">
         {icon && (
-          <div className="mb-4 text-[#6ad4f2] opacity-80 group-hover:opacity-100 transition-opacity">
+          <div className={`mb-4 text-[#6ad4f2] opacity-80 group-hover:opacity-100 transition-opacity ${isHierarchyCard ? 'w-full' : ''}`}>
             {icon}
           </div>
         )}
@@ -57,11 +221,7 @@ const FeatureGrid: React.FC = () => {
     {
       title: "Team Hierarchy",
       description: "Visualize your agency structure with clear reporting lines and team performance metrics.",
-      icon: (
-        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      ),
+      icon: <HierarchyIllustration />,
     },
     {
       title: "Dashboard Analytics",
