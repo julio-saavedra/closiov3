@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, delay = 0 }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -40,67 +40,14 @@ const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, dela
   );
 };
 
-const MagneticButton: React.FC = () => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
-  const [isHovering, setIsHovering] = useState(false);
-
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const springConfig = { damping: 15, stiffness: 150, mass: 0.1 };
-  const springX = useSpring(x, springConfig);
-  const springY = useSpring(y, springConfig);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!buttonRef.current) return;
-
-    const rect = buttonRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    const distanceX = e.clientX - centerX;
-    const distanceY = e.clientY - centerY;
-
-    const maxDistance = 100;
-    const distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-
-    if (distance < maxDistance * 2) {
-      const factor = Math.max(0, 1 - distance / (maxDistance * 2));
-      x.set(distanceX * factor * 0.4);
-      y.set(distanceY * factor * 0.4);
-      setIsHovering(true);
-    } else {
-      x.set(0);
-      y.set(0);
-      setIsHovering(false);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-    setIsHovering(false);
-  };
-
+const StaticButton: React.FC = () => {
   return (
     <motion.button
-      ref={buttonRef}
-      style={{ x: springX, y: springY }}
-      className="relative px-8 py-4 bg-white text-black font-semibold text-base rounded-full shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-hidden group"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.98 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      className="relative px-8 py-4 bg-white text-black font-semibold text-base rounded-full shadow-[0_0_40px_rgba(255,255,255,0.3)] overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 1.5 }}
     >
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-[#6ad4f2]/20 to-[#d593c0]/20"
-        initial={{ x: '-100%' }}
-        animate={isHovering ? { x: '100%' } : { x: '-100%' }}
-        transition={{ duration: 0.6 }}
-      />
       <span className="relative z-10">
         <TypewriterText text="Book a Demo Now" delay={2000} />
       </span>
@@ -109,45 +56,10 @@ const MagneticButton: React.FC = () => {
 };
 
 const Hero: React.FC = () => {
-  const heroRef = useRef<HTMLElement>(null);
-
-  const springConfig = { damping: 25, stiffness: 120, mass: 0.5 };
-  const buttonX = useSpring(useMotionValue(0), springConfig);
-  const buttonY = useSpring(useMotionValue(0), springConfig);
-
-  const handleHeroMouseMove = (e: React.MouseEvent) => {
-    if (!heroRef.current) return;
-
-    const rect = heroRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height * 0.7;
-
-    const offsetX = (x - centerX) * 0.15;
-    const offsetY = (y - centerY) * 0.15;
-
-    const maxOffset = 80;
-    const clampedX = Math.max(-maxOffset, Math.min(maxOffset, offsetX));
-    const clampedY = Math.max(-maxOffset, Math.min(maxOffset, offsetY));
-
-    buttonX.set(clampedX);
-    buttonY.set(clampedY);
-  };
-
-  const handleHeroMouseLeave = () => {
-    buttonX.set(0);
-    buttonY.set(0);
-  };
-
   return (
     <section
-      ref={heroRef}
       id="hero"
       className="min-h-screen w-full text-white flex items-center relative overflow-hidden"
-      onMouseMove={handleHeroMouseMove}
-      onMouseLeave={handleHeroMouseLeave}
     >
       <motion.div
         className="absolute right-0 top-[20%] w-[65%] lg:w-[70%] h-auto z-0 pointer-events-none hidden md:block"
@@ -205,11 +117,7 @@ const Hero: React.FC = () => {
             The life insurance CRM that takes you from lead to issue paid.
           </motion.p>
 
-          <motion.div
-            style={{ x: buttonX, y: buttonY }}
-          >
-            <MagneticButton />
-          </motion.div>
+          <StaticButton />
         </div>
       </div>
 
