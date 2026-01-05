@@ -146,28 +146,34 @@ const Navbar: React.FC<NavbarProps> = () => {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 w-full"
-        style={{ padding: isScrolled ? '12px 16px' : '16px' }}
+        className="fixed top-0 left-0 right-0 z-50 w-full"
+        style={{
+          padding: isScrolled ? '12px 16px' : '16px',
+          transition: 'padding 700ms cubic-bezier(0.4, 0, 0.2, 1)'
+        }}
       >
         <div
-          className={`transition-all duration-500 ease-out ${
-            isScrolled
-              ? 'max-w-4xl mx-auto px-4 py-2 rounded-full backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)]'
-              : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'
-          }`}
+          className="mx-auto"
           style={{
+            maxWidth: isScrolled ? '900px' : '1280px',
+            padding: isScrolled ? '8px 24px' : '0 24px',
+            borderRadius: isScrolled ? '9999px' : '0px',
+            backdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'none',
+            WebkitBackdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'none',
             background: isScrolled
-              ? 'linear-gradient(135deg, rgba(20, 20, 25, 0.85) 0%, rgba(10, 10, 15, 0.9) 100%)'
-              : 'transparent'
+              ? 'linear-gradient(135deg, rgba(15, 15, 20, 0.9) 0%, rgba(8, 8, 12, 0.95) 100%)'
+              : 'transparent',
+            boxShadow: isScrolled
+              ? '0 4px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05)'
+              : 'none',
+            transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
           }}
         >
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between h-14">
             {/* Logo */}
             <Link
               to="/"
-              className={`flex items-center gap-2 transition-all duration-500 ${
-                isScrolled ? 'scale-75 origin-left' : ''
-              }`}
+              className="flex items-center gap-2 flex-shrink-0"
               onClick={() => {
                 if (isHomePage) {
                   document.querySelector("#top")?.scrollIntoView({ behavior: "smooth" });
@@ -178,17 +184,23 @@ const Navbar: React.FC<NavbarProps> = () => {
               <img
                 src="/closio_main_logo.png"
                 alt="Closio"
-                className={`w-auto select-none transition-all duration-500 ${
-                  isScrolled ? 'h-16' : 'h-24'
-                }`}
+                className="w-auto select-none"
+                style={{
+                  height: isScrolled ? '48px' : '80px',
+                  transition: 'height 700ms cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
                 draggable={false}
               />
             </Link>
 
             {/* Desktop Nav Links - Center */}
-            <div className={`hidden lg:flex items-center transition-all duration-500 ${
-              isScrolled ? 'space-x-4' : 'space-x-8'
-            }`}>
+            <div
+              className="hidden lg:flex items-center"
+              style={{
+                gap: isScrolled ? '16px' : '32px',
+                transition: 'gap 700ms cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+            >
               {NAV_ITEMS.map((item) => {
                 const isActive = activeSection === item.id;
                 return (
@@ -196,13 +208,13 @@ const Navbar: React.FC<NavbarProps> = () => {
                     key={item.id}
                     href={`#${item.id}`}
                     onClick={handleNavClick(item.id)}
-                    className={[
-                      'nav-underline-glow',
-                      'font-medium transition-all duration-300',
-                      isScrolled ? 'text-xs' : 'text-sm',
-                      !isActive ? 'text-white/80 hover:text-white' : 'text-[#6ad4f2]',
-                      isActive ? 'is-active' : '',
-                    ].join(' ')}
+                    className={`nav-underline-glow font-medium ${
+                      !isActive ? 'text-white/80 hover:text-white' : 'text-[#6ad4f2]'
+                    } ${isActive ? 'is-active' : ''}`}
+                    style={{
+                      fontSize: isScrolled ? '13px' : '14px',
+                      transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
+                    }}
                   >
                     {item.label}
                   </a>
@@ -218,25 +230,27 @@ const Navbar: React.FC<NavbarProps> = () => {
               >
                 <button
                   onClick={() => setFeaturesDropdownOpen(!featuresDropdownOpen)}
-                  className={`nav-underline-glow font-medium transition-all duration-300 inline-flex items-center gap-1 ${
-                    isScrolled ? 'text-xs' : 'text-sm'
-                  } ${
+                  className={`nav-underline-glow font-medium inline-flex items-center gap-1 ${
                     FEATURES_ITEMS.some(item => item.path === location.pathname)
                       ? 'text-[#6ad4f2] is-active'
                       : 'text-white/80 hover:text-white'
                   }`}
+                  style={{
+                    fontSize: isScrolled ? '13px' : '14px',
+                    transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
+                  }}
                 >
                   Features
                   <svg
-                    width={isScrolled ? "10" : "12"}
-                    height={isScrolled ? "10" : "12"}
+                    width="12"
+                    height="12"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className={`transition-transform duration-200 ${featuresDropdownOpen ? 'rotate-180' : ''}`}
+                    className={`transition-transform duration-300 ${featuresDropdownOpen ? 'rotate-180' : ''}`}
                   >
                     <path d="M6 9l6 6 6-6"/>
                   </svg>
@@ -284,25 +298,27 @@ const Navbar: React.FC<NavbarProps> = () => {
               >
                 <button
                   onClick={() => setDocsDropdownOpen(!docsDropdownOpen)}
-                  className={`nav-underline-glow font-medium transition-all duration-300 inline-flex items-center gap-1 ${
-                    isScrolled ? 'text-xs' : 'text-sm'
-                  } ${
+                  className={`nav-underline-glow font-medium inline-flex items-center gap-1 ${
                     DOCS_ITEMS.some(item => item.path === location.pathname)
                       ? 'text-[#6ad4f2] is-active'
                       : 'text-white/80 hover:text-white'
                   }`}
+                  style={{
+                    fontSize: isScrolled ? '13px' : '14px',
+                    transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
+                  }}
                 >
                   Docs & FAQs
                   <svg
-                    width={isScrolled ? "10" : "12"}
-                    height={isScrolled ? "10" : "12"}
+                    width="12"
+                    height="12"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className={`transition-transform duration-200 ${docsDropdownOpen ? 'rotate-180' : ''}`}
+                    className={`transition-transform duration-300 ${docsDropdownOpen ? 'rotate-180' : ''}`}
                   >
                     <path d="M6 9l6 6 6-6"/>
                   </svg>
@@ -332,22 +348,35 @@ const Navbar: React.FC<NavbarProps> = () => {
             </div>
 
             {/* CTA Buttons - Right */}
-            <div className={`hidden lg:flex items-center transition-all duration-500 ${
-              isScrolled ? 'space-x-2' : 'space-x-3'
-            }`}>
+            <div
+              className="hidden lg:flex items-center flex-shrink-0"
+              style={{
+                gap: isScrolled ? '8px' : '12px',
+                transition: 'gap 700ms cubic-bezier(0.4, 0, 0.2, 1)'
+              }}
+            >
               <button
                 onClick={handleNavClick('contact')}
-                className={`bg-white text-black font-medium whitespace-nowrap rounded-full hover:bg-white/90 transition-all duration-300 ${
-                  isScrolled ? 'px-4 py-1.5 text-xs' : 'px-5 py-2 text-sm'
-                }`}
+                className="bg-white text-black font-medium whitespace-nowrap rounded-full hover:bg-white/90"
+                style={{
+                  padding: isScrolled ? '6px 16px' : '8px 20px',
+                  fontSize: isScrolled ? '12px' : '14px',
+                  transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
               >
                 Book a Demo
               </button>
               <button
                 onClick={() => window.location.href = 'https://closio.com/login'}
-                className={`bg-transparent text-white font-medium whitespace-nowrap rounded-full border border-white/30 hover:bg-white/10 hover:border-white/50 transition-all duration-300 ${
-                  isScrolled ? 'px-4 py-1.5 text-xs' : 'px-5 py-2 text-sm'
-                } ${isScrollingDown && !isScrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                className="bg-transparent text-white font-medium whitespace-nowrap rounded-full hover:bg-white/10"
+                style={{
+                  padding: isScrolled ? '6px 16px' : '8px 20px',
+                  fontSize: isScrolled ? '12px' : '14px',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  opacity: isScrollingDown && !isScrolled ? 0 : 1,
+                  pointerEvents: isScrollingDown && !isScrolled ? 'none' : 'auto',
+                  transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
+                }}
               >
                 Log In
               </button>
