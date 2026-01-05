@@ -40,58 +40,69 @@ const features: FeatureSection[] = [
 interface StackingCardProps {
   feature: FeatureSection;
   index: number;
-  totalCards: number;
 }
 
-const StackingCard: React.FC<StackingCardProps> = ({ feature, index, totalCards }) => {
+const StackingCard: React.FC<StackingCardProps> = ({ feature, index }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: cardRef,
-    offset: ['start start', 'end start']
+    offset: ['start end', 'start start']
   });
 
   const scale = useTransform(
     scrollYProgress,
     [0, 1],
-    [1, 0.9]
+    [0.85, 1]
   );
 
-  const topOffset = 80 + index * 20;
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [0.3, 0.8, 1]
+  );
+
+  const topOffset = 100 + index * 30;
 
   return (
     <div
       ref={cardRef}
-      className="h-screen sticky"
-      style={{ top: `${topOffset}px` }}
+      className="h-screen w-full"
     >
-      <motion.div
-        style={{ scale }}
-        className="h-[calc(100vh-120px)] flex items-center justify-center px-4 md:px-8"
+      <div
+        className="sticky w-full flex items-center justify-center px-4 md:px-8"
+        style={{
+          top: `${topOffset}px`,
+          height: `calc(100vh - ${topOffset + 40}px)`,
+          zIndex: index + 1
+        }}
       >
-        <div className="w-full max-w-[95%] mx-auto px-4 md:px-16">
-          <div className="bg-[#1a2332]/80 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+        <motion.div
+          style={{ scale, opacity }}
+          className="w-full max-w-[90%] lg:max-w-[85%] mx-auto"
+        >
+          <div className="bg-[#0f1419] backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-white/10">
             <div className={`relative flex flex-col ${
               feature.reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
             }`}>
-              <div className="w-full lg:w-[45%] p-8 md:p-12 lg:p-16 flex items-center">
+              <div className="w-full lg:w-[45%] p-8 md:p-12 lg:p-14 flex items-center">
                 <div className="space-y-6">
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
                     {feature.title}
                   </h2>
-                  <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+                  <p className="text-base md:text-lg text-gray-400 leading-relaxed">
                     {feature.description}
                   </p>
 
                   <div className="pt-4 border-t border-white/10">
-                    <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">
+                    <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
                       Replaces
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {feature.replaces.map((item, idx) => (
                         <span
                           key={idx}
-                          className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-white/5 text-gray-300 border border-white/10 backdrop-blur-sm"
+                          className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-white/5 text-gray-400 border border-white/10"
                         >
                           {item}
                         </span>
@@ -101,16 +112,16 @@ const StackingCard: React.FC<StackingCardProps> = ({ feature, index, totalCards 
                 </div>
               </div>
 
-              <div className="w-full lg:w-[55%] overflow-hidden rounded-2xl m-4">
-                <div className="relative aspect-[4/3]">
+              <div className="w-full lg:w-[55%] p-4">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                   {feature.image ? (
                     <img
                       src={feature.image}
                       alt={feature.title}
-                      className="w-full h-full object-cover rounded-2xl"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] flex items-center justify-center rounded-2xl">
+                    <div className="w-full h-full bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] flex items-center justify-center">
                       <div className="text-center text-white/90">
                         <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
                         <div className="text-sm opacity-70">Image placeholder</div>
@@ -121,17 +132,17 @@ const StackingCard: React.FC<StackingCardProps> = ({ feature, index, totalCards 
               </div>
             </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   );
 };
 
 const FeatureShowcase: React.FC = () => {
   return (
-    <section className="relative bg-black">
-      <div className="sticky top-0 z-30 pt-8 md:pt-12 pb-4 bg-gradient-to-b from-black via-black to-transparent">
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center">
+    <section className="relative bg-white">
+      <div className="sticky top-0 z-50 pt-8 md:pt-12 pb-6 bg-gradient-to-b from-white via-white to-white/0">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0f1419] text-center">
           No Limits on what you can do
         </h2>
       </div>
@@ -142,12 +153,11 @@ const FeatureShowcase: React.FC = () => {
             key={index}
             feature={feature}
             index={index}
-            totalCards={features.length}
           />
         ))}
       </div>
 
-      <div className="h-[50vh]" />
+      <div className="h-[30vh] bg-white" />
     </section>
   );
 };
