@@ -36,61 +36,64 @@ const ContactSplit = React.memo(() => {
 
   return (
     <section id="contact" className="py-32 relative bg-black overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-20"
-          style={{
-            background: 'radial-gradient(circle, rgba(106, 212, 242, 0.4) 0%, transparent 70%)',
-            filter: 'blur(80px)'
-          }}
-        />
-      </div>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="relative min-h-[800px]">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl">
+            <img
+              src="/image copy copy copy copy copy copy copy copy copy.png"
+              alt="Closio Login"
+              className="w-full h-auto rounded-2xl shadow-2xl"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex items-center justify-center min-h-[500px]">
-          <div
-            className="relative max-w-2xl w-full mx-auto rounded-3xl p-10 sm:p-14"
-            style={{
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)',
-              backdropFilter: 'blur(20px) saturate(180%)',
-              WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
-            }}
-          >
-            <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">
-              <div
-                className="absolute -top-24 -right-24 w-48 h-48 rounded-full opacity-30"
+          <div className="absolute -bottom-96 left-0 pointer-events-none select-none z-0 opacity-90">
+            <div className="text-[320px] sm:text-[400px] md:text-[500px] lg:text-[600px] xl:text-[700px] font-bold tracking-tight flex items-center leading-none gap-8 md:gap-16 lg:gap-24">
+              <span
+                className="italic"
                 style={{
-                  background: 'radial-gradient(circle, rgba(106, 212, 242, 0.5) 0%, transparent 70%)',
-                  filter: 'blur(40px)'
+                  WebkitTextStroke: '4px rgba(106, 212, 242, 0.9)',
+                  WebkitTextFillColor: 'transparent',
+                  filter: 'drop-shadow(0 0 80px rgba(106, 212, 242, 0.9)) drop-shadow(0 0 120px rgba(106, 212, 242, 0.6))',
                 }}
-              />
+              >
+                I
+              </span>
+              <span
+                className="text-white"
+                style={{
+                  filter: 'drop-shadow(0 0 80px rgba(106, 212, 242, 0.9)) drop-shadow(0 0 120px rgba(106, 212, 242, 0.6))',
+                }}
+              >
+                O
+              </span>
             </div>
+          </div>
 
-            <div className="relative z-10 text-center">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+          <div className="relative z-10 flex items-center justify-center min-h-[800px]">
+            <div className="max-w-3xl mx-auto text-center px-8">
+              <h2 className="text-4xl sm:text-5xl font-bold mb-4">
                 Stay in the Loop with{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6ad4f2] to-[#5ac3e1]">
                   Closio
                 </span>
               </h2>
-              <p className="text-base sm:text-lg text-white/60 max-w-lg mx-auto mb-10 leading-relaxed">
+              <p className="text-lg text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
                 Be the first to hear about updates, early access offers, and exclusive insights.
               </p>
 
               {status === 'success' ? (
                 <div className="flex flex-col items-center justify-center py-6">
-                  <div className="w-16 h-16 bg-[#6ad4f2]/10 rounded-full flex items-center justify-center mb-4 border border-[#6ad4f2]/30">
-                    <svg className="w-8 h-8 text-[#6ad4f2]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
+                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mb-4 border border-green-500/30">
+                    <span className="text-green-400 text-3xl">✓</span>
                   </div>
-                  <p className="text-xl font-semibold text-[#6ad4f2]">You're in!</p>
-                  <p className="text-white/60 mt-2">We'll be in touch soon.</p>
+                  <p className="text-xl font-semibold text-green-400">You're in!</p>
+                  <p className="text-white/70 mt-2">We'll be in touch.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-                  <div className="flex flex-col sm:flex-row gap-3">
+                <form onSubmit={handleSubmit} className="max-w-xl mx-auto">
+                  <div className="flex flex-col sm:flex-row gap-4">
                     <div className="flex-1">
                       <input
                         type="email"
@@ -103,25 +106,25 @@ const ContactSplit = React.memo(() => {
                           }
                         }}
                         placeholder="Enter your email"
-                        className="w-full px-5 py-3.5 bg-black/30 border border-white/10 rounded-xl focus:border-[#6ad4f2]/50 focus:ring-2 focus:ring-[#6ad4f2]/20 outline-none transition-all text-white placeholder:text-white/40"
+                        className="w-full px-5 py-4 bg-black/40 border border-white/20 rounded-xl focus:border-[#6ad4f2] focus:ring-2 focus:ring-[#6ad4f2]/30 outline-none transition-all text-white placeholder:text-white/50"
                         disabled={status === 'loading'}
                       />
                     </div>
                     <button
                       type="submit"
                       disabled={status === 'loading'}
-                      className="px-6 py-3.5 bg-gradient-to-r from-[#6ad4f2] to-[#5ac3e1] text-black font-semibold rounded-xl hover:shadow-lg hover:shadow-[#6ad4f2]/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm"
+                      className="px-8 py-4 bg-gradient-to-r from-[#6ad4f2] to-[#5ac3e1] text-black font-semibold rounded-xl hover:shadow-lg hover:shadow-[#6ad4f2]/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                     >
                       {status === 'loading' ? (
                         <span className="flex items-center justify-center gap-2">
-                          <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                          <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                           </svg>
                           <span>Joining...</span>
                         </span>
                       ) : (
-                        'Subscribe'
+                        'Join the Closio Newsletter'
                       )}
                     </button>
                   </div>
@@ -129,10 +132,6 @@ const ContactSplit = React.memo(() => {
                   {status === 'error' && errorMessage && (
                     <p className="mt-4 text-red-400 text-sm">{errorMessage}</p>
                   )}
-
-                  <p className="mt-6 text-xs text-white/30">
-                    No spam, unsubscribe anytime.
-                  </p>
                 </form>
               )}
             </div>
