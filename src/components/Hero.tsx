@@ -43,13 +43,13 @@ const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, dela
 const HeroVerticalLine: React.FC = () => {
   return (
     <motion.div
-      className="absolute left-[calc(50%-280px)] sm:left-[calc(8%+100px)] md:left-[calc(12%+100px)] lg:left-[calc(12%+115px)] bottom-0 w-[500px] h-[600px] pointer-events-none z-[5]"
+      className="absolute left-0 bottom-0 w-[30vw] h-[350px] pointer-events-none z-[5] hidden md:block"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 1.8 }}
     >
       <svg
-        viewBox="0 0 500 600"
+        viewBox="0 0 500 350"
         className="w-full h-full"
         style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.3))' }}
         preserveAspectRatio="none"
@@ -64,25 +64,25 @@ const HeroVerticalLine: React.FC = () => {
           </filter>
         </defs>
         <path
-          d="M 100 600
-             L 100 100
-             Q 100 50, 150 50
-             L 350 50"
+          d="M 500 85
+             L 120 85
+             Q 50 85, 50 155
+             L 50 400"
           fill="none"
           stroke="white"
-          strokeWidth="12"
+          strokeWidth="16"
           strokeLinecap="round"
           strokeLinejoin="round"
           filter="url(#heroLineGlow)"
         />
         <path
-          d="M 100 600
-             L 100 100
-             Q 100 50, 150 50
-             L 350 50"
+          d="M 500 85
+             L 120 85
+             Q 50 85, 50 155
+             L 50 400"
           fill="none"
           stroke="rgba(255, 255, 255, 0.15)"
-          strokeWidth="24"
+          strokeWidth="32"
           strokeLinecap="round"
           strokeLinejoin="round"
           className="blur-md"
