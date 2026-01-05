@@ -48,6 +48,29 @@ const ContactSplit = React.memo(() => {
             />
           </div>
 
+          <div className="absolute -bottom-32 left-0 pointer-events-none select-none z-0 opacity-80">
+            <div className="text-[200px] sm:text-[250px] md:text-[320px] lg:text-[380px] font-bold tracking-tight flex items-center leading-none">
+              <span
+                className="italic"
+                style={{
+                  WebkitTextStroke: '3px rgba(106, 212, 242, 0.8)',
+                  WebkitTextFillColor: 'transparent',
+                  filter: 'drop-shadow(0 0 60px rgba(106, 212, 242, 0.8)) drop-shadow(0 0 100px rgba(106, 212, 242, 0.5))',
+                }}
+              >
+                I
+              </span>
+              <span
+                className="text-white"
+                style={{
+                  filter: 'drop-shadow(0 0 60px rgba(106, 212, 242, 0.8)) drop-shadow(0 0 100px rgba(106, 212, 242, 0.5))',
+                }}
+              >
+                O
+              </span>
+            </div>
+          </div>
+
           <div className="relative z-10 flex items-center justify-center min-h-[800px]">
             <div className="max-w-3xl mx-auto text-center px-8">
               <h2 className="text-4xl sm:text-5xl font-bold mb-4">
