@@ -2,10 +2,10 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 
 const benefits = [
-  { title: 'Geographic Insights', description: 'Track deals across the country' },
-  { title: 'Territory Planning', description: 'Find underserved markets' },
-  { title: 'Performance Tracking', description: 'Monitor regional coverage' },
-  { title: 'Real-Time Updates', description: 'See deals as they close' },
+  { number: '/01', title: 'Geographic Insights', description: 'Track deals across the country' },
+  { number: '/02', title: 'Territory Planning', description: 'Find underserved markets' },
+  { number: '/03', title: 'Performance Tracking', description: 'Monitor regional coverage' },
+  { number: '/04', title: 'Real-Time Updates', description: 'See deals as they close' },
 ];
 
 const TypewriterText = ({ text, delay = 0, isVisible }: { text: string; delay?: number; isVisible: boolean }) => {
@@ -187,7 +187,7 @@ export default function DealMap() {
         </div>
 
         <div className="relative flex items-center justify-center">
-          <div className="hidden lg:flex flex-col gap-6 absolute left-0 top-1/2 -translate-y-1/2 z-20 max-w-[240px]">
+          <div className="hidden lg:flex flex-col gap-6 absolute left-0 top-1/2 -translate-y-1/2 z-20 max-w-[260px]">
             {leftFacts.map((fact, index) => (
               <motion.div
                 key={fact.title}
@@ -197,17 +197,18 @@ export default function DealMap() {
                 className="relative"
               >
                 <div
-                  className="p-4 rounded-xl backdrop-blur-md border border-[#3a7ca5]/20"
+                  className="p-5 rounded-xl backdrop-blur-md border border-white/10"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.9) 100%)',
-                    boxShadow: '0 8px 32px rgba(58, 124, 165, 0.15), 0 2px 8px rgba(0,0,0,0.08)',
+                    background: 'linear-gradient(135deg, rgba(45,50,58,0.95) 0%, rgba(35,40,48,0.9) 100%)',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15)',
                   }}
                 >
-                  <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-3 h-[2px] bg-gradient-to-r from-[#3a7ca5] to-transparent" />
-                  <h4 className="font-semibold text-[#1a1a2e] text-sm mb-1">
+                  <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-3 h-[2px] bg-gradient-to-r from-[#6ad4f2] to-transparent" />
+                  <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
+                  <h4 className="font-semibold text-white text-base mb-1.5">
                     <TypewriterText text={fact.title} delay={800 + index * 400} isVisible={isInView} />
                   </h4>
-                  <p className="text-xs text-[#6a6a7a] leading-relaxed min-h-[32px]">
+                  <p className="text-sm text-gray-400 leading-relaxed min-h-[36px]">
                     <TypewriterText text={fact.description} delay={1200 + index * 400} isVisible={isInView} />
                   </p>
                 </div>
@@ -231,7 +232,7 @@ export default function DealMap() {
             </DesktopMonitor>
           </motion.div>
 
-          <div className="hidden lg:flex flex-col gap-6 absolute right-0 top-1/2 -translate-y-1/2 z-20 max-w-[240px]">
+          <div className="hidden lg:flex flex-col gap-6 absolute right-0 top-1/2 -translate-y-1/2 z-20 max-w-[260px]">
             {rightFacts.map((fact, index) => (
               <motion.div
                 key={fact.title}
@@ -241,17 +242,18 @@ export default function DealMap() {
                 className="relative"
               >
                 <div
-                  className="p-4 rounded-xl backdrop-blur-md border border-[#3a7ca5]/20"
+                  className="p-5 rounded-xl backdrop-blur-md border border-white/10"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.9) 100%)',
-                    boxShadow: '0 8px 32px rgba(58, 124, 165, 0.15), 0 2px 8px rgba(0,0,0,0.08)',
+                    background: 'linear-gradient(135deg, rgba(45,50,58,0.95) 0%, rgba(35,40,48,0.9) 100%)',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15)',
                   }}
                 >
-                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-3 h-[2px] bg-gradient-to-l from-[#3a7ca5] to-transparent" />
-                  <h4 className="font-semibold text-[#1a1a2e] text-sm mb-1">
+                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-3 h-[2px] bg-gradient-to-l from-[#6ad4f2] to-transparent" />
+                  <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
+                  <h4 className="font-semibold text-white text-base mb-1.5">
                     <TypewriterText text={fact.title} delay={1000 + index * 400} isVisible={isInView} />
                   </h4>
-                  <p className="text-xs text-[#6a6a7a] leading-relaxed min-h-[32px]">
+                  <p className="text-sm text-gray-400 leading-relaxed min-h-[36px]">
                     <TypewriterText text={fact.description} delay={1400 + index * 400} isVisible={isInView} />
                   </p>
                 </div>
@@ -268,14 +270,15 @@ export default function DealMap() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 + index * 0.1 }}
-              className="p-4 rounded-xl backdrop-blur-md border border-[#3a7ca5]/20"
+              className="p-4 rounded-xl backdrop-blur-md border border-white/10"
               style={{
-                background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.9) 100%)',
-                boxShadow: '0 4px 16px rgba(58, 124, 165, 0.1)',
+                background: 'linear-gradient(135deg, rgba(45,50,58,0.95) 0%, rgba(35,40,48,0.9) 100%)',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
               }}
             >
-              <h4 className="font-semibold text-[#1a1a2e] text-sm mb-1">{benefit.title}</h4>
-              <p className="text-xs text-[#6a6a7a]">{benefit.description}</p>
+              <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-1.5 block">{benefit.number}</span>
+              <h4 className="font-semibold text-white text-base mb-1">{benefit.title}</h4>
+              <p className="text-sm text-gray-400">{benefit.description}</p>
             </motion.div>
           ))}
         </div>
