@@ -197,10 +197,10 @@ export default function DealMap() {
                 className="relative"
               >
                 <div
-                  className="p-5 rounded-xl backdrop-blur-md border border-white/10"
+                  className="p-5 rounded-xl border border-gray-800/50"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(45,50,58,0.95) 0%, rgba(35,40,48,0.9) 100%)',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15)',
+                    background: '#000000',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)',
                   }}
                 >
                   <svg
@@ -215,17 +215,17 @@ export default function DealMap() {
                       y1="2"
                       x2="60"
                       y2="2"
-                      stroke="url(#lineGradientLeft)"
+                      stroke="url(#lineGradientLeftBlack)"
                       strokeWidth="2"
                       strokeLinecap="round"
                       initial={{ pathLength: 0, opacity: 0 }}
                       animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-                      transition={{ delay: 1.2 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
+                      transition={{ delay: 2.2 + index * 0.5, duration: 0.5, ease: 'easeOut' }}
                     />
                     <defs>
-                      <linearGradient id="lineGradientLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#6ad4f2" />
-                        <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0" />
+                      <linearGradient id="lineGradientLeftBlack" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#000000" />
+                        <stop offset="100%" stopColor="#000000" stopOpacity="0.2" />
                       </linearGradient>
                     </defs>
                   </svg>
@@ -267,10 +267,10 @@ export default function DealMap() {
                 className="relative"
               >
                 <div
-                  className="p-5 rounded-xl backdrop-blur-md border border-white/10"
+                  className="p-5 rounded-xl border border-gray-800/50"
                   style={{
-                    background: 'linear-gradient(135deg, rgba(45,50,58,0.95) 0%, rgba(35,40,48,0.9) 100%)',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15)',
+                    background: '#000000',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3)',
                   }}
                 >
                   <svg
@@ -285,17 +285,17 @@ export default function DealMap() {
                       y1="2"
                       x2="0"
                       y2="2"
-                      stroke="url(#lineGradientRight)"
+                      stroke="url(#lineGradientRightBlack)"
                       strokeWidth="2"
                       strokeLinecap="round"
                       initial={{ pathLength: 0, opacity: 0 }}
                       animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-                      transition={{ delay: 1.4 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
+                      transition={{ delay: 2.4 + index * 0.5, duration: 0.5, ease: 'easeOut' }}
                     />
                     <defs>
-                      <linearGradient id="lineGradientRight" x1="100%" y1="0%" x2="0%" y2="0%">
-                        <stop offset="0%" stopColor="#6ad4f2" />
-                        <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0" />
+                      <linearGradient id="lineGradientRightBlack" x1="100%" y1="0%" x2="0%" y2="0%">
+                        <stop offset="0%" stopColor="#000000" />
+                        <stop offset="100%" stopColor="#000000" stopOpacity="0.2" />
                       </linearGradient>
                     </defs>
                   </svg>
@@ -320,10 +320,10 @@ export default function DealMap() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 + index * 0.1 }}
-              className="p-4 rounded-xl backdrop-blur-md border border-white/10"
+              className="p-4 rounded-xl border border-gray-800/50"
               style={{
-                background: 'linear-gradient(135deg, rgba(45,50,58,0.95) 0%, rgba(35,40,48,0.9) 100%)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+                background: '#000000',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
               }}
             >
               <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-1.5 block">{benefit.number}</span>
