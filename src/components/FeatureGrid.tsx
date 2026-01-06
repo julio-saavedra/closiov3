@@ -218,26 +218,31 @@ const FeatureGrid: React.FC = () => {
           {features.map((feature, index) => {
             const Icon = feature.icon;
             const isTopRow = index < 2;
+            const isLeftSide = index === 0 || index === 2;
+            const slideDirection = isLeftSide ? -100 : 100;
+            const staggerDelay = index * 0.15;
+
             return (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, x: slideDirection }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{
+                  duration: 0.8,
+                  delay: staggerDelay,
+                  ease: [0.25, 0.1, 0.25, 1],
+                }}
                 className={`group relative overflow-hidden border border-white/10 rounded-2xl ${
                   isTopRow ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-2'
                 }`}
                 style={{
                   background: '#000000',
-                  transform: 'translateZ(0)',
-                  backfaceVisibility: 'hidden',
+                  willChange: 'transform, opacity',
                 }}
               >
                 <div className="relative p-8 flex flex-col h-full min-h-[340px]">
-                  <div
-                    className="w-28 h-28 mb-8"
-                    style={{
-                      transform: 'translateZ(0)',
-                      backfaceVisibility: 'hidden',
-                    }}
-                  >
+                  <div className="w-28 h-28 mb-8">
                     <Icon />
                   </div>
 
@@ -250,7 +255,7 @@ const FeatureGrid: React.FC = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
