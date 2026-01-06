@@ -184,8 +184,6 @@ const FeatureShowcase: React.FC = () => {
           />
         ))}
       </div>
-
-      <div className="h-[50vh] bg-white" />
     </section>
   );
 };
