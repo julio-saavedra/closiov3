@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
 
 interface FeatureSection {
   title: string;
@@ -37,124 +36,7 @@ const features: FeatureSection[] = [
   }
 ];
 
-interface CardContentProps {
-  feature: FeatureSection;
-}
-
-const CardContent: React.FC<CardContentProps> = ({ feature }) => (
-  <div className="w-full max-w-[90%] lg:max-w-[85%] mx-auto">
-    <div
-      className="bg-[#0f1419] backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10"
-      style={{
-        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)'
-      }}
-    >
-      <div className={`relative flex flex-col ${
-        feature.reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
-      }`}>
-        <div className="w-full lg:w-[45%] p-8 md:p-12 lg:p-14 flex items-center">
-          <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-              {feature.title}
-            </h2>
-            <p className="text-base md:text-lg text-gray-400 leading-relaxed">
-              {feature.description}
-            </p>
-
-            <div className="pt-4 border-t border-white/10">
-              <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-                Replaces
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {feature.replaces.map((item, idx) => (
-                  <span
-                    key={idx}
-                    className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-white/5 text-gray-400 border border-white/10"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="w-full lg:w-[55%] p-4">
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-            {feature.image ? (
-              <img
-                src={feature.image}
-                alt={feature.title}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <div className="w-full h-full bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] flex items-center justify-center">
-                <div className="text-center text-white/90">
-                  <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
-                  <div className="text-sm opacity-70">Image placeholder</div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-);
-
-interface StackingCardProps {
-  feature: FeatureSection;
-  index: number;
-  totalCards: number;
-  containerRef: React.RefObject<HTMLDivElement>;
-}
-
-const StackingCard: React.FC<StackingCardProps> = ({ feature, index, totalCards, containerRef }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const isLast = index === totalCards - 1;
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end']
-  });
-
-  const cardStart = index / totalCards;
-  const cardEnd = (index + 1) / totalCards;
-
-  const scale = useTransform(
-    scrollYProgress,
-    [cardStart, cardEnd, cardEnd + 0.1],
-    isLast ? [1, 1, 1] : [1, 1, 0.92]
-  );
-
-  const opacity = useTransform(
-    scrollYProgress,
-    [cardStart, cardEnd, cardEnd + 0.15],
-    isLast ? [1, 1, 1] : [1, 1, 0.4]
-  );
-
-  const topOffset = 80 + index * 24;
-
-  return (
-    <motion.div
-      ref={cardRef}
-      className="sticky w-full flex items-center justify-center px-4 md:px-8"
-      style={{
-        top: `${topOffset}px`,
-        zIndex: index + 1,
-        scale,
-        opacity,
-        transformOrigin: 'center top'
-      }}
-    >
-      <CardContent feature={feature} />
-    </motion.div>
-  );
-};
-
 const FeatureShowcase: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   return (
     <section className="relative bg-white overflow-hidden">
       <div className="sticky top-0 z-[100] pt-8 md:pt-12 pb-6 bg-gradient-to-b from-white via-white to-white/0">
@@ -163,23 +45,79 @@ const FeatureShowcase: React.FC = () => {
         </h2>
       </div>
 
-      <div
-        ref={containerRef}
-        className="relative"
-        style={{ height: `${features.length * 80}vh` }}
-      >
-        <div className="flex flex-col gap-[50vh]">
-          {features.map((feature, index) => (
-            <StackingCard
-              key={index}
-              feature={feature}
-              index={index}
-              totalCards={features.length}
-              containerRef={containerRef as React.RefObject<HTMLDivElement>}
-            />
-          ))}
-        </div>
+      <div className="flex flex-col gap-[50vh]">
+        {features.map((feature, index) => (
+          <div
+            key={index}
+            className="sticky w-full flex items-center justify-center px-4 md:px-8"
+            style={{
+              top: `${80 + index * 24}px`,
+              zIndex: index + 1
+            }}
+          >
+            <div className="w-full max-w-[90%] lg:max-w-[85%] mx-auto">
+              <div
+                className="bg-[#0f1419] backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10"
+                style={{
+                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+                }}
+              >
+                <div className={`relative flex flex-col ${
+                  feature.reversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
+                }`}>
+                  <div className="w-full lg:w-[45%] p-8 md:p-12 lg:p-14 flex items-center">
+                    <div className="space-y-6">
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                        {feature.title}
+                      </h2>
+                      <p className="text-base md:text-lg text-gray-400 leading-relaxed">
+                        {feature.description}
+                      </p>
+
+                      <div className="pt-4 border-t border-white/10">
+                        <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                          Replaces
+                        </h3>
+                        <div className="flex flex-wrap gap-2">
+                          {feature.replaces.map((item, idx) => (
+                            <span
+                              key={idx}
+                              className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-white/5 text-gray-400 border border-white/10"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="w-full lg:w-[55%] p-4">
+                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+                      {feature.image ? (
+                        <img
+                          src={feature.image}
+                          alt={feature.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-[#6ad4f2] via-[#8bb4d9] to-[#d593c0] flex items-center justify-center">
+                          <div className="text-center text-white/90">
+                            <div className="text-2xl font-semibold mb-2">{feature.imagePlaceholder}</div>
+                            <div className="text-sm opacity-70">Image placeholder</div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
+
+      <div className="h-[30vh]" />
     </section>
   );
 };
