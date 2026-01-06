@@ -35,7 +35,7 @@ const ContactSplit = React.memo(() => {
   };
 
   return (
-    <section id="contact" className="py-20 relative bg-black overflow-hidden">
+    <section id="contact" className="py-20 relative bg-black overflow-hidden rounded-3xl">
       <div className="max-w-7xl mx-auto px-6">
         <div className="relative min-h-[500px]">
           <div className="absolute -bottom-64 left-0 pointer-events-none select-none z-0 opacity-90">
