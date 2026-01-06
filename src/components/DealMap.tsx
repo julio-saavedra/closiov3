@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 
 const benefits = [
   { title: 'Geographic Insights', description: 'Track deals across the country' },
@@ -6,6 +7,50 @@ const benefits = [
   { title: 'Performance Tracking', description: 'Monitor regional coverage' },
   { title: 'Real-Time Updates', description: 'See deals as they close' },
 ];
+
+const TypewriterText = ({ text, delay = 0, isVisible }: { text: string; delay?: number; isVisible: boolean }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    if (!isVisible) {
+      setDisplayedText('');
+      return;
+    }
+
+    let timeout: NodeJS.Timeout;
+    const startTyping = setTimeout(() => {
+      let currentIndex = 0;
+      const typeNextChar = () => {
+        if (currentIndex < text.length) {
+          setDisplayedText(text.slice(0, currentIndex + 1));
+          currentIndex++;
+          timeout = setTimeout(typeNextChar, 35 + Math.random() * 25);
+        }
+      };
+      typeNextChar();
+    }, delay);
+
+    return () => {
+      clearTimeout(startTyping);
+      clearTimeout(timeout);
+    };
+  }, [text, delay, isVisible]);
+
+  useEffect(() => {
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 530);
+    return () => clearInterval(cursorInterval);
+  }, []);
+
+  return (
+    <span>
+      {displayedText}
+      <span className={`${showCursor && displayedText.length < text.length ? 'opacity-100' : 'opacity-0'} transition-opacity`}>|</span>
+    </span>
+  );
+};
 
 const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -108,8 +153,14 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
 };
 
 export default function DealMap() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+
+  const leftFacts = [benefits[0], benefits[1]];
+  const rightFacts = [benefits[2], benefits[3]];
+
   return (
-    <section className="py-16 md:py-12 relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-12 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-white via-[#f8f9fa] to-white" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -135,13 +186,41 @@ export default function DealMap() {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+        <div className="relative flex items-center justify-center">
+          <div className="hidden lg:flex flex-col gap-6 absolute left-0 top-1/2 -translate-y-1/2 z-20 max-w-[240px]">
+            {leftFacts.map((fact, index) => (
+              <motion.div
+                key={fact.title}
+                initial={{ opacity: 0, x: -80 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -80 }}
+                transition={{ delay: 0.6 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
+                className="relative"
+              >
+                <div
+                  className="p-4 rounded-xl backdrop-blur-md border border-[#3a7ca5]/20"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.9) 100%)',
+                    boxShadow: '0 8px 32px rgba(58, 124, 165, 0.15), 0 2px 8px rgba(0,0,0,0.08)',
+                  }}
+                >
+                  <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-3 h-[2px] bg-gradient-to-r from-[#3a7ca5] to-transparent" />
+                  <h4 className="font-semibold text-[#1a1a2e] text-sm mb-1">
+                    <TypewriterText text={fact.title} delay={800 + index * 400} isVisible={isInView} />
+                  </h4>
+                  <p className="text-xs text-[#6a6a7a] leading-relaxed min-h-[32px]">
+                    <TypewriterText text={fact.description} delay={1200 + index * 400} isVisible={isInView} />
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative max-w-[85%] mx-auto lg:max-w-full"
+            className="relative w-full max-w-[700px] mx-auto lg:mx-0"
           >
             <DesktopMonitor>
               <img
@@ -152,51 +231,66 @@ export default function DealMap() {
             </DesktopMonitor>
           </motion.div>
 
-          <div className="space-y-5 md:space-y-4 lg:pl-8">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-            >
-              <h3 className="text-2xl lg:text-3xl font-bold text-[#1a1a2e]">
-                See Your Business<br />
-                <span className="text-[#3a7ca5]">Come to Life</span>
-              </h3>
-            </motion.div>
-
-            <div className="grid gap-3 md:gap-2.5">
-              {benefits.map((benefit, index) => (
-                <motion.div
-                  key={benefit.title}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                  className="flex items-center gap-3 py-2.5 md:py-2"
+          <div className="hidden lg:flex flex-col gap-6 absolute right-0 top-1/2 -translate-y-1/2 z-20 max-w-[240px]">
+            {rightFacts.map((fact, index) => (
+              <motion.div
+                key={fact.title}
+                initial={{ opacity: 0, x: 80 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
+                transition={{ delay: 0.8 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
+                className="relative"
+              >
+                <div
+                  className="p-4 rounded-xl backdrop-blur-md border border-[#3a7ca5]/20"
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.9) 100%)',
+                    boxShadow: '0 8px 32px rgba(58, 124, 165, 0.15), 0 2px 8px rgba(0,0,0,0.08)',
+                  }}
                 >
-                  <div className="w-[3px] h-10 md:h-8 bg-gradient-to-b from-[#3a7ca5] to-[#2d5f7a] rounded-full flex-shrink-0" />
-                  <div>
-                    <h4 className="font-semibold text-[#1a1a2e] text-base mb-0.5">{benefit.title}</h4>
-                    <p className="text-sm text-[#6a6a7a]">{benefit.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-3 h-[2px] bg-gradient-to-l from-[#3a7ca5] to-transparent" />
+                  <h4 className="font-semibold text-[#1a1a2e] text-sm mb-1">
+                    <TypewriterText text={fact.title} delay={1000 + index * 400} isVisible={isInView} />
+                  </h4>
+                  <p className="text-xs text-[#6a6a7a] leading-relaxed min-h-[32px]">
+                    <TypewriterText text={fact.description} delay={1400 + index * 400} isVisible={isInView} />
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
 
+        <div className="lg:hidden mt-8 grid grid-cols-2 gap-4">
+          {benefits.map((benefit, index) => (
             <motion.div
+              key={benefit.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.9 }}
-              className="pt-4"
+              transition={{ delay: 0.5 + index * 0.1 }}
+              className="p-4 rounded-xl backdrop-blur-md border border-[#3a7ca5]/20"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.9) 100%)',
+                boxShadow: '0 4px 16px rgba(58, 124, 165, 0.1)',
+              }}
             >
-              <button className="px-8 py-3.5 bg-black text-white rounded-xl font-semibold hover:bg-gray-900 transition-all hover:scale-105 shadow-lg">
-                Book a Demo
-              </button>
+              <h4 className="font-semibold text-[#1a1a2e] text-sm mb-1">{benefit.title}</h4>
+              <p className="text-xs text-[#6a6a7a]">{benefit.description}</p>
             </motion.div>
-          </div>
+          ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.9 }}
+          className="pt-8 text-center"
+        >
+          <button className="px-8 py-3.5 bg-black text-white rounded-xl font-semibold hover:bg-gray-900 transition-all hover:scale-105 shadow-lg">
+            Book a Demo
+          </button>
+        </motion.div>
       </div>
     </section>
   );
