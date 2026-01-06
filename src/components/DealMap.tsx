@@ -193,9 +193,9 @@ export default function DealMap() {
             preserveAspectRatio="none"
           >
             <motion.line
-              x1="22%"
+              x1="17.5%"
               y1="30%"
-              x2="28%"
+              x2="27%"
               y2="30%"
               stroke="#1a1a1a"
               strokeWidth="1"
@@ -206,9 +206,9 @@ export default function DealMap() {
             />
 
             <motion.line
-              x1="22%"
+              x1="17.5%"
               y1="70%"
-              x2="28%"
+              x2="27%"
               y2="70%"
               stroke="#1a1a1a"
               strokeWidth="1"
@@ -219,9 +219,9 @@ export default function DealMap() {
             />
 
             <motion.line
-              x1="78%"
+              x1="82.5%"
               y1="30%"
-              x2="72%"
+              x2="73%"
               y2="30%"
               stroke="#1a1a1a"
               strokeWidth="1"
@@ -232,9 +232,9 @@ export default function DealMap() {
             />
 
             <motion.line
-              x1="78%"
+              x1="82.5%"
               y1="70%"
-              x2="72%"
+              x2="73%"
               y2="70%"
               stroke="#1a1a1a"
               strokeWidth="1"
