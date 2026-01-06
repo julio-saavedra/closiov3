@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const VerticalLine: React.FC = () => {
   return (
@@ -111,7 +112,13 @@ const ValueProps: React.FC = () => {
           </div>
 
           <div className="order-2 lg:pl-16 lg:max-w-md">
-            <div className="mb-8">
+            <motion.div
+              className="mb-8"
+              initial={{ opacity: 0, x: 60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
               <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3">
                 WHY CLOS<span
                   className="italic mx-1"
@@ -121,7 +128,7 @@ const ValueProps: React.FC = () => {
               <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
                 A CRM built thoughtfully for the workflows and operational demands of life-insurance teams.
               </p>
-            </div>
+            </motion.div>
 
             <div className="space-y-0">
               {valueItems.map((item) => (
