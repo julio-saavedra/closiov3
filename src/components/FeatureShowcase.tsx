@@ -53,9 +53,9 @@ const FeatureShowcase: React.FC = () => {
           >
             <div className="w-full max-w-[90%] lg:max-w-[85%] mx-auto">
               <div
-                className="bg-[#0f1419] backdrop-blur-xl rounded-3xl overflow-hidden border border-white/10"
+                className="bg-[#f5f5f7] backdrop-blur-xl rounded-3xl overflow-hidden border border-gray-200"
                 style={{
-                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03)'
                 }}
               >
                 <div className={`relative flex flex-col ${
@@ -63,22 +63,22 @@ const FeatureShowcase: React.FC = () => {
                 }`}>
                   <div className="w-full lg:w-[45%] p-8 md:p-12 lg:p-14 flex items-center">
                     <div className="space-y-6">
-                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0f1419] leading-tight">
                         {feature.title}
                       </h2>
-                      <p className="text-base md:text-lg text-gray-400 leading-relaxed">
+                      <p className="text-base md:text-lg text-gray-600 leading-relaxed">
                         {feature.description}
                       </p>
 
-                      <div className="pt-4 border-t border-white/10">
-                        <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                      <div className="pt-4 border-t border-gray-200">
+                        <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
                           Replaces
                         </h3>
                         <div className="flex flex-wrap gap-2">
                           {feature.replaces.map((item, idx) => (
                             <span
                               key={idx}
-                              className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-white/5 text-gray-400 border border-white/10"
+                              className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-white text-gray-600 border border-gray-200"
                             >
                               {item}
                             </span>
