@@ -11,14 +11,14 @@ interface Sparkle {
 }
 
 const SparkleEffect: React.FC<{ isHovered: boolean }> = ({ isHovered }) => {
-  const sparkles = useMemo<Sparkle[]>(() =>
-    Array.from({ length: 14 }, (_, i) => ({
+  const particles = useMemo<Sparkle[]>(() =>
+    Array.from({ length: 20 }, (_, i) => ({
       id: i,
       x: Math.random() * 90 + 5,
       y: Math.random() * 90 + 5,
-      size: Math.random() * 8 + 4,
-      delay: Math.random() * 0.4,
-      repeatDelay: Math.random() * 0.6 + 0.4,
+      size: Math.random() * 3 + 1.5,
+      delay: Math.random() * 0.6,
+      repeatDelay: 0,
     })),
   []);
 
@@ -26,42 +26,30 @@ const SparkleEffect: React.FC<{ isHovered: boolean }> = ({ isHovered }) => {
     <AnimatePresence>
       {isHovered && (
         <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl z-20">
-          {sparkles.map((sparkle) => (
+          {particles.map((particle) => (
             <motion.div
-              key={sparkle.id}
-              initial={{ opacity: 0, scale: 0, rotate: 0 }}
+              key={particle.id}
+              initial={{ opacity: 0, scale: 0, y: 0 }}
               animate={{
-                opacity: [0, 1, 1, 0],
-                scale: [0, 1, 1.3, 0],
-                rotate: [0, 90, 180, 270],
+                opacity: [0, 0.8, 0.6, 0],
+                scale: [0, 1, 1, 0.5],
+                y: [0, -20, -40, -60],
               }}
               exit={{ opacity: 0, scale: 0 }}
               transition={{
-                duration: 1,
-                delay: sparkle.delay,
+                duration: 1.5,
+                delay: particle.delay,
                 ease: 'easeOut',
-                repeat: Infinity,
-                repeatDelay: sparkle.repeatDelay,
               }}
-              className="absolute"
+              className="absolute rounded-full bg-white"
               style={{
-                left: `${sparkle.x}%`,
-                top: `${sparkle.y}%`,
-                filter: 'drop-shadow(0 0 3px rgba(255, 255, 255, 0.8))',
+                left: `${particle.x}%`,
+                top: `${particle.y}%`,
+                width: particle.size,
+                height: particle.size,
+                boxShadow: '0 0 4px rgba(255, 255, 255, 0.6)',
               }}
-            >
-              <svg
-                width={sparkle.size}
-                height={sparkle.size}
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path
-                  d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"
-                  fill="white"
-                />
-              </svg>
-            </motion.div>
+            />
           ))}
         </div>
       )}
