@@ -161,9 +161,10 @@ const FeatureGrid: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
           {features.map((feature, index) => {
             const Icon = feature.icon;
+            const isTopRow = index < 2;
             return (
               <motion.div
                 key={index}
@@ -172,16 +173,16 @@ const FeatureGrid: React.FC = () => {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.8, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="group relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0d1117]/60 via-[#0d1117]/80 to-[#0d1117]/60 border border-white/[0.06] backdrop-blur-xl"
+                className={`group relative rounded-3xl overflow-hidden bg-[#1a1f2e] border border-white/[0.06] backdrop-blur-xl ${
+                  isTopRow ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-2'
+                }`}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6ad4f2]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 <div className="relative p-8 flex flex-col h-full min-h-[340px]">
-                  <div className="w-32 h-32 mb-8 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#0A0F1A]/80 to-[#1A2428]/60 border border-white/[0.05] group-hover:border-white/[0.1] transition-all duration-500">
-                    <div className="w-24 h-24">
-                      <Icon />
-                    </div>
+                  <div className="w-24 h-24 mb-8">
+                    <Icon />
                   </div>
 
                   <div className="flex-1 flex flex-col">
