@@ -221,15 +221,15 @@ export default function DealMap() {
             <motion.line
               x1="22%"
               y1="30%"
-              x2="36%"
-              y2="38%"
+              x2="28%"
+              y2="30%"
               stroke="url(#lineGradLeft1)"
               strokeWidth="1.5"
               strokeLinecap="round"
               filter="url(#glow)"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 2.8, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ delay: 2.8, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             />
             <motion.circle
               cx="22%"
@@ -242,27 +242,27 @@ export default function DealMap() {
               transition={{ delay: 2.7, duration: 0.3 }}
             />
             <motion.circle
-              cx="36%"
-              cy="38%"
+              cx="28%"
+              cy="30%"
               r="3"
               fill="#6ad4f2"
               initial={{ scale: 0, opacity: 0 }}
               animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 3.5, duration: 0.3 }}
+              transition={{ delay: 3.3, duration: 0.3 }}
             />
 
             <motion.line
               x1="22%"
               y1="70%"
-              x2="36%"
-              y2="62%"
+              x2="28%"
+              y2="70%"
               stroke="url(#lineGradLeft2)"
               strokeWidth="1.5"
               strokeLinecap="round"
               filter="url(#glow)"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 3.2, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ delay: 3.2, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             />
             <motion.circle
               cx="22%"
@@ -275,27 +275,27 @@ export default function DealMap() {
               transition={{ delay: 3.1, duration: 0.3 }}
             />
             <motion.circle
-              cx="36%"
-              cy="62%"
+              cx="28%"
+              cy="70%"
               r="3"
               fill="#6ad4f2"
               initial={{ scale: 0, opacity: 0 }}
               animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 3.9, duration: 0.3 }}
+              transition={{ delay: 3.7, duration: 0.3 }}
             />
 
             <motion.line
               x1="78%"
               y1="30%"
-              x2="64%"
-              y2="38%"
+              x2="72%"
+              y2="30%"
               stroke="url(#lineGradRight1)"
               strokeWidth="1.5"
               strokeLinecap="round"
               filter="url(#glow)"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 3.0, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ delay: 3.0, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             />
             <motion.circle
               cx="78%"
@@ -308,27 +308,27 @@ export default function DealMap() {
               transition={{ delay: 2.9, duration: 0.3 }}
             />
             <motion.circle
-              cx="64%"
-              cy="38%"
+              cx="72%"
+              cy="30%"
               r="3"
               fill="#6ad4f2"
               initial={{ scale: 0, opacity: 0 }}
               animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 3.7, duration: 0.3 }}
+              transition={{ delay: 3.5, duration: 0.3 }}
             />
 
             <motion.line
               x1="78%"
               y1="70%"
-              x2="64%"
-              y2="62%"
+              x2="72%"
+              y2="70%"
               stroke="url(#lineGradRight2)"
               strokeWidth="1.5"
               strokeLinecap="round"
               filter="url(#glow)"
               initial={{ pathLength: 0, opacity: 0 }}
               animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
-              transition={{ delay: 3.4, duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              transition={{ delay: 3.4, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             />
             <motion.circle
               cx="78%"
@@ -341,13 +341,13 @@ export default function DealMap() {
               transition={{ delay: 3.3, duration: 0.3 }}
             />
             <motion.circle
-              cx="64%"
-              cy="62%"
+              cx="72%"
+              cy="70%"
               r="3"
               fill="#6ad4f2"
               initial={{ scale: 0, opacity: 0 }}
               animate={isInView ? { scale: 1, opacity: 0.6 } : { scale: 0, opacity: 0 }}
-              transition={{ delay: 4.1, duration: 0.3 }}
+              transition={{ delay: 3.9, duration: 0.3 }}
             />
           </svg>
 
