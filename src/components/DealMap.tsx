@@ -135,7 +135,7 @@ export default function DealMap() {
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-10 items-center">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -152,7 +152,7 @@ export default function DealMap() {
             </DesktopMonitor>
           </motion.div>
 
-          <div className="space-y-5 md:space-y-4">
+          <div className="space-y-5 md:space-y-4 lg:pl-8">
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -183,6 +183,18 @@ export default function DealMap() {
                 </motion.div>
               ))}
             </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.9 }}
+              className="pt-4"
+            >
+              <button className="px-8 py-3.5 bg-black text-white rounded-xl font-semibold hover:bg-gray-900 transition-all hover:scale-105 shadow-lg">
+                Book a Demo
+              </button>
+            </motion.div>
           </div>
         </div>
       </div>
