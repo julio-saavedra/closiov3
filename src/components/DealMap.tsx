@@ -286,9 +286,12 @@ export default function DealMap() {
             className="relative w-full max-w-[580px] mx-auto"
           >
             <DesktopMonitor>
-              <img
-                src="/image copy copy copy copy copy copy copy.png"
-                alt="Deal Map - Policies Submitted Per State"
+              <video
+                src="https://www.dropbox.com/scl/fi/tba2zwhrh4gc6n77c4nat/New-Videos.mp4?rlkey=6m363kxzdljpw8g0zi8ti5hxa&st=wgoieyc1&raw=1"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-auto block"
               />
             </DesktopMonitor>
