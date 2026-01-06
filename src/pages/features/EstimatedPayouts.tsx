@@ -15,16 +15,6 @@ const EstimatedPayouts = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-[#6ad4f2] hover:text-[#6ad4f2]/80 transition-colors mb-8"
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            Back to Home
-          </Link>
-
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-[#6ad4f2] to-white bg-clip-text text-transparent">
             Estimated Payouts
           </h1>
