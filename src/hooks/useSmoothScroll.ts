@@ -78,12 +78,21 @@ export const useSmoothScroll = () => {
       }
     };
 
+    const syncScrollPosition = () => {
+      if (!rafId) {
+        targetScrollY = window.scrollY;
+        currentScrollY = window.scrollY;
+      }
+    };
+
     window.addEventListener('wheel', handleWheel, { passive: false });
     window.addEventListener('keydown', handleKeydown);
+    window.addEventListener('scroll', syncScrollPosition, { passive: true });
 
     return () => {
       window.removeEventListener('wheel', handleWheel);
       window.removeEventListener('keydown', handleKeydown);
+      window.removeEventListener('scroll', syncScrollPosition);
       if (rafId) {
         cancelAnimationFrame(rafId);
       }
