@@ -153,7 +153,8 @@ const VerticalLine: React.FC = () => {
         className="absolute inset-0 bg-white"
         style={{
           width: '19px',
-          transform: 'translateX(-50%)'
+          transform: 'translateX(-50%)',
+          boxShadow: 'none'
         }}
       />
     </div>
@@ -213,12 +214,6 @@ const FeaturedCard: React.FC<{ title: string; description: string; image?: strin
 };
 
 const FeatureGrid: React.FC = () => {
-  const featuredFeature = {
-    title: 'Commission Tracking',
-    description: 'Real-time visibility into your commission structure with automated calculations and transparent breakdowns.',
-    image: '/commission-_closio_website.png',
-  };
-
   const features = [
     {
       title: 'Book of Business',
@@ -229,6 +224,11 @@ const FeatureGrid: React.FC = () => {
       title: 'Team Hierarchy',
       description: 'Visualize your agency structure with clear reporting lines and team performance metrics.',
       image: '/team_hierarchy-_closio_website.png',
+    },
+    {
+      title: 'Commission Tracking',
+      description: 'Real-time visibility into your commission structure with automated calculations and transparent breakdowns.',
+      image: '/commission-_closio_website.png',
     },
     {
       title: 'Dashboard Analytics',
@@ -251,42 +251,59 @@ const FeatureGrid: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-5">
+          <h2 className="text-4xl sm:text-5xl font-bold md:max-w-md">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6ad4f2] to-[#5ac3e1]">
               Core Features
             </span>
           </h2>
-          <p className="text-white/50 text-lg max-w-2xl mx-auto">
+          <p className="text-white/50 text-lg md:max-w-xl md:text-right">
             Purpose-built tools designed specifically for life insurance agents and agencies to streamline workflows and maximize productivity.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:grid-rows-[1fr]">
-          <div className="lg:col-span-1 h-full">
-            <FeaturedCard
-              title={featuredFeature.title}
-              description={featuredFeature.description}
-              image={featuredFeature.image}
-              delay={0}
-            />
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 60, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.8, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              className={`group relative rounded-2xl overflow-hidden bg-[#0d1117] border border-white/[0.08] backdrop-blur-xl ${
+                index === 0 ? 'sm:row-span-2' : ''
+              }`}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6ad4f2]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6 auto-rows-fr">
-            {features.map((feature, index) => (
-              <FeatureCard
-                key={index}
-                title={feature.title}
-                description={feature.description}
-                image={feature.image}
-                imagePosition="top"
-                size="medium"
-                delay={(index + 1) * 0.1}
-                className=""
-              />
-            ))}
-          </div>
+              <div className={`relative ${index === 0 ? 'h-full' : 'h-64'} overflow-hidden`}>
+                {feature.image ? (
+                  <img
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gradient-to-br from-[#1a1f2e] to-[#0d1117] flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-2xl bg-[#6ad4f2]/10 border border-[#6ad4f2]/20" />
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-transparent to-transparent opacity-60" />
+              </div>
+
+              <div className="p-6">
+                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#6ad4f2] transition-colors duration-300">
+                  {feature.title}
+                </h3>
+                <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/70 transition-colors duration-300">
+                  {feature.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
