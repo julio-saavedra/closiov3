@@ -9,7 +9,6 @@ import { InteractiveImageAccordion } from './components/ui/interactive-image-acc
 import DealMap from './components/DealMap';
 import FullWidthVideo from './components/FullWidthVideo';
 import FeatureShowcase from './components/FeatureShowcase';
-import ComparisonTable from './components/ComparisonTable';
 import TestimonialsCarousel from './components/TestimonialsCarousel';
 import FAQAccordion from './components/FAQAccordion';
 import ContactSplit from './components/ContactSplit';
@@ -72,10 +71,6 @@ function HomePage() {
         <FullWidthVideo />
 
         <FeatureShowcase />
-
-        <SectionWrapper>
-          <ComparisonTable />
-        </SectionWrapper>
 
         <SectionWrapper>
           <ContactSplit />
