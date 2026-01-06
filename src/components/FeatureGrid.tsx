@@ -240,18 +240,26 @@ const FeatureGrid: React.FC = () => {
             const Icon = feature.icon;
             const isTopRow = index < 2;
             return (
-              <div
+              <motion.div
                 key={index}
-                className={`relative overflow-hidden backdrop-blur-xl border border-white/10 rounded-2xl ${
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                className={`group relative overflow-hidden backdrop-blur-xl border border-white/10 rounded-2xl transition-all duration-300 hover:border-white/20 ${
                   isTopRow ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-2'
                 }`}
                 style={{
                   background: `linear-gradient(135deg, ${feature.bgColor} 0%, rgba(0, 0, 0, 0.2) 100%)`,
                   boxShadow: 'inset 0 1px 0 0 rgba(255, 255, 255, 0.05), 0 10px 30px rgba(0, 0, 0, 0.3)',
+                  willChange: 'transform',
+                  backfaceVisibility: 'hidden',
+                  transform: 'translateZ(0)',
                 }}
               >
                 <div className="relative p-8 flex flex-col h-full min-h-[340px]">
-                  <div className="w-24 h-24 mb-8">
+                  <div className="w-28 h-28 mb-8 transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-1">
                     <Icon />
                   </div>
 
@@ -264,7 +272,7 @@ const FeatureGrid: React.FC = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
