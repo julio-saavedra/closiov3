@@ -187,7 +187,7 @@ export default function DealMap() {
         </div>
 
         <div className="relative flex items-center justify-center">
-          <div className="hidden lg:flex flex-col gap-6 absolute left-0 top-1/2 -translate-y-1/2 z-20 max-w-[260px]">
+          <div className="hidden lg:flex flex-col gap-8 absolute left-0 top-1/2 -translate-y-1/2 z-20" style={{ width: '220px' }}>
             {leftFacts.map((fact, index) => (
               <motion.div
                 key={fact.title}
@@ -203,7 +203,32 @@ export default function DealMap() {
                     boxShadow: '0 8px 32px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15)',
                   }}
                 >
-                  <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-3 h-[2px] bg-gradient-to-r from-[#6ad4f2] to-transparent" />
+                  <svg
+                    className="absolute top-1/2 -translate-y-1/2 pointer-events-none"
+                    style={{ left: '100%', width: '60px', height: '4px' }}
+                    viewBox="0 0 60 4"
+                    fill="none"
+                    preserveAspectRatio="none"
+                  >
+                    <motion.line
+                      x1="0"
+                      y1="2"
+                      x2="60"
+                      y2="2"
+                      stroke="url(#lineGradientLeft)"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+                      transition={{ delay: 1.2 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
+                    />
+                    <defs>
+                      <linearGradient id="lineGradientLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#6ad4f2" />
+                        <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
                   <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
                   <h4 className="font-semibold text-white text-base mb-1.5">
                     <TypewriterText text={fact.title} delay={800 + index * 400} isVisible={isInView} />
@@ -221,7 +246,7 @@ export default function DealMap() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="relative w-full max-w-[700px] mx-auto lg:mx-0"
+            className="relative w-full max-w-[580px] mx-auto"
           >
             <DesktopMonitor>
               <img
@@ -232,7 +257,7 @@ export default function DealMap() {
             </DesktopMonitor>
           </motion.div>
 
-          <div className="hidden lg:flex flex-col gap-6 absolute right-0 top-1/2 -translate-y-1/2 z-20 max-w-[260px]">
+          <div className="hidden lg:flex flex-col gap-8 absolute right-0 top-1/2 -translate-y-1/2 z-20" style={{ width: '220px' }}>
             {rightFacts.map((fact, index) => (
               <motion.div
                 key={fact.title}
@@ -248,7 +273,32 @@ export default function DealMap() {
                     boxShadow: '0 8px 32px rgba(0,0,0,0.25), 0 2px 8px rgba(0,0,0,0.15)',
                   }}
                 >
-                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-3 h-[2px] bg-gradient-to-l from-[#6ad4f2] to-transparent" />
+                  <svg
+                    className="absolute top-1/2 -translate-y-1/2 pointer-events-none"
+                    style={{ right: '100%', width: '60px', height: '4px' }}
+                    viewBox="0 0 60 4"
+                    fill="none"
+                    preserveAspectRatio="none"
+                  >
+                    <motion.line
+                      x1="60"
+                      y1="2"
+                      x2="0"
+                      y2="2"
+                      stroke="url(#lineGradientRight)"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      initial={{ pathLength: 0, opacity: 0 }}
+                      animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+                      transition={{ delay: 1.4 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
+                    />
+                    <defs>
+                      <linearGradient id="lineGradientRight" x1="100%" y1="0%" x2="0%" y2="0%">
+                        <stop offset="0%" stopColor="#6ad4f2" />
+                        <stop offset="100%" stopColor="#6ad4f2" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
                   <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{fact.number}</span>
                   <h4 className="font-semibold text-white text-base mb-1.5">
                     <TypewriterText text={fact.title} delay={1000 + index * 400} isVisible={isInView} />
