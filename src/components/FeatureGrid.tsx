@@ -151,14 +151,14 @@ const VerticalLine: React.FC = () => {
     >
       <div
         className="absolute inset-0 bg-white/10 blur-xl"
-        style={{ width: '20px', transform: 'translateX(-50%)' }}
+        style={{ width: '40px', transform: 'translateX(-50%)' }}
       />
       <div
         className="absolute inset-0 bg-white"
         style={{
-          width: '5px',
+          width: '20px',
           transform: 'translateX(-50%)',
-          boxShadow: '0 0 12px rgba(255, 255, 255, 0.4), 0 0 25px rgba(255, 255, 255, 0.2)'
+          boxShadow: '0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.2)'
         }}
       />
     </div>
