@@ -145,16 +145,20 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 
 const VerticalLine: React.FC = () => {
   return (
-    <div className="absolute left-[3vw] top-0 h-full pointer-events-none">
+    <div
+      className="absolute left-[3vw] pointer-events-none"
+      style={{ top: '-100px', bottom: '-100px' }}
+    >
       <div
-        className="absolute inset-0 w-8 bg-white/10 blur-xl"
-        style={{ transform: 'translateX(-50%)' }}
+        className="absolute inset-0 bg-white/10 blur-xl"
+        style={{ width: '20px', transform: 'translateX(-50%)' }}
       />
       <div
-        className="absolute inset-0 w-4 bg-white rounded-full"
+        className="absolute inset-0 bg-white"
         style={{
+          width: '3px',
           transform: 'translateX(-50%)',
-          boxShadow: '0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3)'
+          boxShadow: '0 0 12px rgba(255, 255, 255, 0.4), 0 0 25px rgba(255, 255, 255, 0.2)'
         }}
       />
     </div>
