@@ -1,5 +1,73 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+interface Sparkle {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  delay: number;
+  repeatDelay: number;
+}
+
+const SparkleEffect: React.FC<{ isHovered: boolean }> = ({ isHovered }) => {
+  const sparkles = useMemo<Sparkle[]>(() =>
+    Array.from({ length: 14 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 90 + 5,
+      y: Math.random() * 90 + 5,
+      size: Math.random() * 8 + 4,
+      delay: Math.random() * 0.4,
+      repeatDelay: Math.random() * 0.6 + 0.4,
+    })),
+  []);
+
+  return (
+    <AnimatePresence>
+      {isHovered && (
+        <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl z-20">
+          {sparkles.map((sparkle) => (
+            <motion.div
+              key={sparkle.id}
+              initial={{ opacity: 0, scale: 0, rotate: 0 }}
+              animate={{
+                opacity: [0, 1, 1, 0],
+                scale: [0, 1, 1.3, 0],
+                rotate: [0, 90, 180, 270],
+              }}
+              exit={{ opacity: 0, scale: 0 }}
+              transition={{
+                duration: 1,
+                delay: sparkle.delay,
+                ease: 'easeOut',
+                repeat: Infinity,
+                repeatDelay: sparkle.repeatDelay,
+              }}
+              className="absolute"
+              style={{
+                left: `${sparkle.x}%`,
+                top: `${sparkle.y}%`,
+                filter: 'drop-shadow(0 0 3px rgba(255, 255, 255, 0.8))',
+              }}
+            >
+              <svg
+                width={sparkle.size}
+                height={sparkle.size}
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"
+                  fill="white"
+                />
+              </svg>
+            </motion.div>
+          ))}
+        </div>
+      )}
+    </AnimatePresence>
+  );
+};
 
 const BookIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
@@ -164,6 +232,62 @@ const VerticalLine: React.FC = () => {
   );
 };
 
+interface FeatureCardProps {
+  feature: {
+    title: string;
+    description: string;
+    icon: React.FC;
+  };
+  index: number;
+}
+
+const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const Icon = feature.icon;
+  const isTopRow = index < 2;
+  const isLeftSide = index === 0 || index === 2;
+  const slideDirection = isLeftSide ? -100 : 100;
+  const staggerDelay = index * 0.15;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: slideDirection }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{
+        duration: 0.8,
+        delay: staggerDelay,
+        ease: [0.25, 0.1, 0.25, 1],
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`group relative overflow-hidden border border-white/10 rounded-2xl cursor-pointer ${
+        isTopRow ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-2'
+      }`}
+      style={{
+        background: '#000000',
+        willChange: 'transform, opacity',
+      }}
+    >
+      <SparkleEffect isHovered={isHovered} />
+      <div className="relative p-8 flex flex-col h-full min-h-[340px] z-10">
+        <div className="w-28 h-28 mb-8">
+          <Icon />
+        </div>
+
+        <div className="flex-1 flex flex-col">
+          <h3 className="text-2xl font-bold text-white mb-4">
+            {feature.title}
+          </h3>
+          <p className="text-white/60 text-base leading-relaxed">
+            {feature.description}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const FeatureGrid: React.FC = () => {
   const features = [
     {
@@ -215,55 +339,9 @@ const FeatureGrid: React.FC = () => {
         </motion.div>
 
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            const isTopRow = index < 2;
-            const isLeftSide = index === 0 || index === 2;
-            const slideDirection = isLeftSide ? -100 : 100;
-            const staggerDelay = index * 0.15;
-
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: slideDirection }}
-                whileInView={{ opacity: 1, x: 0 }}
-                whileHover={{
-                  scale: 1.02,
-                  boxShadow: '0 0 40px rgba(255, 255, 255, 0.15), 0 0 80px rgba(255, 255, 255, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.2)'
-                }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{
-                  duration: 0.8,
-                  delay: staggerDelay,
-                  ease: [0.25, 0.1, 0.25, 1],
-                  scale: { duration: 0.3, ease: 'easeOut' },
-                  boxShadow: { duration: 0.3, ease: 'easeOut' }
-                }}
-                className={`group relative overflow-hidden border border-white/10 rounded-2xl cursor-pointer ${
-                  isTopRow ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-2'
-                }`}
-                style={{
-                  background: '#000000',
-                  willChange: 'transform, opacity',
-                }}
-              >
-                <div className="relative p-8 flex flex-col h-full min-h-[340px]">
-                  <div className="w-28 h-28 mb-8">
-                    <Icon />
-                  </div>
-
-                  <div className="flex-1 flex flex-col">
-                    <h3 className="text-2xl font-bold text-white mb-4">
-                      {feature.title}
-                    </h3>
-                    <p className="text-white/60 text-base leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+          {features.map((feature, index) => (
+            <FeatureCard key={index} feature={feature} index={index} />
+          ))}
         </div>
       </div>
     </section>
