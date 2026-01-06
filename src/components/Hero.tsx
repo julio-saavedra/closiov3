@@ -114,7 +114,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 4.3 }}
           >
-            The life insurance CRM that takes you from lead to issue paid.
+            Trusted & Used by thousands of agents
           </motion.p>
 
           <FlipButton />
