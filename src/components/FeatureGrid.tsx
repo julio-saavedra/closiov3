@@ -74,7 +74,7 @@ const CommissionIcon: React.FC = () => (
 );
 
 const DashboardIcon: React.FC = () => (
-  <svg viewBox="0 0 200 200" className="w-full h-full group">
+  <svg viewBox="0 0 200 200" className="w-full h-full">
     <line x1="30" y1="50" x2="30" y2="155" stroke="#ffffff" strokeWidth="2" opacity="0.3" />
     <line x1="30" y1="155" x2="175" y2="155" stroke="#ffffff" strokeWidth="2" opacity="0.3" />
 
@@ -82,43 +82,28 @@ const DashboardIcon: React.FC = () => (
     <line x1="30" y1="95" x2="175" y2="95" stroke="#ffffff" strokeWidth="1" opacity="0.1" strokeDasharray="4 4" />
     <line x1="30" y1="120" x2="175" y2="120" stroke="#ffffff" strokeWidth="1" opacity="0.1" strokeDasharray="4 4" />
 
-    <g className="transition-transform duration-300 ease-out group-hover:translate-y-[-3px]">
-      <rect x="40" y="115" width="16" height="40" rx="2" fill="#ffffff" opacity="0.85">
-        <animate attributeName="height" values="40;45;40" dur="2s" repeatCount="indefinite" begin="0s" />
-        <animate attributeName="y" values="115;110;115" dur="2s" repeatCount="indefinite" begin="0s" />
-      </rect>
+    <g>
+      <rect x="40" y="115" width="16" height="40" rx="2" fill="#ffffff" opacity="0.85" />
       <rect x="44" y="112" width="16" height="40" rx="2" fill="#aaaaaa" opacity="0.5" />
     </g>
 
-    <g className="transition-transform duration-300 ease-out group-hover:translate-y-[-5px]">
-      <rect x="65" y="85" width="16" height="70" rx="2" fill="#ffffff" opacity="0.9">
-        <animate attributeName="height" values="70;78;70" dur="2.2s" repeatCount="indefinite" begin="0.2s" />
-        <animate attributeName="y" values="85;77;85" dur="2.2s" repeatCount="indefinite" begin="0.2s" />
-      </rect>
+    <g>
+      <rect x="65" y="85" width="16" height="70" rx="2" fill="#ffffff" opacity="0.9" />
       <rect x="69" y="82" width="16" height="70" rx="2" fill="#aaaaaa" opacity="0.5" />
     </g>
 
-    <g className="transition-transform duration-300 ease-out group-hover:translate-y-[-8px]">
-      <rect x="90" y="55" width="16" height="100" rx="2" fill="#ffffff" opacity="0.95">
-        <animate attributeName="height" values="100;110;100" dur="2.4s" repeatCount="indefinite" begin="0.4s" />
-        <animate attributeName="y" values="55;45;55" dur="2.4s" repeatCount="indefinite" begin="0.4s" />
-      </rect>
+    <g>
+      <rect x="90" y="55" width="16" height="100" rx="2" fill="#ffffff" opacity="0.95" />
       <rect x="94" y="52" width="16" height="100" rx="2" fill="#aaaaaa" opacity="0.5" />
     </g>
 
-    <g className="transition-transform duration-300 ease-out group-hover:translate-y-[-4px]">
-      <rect x="115" y="95" width="16" height="60" rx="2" fill="#ffffff" opacity="0.85">
-        <animate attributeName="height" values="60;66;60" dur="2.1s" repeatCount="indefinite" begin="0.3s" />
-        <animate attributeName="y" values="95;89;95" dur="2.1s" repeatCount="indefinite" begin="0.3s" />
-      </rect>
+    <g>
+      <rect x="115" y="95" width="16" height="60" rx="2" fill="#ffffff" opacity="0.85" />
       <rect x="119" y="92" width="16" height="60" rx="2" fill="#aaaaaa" opacity="0.5" />
     </g>
 
-    <g className="transition-transform duration-300 ease-out group-hover:translate-y-[-6px]">
-      <rect x="140" y="70" width="16" height="85" rx="2" fill="#ffffff" opacity="0.9">
-        <animate attributeName="height" values="85;93;85" dur="2.3s" repeatCount="indefinite" begin="0.5s" />
-        <animate attributeName="y" values="70;62;70" dur="2.3s" repeatCount="indefinite" begin="0.5s" />
-      </rect>
+    <g>
+      <rect x="140" y="70" width="16" height="85" rx="2" fill="#ffffff" opacity="0.9" />
       <rect x="144" y="67" width="16" height="85" rx="2" fill="#aaaaaa" opacity="0.5" />
     </g>
 
@@ -130,9 +115,8 @@ const DashboardIcon: React.FC = () => (
       opacity="0.4"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="transition-opacity duration-300 group-hover:opacity-70"
     />
-    <circle cx="48" cy="110" r="3" fill="#ffffff" opacity="0.6" className="transition-all duration-300 group-hover:r-4" />
+    <circle cx="48" cy="110" r="3" fill="#ffffff" opacity="0.6" />
     <circle cx="73" cy="82" r="3" fill="#ffffff" opacity="0.6" />
     <circle cx="98" cy="52" r="3" fill="#ffffff" opacity="0.6" />
     <circle cx="123" cy="90" r="3" fill="#ffffff" opacity="0.6" />
@@ -237,12 +221,23 @@ const FeatureGrid: React.FC = () => {
             return (
               <div
                 key={index}
-                className={`group relative overflow-hidden border border-white/10 rounded-2xl bg-[#0a0a0a] ${
+                className={`group relative overflow-hidden border border-white/10 rounded-2xl ${
                   isTopRow ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-2'
                 }`}
+                style={{
+                  background: '#000000',
+                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden',
+                }}
               >
                 <div className="relative p-8 flex flex-col h-full min-h-[340px]">
-                  <div className="w-28 h-28 mb-8 transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-translate-y-1">
+                  <div
+                    className="w-28 h-28 mb-8"
+                    style={{
+                      transform: 'translateZ(0)',
+                      backfaceVisibility: 'hidden',
+                    }}
+                  >
                     <Icon />
                   </div>
 
