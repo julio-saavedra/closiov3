@@ -61,6 +61,19 @@ const Hero: React.FC = () => {
       id="hero"
       className="min-h-screen w-full text-white flex items-center relative overflow-visible"
     >
+      <div
+        className="absolute inset-0 z-[1] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '60px 60px',
+          maskImage: 'radial-gradient(ellipse 80% 60% at center, rgba(0,0,0,0.4) 0%, transparent 70%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 80% 60% at center, rgba(0,0,0,0.4) 0%, transparent 70%)',
+        }}
+      />
+
       <motion.div
         className="absolute right-0 top-[8%] w-[70%] lg:w-[75%] h-auto z-20 hidden md:block"
         initial={{ opacity: 0, x: 100, scale: 0.95 }}
