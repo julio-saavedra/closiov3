@@ -30,6 +30,7 @@ import TestimonialSection from './components/TestimonialSection';
 import SplashScreen from './components/SplashScreen';
 import OverlappingBanner from './components/OverlappingBanner';
 import ScrollToTop from './components/ScrollToTop';
+import ProductCards from './components/ProductCards';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 
 function HomePage() {
@@ -47,6 +48,8 @@ function HomePage() {
         <SectionWrapper className="!bg-black !bg-none pt-32">
           <ValueProps />
         </SectionWrapper>
+
+        <ProductCards />
 
         <SectionWrapper className="!bg-black !bg-none">
           <FeatureGrid />
