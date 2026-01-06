@@ -17,7 +17,7 @@ const VerticalLine: React.FC = () => {
            L 440 -50"
         fill="none"
         stroke="white"
-        strokeWidth="16"
+        strokeWidth="20"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
