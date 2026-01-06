@@ -145,40 +145,19 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 
 const VerticalLine: React.FC = () => {
   return (
-    <svg
-      viewBox="0 0 500 900"
-      className="absolute left-0 top-0 h-full w-[30vw] pointer-events-none"
-      style={{ filter: 'drop-shadow(0 0 15px rgba(255, 255, 255, 0.25))' }}
-      preserveAspectRatio="none"
-    >
-      <defs>
-        <filter id="featureLineGlow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-      <path
-        d="M 50 -50 L 50 950"
-        fill="none"
-        stroke="white"
-        strokeWidth="16"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        filter="url(#featureLineGlow)"
+    <div className="absolute left-[3vw] top-0 h-full pointer-events-none">
+      <div
+        className="absolute inset-0 w-8 bg-white/10 blur-xl"
+        style={{ transform: 'translateX(-50%)' }}
       />
-      <path
-        d="M 50 -50 L 50 950"
-        fill="none"
-        stroke="rgba(255, 255, 255, 0.15)"
-        strokeWidth="32"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        style={{ filter: 'blur(12px)' }}
+      <div
+        className="absolute inset-0 w-4 bg-white rounded-full"
+        style={{
+          transform: 'translateX(-50%)',
+          boxShadow: '0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3)'
+        }}
       />
-    </svg>
+    </div>
   );
 };
 
