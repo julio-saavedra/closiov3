@@ -31,6 +31,7 @@ import TestimonialSection from './components/TestimonialSection';
 import SplashScreen from './components/SplashScreen';
 import OverlappingBanner from './components/OverlappingBanner';
 import ScrollToTop from './components/ScrollToTop';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
 
 function HomePage() {
   return (
@@ -88,6 +89,7 @@ function HomePage() {
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
+  useSmoothScroll();
 
   return (
     <>
