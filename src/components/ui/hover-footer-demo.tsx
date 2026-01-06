@@ -87,8 +87,8 @@ function HoverFooter() {
 
           {/* Features */}
           <div className="lg:col-span-3">
-            <h4 className="text-white text-base font-semibold mb-5 tracking-tight">
-              Features
+            <h4 className="text-gray-400 text-base font-semibold mb-5 tracking-tight">
+              /Features
             </h4>
             <ul className="space-y-2.5 text-sm">
               {footerLinks[0].links.map((link) => (
@@ -106,8 +106,8 @@ function HoverFooter() {
 
           {/* Resources */}
           <div className="lg:col-span-3">
-            <h4 className="text-white text-base font-semibold mb-5 tracking-tight">
-              Resources
+            <h4 className="text-gray-400 text-base font-semibold mb-5 tracking-tight">
+              /Resources
             </h4>
             <ul className="space-y-2.5 text-sm">
               {footerLinks[1].links.map((link) => (
@@ -125,8 +125,8 @@ function HoverFooter() {
 
           {/* Follow Us */}
           <div className="lg:col-span-3">
-            <h4 className="text-white text-base font-semibold mb-5 tracking-tight">
-              Follow Us
+            <h4 className="text-gray-400 text-base font-semibold mb-5 tracking-tight">
+              /Follow Us
             </h4>
             <ul className="space-y-3 text-sm">
               {socialLinks.map((item, i) => (
