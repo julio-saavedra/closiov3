@@ -227,13 +227,19 @@ const FeatureGrid: React.FC = () => {
                 key={index}
                 initial={{ opacity: 0, x: slideDirection }}
                 whileInView={{ opacity: 1, x: 0 }}
+                whileHover={{
+                  scale: 1.02,
+                  boxShadow: '0 0 40px rgba(255, 255, 255, 0.15), 0 0 80px rgba(255, 255, 255, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.2)'
+                }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{
                   duration: 0.8,
                   delay: staggerDelay,
                   ease: [0.25, 0.1, 0.25, 1],
+                  scale: { duration: 0.3, ease: 'easeOut' },
+                  boxShadow: { duration: 0.3, ease: 'easeOut' }
                 }}
-                className={`group relative overflow-hidden border border-white/10 rounded-2xl ${
+                className={`group relative overflow-hidden border border-white/10 rounded-2xl cursor-pointer ${
                   isTopRow ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-2'
                 }`}
                 style={{
