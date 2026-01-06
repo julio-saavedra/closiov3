@@ -172,68 +172,98 @@ const VerticalLine: React.FC = () => {
   );
 };
 
+const FeaturedCard: React.FC<{ title: string; description: string; image?: string; delay?: number }> = ({
+  title,
+  description,
+  image,
+  delay = 0,
+}) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 60, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="relative group"
+    >
+      <div
+        className="absolute -inset-[1px] bg-gradient-to-r from-[#6ad4f2]/40 via-[#8bb4d9]/40 to-[#d593c0]/40 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+        style={{
+          filter: 'blur(20px)',
+        }}
+      />
+      <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-[#0d1117]/90 via-[#0d1117]/80 to-[#0d1117]/90 backdrop-blur-2xl border border-white/20">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#6ad4f2]/50 to-transparent" />
+
+        <div className="relative h-[400px] overflow-hidden">
+          {image ? (
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-[#1a1f2e] to-[#0d1117] flex items-center justify-center">
+              <div className="w-32 h-32 rounded-2xl bg-[#6ad4f2]/10 border border-[#6ad4f2]/20" />
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d1117] via-transparent to-transparent opacity-80" />
+        </div>
+
+        <div className="relative p-8">
+          <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#6ad4f2] transition-colors duration-300">
+            {title}
+          </h3>
+          <p className="text-white/60 text-base leading-relaxed group-hover:text-white/80 transition-colors duration-300">
+            {description}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 const FeatureGrid: React.FC = () => {
+  const featuredFeature = {
+    title: 'Commission Tracking',
+    description: 'Real-time visibility into your commission structure with automated calculations and transparent breakdowns.',
+    image: '/commission-_closio_website.png',
+  };
+
   const features = [
-    {
-      title: 'Commission Tracking',
-      description: 'Real-time visibility into your commission structure with automated calculations and transparent breakdowns.',
-      image: '/commission-_closio_website.png',
-      imagePosition: 'top' as const,
-      size: 'large' as const,
-      className: 'md:col-span-2 lg:col-span-1 lg:row-span-2',
-    },
     {
       title: 'Book of Business',
       description: 'Manage your entire portfolio of clients and policies in one organized, searchable database.',
       image: '/bofb-_closio_website.png',
-      imagePosition: 'top' as const,
-      size: 'small' as const,
-      className: '',
     },
     {
       title: 'Team Hierarchy',
       description: 'Visualize your agency structure with clear reporting lines and team performance metrics.',
       image: '/team_hierarchy-_closio_website.png',
-      imagePosition: 'top' as const,
-      size: 'small' as const,
-      className: '',
     },
     {
       title: 'Dashboard Analytics',
       description: 'Powerful insights and metrics to track performance, close rates, and revenue at a glance.',
       image: '/main_dashboard-_closio_website.png',
-      imagePosition: 'top' as const,
-      size: 'medium' as const,
-      className: 'lg:col-span-2',
-    },
-    {
-      title: 'Estimated Payouts',
-      description: 'Forecast your earnings with intelligent payout predictions based on your pipeline.',
-      image: '/estimated_payouts-_closio_website.png',
-      imagePosition: 'top' as const,
-      size: 'medium' as const,
-      className: '',
     },
     {
       title: 'Leaderboard',
       description: 'Track top performers and motivate your team with real-time rankings and achievements.',
       image: '/leaderboard-_closio_website.png',
-      imagePosition: 'top' as const,
-      size: 'medium' as const,
-      className: 'lg:col-span-2',
     },
   ];
 
   return (
     <section className="relative py-20 bg-black overflow-hidden">
       <VerticalLine />
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-14"
+          className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-5">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6ad4f2] to-[#5ac3e1]">
@@ -245,19 +275,30 @@ const FeatureGrid: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:auto-rows-[minmax(200px,auto)]">
-          {features.map((feature, index) => (
-            <FeatureCard
-              key={index}
-              title={feature.title}
-              description={feature.description}
-              image={feature.image}
-              imagePosition={feature.imagePosition}
-              size={feature.size}
-              delay={index * 0.1}
-              className={feature.className}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-1 lg:row-span-2">
+            <FeaturedCard
+              title={featuredFeature.title}
+              description={featuredFeature.description}
+              image={featuredFeature.image}
+              delay={0}
             />
-          ))}
+          </div>
+
+          <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {features.map((feature, index) => (
+              <FeatureCard
+                key={index}
+                title={feature.title}
+                description={feature.description}
+                image={feature.image}
+                imagePosition="top"
+                size="medium"
+                delay={(index + 1) * 0.1}
+                className=""
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
