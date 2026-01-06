@@ -205,14 +205,15 @@ const MedalsIcon: React.FC = () => (
 const VerticalLine: React.FC = () => {
   return (
     <div
-      className="absolute left-[3vw] top-0 pointer-events-none"
+      className="absolute left-[3vw] pointer-events-none"
+      style={{ top: '-100px', bottom: '-100px' }}
     >
       <div
-        className="bg-white"
+        className="absolute inset-0 bg-white"
         style={{
-          width: '20px',
-          height: '20px',
+          width: '19px',
           transform: 'translateX(-50%)',
+          boxShadow: 'none'
         }}
       />
     </div>
