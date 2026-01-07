@@ -67,12 +67,12 @@ const MobileSection: React.FC = () => {
     <section id="mobile" className="min-h-[600px] h-[600px] sm:h-[650px] lg:h-[700px] xl:h-[750px] overflow-visible relative">
       <AngularLine />
       <Robot3DContainer />
-      <div className="absolute inset-0 flex items-center justify-end">
-        <div className="relative w-full h-full flex items-center justify-end pr-0 py-8">
+      <div className="absolute inset-0 flex items-end justify-end">
+        <div className="relative w-full h-full flex items-end justify-end pr-0 pb-0">
           <video
             ref={videoRef}
             src="https://www.dropbox.com/scl/fi/zsaggxsj4klujoec2wcam/Brand-new-copy-of-mobile-art-video.mp4?rlkey=4983zhcsv1roi1hbudhyum4df&st=ruomps0s&raw=1"
-            className="h-[90%] w-auto max-w-none object-contain drop-shadow-2xl"
+            className="h-[70%] w-auto max-w-none object-contain drop-shadow-2xl"
             muted
             playsInline
             preload="auto"
