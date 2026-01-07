@@ -1,6 +1,119 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+const FloatingIOLogo: React.FC = () => {
+  return (
+    <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-full max-w-md flex items-center justify-center gap-8 z-50">
+      <motion.div
+        className="relative"
+        animate={{
+          y: [0, -12, 0],
+          rotate: [0, -2, 0]
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        <div className="relative w-28 h-28 flex items-center justify-center">
+          <div className="absolute inset-0 rounded-full border-4 border-transparent bg-gradient-to-br from-[#35E7E0] via-[#6ad4f2] to-[#FF6B35] bg-clip-border blur-sm opacity-60"
+               style={{
+                 background: 'linear-gradient(135deg, #35E7E0 0%, #6ad4f2 50%, #FF6B35 100%)',
+                 WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                 WebkitMaskComposite: 'xor',
+                 maskComposite: 'exclude',
+                 padding: '4px'
+               }}
+          />
+          <div className="absolute inset-1 rounded-full bg-gradient-to-br from-[#0A0F1A] to-[#1A2428] backdrop-blur-xl border border-white/10" />
+
+          <span
+            className="relative z-10 text-5xl font-bold italic text-transparent bg-clip-text bg-gradient-to-br from-[#35E7E0] to-[#6ad4f2]"
+            style={{
+              WebkitTextStroke: '1px rgba(53, 231, 224, 0.3)',
+              filter: 'drop-shadow(0 0 20px rgba(53, 231, 224, 0.6))'
+            }}
+          >
+            I
+          </span>
+
+          <div className="absolute top-full left-1/2 -translate-x-1/2 w-1 h-64 pointer-events-none">
+            <div className="absolute inset-0 bg-gradient-to-b from-[#35E7E0] via-[#35E7E0]/40 to-transparent opacity-70 blur-sm" />
+            <div className="absolute inset-0 w-0.5 left-1/2 -translate-x-1/2 bg-gradient-to-b from-[#35E7E0] via-[#35E7E0]/30 to-transparent" />
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-b from-white via-[#35E7E0] to-transparent"
+              animate={{
+                opacity: [0.3, 0.7, 0.3],
+                scaleY: [1, 1.2, 1]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </div>
+        </div>
+      </motion.div>
+
+      <motion.div
+        className="relative"
+        animate={{
+          y: [0, -15, 0],
+          rotate: [0, 2, 0]
+        }}
+        transition={{
+          duration: 4.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.5
+        }}
+      >
+        <div className="relative w-28 h-28 flex items-center justify-center">
+          <div className="absolute inset-0 rounded-full border-4 border-transparent bg-gradient-to-br from-[#FF6B35] via-[#6ad4f2] to-[#35E7E0] bg-clip-border blur-sm opacity-60"
+               style={{
+                 background: 'linear-gradient(135deg, #FF6B35 0%, #6ad4f2 50%, #35E7E0 100%)',
+                 WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                 WebkitMaskComposite: 'xor',
+                 maskComposite: 'exclude',
+                 padding: '4px'
+               }}
+          />
+          <div className="absolute inset-1 rounded-full bg-gradient-to-br from-[#0A0F1A] to-[#1A2428] backdrop-blur-xl border border-white/10" />
+
+          <span
+            className="relative z-10 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#FF6B35] to-[#6ad4f2]"
+            style={{
+              WebkitTextStroke: '1px rgba(255, 107, 53, 0.3)',
+              filter: 'drop-shadow(0 0 20px rgba(255, 107, 53, 0.6))'
+            }}
+          >
+            O
+          </span>
+
+          <div className="absolute top-full left-1/2 -translate-x-1/2 w-1 h-64 pointer-events-none">
+            <div className="absolute inset-0 bg-gradient-to-b from-[#FF6B35] via-[#6ad4f2]/40 to-transparent opacity-70 blur-sm" />
+            <div className="absolute inset-0 w-0.5 left-1/2 -translate-x-1/2 bg-gradient-to-b from-[#FF6B35] via-[#6ad4f2]/30 to-transparent" />
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-b from-white via-[#FF6B35] to-transparent"
+              animate={{
+                opacity: [0.3, 0.7, 0.3],
+                scaleY: [1, 1.2, 1]
+              }}
+              transition={{
+                duration: 2.3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
 const VerticalLine: React.FC = () => {
   return (
     <svg
@@ -55,6 +168,7 @@ const ValueProps: React.FC = () => {
 
           <div className="order-1 flex items-center justify-start">
             <div className="relative w-full max-w-5xl">
+              <FloatingIOLogo />
               {/* Mac Monitor Frame */}
               <div className="relative">
                 {/* Monitor Bezel - Ultra Slim */}
@@ -84,23 +198,8 @@ const ValueProps: React.FC = () => {
 
                 {/* Monitor Stand */}
                 <div className="relative mt-2 flex flex-col items-center">
-                  {/* Stand Neck with IO Logo */}
-                  <div className="relative w-16 h-20 bg-gradient-to-r from-[#D8D8D8] via-white to-[#D8D8D8] rounded-b-lg shadow-xl flex items-center justify-center">
-                    {/* IO Logo */}
-                    <div className="text-black font-bold text-xl tracking-tight flex items-center gap-1">
-                      <span
-                        className="italic"
-                        style={{
-                          WebkitTextStroke: '0.5px black',
-                          WebkitTextFillColor: 'transparent',
-                          fontStyle: 'italic'
-                        }}
-                      >
-                        I
-                      </span>
-                      <span>O</span>
-                    </div>
-                  </div>
+                  {/* Stand Neck */}
+                  <div className="relative w-16 h-20 bg-gradient-to-r from-[#D8D8D8] via-white to-[#D8D8D8] rounded-b-lg shadow-xl"></div>
                   {/* Stand Base - Circular */}
                   <div className="w-52 h-[10px] bg-gradient-to-r from-[#C0C0C0] via-white to-[#C0C0C0] rounded-full shadow-2xl -mt-1"></div>
                   {/* Shadow under base */}
