@@ -4,19 +4,18 @@ import Robot3D from './Robot3D';
 const AngularLine: React.FC = () => {
   return (
     <svg
-      viewBox="0 0 1000 800"
-      className="absolute right-0 w-[50vw] pointer-events-none"
-      style={{ top: '15%', height: 'calc(100% + 100px)' }}
+      viewBox="0 0 1000 1000"
+      className="absolute inset-0 w-full h-full pointer-events-none"
       preserveAspectRatio="none"
     >
       <path
-        d="M 1050 100
-           L 600 100
-           Q 530 100, 530 170
-           L 530 900"
+        d="M 1050 300
+           L 580 300
+           Q 550 300, 550 330
+           L 550 1050"
         fill="none"
         stroke="white"
-        strokeWidth="20"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
