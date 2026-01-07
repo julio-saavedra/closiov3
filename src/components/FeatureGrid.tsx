@@ -155,95 +155,95 @@ const HierarchyIcon: React.FC = () => (
         <stop offset="100%" stopColor="#0f0f1a" />
       </linearGradient>
       <filter id="hierShadow" x="-30%" y="-30%" width="160%" height="160%">
-        <feDropShadow dx="2" dy="3" stdDeviation="3" floodColor="#000" floodOpacity="0.4" />
+        <feDropShadow dx="1" dy="2" stdDeviation="2" floodColor="#000" floodOpacity="0.4" />
       </filter>
       <filter id="hierMonitorShadow" x="-20%" y="-20%" width="140%" height="140%">
         <feDropShadow dx="4" dy="6" stdDeviation="8" floodColor="#000" floodOpacity="0.5" />
       </filter>
       <clipPath id="hierScreenClip">
-        <rect x="20" y="15" width="160" height="100" rx="2" />
+        <rect x="10" y="5" width="180" height="120" rx="2" />
       </clipPath>
     </defs>
 
     <g filter="url(#hierMonitorShadow)">
-      <rect x="12" y="8" width="176" height="115" rx="8" fill="url(#hierMonitorFrame)" />
-      <rect x="14" y="10" width="172" height="111" rx="6" fill="url(#hierMonitorBezel)" />
-      <rect x="18" y="14" width="164" height="103" rx="3" fill="url(#hierScreenGlow)" />
-      <rect x="14" y="10" width="172" height="2" fill="#6b7280" opacity="0.3" />
+      <rect x="2" y="-2" width="196" height="130" rx="8" fill="url(#hierMonitorFrame)" />
+      <rect x="4" y="0" width="192" height="126" rx="6" fill="url(#hierMonitorBezel)" />
+      <rect x="8" y="4" width="184" height="118" rx="3" fill="url(#hierScreenGlow)" />
+      <rect x="4" y="0" width="192" height="2" fill="#6b7280" opacity="0.3" />
     </g>
 
-    <rect x="92" y="123" width="16" height="22" fill="url(#hierStandNeck)" />
-    <rect x="93" y="123" width="2" height="22" fill="#6b7280" opacity="0.2" />
+    <rect x="92" y="128" width="16" height="24" fill="url(#hierStandNeck)" />
+    <rect x="93" y="128" width="2" height="24" fill="#6b7280" opacity="0.2" />
 
-    <ellipse cx="100" cy="148" rx="32" ry="8" fill="url(#hierStandBase)" />
-    <ellipse cx="100" cy="146" rx="28" ry="6" fill="#4b5563" />
-    <ellipse cx="100" cy="145" rx="24" ry="4" fill="#374151" />
+    <ellipse cx="100" cy="158" rx="36" ry="9" fill="url(#hierStandBase)" />
+    <ellipse cx="100" cy="156" rx="32" ry="7" fill="#4b5563" />
+    <ellipse cx="100" cy="155" rx="28" ry="5" fill="#374151" />
 
     <g clipPath="url(#hierScreenClip)">
-      <g transform="translate(22, 18) scale(0.58)">
+      <g transform="translate(12, 8) scale(0.88)">
         <g filter="url(#hierShadow)">
-          <rect x="80" y="20" width="40" height="30" rx="4" fill="url(#hierBoxFront)" />
-          <path d="M80 20 L120 20 L128 12 L88 12 Z" fill="url(#hierBoxTop)" />
-          <path d="M120 20 L120 50 L128 42 L128 12 Z" fill="url(#hierBoxSide)" />
-          <rect x="80" y="20" width="2" height="30" fill="#ffffff" opacity="0.3" />
-          <ellipse cx="105" cy="35" rx="9" ry="15" fill="#ffffff" opacity="0.08" />
+          <rect x="80" y="8" width="40" height="28" rx="4" fill="url(#hierBoxFront)" />
+          <path d="M80 8 L120 8 L127 2 L87 2 Z" fill="url(#hierBoxTop)" />
+          <path d="M120 8 L120 36 L127 30 L127 2 Z" fill="url(#hierBoxSide)" />
+          <rect x="80" y="8" width="2" height="28" fill="#ffffff" opacity="0.3" />
+          <ellipse cx="102" cy="22" rx="8" ry="12" fill="#ffffff" opacity="0.08" />
         </g>
 
-        <line x1="100" y1="55" x2="100" y2="72" stroke="#ffffff" strokeWidth="3" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="65" y1="72" x2="135" y2="72" stroke="#ffffff" strokeWidth="3" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="65" y1="72" x2="65" y2="85" stroke="#ffffff" strokeWidth="3" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="135" y1="72" x2="135" y2="85" stroke="#ffffff" strokeWidth="3" strokeOpacity="0.9" strokeLinecap="round" />
+        <line x1="100" y1="40" x2="100" y2="52" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
+        <line x1="55" y1="52" x2="145" y2="52" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
+        <line x1="55" y1="52" x2="55" y2="62" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
+        <line x1="145" y1="52" x2="145" y2="62" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
 
         <g filter="url(#hierShadow)">
-          <rect x="45" y="85" width="40" height="30" rx="4" fill="url(#hierBoxFront)" />
-          <path d="M45 85 L85 85 L93 77 L53 77 Z" fill="url(#hierBoxTop)" />
-          <path d="M85 85 L85 115 L93 107 L93 77 Z" fill="url(#hierBoxSide)" />
-          <rect x="45" y="85" width="2" height="30" fill="#ffffff" opacity="0.3" />
-          <ellipse cx="70" cy="100" rx="9" ry="15" fill="#ffffff" opacity="0.08" />
-        </g>
-
-        <g filter="url(#hierShadow)">
-          <rect x="115" y="85" width="40" height="30" rx="4" fill="url(#hierBoxFront)" />
-          <path d="M115 85 L155 85 L163 77 L123 77 Z" fill="url(#hierBoxTop)" />
-          <path d="M155 85 L155 115 L163 107 L163 77 Z" fill="url(#hierBoxSide)" />
-          <rect x="115" y="85" width="2" height="30" fill="#ffffff" opacity="0.3" />
-          <ellipse cx="140" cy="100" rx="9" ry="15" fill="#ffffff" opacity="0.08" />
-        </g>
-
-        <line x1="65" y1="120" x2="65" y2="137" stroke="#ffffff" strokeWidth="3" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="135" y1="120" x2="135" y2="137" stroke="#ffffff" strokeWidth="3" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="40" y1="137" x2="160" y2="137" stroke="#ffffff" strokeWidth="3" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="40" y1="137" x2="40" y2="150" stroke="#ffffff" strokeWidth="3" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="100" y1="137" x2="100" y2="150" stroke="#ffffff" strokeWidth="3" strokeOpacity="0.9" strokeLinecap="round" />
-        <line x1="160" y1="137" x2="160" y2="150" stroke="#ffffff" strokeWidth="3" strokeOpacity="0.9" strokeLinecap="round" />
-
-        <g filter="url(#hierShadow)">
-          <rect x="20" y="150" width="40" height="28" rx="3" fill="url(#hierBoxFront)" />
-          <path d="M20 150 L60 150 L68 142 L28 142 Z" fill="url(#hierBoxTop)" />
-          <path d="M60 150 L60 178 L68 170 L68 142 Z" fill="url(#hierBoxSide)" />
-          <rect x="20" y="150" width="2" height="28" fill="#ffffff" opacity="0.3" />
-          <ellipse cx="45" cy="164" rx="8" ry="14" fill="#ffffff" opacity="0.08" />
+          <rect x="35" y="62" width="40" height="28" rx="4" fill="url(#hierBoxFront)" />
+          <path d="M35 62 L75 62 L82 56 L42 56 Z" fill="url(#hierBoxTop)" />
+          <path d="M75 62 L75 90 L82 84 L82 56 Z" fill="url(#hierBoxSide)" />
+          <rect x="35" y="62" width="2" height="28" fill="#ffffff" opacity="0.3" />
+          <ellipse cx="57" cy="76" rx="8" ry="12" fill="#ffffff" opacity="0.08" />
         </g>
 
         <g filter="url(#hierShadow)">
-          <rect x="80" y="150" width="40" height="28" rx="3" fill="url(#hierBoxFront)" />
-          <path d="M80 150 L120 150 L128 142 L88 142 Z" fill="url(#hierBoxTop)" />
-          <path d="M120 150 L120 178 L128 170 L128 142 Z" fill="url(#hierBoxSide)" />
-          <rect x="80" y="150" width="2" height="28" fill="#ffffff" opacity="0.3" />
-          <ellipse cx="105" cy="164" rx="8" ry="14" fill="#ffffff" opacity="0.08" />
+          <rect x="125" y="62" width="40" height="28" rx="4" fill="url(#hierBoxFront)" />
+          <path d="M125 62 L165 62 L172 56 L132 56 Z" fill="url(#hierBoxTop)" />
+          <path d="M165 62 L165 90 L172 84 L172 56 Z" fill="url(#hierBoxSide)" />
+          <rect x="125" y="62" width="2" height="28" fill="#ffffff" opacity="0.3" />
+          <ellipse cx="147" cy="76" rx="8" ry="12" fill="#ffffff" opacity="0.08" />
+        </g>
+
+        <line x1="55" y1="94" x2="55" y2="104" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
+        <line x1="145" y1="94" x2="145" y2="104" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
+        <line x1="25" y1="104" x2="175" y2="104" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
+        <line x1="25" y1="104" x2="25" y2="114" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
+        <line x1="100" y1="104" x2="100" y2="114" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
+        <line x1="175" y1="104" x2="175" y2="114" stroke="#ffffff" strokeWidth="2.5" strokeOpacity="0.9" strokeLinecap="round" />
+
+        <g filter="url(#hierShadow)">
+          <rect x="5" y="114" width="40" height="24" rx="3" fill="url(#hierBoxFront)" />
+          <path d="M5 114 L45 114 L52 108 L12 108 Z" fill="url(#hierBoxTop)" />
+          <path d="M45 114 L45 138 L52 132 L52 108 Z" fill="url(#hierBoxSide)" />
+          <rect x="5" y="114" width="2" height="24" fill="#ffffff" opacity="0.3" />
+          <ellipse cx="27" cy="126" rx="7" ry="10" fill="#ffffff" opacity="0.08" />
         </g>
 
         <g filter="url(#hierShadow)">
-          <rect x="140" y="150" width="40" height="28" rx="3" fill="url(#hierBoxFront)" />
-          <path d="M140 150 L180 150 L188 142 L148 142 Z" fill="url(#hierBoxTop)" />
-          <path d="M180 150 L180 178 L188 170 L188 142 Z" fill="url(#hierBoxSide)" />
-          <rect x="140" y="150" width="2" height="28" fill="#ffffff" opacity="0.3" />
-          <ellipse cx="165" cy="164" rx="8" ry="14" fill="#ffffff" opacity="0.08" />
+          <rect x="80" y="114" width="40" height="24" rx="3" fill="url(#hierBoxFront)" />
+          <path d="M80 114 L120 114 L127 108 L87 108 Z" fill="url(#hierBoxTop)" />
+          <path d="M120 114 L120 138 L127 132 L127 108 Z" fill="url(#hierBoxSide)" />
+          <rect x="80" y="114" width="2" height="24" fill="#ffffff" opacity="0.3" />
+          <ellipse cx="102" cy="126" rx="7" ry="10" fill="#ffffff" opacity="0.08" />
+        </g>
+
+        <g filter="url(#hierShadow)">
+          <rect x="155" y="114" width="40" height="24" rx="3" fill="url(#hierBoxFront)" />
+          <path d="M155 114 L195 114 L202 108 L162 108 Z" fill="url(#hierBoxTop)" />
+          <path d="M195 114 L195 138 L202 132 L202 108 Z" fill="url(#hierBoxSide)" />
+          <rect x="155" y="114" width="2" height="24" fill="#ffffff" opacity="0.3" />
+          <ellipse cx="177" cy="126" rx="7" ry="10" fill="#ffffff" opacity="0.08" />
         </g>
       </g>
     </g>
 
-    <rect x="18" y="14" width="164" height="103" rx="3" fill="transparent" stroke="#ffffff" strokeWidth="0.5" opacity="0.1" />
+    <rect x="8" y="4" width="184" height="118" rx="3" fill="transparent" stroke="#ffffff" strokeWidth="0.5" opacity="0.1" />
   </svg>
 );
 
@@ -596,7 +596,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
     >
       <SparkleEffect isHovered={isHovered} />
       <div className="relative p-8 flex flex-col h-full min-h-[340px] z-10">
-        <div className="w-36 h-36 mb-8">
+        <div className="w-44 h-44 mb-6">
           <Icon />
         </div>
 
