@@ -43,7 +43,8 @@ function HoverFooter() {
         { label: "Privacy Policy", href: "/privacy-policy" },
         { label: "Terms & Conditions", href: "/terms-conditions" },
         { label: "FAQs", href: "/faqs" },
-        { label: "Contact Us", href: "/contact-us" },
+        { label: "Contact Us", href: "/contact" },
+        { label: "Schedule a Demo", href: "/schedule" },
       ],
     },
   ];

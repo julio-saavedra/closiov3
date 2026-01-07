@@ -25,7 +25,8 @@ const DOCS_ITEMS = [
   { path: '/privacy-policy', label: 'Privacy Policy' },
   { path: '/terms-conditions', label: 'Terms & Conditions' },
   { path: '/faqs', label: 'FAQs' },
-  { path: '/contact', label: 'Contact Us' }
+  { path: '/contact', label: 'Contact Us' },
+  { path: '/schedule', label: 'Schedule a Demo' }
 ];
 
 const Navbar: React.FC<NavbarProps> = () => {
