@@ -41,7 +41,7 @@ const StaticIO3D: React.FC = () => {
     rim.position.set(-2.0, 2.2, -2.8);
     scene.add(rim);
 
-    const accentLight1 = new THREE.PointLight(0x35E7E0, 2.0, 15);
+    const accentLight1 = new THREE.PointLight(0x6ad4f2, 2.0, 15);
     accentLight1.position.set(3, 1, 3);
     scene.add(accentLight1);
 
@@ -49,7 +49,7 @@ const StaticIO3D: React.FC = () => {
     accentLight2.position.set(-3, -1, 2);
     scene.add(accentLight2);
 
-    const TEAL = new THREE.Color("#00CFC8");
+    const TEAL = new THREE.Color("#6ad4f2");
     const WHITE = new THREE.Color("#FFFFFF");
 
     function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.3, rough = 0.2) {
