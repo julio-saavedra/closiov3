@@ -55,13 +55,13 @@ const GlassRingsSection = () => {
     const group = new THREE.Group();
     scene.add(group);
 
-    const linkGeo = new THREE.TorusGeometry(0.45, 0.12, 24, 48);
+    const linkGeo = new THREE.TorusGeometry(0.55, 0.14, 24, 48);
 
     const chainLinks: THREE.Mesh[] = [];
 
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 11; i++) {
       const link = new THREE.Mesh(linkGeo, metalMaterial.clone());
-      link.position.y = 2.2 - (i * 0.75);
+      link.position.y = 2.8 - (i * 0.6);
 
       if (i % 2 === 0) {
         link.rotation.y = Math.PI / 2;
@@ -88,26 +88,44 @@ const GlassRingsSection = () => {
 
     let t = 0;
     let animationId: number;
+    let isHovering = false;
+
+    const handleCanvasMouseEnter = () => {
+      isHovering = true;
+    };
+
+    const handleCanvasMouseLeave = () => {
+      isHovering = false;
+    };
+
+    canvas.addEventListener('mouseenter', handleCanvasMouseEnter);
+    canvas.addEventListener('mouseleave', handleCanvasMouseLeave);
 
     const animate = () => {
       t += 0.01;
 
-      const swing = Math.sin(t * 0.6) * 0.15;
-      const twist = Math.sin(t * 0.4) * 0.1;
+      const baseSwing = Math.sin(t * 0.6) * 0.15;
+      const baseTwist = Math.sin(t * 0.4) * 0.1;
+
+      const hoverSway = isHovering ? Math.sin(t * 2.5) * 0.25 : 0;
+      const hoverIntensity = isHovering ? 1.6 : 1.0;
 
       chainLinks.forEach((link, i) => {
         const factor = 1 - (i / chainLinks.length);
         const delay = i * 0.15;
 
+        const swing = baseSwing * hoverIntensity;
+        const twist = baseTwist * hoverIntensity;
+
         if (i % 2 === 0) {
-          link.rotation.x = swing * factor + Math.sin(t * 0.5 + delay) * 0.08;
-          link.rotation.z = twist * factor * 0.6;
+          link.rotation.x = swing * factor + Math.sin(t * 0.5 + delay) * 0.08 + hoverSway * factor * 0.4;
+          link.rotation.z = twist * factor * 0.6 + hoverSway * factor * 0.3;
         } else {
-          link.rotation.z = swing * factor + Math.sin(t * 0.5 + delay) * 0.08;
-          link.rotation.x = twist * factor * 0.6;
+          link.rotation.z = swing * factor + Math.sin(t * 0.5 + delay) * 0.08 + hoverSway * factor * 0.4;
+          link.rotation.x = twist * factor * 0.6 + hoverSway * factor * 0.3;
         }
 
-        link.position.x = Math.sin(t * 0.5 + delay) * 0.05 * factor;
+        link.position.x = (Math.sin(t * 0.5 + delay) * 0.05 + hoverSway * 0.08) * factor;
       });
 
       renderer.render(scene, camera);
@@ -134,6 +152,8 @@ const GlassRingsSection = () => {
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
+      canvas.removeEventListener('mouseenter', handleCanvasMouseEnter);
+      canvas.removeEventListener('mouseleave', handleCanvasMouseLeave);
       window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationId);
       resizeObserver.disconnect();
