@@ -58,34 +58,76 @@ const SparkleEffect: React.FC<{ isHovered: boolean }> = ({ isHovered }) => {
 };
 
 const BookIcon: React.FC = () => (
-  <svg viewBox="0 0 200 200" className="w-full h-full">
+  <svg viewBox="0 0 96 96" role="img" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <defs>
-      <linearGradient id="bookFront" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#e5e7eb" />
-        <stop offset="50%" stopColor="#d1d5db" />
-        <stop offset="100%" stopColor="#9ca3af" />
+      <linearGradient id="bb_bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="rgba(0,210,255,0.16)"/>
+        <stop offset="1" stopColor="rgba(255,255,255,0.06)"/>
       </linearGradient>
-      <linearGradient id="bookTop" x1="0%" y1="100%" x2="0%" y2="0%">
-        <stop offset="0%" stopColor="#d1d5db" />
-        <stop offset="100%" stopColor="#f3f4f6" />
+      <linearGradient id="bb_stroke" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="rgba(255,255,255,0.60)"/>
+        <stop offset="1" stopColor="rgba(0,210,255,0.52)"/>
       </linearGradient>
-      <linearGradient id="bookSide" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#9ca3af" />
-        <stop offset="100%" stopColor="#6b7280" />
-      </linearGradient>
-      <filter id="bookShadow" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="4" dy="6" stdDeviation="8" floodColor="#000" floodOpacity="0.4" />
+      <filter id="bb_shadow" x="-40%" y="-40%" width="180%" height="180%">
+        <feDropShadow dx="0" dy="14" stdDeviation="10" floodColor="rgba(0,0,0,0.55)"/>
+        <feDropShadow dx="0" dy="4" stdDeviation="3" floodColor="rgba(0,210,255,0.18)"/>
       </filter>
+
+      <linearGradient id="bb_shine" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stopColor="rgba(255,255,255,0)"/>
+        <stop offset="0.5" stopColor="rgba(255,255,255,0.18)"/>
+        <stop offset="1" stopColor="rgba(255,255,255,0)"/>
+      </linearGradient>
+      <clipPath id="bb_clip">
+        <rect x="10" y="10" width="76" height="76" rx="18"/>
+      </clipPath>
     </defs>
-    <g filter="url(#bookShadow)">
-      <path d="M50 45 L50 155 L145 155 L145 45 Z" fill="url(#bookFront)" />
-      <path d="M50 45 L145 45 L160 30 L65 30 Z" fill="url(#bookTop)" />
-      <path d="M145 45 L145 155 L160 140 L160 30 Z" fill="url(#bookSide)" />
+
+    <g filter="url(#bb_shadow)">
+      <g className="bb-float">
+        <rect x="10" y="10" width="76" height="76" rx="18" fill="url(#bb_bg)" stroke="url(#bb_stroke)" strokeWidth="2"/>
+
+        <g clipPath="url(#bb_clip)">
+          <rect className="bb-sweep" x="-30" y="10" width="28" height="76" fill="url(#bb_shine)" transform="skewX(-18)"/>
+        </g>
+
+        <g className="bb-book">
+          <path d="M26 30 C26 26, 30 24, 34 24 H66 C70 24, 72 27, 72 31 V70 C72 72, 70 74, 68 74 H34
+                   C30 74, 26 72, 26 68 Z"
+                fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" strokeWidth="2"/>
+          <path className="bb-spine" d="M34 24 V74" stroke="rgba(0,210,255,0.55)" strokeWidth="3" strokeLinecap="round"/>
+        </g>
+
+        <g className="bb-cards">
+          <rect x="40" y="34" width="26" height="10" rx="4" fill="rgba(255,255,255,0.14)"/>
+          <rect x="40" y="48" width="30" height="10" rx="4" fill="rgba(255,255,255,0.16)"/>
+          <rect x="40" y="62" width="22" height="10" rx="4" fill="rgba(255,255,255,0.12)"/>
+          <circle cx="44" cy="39" r="2" fill="rgba(0,210,255,0.80)"/>
+          <circle cx="44" cy="53" r="2" fill="rgba(0,210,255,0.80)"/>
+          <circle cx="44" cy="67" r="2" fill="rgba(0,210,255,0.80)"/>
+          <rect className="bb-cardshine" x="36" y="30" width="10" height="50" fill="rgba(255,255,255,0.14)" opacity="0" transform="skewX(-18)"/>
+        </g>
+      </g>
     </g>
-    <rect x="62" y="62" width="70" height="5" fill="#6b7280" opacity="0.5" rx="2" />
-    <rect x="62" y="78" width="58" height="5" fill="#6b7280" opacity="0.4" rx="2" />
-    <rect x="62" y="94" width="64" height="5" fill="#6b7280" opacity="0.35" rx="2" />
-    <rect x="62" y="110" width="52" height="5" fill="#6b7280" opacity="0.3" rx="2" />
+
+    <style>
+      {`
+        .bb-float { transform-origin: 48px 48px; animation: float5 4.0s ease-in-out infinite; }
+        .bb-sweep { animation: sweep 3.3s ease-in-out infinite; }
+        .bb-book  { transform-origin: 34px 48px; animation: page 3.2s ease-in-out infinite; }
+        .bb-cardshine { animation: cardSweep 2.8s ease-in-out infinite; }
+
+        @keyframes float5 { 0%,100%{ transform: translateY(0px) } 50%{ transform: translateY(-2px) } }
+        @keyframes sweep { 0%{ transform: translateX(-10px) skewX(-18deg) } 60%{ transform: translateX(130px) skewX(-18deg)} 100%{ transform: translateX(130px) skewX(-18deg)} }
+        @keyframes page  { 0%,100%{ transform: rotate(-0.6deg) } 50%{ transform: rotate(0.6deg) } }
+        @keyframes cardSweep{
+          0%{ transform: translateX(-10px) skewX(-18deg); opacity:0; }
+          25%{ opacity:0.14; }
+          55%{ transform: translateX(90px) skewX(-18deg); opacity:0; }
+          100%{ transform: translateX(90px) skewX(-18deg); opacity:0; }
+        }
+      `}
+    </style>
   </svg>
 );
 
