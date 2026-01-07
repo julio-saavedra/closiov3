@@ -74,19 +74,14 @@ const Robot3D = () => {
       envMapIntensity: 1.4,
     });
 
-    const whiteGloss = new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color('#FFFFFF'),
-      metalness: 0.1,
-      roughness: 0.12,
-      clearcoat: 1.0,
-      clearcoatRoughness: 0.08,
-      transmission: 0.0,
-      thickness: 0.4,
-      ior: 1.6,
-      envMapIntensity: 2.0,
-      emissive: new THREE.Color('#FFFFFF'),
-      emissiveIntensity: 0.22,
-      reflectivity: 0.95,
+    const blackMetal = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color('#000000'),
+      metalness: 0.9,
+      roughness: 0.2,
+      clearcoat: 0.8,
+      clearcoatRoughness: 0.1,
+      envMapIntensity: 1.5,
+      reflectivity: 0.85,
     });
 
     const eyeGlowL = new THREE.MeshStandardMaterial({
@@ -107,8 +102,8 @@ const Robot3D = () => {
 
     const robot = new THREE.Group();
     scene.add(robot);
-    robot.position.set(0, 0.0, 0);
-    robot.rotation.y = -0.2;
+    robot.position.set(-5, 0.0, 0);
+    robot.rotation.y = Math.PI / 2;
 
     const bodyGeo = new THREE.BoxGeometry(2.2, 2.6, 1.25);
     const body = new THREE.Mesh(bodyGeo, whiteMetalBright);
@@ -200,10 +195,10 @@ const Robot3D = () => {
     robot.add(emblem);
 
     const createItalicHollowI = () => {
-      const width = 0.42;
-      const height = 1.15;
+      const width = 0.56;
+      const height = 0.9;
       const stroke = 0.13;
-      const slant = 0.35;
+      const slant = 0.0;
       const depth = 0.16;
 
       const outer = new THREE.Shape();
@@ -239,7 +234,7 @@ const Robot3D = () => {
 
     const createHollowO = () => {
       const outerRadius = 0.45;
-      const innerRadius = 0.30;
+      const innerRadius = 0.26;
       const depth = 0.16;
 
       const outerShape = new THREE.Shape();
@@ -260,51 +255,13 @@ const Robot3D = () => {
       return g;
     };
 
-    const iMesh = new THREE.Mesh(createItalicHollowI(), whiteGloss);
-    const oMesh = new THREE.Mesh(createHollowO(), whiteGloss);
+    const iMesh = new THREE.Mesh(createItalicHollowI(), blackMetal);
+    const oMesh = new THREE.Mesh(createHollowO(), blackMetal);
 
-    iMesh.position.set(-0.42, 0.0, 0.0);
-    oMesh.position.set(0.42, 0.0, 0.0);
+    iMesh.position.set(-0.5, 0.0, 0.0);
+    oMesh.position.set(0.5, 0.0, 0.0);
 
     emblem.add(iMesh, oMesh);
-
-    const backPlate = new THREE.Mesh(
-      new THREE.PlaneGeometry(1.85, 1.3),
-      new THREE.MeshBasicMaterial({
-        color: 0x35E7E0,
-        transparent: true,
-        opacity: 0.1,
-        depthWrite: false,
-      })
-    );
-    backPlate.position.set(0, 0, -0.13);
-    emblem.add(backPlate);
-
-    const glowRingI = new THREE.Mesh(
-      new THREE.RingGeometry(0.4, 0.43, 64),
-      new THREE.MeshBasicMaterial({
-        color: 0x35E7E0,
-        transparent: true,
-        opacity: 0.18,
-        side: THREE.DoubleSide,
-        depthWrite: false,
-      })
-    );
-    glowRingI.position.set(-0.42, 0, -0.11);
-    emblem.add(glowRingI);
-
-    const glowRingO = new THREE.Mesh(
-      new THREE.RingGeometry(0.55, 0.58, 64),
-      new THREE.MeshBasicMaterial({
-        color: 0xFF64D8,
-        transparent: true,
-        opacity: 0.18,
-        side: THREE.DoubleSide,
-        depthWrite: false,
-      })
-    );
-    glowRingO.position.set(0.42, 0, -0.11);
-    emblem.add(glowRingO);
 
     const fit = () => {
       const w = canvas.clientWidth;
@@ -355,27 +312,55 @@ const Robot3D = () => {
 
     let t = 0;
     let animationId: number;
+    let scrollProgress = 0;
+    let targetScrollProgress = 0;
+
+    const updateScrollProgress = () => {
+      const mobileSection = document.getElementById('mobile');
+      if (!mobileSection) return;
+
+      const rect = mobileSection.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const sectionTop = rect.top;
+      const sectionHeight = rect.height;
+
+      if (sectionTop < viewportHeight && sectionTop + sectionHeight > 0) {
+        const visibleTop = Math.max(0, viewportHeight - sectionTop);
+        const visibleHeight = Math.min(sectionHeight, visibleTop);
+        targetScrollProgress = Math.min(1, visibleHeight / (sectionHeight * 0.6));
+      } else {
+        targetScrollProgress = 0;
+      }
+    };
+
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
 
     const animate = () => {
       t += 0.01;
 
-      raycaster.setFromCamera(pointer, camera);
-      const hits = raycaster.intersectObjects([iMesh, oMesh, head, visor], true);
-      const isHover = hits.length > 0;
-      if (isHover !== hover) hover = isHover;
+      scrollProgress += (targetScrollProgress - scrollProgress) * 0.08;
 
+      const walkInX = -5 + scrollProgress * 5;
+      const walkInRotY = Math.PI / 2 - scrollProgress * (Math.PI / 2 + 0.3);
+
+      robot.position.x = walkInX;
       robot.position.y = Math.sin(t * 0.9) * 0.06;
+
       head.rotation.y = Math.sin(t * 0.6) * 0.1;
 
-      robot.rotation.y += (-0.2 + tx - robot.rotation.y) * 0.08;
-      robot.rotation.x += (-ty - robot.rotation.x) * 0.08;
+      if (scrollProgress >= 0.99) {
+        robot.rotation.y += (-0.3 + tx - robot.rotation.y) * 0.08;
+        robot.rotation.x += (-ty - robot.rotation.x) * 0.08;
+      } else {
+        robot.rotation.y = walkInRotY;
+        robot.rotation.x = 0;
+      }
 
-      const targetEm = hover ? 0.32 : 0.22;
-      iMesh.material.emissiveIntensity += (targetEm - iMesh.material.emissiveIntensity) * 0.12;
-      oMesh.material.emissiveIntensity += (targetEm - oMesh.material.emissiveIntensity) * 0.12;
-
-      glowRingI.material.opacity = 0.18 + Math.sin(t * 1.5) * 0.08;
-      glowRingO.material.opacity = 0.18 + Math.cos(t * 1.5) * 0.08;
+      raycaster.setFromCamera(pointer, camera);
+      const hits = raycaster.intersectObjects([iMesh, oMesh, head, visor], true);
+      const isHover = hits.length > 0 && scrollProgress >= 0.99;
+      if (isHover !== hover) hover = isHover;
 
       eyeL.material.opacity += ((hover ? 0.38 : 0.28) - eyeL.material.opacity) * 0.12;
       eyeR.material.opacity += ((hover ? 0.38 : 0.28) - eyeR.material.opacity) * 0.12;
@@ -396,6 +381,7 @@ const Robot3D = () => {
     return () => {
       window.removeEventListener('mousemove', updatePointer);
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', updateScrollProgress);
       cancelAnimationFrame(animationId);
       resizeObserver.disconnect();
       renderer.dispose();
