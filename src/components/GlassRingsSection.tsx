@@ -25,7 +25,7 @@ const GlassRingsSection = () => {
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 80);
-    camera.position.set(0, 0.35, 8.5);
+    camera.position.set(0, 0, 9);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
     const env = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
@@ -43,54 +43,33 @@ const GlassRingsSection = () => {
     rim.position.set(-2, 2, -2);
     scene.add(rim);
 
-    const C_TEAL = new THREE.Color("#37E6E0");
-    const C_WHITE = new THREE.Color("#FFFFFF");
-
-    const makeGlass = (tint: THREE.Color, emissiveStrength = 0.40) => new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color("#FFFFFF"),
-      metalness: 0.0,
-      roughness: 0.04,
-      transmission: 1.0,
-      thickness: 1.5,
-      ior: 1.52,
-      transparent: true,
-      opacity: 1.0,
-      clearcoat: 1.0,
-      clearcoatRoughness: 0.05,
-      envMapIntensity: 2.0,
-      specularIntensity: 1.2,
-      emissive: tint,
-      emissiveIntensity: emissiveStrength
+    const metalMaterial = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color("#E8EEF5"),
+      metalness: 0.95,
+      roughness: 0.15,
+      envMapIntensity: 1.5,
+      clearcoat: 0.8,
+      clearcoatRoughness: 0.2,
     });
 
     const group = new THREE.Group();
     scene.add(group);
 
-    const topRingGeo = new THREE.TorusGeometry(1.4, 0.18, 64, 100);
-    const ringTop = new THREE.Mesh(topRingGeo, makeGlass(C_TEAL, 0.45));
-    ringTop.position.set(0, 1.8, 0);
-    group.add(ringTop);
+    const linkGeo = new THREE.TorusGeometry(0.45, 0.12, 24, 48);
 
-    const middleRingGeo = new THREE.TorusGeometry(0.9, 0.12, 64, 100);
-    const ringMiddle = new THREE.Mesh(middleRingGeo, makeGlass(C_WHITE, 0.38));
-    ringMiddle.position.set(0, 0.35, 0);
-    group.add(ringMiddle);
+    const chainLinks: THREE.Mesh[] = [];
 
-    const bottomRingGeo = new THREE.TorusGeometry(1.4, 0.18, 64, 100);
-    const ringBottom = new THREE.Mesh(bottomRingGeo, makeGlass(C_TEAL, 0.45));
-    ringBottom.position.set(0, -1.1, 0);
-    group.add(ringBottom);
+    for (let i = 0; i < 7; i++) {
+      const link = new THREE.Mesh(linkGeo, metalMaterial.clone());
+      link.position.y = 2.2 - (i * 0.75);
 
-    const chainGeo = new THREE.CylinderGeometry(0.06, 0.06, 0.6, 16);
-    const chainMat = makeGlass(C_WHITE, 0.28);
+      if (i % 2 === 0) {
+        link.rotation.y = Math.PI / 2;
+      }
 
-    const chain1 = new THREE.Mesh(chainGeo, chainMat);
-    chain1.position.set(0, 1.15, 0);
-    group.add(chain1);
-
-    const chain2 = new THREE.Mesh(chainGeo, chainMat);
-    chain2.position.set(0, -0.35, 0);
-    group.add(chain2);
+      chainLinks.push(link);
+      group.add(link);
+    }
 
     const fit = () => {
       const w = canvas.clientWidth;
@@ -100,8 +79,7 @@ const GlassRingsSection = () => {
       camera.updateProjectionMatrix();
 
       const isMobile = w < 900;
-      group.position.x = isMobile ? 0 : 0;
-      group.scale.setScalar(isMobile ? 0.75 : 0.95);
+      group.scale.setScalar(isMobile ? 0.7 : 1.0);
     };
 
     const resizeObserver = new ResizeObserver(fit);
@@ -112,21 +90,25 @@ const GlassRingsSection = () => {
     let animationId: number;
 
     const animate = () => {
-      t += 0.008;
+      t += 0.01;
 
-      const swing = Math.sin(t * 0.7) * 0.12;
+      const swing = Math.sin(t * 0.6) * 0.15;
+      const twist = Math.sin(t * 0.4) * 0.1;
 
-      ringTop.rotation.x = swing;
-      ringTop.rotation.z = Math.cos(t * 0.5) * 0.08;
+      chainLinks.forEach((link, i) => {
+        const factor = 1 - (i / chainLinks.length);
+        const delay = i * 0.15;
 
-      ringMiddle.rotation.x = swing * 0.8;
-      ringMiddle.rotation.z = Math.cos(t * 0.5 + 0.3) * 0.06;
+        if (i % 2 === 0) {
+          link.rotation.x = swing * factor + Math.sin(t * 0.5 + delay) * 0.08;
+          link.rotation.z = twist * factor * 0.6;
+        } else {
+          link.rotation.z = swing * factor + Math.sin(t * 0.5 + delay) * 0.08;
+          link.rotation.x = twist * factor * 0.6;
+        }
 
-      ringBottom.rotation.x = swing * 0.6;
-      ringBottom.rotation.z = Math.cos(t * 0.5 + 0.6) * 0.05;
-
-      chain1.rotation.z = swing * 0.5;
-      chain2.rotation.z = swing * 0.4;
+        link.position.x = Math.sin(t * 0.5 + delay) * 0.05 * factor;
+      });
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(animate);
@@ -156,10 +138,8 @@ const GlassRingsSection = () => {
       cancelAnimationFrame(animationId);
       resizeObserver.disconnect();
       renderer.dispose();
-      topRingGeo.dispose();
-      middleRingGeo.dispose();
-      bottomRingGeo.dispose();
-      chainGeo.dispose();
+      linkGeo.dispose();
+      metalMaterial.dispose();
     };
   }, []);
 
@@ -170,14 +150,14 @@ const GlassRingsSection = () => {
 
           <div className="relative z-10 space-y-6">
             <div className="inline-block">
-              <span className="text-[#37E6E0] text-sm font-semibold tracking-wider uppercase bg-[#37E6E0]/10 px-4 py-2 rounded-full border border-[#37E6E0]/20">
+              <span className="text-slate-300 text-sm font-semibold tracking-wider uppercase bg-slate-200/10 px-4 py-2 rounded-full border border-slate-200/20">
                 Secure & Reliable Platform
               </span>
             </div>
 
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
               <span className="block text-white">Built by Experts</span>
-              <span className="block bg-gradient-to-r from-[#37E6E0] to-[#FF63D8] bg-clip-text text-transparent">
+              <span className="block text-slate-200">
                 Built for You
               </span>
             </h2>
@@ -189,8 +169,8 @@ const GlassRingsSection = () => {
 
             <div className="space-y-4 pt-4">
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#37E6E0]/20 to-[#37E6E0]/5 flex items-center justify-center border border-[#37E6E0]/20 group-hover:border-[#37E6E0]/40 transition-all">
-                  <div className="w-2 h-2 rounded-full bg-[#37E6E0]"></div>
+                <div className="w-12 h-12 rounded-xl bg-slate-200/10 flex items-center justify-center border border-slate-200/20 group-hover:border-slate-200/40 transition-all">
+                  <div className="w-2 h-2 rounded-full bg-slate-200"></div>
                 </div>
                 <div>
                   <h3 className="text-white font-semibold text-lg mb-1">Bank-Level Security</h3>
@@ -199,8 +179,8 @@ const GlassRingsSection = () => {
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FF63D8]/20 to-[#FF63D8]/5 flex items-center justify-center border border-[#FF63D8]/20 group-hover:border-[#FF63D8]/40 transition-all">
-                  <div className="w-2 h-2 rounded-full bg-[#FF63D8]"></div>
+                <div className="w-12 h-12 rounded-xl bg-slate-200/10 flex items-center justify-center border border-slate-200/20 group-hover:border-slate-200/40 transition-all">
+                  <div className="w-2 h-2 rounded-full bg-slate-200"></div>
                 </div>
                 <div>
                   <h3 className="text-white font-semibold text-lg mb-1">Expert Team Support</h3>
@@ -209,7 +189,7 @@ const GlassRingsSection = () => {
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-slate-200/20 to-slate-200/5 flex items-center justify-center border border-slate-200/20 group-hover:border-slate-200/40 transition-all">
+                <div className="w-12 h-12 rounded-xl bg-slate-200/10 flex items-center justify-center border border-slate-200/20 group-hover:border-slate-200/40 transition-all">
                   <div className="w-2 h-2 rounded-full bg-slate-200"></div>
                 </div>
                 <div>
