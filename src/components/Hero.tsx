@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import HeroBackground3D from './HeroBackground3D';
+import MacBookPro3D from './MacBookPro3D';
 
 const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, delay = 0 }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -83,14 +84,7 @@ const Hero: React.FC = () => {
         animate={{ opacity: 1, x: 0, scale: 1 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 3.1 }}
       >
-        <img
-          src="/transparent_hero_photo.png"
-          alt="Closio Dashboard"
-          className="w-full h-auto object-contain drop-shadow-2xl"
-          style={{
-            filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5))',
-          }}
-        />
+        <MacBookPro3D />
       </motion.div>
 
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-30 py-32 lg:py-0">
