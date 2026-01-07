@@ -27,7 +27,7 @@ const AngularLine: React.FC = () => {
 
 const Robot3DContainer: React.FC = () => {
   return (
-    <div className="absolute left-[60px] sm:left-[80px] lg:left-[100px] top-[50%] -translate-y-1/2 w-[200px] sm:w-[240px] lg:w-[280px] h-[300px] sm:h-[350px] lg:h-[400px] pointer-events-none">
+    <div className="absolute left-[60px] sm:left-[80px] lg:left-[100px] top-[48%] -translate-y-1/2 w-[200px] sm:w-[240px] lg:w-[280px] h-[350px] sm:h-[400px] lg:h-[450px] pointer-events-none">
       <Robot3D />
     </div>
   );
@@ -63,7 +63,7 @@ const MobileSection: React.FC = () => {
   }, [hasPlayed]);
 
   return (
-    <section id="mobile" className="h-[450px] sm:h-[500px] lg:h-[550px] overflow-hidden relative">
+    <section id="mobile" className="h-[500px] sm:h-[550px] lg:h-[600px] overflow-visible relative">
       <AngularLine />
       <Robot3DContainer />
       <div className="absolute inset-0 flex items-start justify-end pt-0">

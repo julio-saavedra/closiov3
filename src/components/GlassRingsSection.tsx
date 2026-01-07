@@ -164,8 +164,8 @@ const GlassRingsSection = () => {
 
     const parallax = () => {
       if (!isHovering) {
-        targetX *= 0.92;
-        targetY *= 0.92;
+        targetX += (0 - targetX) * 0.08;
+        targetY += (0 - targetY) * 0.08;
       }
 
       group.rotation.y += (targetX - group.rotation.y) * 0.05;
