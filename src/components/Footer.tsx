@@ -56,7 +56,11 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-black/60 backdrop-blur-xl border-t border-white/10 relative overflow-hidden">
+    <footer className="bg-black/60 backdrop-blur-xl relative overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#6ad4f2] to-transparent opacity-80" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent opacity-60" />
+      <div className="absolute top-[-8px] left-0 right-0 h-[20px] bg-gradient-to-r from-transparent via-[#6ad4f2]/30 to-transparent blur-md" />
+      <div className="absolute top-0 left-0 right-0 h-[40px] bg-gradient-to-b from-[#6ad4f2]/10 to-transparent" />
       <div className="max-w-[calc(100vw-12rem)] mx-auto px-6 py-16">
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">

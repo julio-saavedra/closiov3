@@ -70,7 +70,7 @@ const StaticIO3D: React.FC = () => {
 
     const io3D = new THREE.Group();
     scene.add(io3D);
-    io3D.position.set(-1.8, -2.3, 0.0);
+    io3D.position.set(-1.8, -2.0, 0.0);
 
     function createItalicHollowI({
       width = 0.38,
@@ -140,8 +140,8 @@ const StaticIO3D: React.FC = () => {
     const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.5, height: 1.3, stroke: 0.14, depth: 0.15 }), solidMaterial(TEAL, 0.4, 0.2));
     const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.26, depth: 0.15, segments: 256 }), solidMaterial(WHITE, 0.3, 0.2));
 
-    iMesh.position.set(-0.50, 0.0, 0.0);
-    oMesh.position.set(0.52, 0.0, 0.0);
+    iMesh.position.set(-0.65, 0.0, 0.0);
+    oMesh.position.set(0.65, 0.0, 0.0);
 
     io.add(iMesh, oMesh);
 
