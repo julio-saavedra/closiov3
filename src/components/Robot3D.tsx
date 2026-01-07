@@ -305,7 +305,7 @@ const Robot3D = () => {
 
       const x = (cx - rect.left) / rect.width - 0.5;
       const y = (cy - rect.top) / rect.height - 0.5;
-      targetRotY = -0.3 + x * 0.55;
+      targetRotY = -0.3 - x * 0.55;
       targetRotX = -y * 0.42;
     };
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
