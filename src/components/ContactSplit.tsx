@@ -255,7 +255,7 @@ const ContactSplit = React.memo(() => {
                       <button
                         type="submit"
                         disabled={status === 'loading'}
-                        className="px-5 py-3 bg-white text-[#6ad4f2] font-semibold rounded-lg hover:bg-white/90 hover:shadow-lg hover:shadow-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm"
+                        className="px-5 py-3 bg-white text-black font-semibold rounded-lg hover:bg-white/90 hover:shadow-lg hover:shadow-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm"
                       >
                         {status === 'loading' ? (
                           <span className="flex items-center justify-center gap-2">
