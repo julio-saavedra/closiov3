@@ -23,8 +23,8 @@ const GlassRingsSection = () => {
     renderer.toneMappingExposure = 1.05;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 80);
-    camera.position.set(0, 0.35, 6.2);
+    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 80);
+    camera.position.set(0, 0, 7.5);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
     const env = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
@@ -70,26 +70,26 @@ const GlassRingsSection = () => {
     const geo = new THREE.TorusGeometry(1, 0.16, 48, 220);
 
     const ring1 = new THREE.Mesh(geo, makeGlass(C_TEAL, 0.32));
-    ring1.scale.set(1.45, 1.45, 1.45);
+    ring1.scale.set(1.2, 1.2, 1.2);
     ring1.rotation.set(0.55, 0.25, 0.1);
-    ring1.position.set(1.8, 0.2, 0);
+    ring1.position.set(0.8, 0.3, 0);
     group.add(ring1);
 
     const ring2 = new THREE.Mesh(geo, makeGlass(C_PINK, 0.28));
-    ring2.scale.set(1.05, 1.05, 1.05);
+    ring2.scale.set(0.9, 0.9, 0.9);
     ring2.rotation.set(-0.35, 0.9, -0.2);
-    ring2.position.set(2.35, -0.65, -0.2);
+    ring2.position.set(1.2, -0.5, -0.2);
     group.add(ring2);
 
     const ring3 = new THREE.Mesh(geo, makeGlass(C_GRAY, 0.18));
-    ring3.scale.set(1.8, 1.8, 1.8);
+    ring3.scale.set(1.5, 1.5, 1.5);
     ring3.rotation.set(0.15, -0.55, 0.55);
-    ring3.position.set(0.9, 0.95, -0.35);
+    ring3.position.set(0.2, 0.8, -0.35);
     group.add(ring3);
 
     const glowMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.06 });
     const glow1 = new THREE.Mesh(new THREE.PlaneGeometry(10, 6), glowMat.clone());
-    glow1.position.set(1.6, 0.1, -2.2);
+    glow1.position.set(0.5, 0.1, -2.2);
     group.add(glow1);
 
     const fit = () => {
@@ -100,8 +100,8 @@ const GlassRingsSection = () => {
       camera.updateProjectionMatrix();
 
       const isMobile = w < 900;
-      group.position.x = isMobile ? 1.1 : 0.9;
-      group.scale.setScalar(isMobile ? 0.85 : 1.0);
+      group.position.x = isMobile ? 0 : 0;
+      group.scale.setScalar(isMobile ? 0.7 : 0.85);
     };
 
     const resizeObserver = new ResizeObserver(fit);
