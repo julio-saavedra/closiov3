@@ -8,13 +8,16 @@ interface TypewriterTextProps {
   delay: number;
   className?: string;
   isGradient?: boolean;
+  skipAnimation?: boolean;
 }
 
-const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className = '', isGradient = false }) => {
-  const [displayedText, setDisplayedText] = useState('');
+const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className = '', isGradient = false, skipAnimation = false }) => {
+  const [displayedText, setDisplayedText] = useState(skipAnimation ? text : '');
   const [showCursor, setShowCursor] = useState(false);
 
   useEffect(() => {
+    if (skipAnimation) return;
+
     const startTimeout = setTimeout(() => {
       setShowCursor(true);
       let currentIndex = 0;
@@ -33,7 +36,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className 
     }, delay);
 
     return () => clearTimeout(startTimeout);
-  }, [text, delay]);
+  }, [text, delay, skipAnimation]);
 
   return (
     <span className={`inline-block ${className}`}>
@@ -51,7 +54,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className 
   );
 };
 
-const FlipButton: React.FC = () => {
+const FlipButton: React.FC<{ skipAnimation?: boolean }> = ({ skipAnimation = false }) => {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
 
@@ -64,9 +67,9 @@ const FlipButton: React.FC = () => {
     <motion.button
       onClick={handleClick}
       className="demo-btn relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl overflow-hidden z-30 group"
-      initial={{ opacity: 0, y: 20, scale: 0.9 }}
+      initial={skipAnimation ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 20, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, delay: 5.8, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: skipAnimation ? 0 : 0.6, delay: skipAnimation ? 0 : 5.8, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)" }}
       whileTap={{ scale: 0.98 }}
       onHoverStart={() => setIsHovered(true)}
@@ -93,6 +96,10 @@ const FlipButton: React.FC = () => {
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLElement>(null);
+  const [hasAnimated, setHasAnimated] = useState(() => {
+    return sessionStorage.getItem('heroAnimationPlayed') === 'true';
+  });
+
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"]
@@ -100,6 +107,16 @@ const Hero: React.FC = () => {
 
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
+
+  useEffect(() => {
+    if (!hasAnimated) {
+      const timer = setTimeout(() => {
+        sessionStorage.setItem('heroAnimationPlayed', 'true');
+        setHasAnimated(true);
+      }, 6500);
+      return () => clearTimeout(timer);
+    }
+  }, [hasAnimated]);
 
   return (
     <section
@@ -115,9 +132,9 @@ const Hero: React.FC = () => {
         <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl lg:max-w-2xl">
           <motion.span
             className="text-xs sm:text-sm uppercase tracking-[0.2em] text-neutral-500 font-medium mb-6 relative"
-            initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+            initial={hasAnimated ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 0, y: 20, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 1, delay: 3.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: hasAnimated ? 0 : 1, delay: hasAnimated ? 0 : 3.2, ease: [0.16, 1, 0.3, 1] }}
           >
             CLOS<em className="italic">I</em>O WAS BUILT FOR YOU
           </motion.span>
@@ -128,6 +145,7 @@ const Hero: React.FC = () => {
                 text="Close More."
                 delay={3100}
                 className="text-white"
+                skipAnimation={hasAnimated}
               />
             </span>
             <span
@@ -140,20 +158,21 @@ const Hero: React.FC = () => {
                 text="Close Smarter."
                 delay={4100}
                 isGradient={true}
+                skipAnimation={hasAnimated}
               />
             </span>
           </h1>
 
           <motion.p
             className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-md leading-relaxed mb-14"
-            initial={{ opacity: 0, y: 20 }}
+            initial={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 5.3 }}
+            transition={{ duration: hasAnimated ? 0 : 0.8, delay: hasAnimated ? 0 : 5.3 }}
           >
             / Trusted & Used by 1,000+ agents
           </motion.p>
 
-          <FlipButton />
+          <FlipButton skipAnimation={hasAnimated} />
         </div>
       </div>
 
