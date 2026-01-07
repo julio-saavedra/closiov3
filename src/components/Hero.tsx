@@ -3,6 +3,39 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import HeroBackground3D from './HeroBackground3D';
 
+interface CountUpProps {
+  end: number;
+  duration?: number;
+  delay?: number;
+  skipAnimation?: boolean;
+}
+
+const CountUp: React.FC<CountUpProps> = ({ end, duration = 2000, delay = 0, skipAnimation = false }) => {
+  const [count, setCount] = useState(skipAnimation ? end : 0);
+
+  useEffect(() => {
+    if (skipAnimation) return;
+
+    const startTimeout = setTimeout(() => {
+      const startTime = Date.now();
+      const animate = () => {
+        const now = Date.now();
+        const progress = Math.min((now - startTime) / duration, 1);
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        setCount(Math.floor(easeProgress * end));
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+      requestAnimationFrame(animate);
+    }, delay);
+
+    return () => clearTimeout(startTimeout);
+  }, [end, duration, delay, skipAnimation]);
+
+  return <>{count.toLocaleString()}</>;
+};
+
 interface TypewriterTextProps {
   text: string;
   delay: number;
@@ -186,7 +219,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: hasAnimated ? 0 : 0.8, delay: hasAnimated ? 0 : 5.3 }}
           >
-            / Trusted & Used by 1,000+ agents
+            / Trusted & Used by <CountUp end={1000} duration={2000} delay={hasAnimated ? 0 : 5500} skipAnimation={hasAnimated} />+ agents
           </motion.p>
 
           <FlipButton skipAnimation={hasAnimated} />
