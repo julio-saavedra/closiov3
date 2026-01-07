@@ -513,26 +513,18 @@ const MedalsIcon: React.FC = () => (
 const HorizontalLine: React.FC = () => {
   return (
     <svg
-      viewBox="0 0 1200 500"
-      className="absolute left-0 top-0 w-full h-full pointer-events-none"
+      viewBox="0 0 1200 100"
+      className="absolute left-0 top-1/2 -translate-y-1/2 w-full pointer-events-none"
       preserveAspectRatio="none"
     >
-      <path
-        d="M -50 250
-           L 300 250
-           Q 370 250, 370 320
-           L 370 420
-           Q 370 490, 440 490
-           L 760 490
-           Q 830 490, 830 420
-           L 830 320
-           Q 830 250, 900 250
-           L 1250 250"
-        fill="none"
+      <line
+        x1="-50"
+        y1="50"
+        x2="1250"
+        y2="50"
         stroke="white"
         strokeWidth="20"
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
     </svg>
   );
