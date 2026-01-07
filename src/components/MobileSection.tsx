@@ -28,7 +28,7 @@ const AngularLine: React.FC = () => {
 
 const Robot3DContainer: React.FC = () => {
   return (
-    <div className="absolute left-[5%] sm:left-[6%] lg:left-[7%] top-[50%] -translate-y-1/2 w-[280px] sm:w-[340px] lg:w-[400px] xl:w-[450px] h-[350px] sm:h-[400px] lg:h-[450px] xl:h-[500px] pointer-events-none">
+    <div className="absolute left-[2%] sm:left-[3%] lg:left-[4%] top-[55%] -translate-y-1/2 w-[280px] sm:w-[340px] lg:w-[400px] xl:w-[450px] h-[350px] sm:h-[400px] lg:h-[450px] xl:h-[500px] pointer-events-none">
       <Robot3D />
     </div>
   );

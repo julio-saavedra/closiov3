@@ -326,7 +326,7 @@ const Robot3D = () => {
     window.addEventListener('mousemove', updatePointer, { passive: true });
     window.addEventListener('click', () => { pulse = 1.0; }, { passive: true });
 
-    let targetRotY = -0.3;
+    let targetRotY = 0.3;
     let targetRotX = 0;
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
@@ -337,7 +337,7 @@ const Robot3D = () => {
 
       const x = (cx - rect.left) / rect.width - 0.5;
       const y = (cy - rect.top) / rect.height - 0.5;
-      targetRotY = -0.3 - x * 0.55;
+      targetRotY = 0.3 - x * 0.55;
       targetRotX = -y * 0.42;
     };
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
@@ -374,7 +374,7 @@ const Robot3D = () => {
       scrollProgress += (targetScrollProgress - scrollProgress) * 0.08;
 
       const walkInX = -5 + scrollProgress * 5;
-      const walkInRotY = Math.PI / 2 - scrollProgress * (Math.PI / 2 + 0.3);
+      const walkInRotY = Math.PI / 2 - scrollProgress * (Math.PI / 2 - 0.3);
 
       robot.position.x = walkInX;
       robot.position.y = Math.sin(t * 0.9) * 0.06;
@@ -394,7 +394,7 @@ const Robot3D = () => {
       } else {
         robot.rotation.y = walkInRotY;
         robot.rotation.x = 0;
-        targetRotY = -0.3;
+        targetRotY = 0.3;
         targetRotX = 0;
 
         const walkCycle = t * 3.5;
