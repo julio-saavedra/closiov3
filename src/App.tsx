@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ValueProps from './components/ValueProps';
@@ -84,6 +85,7 @@ function HomePage() {
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
+  useSmoothScroll();
 
   return (
     <>
