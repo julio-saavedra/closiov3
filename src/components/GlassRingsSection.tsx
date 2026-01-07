@@ -4,7 +4,6 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
 
 const GlassRingsSection = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -23,8 +22,8 @@ const GlassRingsSection = () => {
     renderer.toneMappingExposure = 1.05;
 
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 80);
-    camera.position.set(0, 0, 7.5);
+    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 80);
+    camera.position.set(0, 0, 6);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
     const env = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
@@ -70,19 +69,19 @@ const GlassRingsSection = () => {
     const geo = new THREE.TorusGeometry(1, 0.16, 48, 220);
 
     const ring1 = new THREE.Mesh(geo, makeGlass(C_TEAL, 0.32));
-    ring1.scale.set(1.2, 1.2, 1.2);
+    ring1.scale.set(1.8, 1.8, 1.8);
     ring1.rotation.set(0.55, 0.25, 0.1);
     ring1.position.set(0.8, 0.3, 0);
     group.add(ring1);
 
     const ring2 = new THREE.Mesh(geo, makeGlass(C_PINK, 0.28));
-    ring2.scale.set(0.9, 0.9, 0.9);
+    ring2.scale.set(1.4, 1.4, 1.4);
     ring2.rotation.set(-0.35, 0.9, -0.2);
     ring2.position.set(1.2, -0.5, -0.2);
     group.add(ring2);
 
     const ring3 = new THREE.Mesh(geo, makeGlass(C_GRAY, 0.18));
-    ring3.scale.set(1.5, 1.5, 1.5);
+    ring3.scale.set(2.2, 2.2, 2.2);
     ring3.rotation.set(0.15, -0.55, 0.55);
     ring3.position.set(0.2, 0.8, -0.35);
     group.add(ring3);
@@ -101,7 +100,7 @@ const GlassRingsSection = () => {
 
       const isMobile = w < 900;
       group.position.x = isMobile ? 0 : 0;
-      group.scale.setScalar(isMobile ? 0.7 : 0.85);
+      group.scale.setScalar(isMobile ? 0.9 : 1.15);
     };
 
     const resizeObserver = new ResizeObserver(fit);
@@ -209,17 +208,14 @@ const GlassRingsSection = () => {
             </div>
           </div>
 
-          <div ref={containerRef} className="relative h-[500px] lg:h-[600px] order-first lg:order-last">
-            <canvas
-              ref={canvasRef}
-              className="w-full h-full block"
-              style={{
-                opacity: 0.85,
-                filter: 'saturate(1.08)'
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none" />
-          </div>
+          <canvas
+            ref={canvasRef}
+            className="w-full h-[500px] lg:h-[600px] order-first lg:order-last block"
+            style={{
+              opacity: 0.85,
+              filter: 'saturate(1.08)'
+            }}
+          />
 
         </div>
       </div>
