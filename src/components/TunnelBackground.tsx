@@ -51,7 +51,7 @@ const TunnelBackground: React.FC = () => {
     const TUNNEL = {
       slices: 40,
       spacing: 0.8,
-      size: 20,
+      size: 35,
       divisions: 8,
     };
 
@@ -156,7 +156,7 @@ const TunnelBackground: React.FC = () => {
     });
 
     // LARGE SQUARE OPENING AT THE END - frames content area
-    const openingSize = TUNNEL.size * 8; // 5x larger to frame borders
+    const openingSize = TUNNEL.size * 12; // Much larger to frame full screen
     const openingGeo = new THREE.PlaneGeometry(openingSize, openingSize);
     const openingMat = new THREE.MeshBasicMaterial({
       color: 0xffffff,
@@ -243,6 +243,17 @@ const TunnelBackground: React.FC = () => {
               rgba(0,0,0,0) 0%,
               rgba(0,0,0,0.1) 60%,
               rgba(0,0,0,0.4) 100%)
+          `,
+        }}
+      />
+      <div
+        className="absolute inset-0 z-[2] pointer-events-none"
+        style={{
+          background: `
+            linear-gradient(180deg,
+              rgba(0,0,0,1) 0%,
+              rgba(0,0,0,0.8) 8%,
+              rgba(0,0,0,0) 20%)
           `,
         }}
       />
