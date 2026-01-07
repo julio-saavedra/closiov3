@@ -180,7 +180,7 @@ const HierarchyIcon: React.FC = () => (
     <ellipse cx="100" cy="155" rx="28" ry="5" fill="#374151" />
 
     <g clipPath="url(#hierScreenClip)">
-      <g transform="translate(12, 8) scale(0.88)">
+      <g transform="translate(22, 12) scale(0.76)">
         <g filter="url(#hierShadow)">
           <rect x="80" y="8" width="40" height="28" rx="4" fill="url(#hierBoxFront)" />
           <path d="M80 8 L120 8 L127 2 L87 2 Z" fill="url(#hierBoxTop)" />
