@@ -174,7 +174,7 @@ export default function DealMap() {
             transition={{ delay: 0.1 }}
             className="text-3xl lg:text-4xl font-bold text-[#1a1a2e] md:max-w-md"
           >
-            Policy Map Solutions
+            <TypewriterText text="/ POLICY MAP SOLUTIONS" delay={200} isVisible={isInView} />
           </motion.h2>
 
           <motion.p
