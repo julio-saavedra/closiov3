@@ -198,7 +198,7 @@ const Robot3D = () => {
       const width = 0.56;
       const height = 0.9;
       const stroke = 0.13;
-      const slant = 0.0;
+      const slant = 0.25;
       const depth = 0.16;
 
       const outer = new THREE.Shape();
@@ -210,14 +210,14 @@ const Robot3D = () => {
 
       const iw = width - stroke * 2;
       const ih = height - stroke * 2;
-      const innerSlantOffset = slant * 0.85;
+      const innerSlantOffset = slant * 0.9;
 
       const inner = new THREE.Path();
-      inner.moveTo(-iw / 2 + 0.01, -ih / 2 + 0.01);
-      inner.lineTo(iw / 2 + 0.01, -ih / 2 + 0.01);
-      inner.lineTo(iw / 2 + innerSlantOffset, ih / 2 - 0.01);
-      inner.lineTo(-iw / 2 + innerSlantOffset, ih / 2 - 0.01);
-      inner.lineTo(-iw / 2 + 0.01, -ih / 2 + 0.01);
+      inner.moveTo(-iw / 2, -ih / 2);
+      inner.lineTo(iw / 2, -ih / 2);
+      inner.lineTo(iw / 2 + innerSlantOffset, ih / 2);
+      inner.lineTo(-iw / 2 + innerSlantOffset, ih / 2);
+      inner.lineTo(-iw / 2, -ih / 2);
 
       outer.holes.push(inner);
 
@@ -350,7 +350,7 @@ const Robot3D = () => {
       head.rotation.y = Math.sin(t * 0.6) * 0.1;
 
       if (scrollProgress >= 0.99) {
-        robot.rotation.y += (-0.3 + tx - robot.rotation.y) * 0.08;
+        robot.rotation.y += (0.5 + tx - robot.rotation.y) * 0.08;
         robot.rotation.x += (-ty - robot.rotation.x) * 0.08;
       } else {
         robot.rotation.y = walkInRotY;
