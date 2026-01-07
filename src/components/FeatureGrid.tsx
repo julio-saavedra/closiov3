@@ -591,41 +591,32 @@ const GridPattern: React.FC<{ isDashboard: boolean; index: number }> = ({ isDash
 };
 
 const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
-  <motion.div
-    className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none"
-    initial={{ opacity: 0.5 }}
-    animate={{ opacity: [0.5, 0.9, 0.5] }}
-    transition={{
-      duration: 3,
-      repeat: Infinity,
-      ease: 'easeInOut',
-    }}
-  >
+  <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none">
     <div
-      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[90%] h-32 blur-3xl"
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-40 blur-3xl"
       style={{
         background: isDashboard
-          ? 'radial-gradient(ellipse at 50% 100%, rgba(8, 145, 178, 0.6), transparent 70%)'
-          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.35), transparent 70%)',
+          ? 'radial-gradient(ellipse at 50% 100%, rgba(8, 145, 178, 0.8), transparent 70%)'
+          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.5), transparent 70%)',
       }}
     />
     <div
-      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-20 blur-2xl"
-      style={{
-        background: isDashboard
-          ? 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.35), transparent 70%)'
-          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.25), transparent 70%)',
-      }}
-    />
-    <div
-      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[50%] h-12 blur-xl"
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-28 blur-2xl"
       style={{
         background: isDashboard
           ? 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.5), transparent 70%)'
-          : 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.15), transparent 70%)',
+          : 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.4), transparent 70%)',
       }}
     />
-  </motion.div>
+    <div
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-16 blur-xl"
+      style={{
+        background: isDashboard
+          ? 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.7), transparent 70%)'
+          : 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.3), transparent 70%)',
+      }}
+    />
+  </div>
 );
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
