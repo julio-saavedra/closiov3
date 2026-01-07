@@ -155,7 +155,7 @@ const GlassRingsSection = () => {
 
     let targetX = 0, targetY = 0;
     const handleMouseMove = (e: MouseEvent) => {
-      if (window.innerWidth < 900) return;
+      if (window.innerWidth < 900 || !isHovering) return;
       const x = (e.clientX / window.innerWidth) - 0.5;
       const y = (e.clientY / window.innerHeight) - 0.5;
       targetX = x * 0.12;
@@ -163,6 +163,11 @@ const GlassRingsSection = () => {
     };
 
     const parallax = () => {
+      if (!isHovering) {
+        targetX *= 0.92;
+        targetY *= 0.92;
+      }
+
       group.rotation.y += (targetX - group.rotation.y) * 0.05;
       group.rotation.x += ((-targetY) - group.rotation.x) * 0.05;
       requestAnimationFrame(parallax);
