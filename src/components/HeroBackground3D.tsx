@@ -138,13 +138,15 @@ const HeroBackground3D: React.FC = () => {
     io.position.set(0, 0.0, 0.0);
     hero3D.add(io);
 
-    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.5, height: 1.3, stroke: 0.14, depth: 0.15 }), solidMaterial(TEAL, 0.4, 0.2));
-    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.26, depth: 0.15, segments: 256 }), solidMaterial(WHITE, 0.3, 0.2));
+    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.18 }), solidMaterial(TEAL, 0.4, 0.2));
+    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.18, segments: 256 }), solidMaterial(WHITE, 0.3, 0.2));
 
-    iMesh.position.set(-0.50, 0.0, 0.0);
-    oMesh.position.set(0.52, 0.0, 0.0);
+    iMesh.position.set(-0.60, 0.0, 0.0);
+    oMesh.position.set(0.62, 0.0, 0.0);
 
     io.add(iMesh, oMesh);
+
+    io.rotation.x = 0.15;
 
     const raycaster = new THREE.Raycaster();
     const pointerNDC = new THREE.Vector2(0, 0);
@@ -160,11 +162,13 @@ const HeroBackground3D: React.FC = () => {
     }
 
     let tx = 0, ty = 0;
+    let targetIORotationY = 0;
     const handleMouseMove = (e: MouseEvent) => {
       updatePointerNDC(e);
       if (window.innerWidth < 900) return;
       tx = (e.clientX / window.innerWidth - 0.5) * 0.2;
       ty = (e.clientY / window.innerHeight - 0.5) * 0.15;
+      targetIORotationY = (e.clientX / window.innerWidth - 0.5) * Math.PI * 1.2;
     };
 
     const handleClick = () => {
@@ -191,7 +195,7 @@ const HeroBackground3D: React.FC = () => {
 
       const mobile = w < 900;
       hero3D.position.x = mobile ? 0 : 2.5;
-      hero3D.scale.setScalar(mobile ? 0.8 : 1.4);
+      hero3D.scale.setScalar(mobile ? 1.0 : 1.8);
     }
 
     const resizeObserver = new ResizeObserver(fit);
@@ -219,14 +223,6 @@ const HeroBackground3D: React.FC = () => {
         delay: 0.5
       }
     );
-
-    gsap.to(io.rotation, {
-      y: Math.PI * 2,
-      duration: 50,
-      ease: "none",
-      repeat: -1,
-      delay: 2.5
-    });
 
     gsap.fromTo(camera.position,
       { z: 10 },
@@ -289,8 +285,9 @@ const HeroBackground3D: React.FC = () => {
       hero3D.rotation.y += (targetRotY - hero3D.rotation.y) * 0.06;
       hero3D.rotation.x += (targetRotX - hero3D.rotation.x) * 0.06;
 
-      const swing = Math.sin(t * 0.4) * 0.06;
-      io.rotation.x = swing;
+      io.rotation.y += (targetIORotationY - io.rotation.y) * 0.08;
+
+      io.rotation.x = 0.15;
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(animate);
