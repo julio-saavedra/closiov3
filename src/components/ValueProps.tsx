@@ -73,7 +73,7 @@ const ValueProps: React.FC = () => {
                   {/* Stand Neck */}
                   <div className="relative w-16 h-20 bg-gradient-to-r from-[#D8D8D8] via-white to-[#D8D8D8] rounded-b-lg shadow-xl flex items-center justify-center">
                     {/* IO Logo on Stand */}
-                    <div className="flex items-center -space-x-1">
+                    <div className="flex items-center gap-[2px]">
                       {/* Hollow Slanted I - Black */}
                       <svg width="14" height="24" viewBox="0 0 14 24" fill="none" className="transform -skew-x-12">
                         <rect x="3" y="1" width="8" height="22" rx="1" stroke="#1a1a1a" strokeWidth="2.5" fill="none" />
