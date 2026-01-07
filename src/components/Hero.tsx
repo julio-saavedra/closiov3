@@ -17,13 +17,16 @@ const FlipButton: React.FC = () => {
       onHoverEnd={() => setIsHovered(false)}
     >
       <motion.div
-        className="absolute inset-0 bg-neutral-100 opacity-0 group-hover:opacity-100"
+        className="absolute inset-0 bg-gradient-to-r from-neutral-50 to-neutral-100"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 1 : 0 }}
         transition={{ duration: 0.3 }}
       />
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-neutral-200 to-transparent opacity-0 group-hover:opacity-50"
-        animate={isHovered ? { x: ["-200%", "200%"] } : {}}
-        transition={{ duration: 1, ease: "easeInOut" }}
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-transparent"
+        initial={{ x: "-200%" }}
+        animate={isHovered ? { x: "200%" } : { x: "-200%" }}
+        transition={{ duration: 1.2, ease: "easeInOut" }}
       />
       <span className="flex items-center justify-center overflow-visible h-6 relative z-10">
         Book a Demo Now
