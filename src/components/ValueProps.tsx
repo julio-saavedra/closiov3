@@ -9,12 +9,14 @@ const VerticalLine: React.FC = () => {
       preserveAspectRatio="none"
     >
       <path
-        d="M 50 1000
-           L 50 450
-           Q 50 380, 120 380
-           L 370 380
-           Q 440 380, 440 310
-           L 440 -50"
+        d="M 440 -50
+           L 440 310
+           Q 440 380, 370 380
+           L 120 380
+           Q 50 380, 50 450
+           L 50 550
+           Q 50 620, -20 620
+           L -150 620"
         fill="none"
         stroke="white"
         strokeWidth="20"
