@@ -50,7 +50,7 @@ const HeroBackground3D: React.FC = () => {
     accentLight2.position.set(-3, -1, 2);
     scene.add(accentLight2);
 
-    const TEAL = new THREE.Color("#35E7E0");
+    const TEAL = new THREE.Color("#00CFC8");
     const WHITE = new THREE.Color("#FFFFFF");
 
     function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.3, rough = 0.2) {
@@ -139,7 +139,7 @@ const HeroBackground3D: React.FC = () => {
     hero3D.add(io);
 
     const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.5, height: 1.3, stroke: 0.14, depth: 0.15 }), solidMaterial(TEAL, 0.4, 0.2));
-    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.14, depth: 0.15, segments: 128 }), solidMaterial(WHITE, 0.3, 0.2));
+    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.65, ringThickness: 0.26, depth: 0.15, segments: 256 }), solidMaterial(WHITE, 0.3, 0.2));
 
     iMesh.position.set(-0.50, 0.0, 0.0);
     oMesh.position.set(0.52, 0.0, 0.0);
