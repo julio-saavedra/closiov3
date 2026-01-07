@@ -172,7 +172,7 @@ export default function DealMap() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl lg:text-4xl font-bold text-[#1a1a2e] md:max-w-md"
+            className="text-3xl lg:text-4xl font-bold text-[#1a1a2e] whitespace-nowrap"
           >
             <TypewriterText text="/ POLICY MAP SOLUTIONS" delay={200} isVisible={isInView} />
           </motion.h2>
