@@ -5,13 +5,13 @@ const AngularLine: React.FC = () => {
   return (
     <svg
       viewBox="0 0 500 700"
-      className="absolute left-0 top-0 h-full w-[30vw] min-h-[500px]"
+      className="absolute left-0 top-0 h-full w-[35vw] min-h-[500px]"
       preserveAspectRatio="none"
     >
       <path
-        d="M 50 -50
-           L 50 160
-           Q 50 240, 130 240
+        d="M 10 -50
+           L 10 160
+           Q 10 240, 90 240
            L 340 240
            Q 420 240, 420 320
            L 420 750"
@@ -27,7 +27,7 @@ const AngularLine: React.FC = () => {
 
 const Robot3DContainer: React.FC = () => {
   return (
-    <div className="absolute left-[60px] sm:left-[80px] lg:left-[100px] top-[45%] -translate-y-1/2 w-[200px] sm:w-[240px] lg:w-[280px] h-[400px] sm:h-[450px] lg:h-[500px] pointer-events-none overflow-visible">
+    <div className="absolute left-[20px] sm:left-[40px] lg:left-[60px] top-[45%] -translate-y-1/2 w-[280px] sm:w-[320px] lg:w-[360px] h-[400px] sm:h-[450px] lg:h-[500px] pointer-events-none overflow-visible">
       <Robot3D />
     </div>
   );
