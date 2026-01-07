@@ -4,8 +4,6 @@ interface Testimonial {
   quoteBefore: string;
   highlight: string;
   quoteAfter: string;
-  author: string;
-  initials: string;
   role: string;
 }
 
@@ -14,16 +12,12 @@ const testimonials: Testimonial[] = [
     quoteBefore: "We're not spreadsheet experts, but",
     highlight: "Closio is so intuitive and powerful",
     quoteAfter: "— it lets us focus on what matters most: our clients and commissions.",
-    author: "Michael Johnson",
-    initials: "MJ",
     role: "Agency Director, Premier Life Insurance"
   },
   {
     quoteBefore: "Finally, a tool that understands how we work.",
     highlight: "Our team productivity doubled",
     quoteAfter: "in the first month. The visibility into our pipeline changed everything.",
-    author: "Sarah Chen",
-    initials: "SC",
     role: "Regional Manager, Pacific Insurance Group"
   }
 ];
@@ -142,13 +136,7 @@ const TestimonialSection: React.FC = () => {
               isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
             }`}
           >
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#6ad4f2] to-[#d593c0] flex items-center justify-center mb-3">
-              <span className="text-black font-bold text-base">{current.initials}</span>
-            </div>
-            <div>
-              <p className="text-white font-semibold text-base">{current.author}</p>
-              <p className="text-slate-400 text-sm">{current.role}</p>
-            </div>
+            <p className="text-slate-400 text-sm">{current.role}</p>
           </div>
 
           <div className="flex justify-center gap-2 mt-6">
