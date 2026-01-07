@@ -169,8 +169,8 @@ const HeroBackground3D: React.FC = () => {
       if (window.innerWidth < 900) return;
       tx = (e.clientX / window.innerWidth - 0.5) * 0.2;
       ty = (e.clientY / window.innerHeight - 0.5) * 0.15;
-      targetIORotationY = (e.clientX / window.innerWidth - 0.5) * 0.5;
-      targetIORotationX = 0.15 + (e.clientY / window.innerHeight - 0.5) * 0.25;
+      targetIORotationY = -(e.clientX / window.innerWidth - 0.5) * 0.5;
+      targetIORotationX = 0.15 + (e.clientY / window.innerHeight - 0.5) * 0.35;
     };
 
     const handleClick = () => {
@@ -197,7 +197,7 @@ const HeroBackground3D: React.FC = () => {
 
       const mobile = w < 900;
       hero3D.position.x = mobile ? 0 : 2.5;
-      hero3D.scale.setScalar(mobile ? 1.0 : 1.8);
+      hero3D.scale.setScalar(mobile ? 0.9 : 1.65);
     }
 
     const resizeObserver = new ResizeObserver(fit);
