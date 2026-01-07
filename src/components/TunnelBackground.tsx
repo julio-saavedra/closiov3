@@ -22,40 +22,49 @@ const TunnelBackground: React.FC = () => {
 
     // Scene + camera
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x000000, 5, 25);
+    scene.fog = new THREE.Fog(0x000000, 8, 35);
 
     const camera = new THREE.PerspectiveCamera(
-      60,
+      75,
       mount.clientWidth / mount.clientHeight,
       0.1,
-      50
+      100
     );
-    camera.position.set(0, 0, 2);
-    camera.lookAt(0, 0, -20);
+    camera.position.set(0, 0, 0.5);
+    camera.lookAt(0, 0, -30);
 
     // Lighting for realistic depth
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.3);
+    const ambientLight = new THREE.AmbientLight(0x202020, 0.5);
     scene.add(ambientLight);
 
-    const frontLight = new THREE.DirectionalLight(0xffffff, 0.4);
-    frontLight.position.set(0, 2, 3);
+    const frontLight = new THREE.DirectionalLight(0xffffff, 0.6);
+    frontLight.position.set(0, 3, 2);
+    frontLight.castShadow = true;
     scene.add(frontLight);
+
+    // Back light from the opening
+    const backLight = new THREE.PointLight(0xffffff, 1.5, 50);
+    backLight.position.set(0, 0, -30);
+    scene.add(backLight);
 
     // ===== STATIC GRID TUNNEL =====
     const TUNNEL = {
-      slices: 80,
-      spacing: 0.22,
-      size: 3.5,
-      divisions: 16,
+      slices: 120,
+      spacing: 0.28,
+      size: 8,
+      divisions: 20,
     };
 
     function makeGridSlice(size: number, divisions: number, depth: number) {
-      // Gray grid lines
-      const grid = new THREE.GridHelper(size, divisions, 0x666666, 0x555555);
+      // Gray grid lines with distance-based coloring
+      const centerColor = depth < 30 ? 0x888888 : 0x666666;
+      const lineColor = depth < 30 ? 0x555555 : 0x444444;
+
+      const grid = new THREE.GridHelper(size, divisions, centerColor, lineColor);
       grid.material.transparent = true;
 
-      // Opacity fades based on depth - closer = more visible
-      const opacity = Math.max(0.15, 0.5 - depth * 0.02);
+      // Opacity fades with depth for realistic perspective
+      const opacity = Math.max(0.1, 0.65 - depth * 0.008);
       grid.material.opacity = opacity;
       grid.material.depthWrite = true;
       grid.rotation.x = Math.PI / 2;
@@ -77,12 +86,12 @@ const TunnelBackground: React.FC = () => {
       tunnel.add(g);
     }
 
-    // Add four tunnel walls with gray grid texture
-    const wallSegments = 20;
+    // Add four tunnel walls with subtle grid texture
+    const wallSegments = 40;
     const wallMat = new THREE.MeshBasicMaterial({
-      color: 0x444444,
+      color: 0x1a1a1a,
       transparent: true,
-      opacity: 0.08,
+      opacity: 0.15,
       side: THREE.DoubleSide,
       depthWrite: true,
     });
@@ -114,32 +123,99 @@ const TunnelBackground: React.FC = () => {
     bottomWall.rotation.x = -Math.PI / 2;
     tunnel.add(bottomWall);
 
-    // OPENING AT THE END - bright light exit
-    const openingSize = TUNNEL.size * 1.2;
+    // Add edge lines for the square tunnel structure
+    const edgeMaterial = new THREE.LineBasicMaterial({
+      color: 0x888888,
+      transparent: true,
+      opacity: 0.4
+    });
+
+    const edgePoints = [
+      new THREE.Vector3(-TUNNEL.size / 2, -TUNNEL.size / 2, 0),
+      new THREE.Vector3(-TUNNEL.size / 2, -TUNNEL.size / 2, -wallHeight),
+    ];
+
+    const edgeGeometry = new THREE.BufferGeometry().setFromPoints(edgePoints);
+
+    // Four corner edges
+    const edges = [
+      [-TUNNEL.size / 2, -TUNNEL.size / 2],
+      [-TUNNEL.size / 2, TUNNEL.size / 2],
+      [TUNNEL.size / 2, TUNNEL.size / 2],
+      [TUNNEL.size / 2, -TUNNEL.size / 2],
+    ];
+
+    edges.forEach(([x, y]) => {
+      const points = [
+        new THREE.Vector3(x, y, 0),
+        new THREE.Vector3(x, y, -wallHeight),
+      ];
+      const geo = new THREE.BufferGeometry().setFromPoints(points);
+      const line = new THREE.Line(geo, edgeMaterial);
+      tunnel.add(line);
+    });
+
+    // SQUARE OPENING AT THE END - bright light exit
+    const openingSize = TUNNEL.size * 0.95;
     const openingGeo = new THREE.PlaneGeometry(openingSize, openingSize);
     const openingMat = new THREE.MeshBasicMaterial({
       color: 0xffffff,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.95,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
     const opening = new THREE.Mesh(openingGeo, openingMat);
-    opening.position.set(0, 0, -(TUNNEL.slices * TUNNEL.spacing + 2));
+    const endPosition = -(TUNNEL.slices * TUNNEL.spacing + 0.5);
+    opening.position.set(0, 0, endPosition);
     tunnel.add(opening);
 
-    // Add glow around the opening
-    const glowGeo = new THREE.PlaneGeometry(openingSize * 1.8, openingSize * 1.8);
-    const glowMat = new THREE.MeshBasicMaterial({
-      color: 0xaaaaaa,
+    // Add layered glow around the square opening
+    const glowSize1 = openingSize * 1.15;
+    const glowGeo1 = new THREE.PlaneGeometry(glowSize1, glowSize1);
+    const glowMat1 = new THREE.MeshBasicMaterial({
+      color: 0xdddddd,
       transparent: true,
-      opacity: 0.25,
+      opacity: 0.35,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
-    const glow = new THREE.Mesh(glowGeo, glowMat);
-    glow.position.set(0, 0, -(TUNNEL.slices * TUNNEL.spacing + 1.5));
-    tunnel.add(glow);
+    const glow1 = new THREE.Mesh(glowGeo1, glowMat1);
+    glow1.position.set(0, 0, endPosition + 0.2);
+    tunnel.add(glow1);
+
+    // Outer glow
+    const glowSize2 = openingSize * 1.4;
+    const glowGeo2 = new THREE.PlaneGeometry(glowSize2, glowSize2);
+    const glowMat2 = new THREE.MeshBasicMaterial({
+      color: 0x999999,
+      transparent: true,
+      opacity: 0.15,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
+    const glow2 = new THREE.Mesh(glowGeo2, glowMat2);
+    glow2.position.set(0, 0, endPosition + 0.5);
+    tunnel.add(glow2);
+
+    // Add square frame outline for the opening
+    const framePoints = [
+      new THREE.Vector3(-openingSize / 2, -openingSize / 2, endPosition - 0.1),
+      new THREE.Vector3(openingSize / 2, -openingSize / 2, endPosition - 0.1),
+      new THREE.Vector3(openingSize / 2, openingSize / 2, endPosition - 0.1),
+      new THREE.Vector3(-openingSize / 2, openingSize / 2, endPosition - 0.1),
+      new THREE.Vector3(-openingSize / 2, -openingSize / 2, endPosition - 0.1),
+    ];
+
+    const frameGeometry = new THREE.BufferGeometry().setFromPoints(framePoints);
+    const frameMaterial = new THREE.LineBasicMaterial({
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.6,
+      linewidth: 2
+    });
+    const frame = new THREE.Line(frameGeometry, frameMaterial);
+    tunnel.add(frame);
 
     function resize() {
       const w = mount.clientWidth;
@@ -154,6 +230,11 @@ const TunnelBackground: React.FC = () => {
 
     // Render once (static, no animation)
     renderer.render(scene, camera);
+
+    // Re-render on window resize to maintain quality
+    window.addEventListener('resize', () => {
+      renderer.render(scene, camera);
+    });
 
     // Cleanup
     return () => {
@@ -172,10 +253,10 @@ const TunnelBackground: React.FC = () => {
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background: `
-            radial-gradient(60% 50% at 50% 50%,
+            radial-gradient(55% 45% at 50% 50%,
               rgba(0,0,0,0) 0%,
-              rgba(0,0,0,0.4) 50%,
-              rgba(0,0,0,0.75) 100%)
+              rgba(0,0,0,0.35) 45%,
+              rgba(0,0,0,0.8) 100%)
           `,
         }}
       />
