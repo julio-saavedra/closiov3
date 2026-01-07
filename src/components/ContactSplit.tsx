@@ -207,8 +207,14 @@ const ContactSplit = React.memo(() => {
               }}
             />
 
-            <div className="relative z-10 flex flex-col md:flex-row items-stretch min-h-[280px] md:min-h-[300px]">
-              <div className="flex-1 p-6 md:p-8 lg:p-10 flex flex-col justify-center">
+            <div className="relative z-10 flex flex-col md:flex-row items-stretch min-h-[340px] md:min-h-[380px]">
+              <div
+                className="absolute inset-y-0 left-0 w-[55%] pointer-events-none"
+                style={{
+                  background: 'linear-gradient(90deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 40%, transparent 100%)',
+                }}
+              />
+              <div className="flex-1 p-8 md:p-10 lg:p-12 flex flex-col justify-center relative z-10">
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 text-left text-white drop-shadow-sm">
                   Stay in the Loop with{' '}
                   <span className="text-white/90">
@@ -288,7 +294,7 @@ const ContactSplit = React.memo(() => {
                     }}
                   >
                     <div
-                      className="px-3 py-2 rounded-xl whitespace-nowrap flex items-center gap-2"
+                      className="px-4 py-2.5 rounded-xl whitespace-nowrap flex items-center gap-2.5"
                       style={{
                         background: 'rgba(255, 255, 255, 0.15)',
                         backdropFilter: 'blur(16px)',
@@ -298,7 +304,7 @@ const ContactSplit = React.memo(() => {
                       }}
                     >
                       <span className="text-white/60">{card.icon}</span>
-                      <span className="text-white/60 text-xs font-medium">{card.label}</span>
+                      <span className="text-white/60 text-sm font-medium">{card.label}</span>
                     </div>
                   </motion.div>
                 ))}
@@ -318,7 +324,7 @@ const ContactSplit = React.memo(() => {
                     }}
                   >
                     <div
-                      className="px-3 py-2 rounded-xl whitespace-nowrap flex items-center gap-2"
+                      className="px-5 py-3 rounded-xl whitespace-nowrap flex items-center gap-3"
                       style={{
                         background: 'rgba(255, 255, 255, 0.25)',
                         backdropFilter: 'blur(20px)',
@@ -328,7 +334,7 @@ const ContactSplit = React.memo(() => {
                       }}
                     >
                       <span className="text-white">{card.icon}</span>
-                      <span className="text-white text-xs font-medium drop-shadow-sm">{card.label}</span>
+                      <span className="text-white text-sm font-medium drop-shadow-sm">{card.label}</span>
                     </div>
                   </motion.div>
                 ))}
