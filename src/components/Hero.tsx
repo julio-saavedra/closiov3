@@ -110,16 +110,11 @@ const Hero: React.FC = () => {
           </h1>
 
           <motion.p
-            className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-md leading-relaxed mb-10 relative"
+            className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-md leading-relaxed mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
           >
-            <motion.span
-              className="absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-0 bg-gradient-to-b from-[#35E7E0] to-transparent"
-              animate={{ height: ["0%", "100%"] }}
-              transition={{ duration: 0.6, delay: 1.2 }}
-            />
             / Trusted & Used by 1,000+ agents
           </motion.p>
 
