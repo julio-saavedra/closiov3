@@ -26,6 +26,7 @@ import TeamHierarchy from './pages/features/TeamHierarchy';
 import UserManagement from './pages/features/UserManagement';
 import Reminders from './pages/features/Reminders';
 import TestimonialSection from './components/TestimonialSection';
+import GlassRingsSection from './components/GlassRingsSection';
 import SplashScreen from './components/SplashScreen';
 import OverlappingBanner from './components/OverlappingBanner';
 import ScrollToTop from './components/ScrollToTop';
@@ -57,6 +58,10 @@ function HomePage() {
 
         <SectionWrapper>
           <DealMap />
+        </SectionWrapper>
+
+        <SectionWrapper className="!bg-black !bg-none">
+          <GlassRingsSection />
         </SectionWrapper>
 
         <SectionWrapper className="!bg-black !bg-none">
