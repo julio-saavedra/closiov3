@@ -356,8 +356,8 @@ export default function DealMap() {
           transition={{ delay: 0.9 }}
           className="pt-8 text-center"
         >
-          <button className="px-8 py-3.5 bg-black text-white rounded-xl font-semibold hover:bg-gray-900 transition-all hover:scale-105 shadow-lg">
-            Book a Demo
+          <button className="px-8 py-4 bg-white text-black rounded-xl font-semibold text-base hover:bg-white/90 transition-all hover:scale-105 shadow-lg">
+            Book a Demo Now
           </button>
         </motion.div>
       </div>
