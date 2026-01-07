@@ -47,161 +47,53 @@ const TunnelBackground: React.FC = () => {
     backLight.position.set(0, 0, -30);
     scene.add(backLight);
 
-    // ===== STATIC GRID TUNNEL =====
-    const TUNNEL = {
-      slices: 40,
-      spacing: 0.8,
-      size: 50,
-      divisions: 16,
-    };
+    // ===== INTERLOCKING CHAIN RINGS =====
+    const chainGroup = new THREE.Group();
+    scene.add(chainGroup);
 
-    function makeGridSlice(size: number, divisions: number, depth: number) {
-      // Remove center cross by making centerColor invisible (black)
-      const centerColor = 0x000000;
-      const lineColor = depth < 30 ? 0x999999 : 0x777777;
+    // Ring specifications
+    const largeRadius = 8;
+    const smallRadius = 5;
+    const tubeThickness = 0.4;
+    const segments = 64;
 
-      const grid = new THREE.GridHelper(size, divisions, centerColor, lineColor);
-      grid.material.transparent = true;
-
-      // Opacity fades with depth for realistic perspective - increased for visibility
-      const opacity = Math.max(0.3, 0.85 - depth * 0.015);
-      grid.material.opacity = opacity;
-      grid.material.depthWrite = true;
-      grid.rotation.x = Math.PI / 2;
-
-      return grid;
+    // Create ring material function
+    function createRingMaterial(color: number, opacity = 0.9) {
+      return new THREE.MeshStandardMaterial({
+        color: color,
+        transparent: true,
+        opacity: opacity,
+        metalness: 0.7,
+        roughness: 0.3,
+        emissive: color,
+        emissiveIntensity: 0.2,
+        side: THREE.DoubleSide,
+      });
     }
 
-    // Group for tunnel
-    const tunnel = new THREE.Group();
-    scene.add(tunnel);
+    // TOP RING - Large, White (rotated horizontally)
+    const topRingGeo = new THREE.TorusGeometry(largeRadius, tubeThickness, 32, segments);
+    const topRingMat = createRingMaterial(0xffffff, 1.0);
+    const topRing = new THREE.Mesh(topRingGeo, topRingMat);
+    topRing.position.set(0, 8, -15);
+    topRing.rotation.x = Math.PI / 2;
+    chainGroup.add(topRing);
 
-    for (let i = 0; i < TUNNEL.slices; i++) {
-      const depth = i;
-      const g = makeGridSlice(TUNNEL.size, TUNNEL.divisions, depth);
+    // MIDDLE RING - Smaller, Gray (rotated vertically to interlock)
+    const middleRingGeo = new THREE.TorusGeometry(smallRadius, tubeThickness * 0.8, 32, segments);
+    const middleRingMat = createRingMaterial(0x999999, 0.95);
+    const middleRing = new THREE.Mesh(middleRingGeo, middleRingMat);
+    middleRing.position.set(0, 0, -15);
+    middleRing.rotation.y = Math.PI / 2;
+    chainGroup.add(middleRing);
 
-      // Position slices going back into the distance
-      g.position.z = -i * TUNNEL.spacing;
-
-      tunnel.add(g);
-    }
-
-    // Add four tunnel walls with subtle grid texture and more shadow
-    const wallSegments = 8;
-    const wallMat = new THREE.MeshBasicMaterial({
-      color: 0x0a0a0a,
-      transparent: true,
-      opacity: 0.4,
-      side: THREE.DoubleSide,
-      depthWrite: true,
-    });
-
-    const wallHeight = TUNNEL.slices * TUNNEL.spacing;
-    const wallGeo = new THREE.PlaneGeometry(wallHeight, TUNNEL.size, wallSegments, 1);
-
-    // Left wall
-    const leftWall = new THREE.Mesh(wallGeo, wallMat.clone());
-    leftWall.position.set(-TUNNEL.size / 2, 0, -wallHeight / 2);
-    leftWall.rotation.y = Math.PI / 2;
-    tunnel.add(leftWall);
-
-    // Right wall
-    const rightWall = new THREE.Mesh(wallGeo, wallMat.clone());
-    rightWall.position.set(TUNNEL.size / 2, 0, -wallHeight / 2);
-    rightWall.rotation.y = -Math.PI / 2;
-    tunnel.add(rightWall);
-
-    // Top wall
-    const topWall = new THREE.Mesh(wallGeo, wallMat.clone());
-    topWall.position.set(0, TUNNEL.size / 2, -wallHeight / 2);
-    topWall.rotation.x = Math.PI / 2;
-    tunnel.add(topWall);
-
-    // Bottom wall
-    const bottomWall = new THREE.Mesh(wallGeo, wallMat.clone());
-    bottomWall.position.set(0, -TUNNEL.size / 2, -wallHeight / 2);
-    bottomWall.rotation.x = -Math.PI / 2;
-    tunnel.add(bottomWall);
-
-    // Add edge lines for the square tunnel structure (border frame)
-    const edgeMaterial = new THREE.LineBasicMaterial({
-      color: 0xcccccc,
-      transparent: true,
-      opacity: 0.8
-    });
-
-    const edgePoints = [
-      new THREE.Vector3(-TUNNEL.size / 2, -TUNNEL.size / 2, 0),
-      new THREE.Vector3(-TUNNEL.size / 2, -TUNNEL.size / 2, -wallHeight),
-    ];
-
-    const edgeGeometry = new THREE.BufferGeometry().setFromPoints(edgePoints);
-
-    // Four corner edges
-    const edges = [
-      [-TUNNEL.size / 2, -TUNNEL.size / 2],
-      [-TUNNEL.size / 2, TUNNEL.size / 2],
-      [TUNNEL.size / 2, TUNNEL.size / 2],
-      [TUNNEL.size / 2, -TUNNEL.size / 2],
-    ];
-
-    edges.forEach(([x, y]) => {
-      const points = [
-        new THREE.Vector3(x, y, 0),
-        new THREE.Vector3(x, y, -wallHeight),
-      ];
-      const geo = new THREE.BufferGeometry().setFromPoints(points);
-      const line = new THREE.Line(geo, edgeMaterial);
-      tunnel.add(line);
-    });
-
-    // LARGE SQUARE OPENING AT THE END - frames content area
-    const openingSize = TUNNEL.size * 15; // Massive opening to frame full screen
-    const openingGeo = new THREE.PlaneGeometry(openingSize, openingSize);
-    const openingMat = new THREE.MeshBasicMaterial({
-      color: 0xffffff,
-      transparent: true,
-      opacity: 0.02,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    });
-    const opening = new THREE.Mesh(openingGeo, openingMat);
-    const endPosition = -(TUNNEL.slices * TUNNEL.spacing + 0.5);
-    opening.position.set(0, 0, endPosition);
-    tunnel.add(opening);
-
-    // Subtle glow around the opening
-    const glowSize1 = openingSize * 1.02;
-    const glowGeo1 = new THREE.PlaneGeometry(glowSize1, glowSize1);
-    const glowMat1 = new THREE.MeshBasicMaterial({
-      color: 0x888888,
-      transparent: true,
-      opacity: 0.04,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    });
-    const glow1 = new THREE.Mesh(glowGeo1, glowMat1);
-    glow1.position.set(0, 0, endPosition + 0.2);
-    tunnel.add(glow1);
-
-    // Add square frame outline for the opening (border lines)
-    const framePoints = [
-      new THREE.Vector3(-openingSize / 2, -openingSize / 2, endPosition - 0.1),
-      new THREE.Vector3(openingSize / 2, -openingSize / 2, endPosition - 0.1),
-      new THREE.Vector3(openingSize / 2, openingSize / 2, endPosition - 0.1),
-      new THREE.Vector3(-openingSize / 2, openingSize / 2, endPosition - 0.1),
-      new THREE.Vector3(-openingSize / 2, -openingSize / 2, endPosition - 0.1),
-    ];
-
-    const frameGeometry = new THREE.BufferGeometry().setFromPoints(framePoints);
-    const frameMaterial = new THREE.LineBasicMaterial({
-      color: 0xdddddd,
-      transparent: true,
-      opacity: 0.6,
-      linewidth: 2
-    });
-    const frame = new THREE.Line(frameGeometry, frameMaterial);
-    tunnel.add(frame);
+    // BOTTOM RING - Large, Light Gray (rotated horizontally)
+    const bottomRingGeo = new THREE.TorusGeometry(largeRadius, tubeThickness, 32, segments);
+    const bottomRingMat = createRingMaterial(0xcccccc, 0.95);
+    const bottomRing = new THREE.Mesh(bottomRingGeo, bottomRingMat);
+    bottomRing.position.set(0, -8, -15);
+    bottomRing.rotation.x = Math.PI / 2;
+    chainGroup.add(bottomRing);
 
     function resize() {
       const w = mount.clientWidth;
