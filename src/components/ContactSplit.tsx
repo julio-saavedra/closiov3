@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { subscribeToNewsletter } from '@/lib/supabase';
-import ClosioIO3D from './ClosioIO3D';
 
 const ContactSplit = React.memo(() => {
   const [email, setEmail] = useState('');
@@ -39,7 +38,28 @@ const ContactSplit = React.memo(() => {
     <section id="contact" className="py-20 relative bg-black overflow-hidden rounded-3xl">
       <div className="max-w-7xl mx-auto px-6">
         <div className="relative min-h-[500px]">
-          <ClosioIO3D />
+          <div className="absolute -bottom-64 left-0 pointer-events-none select-none z-0 opacity-90">
+            <div className="text-[200px] sm:text-[280px] md:text-[350px] lg:text-[420px] xl:text-[500px] font-bold tracking-tight flex items-center leading-none gap-6 md:gap-12 lg:gap-16">
+              <span
+                className="italic"
+                style={{
+                  WebkitTextStroke: '4px rgba(106, 212, 242, 0.9)',
+                  WebkitTextFillColor: 'transparent',
+                  filter: 'drop-shadow(0 0 80px rgba(106, 212, 242, 0.9)) drop-shadow(0 0 120px rgba(106, 212, 242, 0.6))',
+                }}
+              >
+                I
+              </span>
+              <span
+                className="text-white"
+                style={{
+                  filter: 'drop-shadow(0 0 80px rgba(106, 212, 242, 0.9)) drop-shadow(0 0 120px rgba(106, 212, 242, 0.6))',
+                }}
+              >
+                O
+              </span>
+            </div>
+          </div>
 
           <div className="relative z-10 flex items-start justify-center min-h-[500px] pt-8">
             <div className="max-w-3xl mx-auto text-center px-8">
