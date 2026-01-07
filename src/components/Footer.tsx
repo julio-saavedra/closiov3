@@ -74,9 +74,9 @@ const Footer: React.FC = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <img
-              src="/closio_main_logo copy copy.png"
+              src="/main_closio_logo.png"
               alt="Closio"
-              className="h-24 w-auto select-none mb-4"
+              className="h-32 w-auto select-none mb-4"
               draggable={false}
             />
             <p className="text-[#A8B3C7] mb-6 leading-relaxed">
