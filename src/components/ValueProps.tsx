@@ -3,22 +3,10 @@ import { motion } from 'framer-motion';
 
 const VerticalLine: React.FC = () => {
   return (
-    <svg
-      viewBox="0 0 1000 900"
-      className="absolute right-0 top-0 h-full w-full pointer-events-none"
-      preserveAspectRatio="none"
-    >
-      <path
-        d="M 500 -50
-           L 500 380
-           L -150 380"
-        fill="none"
-        stroke="white"
-        strokeWidth="20"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
-      />
-    </svg>
+    <div className="absolute inset-0 pointer-events-none overflow-visible">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[20px] h-[42%] bg-white" />
+      <div className="absolute top-[42%] left-0 right-1/2 h-[20px] bg-white" />
+    </div>
   );
 };
 
