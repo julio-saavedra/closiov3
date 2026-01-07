@@ -142,7 +142,10 @@ const Hero: React.FC = () => {
         <HeroBackground3D />
       </motion.div>
 
-      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-30 py-32 lg:py-0">
+      <motion.div
+        style={{ opacity }}
+        className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-30 py-32 lg:py-0"
+      >
         <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl lg:max-w-2xl">
           <motion.span
             className="text-xs sm:text-sm uppercase tracking-[0.2em] text-neutral-500 font-medium mb-6 relative"
@@ -203,7 +206,7 @@ const Hero: React.FC = () => {
 
           <FlipButton />
         </div>
-      </div>
+      </motion.div>
 
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent pointer-events-none z-[5]" />
     </section>
