@@ -3,89 +3,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import HeroBackground3D from './HeroBackground3D';
 
-const NeonBleedEffect: React.FC = () => {
-  return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden">
-      <div
-        className="absolute top-1/2 right-[10%] -translate-y-1/2 w-[400px] h-[400px] lg:w-[500px] lg:h-[500px]"
-        style={{ transform: 'translate(0, -45%)' }}
-      >
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.4) 0%, rgba(106, 212, 242, 0.15) 30%, transparent 70%)',
-            filter: 'blur(40px)',
-            transform: 'translate(-8px, 0) scale(1.1)',
-            mixBlendMode: 'screen',
-          }}
-        />
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background: 'radial-gradient(ellipse at center, rgba(255, 100, 180, 0.25) 0%, rgba(255, 100, 180, 0.1) 30%, transparent 70%)',
-            filter: 'blur(45px)',
-            transform: 'translate(8px, 0) scale(1.1)',
-            mixBlendMode: 'screen',
-          }}
-        />
-        <div
-          className="absolute inset-0 rounded-full"
-          style={{
-            background: 'radial-gradient(ellipse at center, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 25%, transparent 60%)',
-            filter: 'blur(30px)',
-            mixBlendMode: 'screen',
-          }}
-        />
-        <div
-          className="absolute left-1/2 top-[45%] -translate-x-1/2 w-[280px] lg:w-[350px] h-[500px] lg:h-[600px]"
-          style={{
-            background: `repeating-linear-gradient(
-              180deg,
-              transparent 0px,
-              transparent 3px,
-              rgba(106, 212, 242, 0.12) 3px,
-              rgba(106, 212, 242, 0.12) 5px,
-              transparent 5px,
-              transparent 12px
-            )`,
-            maskImage: 'linear-gradient(to bottom, black 0%, black 20%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 20%, transparent 100%)',
-            filter: 'blur(2px)',
-            mixBlendMode: 'screen',
-            animation: 'bleedDrift 8s ease-in-out infinite',
-          }}
-        />
-        <div
-          className="absolute left-1/2 top-[45%] -translate-x-1/2 w-[200px] lg:w-[250px] h-[450px] lg:h-[550px]"
-          style={{
-            background: `repeating-linear-gradient(
-              180deg,
-              transparent 0px,
-              transparent 4px,
-              rgba(255, 100, 180, 0.08) 4px,
-              rgba(255, 100, 180, 0.08) 6px,
-              transparent 6px,
-              transparent 15px
-            )`,
-            maskImage: 'linear-gradient(to bottom, black 0%, black 15%, transparent 100%)',
-            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 15%, transparent 100%)',
-            filter: 'blur(3px)',
-            transform: 'translateX(10px)',
-            mixBlendMode: 'screen',
-            animation: 'bleedDrift 10s ease-in-out infinite reverse',
-          }}
-        />
-      </div>
-      <style>{`
-        @keyframes bleedDrift {
-          0%, 100% { transform: translate(-50%, 0) scaleY(1); opacity: 0.7; }
-          50% { transform: translate(-50%, 8px) scaleY(1.02); opacity: 1; }
-        }
-      `}</style>
-    </div>
-  );
-};
-
 interface TypewriterTextProps {
   text: string;
   delay: number;
@@ -208,7 +125,6 @@ const Hero: React.FC = () => {
       className="min-h-screen w-full text-white flex items-center relative overflow-hidden bg-black"
     >
       <motion.div style={{ opacity, scale }} className="absolute inset-0">
-        <NeonBleedEffect />
         <HeroBackground3D />
       </motion.div>
 
