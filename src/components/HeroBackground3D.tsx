@@ -324,15 +324,15 @@ const HeroBackground3D: React.FC = () => {
 
   return (
     <div className="absolute inset-0 z-0 bg-black">
-      <div className="absolute inset-0 bg-gradient-to-l from-neutral-900 via-black to-black pointer-events-none" />
       <canvas
         ref={canvasRef}
-        className="w-full h-full block bg-transparent pointer-events-auto"
-        style={{ opacity: 1 }}
+        className="absolute inset-0 w-full h-full block pointer-events-auto"
+        style={{ opacity: 1, zIndex: 10 }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(53,231,224,0.05)_40%,_transparent_100%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(106,212,242,0.03)_0%,_transparent_60%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-l from-neutral-900/40 via-transparent to-black/60 pointer-events-none z-20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40 pointer-events-none z-20" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(53,231,224,0.05)_40%,_transparent_100%)] pointer-events-none z-20" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(106,212,242,0.03)_0%,_transparent_60%)] pointer-events-none z-20" />
     </div>
   );
 };
