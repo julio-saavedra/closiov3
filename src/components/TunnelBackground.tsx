@@ -51,7 +51,7 @@ const TunnelBackground: React.FC = () => {
     const TUNNEL = {
       slices: 40,
       spacing: 0.8,
-      size: 8,
+      size: 20,
       divisions: 8,
     };
 
@@ -123,11 +123,11 @@ const TunnelBackground: React.FC = () => {
     bottomWall.rotation.x = -Math.PI / 2;
     tunnel.add(bottomWall);
 
-    // Add edge lines for the square tunnel structure
+    // Add edge lines for the square tunnel structure (border frame)
     const edgeMaterial = new THREE.LineBasicMaterial({
-      color: 0x999999,
+      color: 0xaaaaaa,
       transparent: true,
-      opacity: 0.5
+      opacity: 0.6
     });
 
     const edgePoints = [
@@ -156,12 +156,12 @@ const TunnelBackground: React.FC = () => {
     });
 
     // LARGE SQUARE OPENING AT THE END - frames content area
-    const openingSize = TUNNEL.size * 3.5; // Much larger to frame content
+    const openingSize = TUNNEL.size * 8; // 5x larger to frame borders
     const openingGeo = new THREE.PlaneGeometry(openingSize, openingSize);
     const openingMat = new THREE.MeshBasicMaterial({
       color: 0xffffff,
       transparent: true,
-      opacity: 0.05,
+      opacity: 0.02,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
@@ -171,12 +171,12 @@ const TunnelBackground: React.FC = () => {
     tunnel.add(opening);
 
     // Subtle glow around the opening
-    const glowSize1 = openingSize * 1.05;
+    const glowSize1 = openingSize * 1.02;
     const glowGeo1 = new THREE.PlaneGeometry(glowSize1, glowSize1);
     const glowMat1 = new THREE.MeshBasicMaterial({
-      color: 0xaaaaaa,
+      color: 0x888888,
       transparent: true,
-      opacity: 0.08,
+      opacity: 0.04,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
@@ -184,7 +184,7 @@ const TunnelBackground: React.FC = () => {
     glow1.position.set(0, 0, endPosition + 0.2);
     tunnel.add(glow1);
 
-    // Add square frame outline for the opening (more visible)
+    // Add square frame outline for the opening (border lines)
     const framePoints = [
       new THREE.Vector3(-openingSize / 2, -openingSize / 2, endPosition - 0.1),
       new THREE.Vector3(openingSize / 2, -openingSize / 2, endPosition - 0.1),
@@ -195,9 +195,9 @@ const TunnelBackground: React.FC = () => {
 
     const frameGeometry = new THREE.BufferGeometry().setFromPoints(framePoints);
     const frameMaterial = new THREE.LineBasicMaterial({
-      color: 0xaaaaaa,
+      color: 0xbbbbbb,
       transparent: true,
-      opacity: 0.3,
+      opacity: 0.4,
       linewidth: 2
     });
     const frame = new THREE.Line(frameGeometry, frameMaterial);
@@ -239,10 +239,10 @@ const TunnelBackground: React.FC = () => {
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background: `
-            radial-gradient(65% 60% at 50% 50%,
+            radial-gradient(75% 70% at 50% 50%,
               rgba(0,0,0,0) 0%,
-              rgba(0,0,0,0.2) 50%,
-              rgba(0,0,0,0.6) 100%)
+              rgba(0,0,0,0.1) 60%,
+              rgba(0,0,0,0.4) 100%)
           `,
         }}
       />
