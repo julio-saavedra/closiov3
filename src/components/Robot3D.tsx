@@ -84,6 +84,16 @@ const Robot3D = () => {
       reflectivity: 0.85,
     });
 
+    const tealMetal = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color('#1A9B9B'),
+      metalness: 0.88,
+      roughness: 0.2,
+      clearcoat: 0.85,
+      clearcoatRoughness: 0.1,
+      envMapIntensity: 1.6,
+      reflectivity: 0.88,
+    });
+
     const eyeGlowL = new THREE.MeshStandardMaterial({
       color: new THREE.Color('#FFFFFF'),
       emissive: new THREE.Color('#35E7E0'),
@@ -238,10 +248,29 @@ const Robot3D = () => {
       const depth = 0.16;
 
       const outerShape = new THREE.Shape();
-      outerShape.absellipse(0, 0, outerRadius, outerRadius, 0, Math.PI * 2, false, 0);
+      const segments = 64;
+      for (let i = 0; i <= segments; i++) {
+        const angle = (i / segments) * Math.PI * 2;
+        const x = Math.cos(angle) * outerRadius;
+        const y = Math.sin(angle) * outerRadius;
+        if (i === 0) {
+          outerShape.moveTo(x, y);
+        } else {
+          outerShape.lineTo(x, y);
+        }
+      }
 
       const innerHole = new THREE.Path();
-      innerHole.absellipse(0, 0, innerRadius, innerRadius, 0, Math.PI * 2, true, 0);
+      for (let i = 0; i <= segments; i++) {
+        const angle = (i / segments) * Math.PI * 2;
+        const x = Math.cos(angle) * innerRadius;
+        const y = Math.sin(angle) * innerRadius;
+        if (i === 0) {
+          innerHole.moveTo(x, y);
+        } else {
+          innerHole.lineTo(x, y);
+        }
+      }
       outerShape.holes.push(innerHole);
 
       const g = new THREE.ExtrudeGeometry(outerShape, {
@@ -255,7 +284,7 @@ const Robot3D = () => {
       return g;
     };
 
-    const iMesh = new THREE.Mesh(createItalicHollowI(), blackMetal);
+    const iMesh = new THREE.Mesh(createItalicHollowI(), tealMetal);
     const oMesh = new THREE.Mesh(createHollowO(), blackMetal);
 
     iMesh.position.set(-0.5, 0.0, 0.0);
