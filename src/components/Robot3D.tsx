@@ -25,7 +25,7 @@ const Robot3D = () => {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 60);
-    camera.position.set(0.0, 1.15, 7.0);
+    camera.position.set(0.0, 0.65, 8.0);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.06).texture;
