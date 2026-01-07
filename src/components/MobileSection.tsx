@@ -4,17 +4,18 @@ import Robot3D from './Robot3D';
 const AngularLine: React.FC = () => {
   return (
     <svg
-      viewBox="0 0 500 700"
-      className="absolute left-0 top-0 h-full w-[35vw] min-h-[500px]"
+      viewBox="0 0 500 800"
+      className="absolute left-0 w-[35vw] pointer-events-none"
+      style={{ top: '-20px', height: 'calc(100% + 40px)' }}
       preserveAspectRatio="none"
     >
       <path
         d="M 50 -50
-           L 50 160
-           Q 50 240, 130 240
-           L 340 240
-           Q 420 240, 420 320
-           L 420 750"
+           L 50 200
+           Q 50 280, 130 280
+           L 340 280
+           Q 420 280, 420 360
+           L 420 850"
         fill="none"
         stroke="white"
         strokeWidth="20"
@@ -27,7 +28,7 @@ const AngularLine: React.FC = () => {
 
 const Robot3DContainer: React.FC = () => {
   return (
-    <div className="absolute left-[60px] sm:left-[80px] lg:left-[100px] top-[50%] -translate-y-1/2 w-[280px] sm:w-[320px] lg:w-[360px] h-[400px] sm:h-[450px] lg:h-[500px] pointer-events-none overflow-visible">
+    <div className="absolute left-[5%] sm:left-[6%] lg:left-[7%] top-[50%] -translate-y-1/2 w-[280px] sm:w-[340px] lg:w-[400px] xl:w-[450px] h-[350px] sm:h-[400px] lg:h-[450px] xl:h-[500px] pointer-events-none">
       <Robot3D />
     </div>
   );
@@ -63,15 +64,15 @@ const MobileSection: React.FC = () => {
   }, [hasPlayed]);
 
   return (
-    <section id="mobile" className="h-[500px] sm:h-[550px] lg:h-[600px] overflow-visible relative">
+    <section id="mobile" className="min-h-[600px] h-[600px] sm:h-[650px] lg:h-[700px] xl:h-[750px] overflow-visible relative">
       <AngularLine />
       <Robot3DContainer />
-      <div className="absolute inset-0 flex items-start justify-end pt-0">
-        <div className="relative w-full h-full flex items-start justify-end pr-0">
+      <div className="absolute inset-0 flex items-center justify-end">
+        <div className="relative w-full h-full flex items-center justify-end pr-0 py-8">
           <video
             ref={videoRef}
             src="https://www.dropbox.com/scl/fi/zsaggxsj4klujoec2wcam/Brand-new-copy-of-mobile-art-video.mp4?rlkey=4983zhcsv1roi1hbudhyum4df&st=ruomps0s&raw=1"
-            className="h-[100%] w-auto max-w-none object-contain drop-shadow-2xl"
+            className="h-[90%] w-auto max-w-none object-contain drop-shadow-2xl"
             muted
             playsInline
             preload="auto"
