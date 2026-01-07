@@ -294,31 +294,31 @@ const CommissionIcon: React.FC = () => (
 const DashboardIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
-      <linearGradient id="barFrontTeal" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#5eead4" />
-        <stop offset="30%" stopColor="#2dd4bf" />
-        <stop offset="70%" stopColor="#14b8a6" />
-        <stop offset="100%" stopColor="#0d9488" />
+      <linearGradient id="barFrontCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#67e8f9" />
+        <stop offset="30%" stopColor="#22d3ee" />
+        <stop offset="70%" stopColor="#06b6d4" />
+        <stop offset="100%" stopColor="#0891b2" />
       </linearGradient>
-      <linearGradient id="barSideTeal" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#0d9488" />
-        <stop offset="50%" stopColor="#0f766e" />
-        <stop offset="100%" stopColor="#115e59" />
+      <linearGradient id="barSideCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#0891b2" />
+        <stop offset="50%" stopColor="#0e7490" />
+        <stop offset="100%" stopColor="#155e75" />
       </linearGradient>
-      <linearGradient id="barTopTeal" x1="0%" y1="100%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#2dd4bf" />
-        <stop offset="50%" stopColor="#5eead4" />
-        <stop offset="100%" stopColor="#99f6e4" />
+      <linearGradient id="barTopCyan" x1="0%" y1="100%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#22d3ee" />
+        <stop offset="50%" stopColor="#67e8f9" />
+        <stop offset="100%" stopColor="#a5f3fc" />
       </linearGradient>
-      <linearGradient id="barHighlightTeal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <linearGradient id="barHighlightCyan" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
         <stop offset="50%" stopColor="#ffffff" stopOpacity="0.35" />
         <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
       </linearGradient>
-      <filter id="barShadowTeal" x="-30%" y="-30%" width="160%" height="160%">
-        <feDropShadow dx="3" dy="5" stdDeviation="6" floodColor="#0f766e" floodOpacity="0.5" />
+      <filter id="barShadowCyan" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="3" dy="5" stdDeviation="6" floodColor="#0e7490" floodOpacity="0.5" />
       </filter>
-      <filter id="barGlowTeal" x="-50%" y="-50%" width="200%" height="200%">
+      <filter id="barGlowCyan" x="-50%" y="-50%" width="200%" height="200%">
         <feGaussianBlur stdDeviation="2" result="blur" />
         <feMerge>
           <feMergeNode in="blur" />
@@ -327,51 +327,51 @@ const DashboardIcon: React.FC = () => (
       </filter>
     </defs>
 
-    <line x1="25" y1="45" x2="25" y2="160" stroke="#5eead4" strokeWidth="2.5" opacity="0.5" strokeLinecap="round" />
-    <line x1="25" y1="160" x2="180" y2="160" stroke="#5eead4" strokeWidth="2.5" opacity="0.5" strokeLinecap="round" />
+    <line x1="25" y1="45" x2="25" y2="160" stroke="#67e8f9" strokeWidth="2.5" opacity="0.5" strokeLinecap="round" />
+    <line x1="25" y1="160" x2="180" y2="160" stroke="#67e8f9" strokeWidth="2.5" opacity="0.5" strokeLinecap="round" />
 
-    <line x1="25" y1="70" x2="180" y2="70" stroke="#2dd4bf" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
-    <line x1="25" y1="100" x2="180" y2="100" stroke="#2dd4bf" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
-    <line x1="25" y1="130" x2="180" y2="130" stroke="#2dd4bf" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
+    <line x1="25" y1="70" x2="180" y2="70" stroke="#22d3ee" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
+    <line x1="25" y1="100" x2="180" y2="100" stroke="#22d3ee" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
+    <line x1="25" y1="130" x2="180" y2="130" stroke="#22d3ee" strokeWidth="1" opacity="0.15" strokeDasharray="4 4" />
 
-    <g filter="url(#barShadowTeal)">
-      <rect x="38" y="118" width="20" height="42" rx="2" fill="url(#barFrontTeal)" />
-      <path d="M38 118 L58 118 L66 110 L46 110 Z" fill="url(#barTopTeal)" />
-      <path d="M58 118 L58 160 L66 152 L66 110 Z" fill="url(#barSideTeal)" />
+    <g filter="url(#barShadowCyan)">
+      <rect x="38" y="118" width="20" height="42" rx="2" fill="url(#barFrontCyan)" />
+      <path d="M38 118 L58 118 L66 110 L46 110 Z" fill="url(#barTopCyan)" />
+      <path d="M58 118 L58 160 L66 152 L66 110 Z" fill="url(#barSideCyan)" />
       <rect x="38" y="118" width="3" height="42" fill="#ffffff" opacity="0.25" />
-      <rect x="43" y="118" width="10" height="42" fill="url(#barHighlightTeal)" />
+      <rect x="43" y="118" width="10" height="42" fill="url(#barHighlightCyan)" />
     </g>
 
-    <g filter="url(#barShadowTeal)">
-      <rect x="66" y="88" width="20" height="72" rx="2" fill="url(#barFrontTeal)" />
-      <path d="M66 88 L86 88 L94 80 L74 80 Z" fill="url(#barTopTeal)" />
-      <path d="M86 88 L86 160 L94 152 L94 80 Z" fill="url(#barSideTeal)" />
+    <g filter="url(#barShadowCyan)">
+      <rect x="66" y="88" width="20" height="72" rx="2" fill="url(#barFrontCyan)" />
+      <path d="M66 88 L86 88 L94 80 L74 80 Z" fill="url(#barTopCyan)" />
+      <path d="M86 88 L86 160 L94 152 L94 80 Z" fill="url(#barSideCyan)" />
       <rect x="66" y="88" width="3" height="72" fill="#ffffff" opacity="0.25" />
-      <rect x="71" y="88" width="10" height="72" fill="url(#barHighlightTeal)" />
+      <rect x="71" y="88" width="10" height="72" fill="url(#barHighlightCyan)" />
     </g>
 
-    <g filter="url(#barShadowTeal)">
-      <rect x="94" y="55" width="20" height="105" rx="2" fill="url(#barFrontTeal)" />
-      <path d="M94 55 L114 55 L122 47 L102 47 Z" fill="url(#barTopTeal)" />
-      <path d="M114 55 L114 160 L122 152 L122 47 Z" fill="url(#barSideTeal)" />
+    <g filter="url(#barShadowCyan)">
+      <rect x="94" y="55" width="20" height="105" rx="2" fill="url(#barFrontCyan)" />
+      <path d="M94 55 L114 55 L122 47 L102 47 Z" fill="url(#barTopCyan)" />
+      <path d="M114 55 L114 160 L122 152 L122 47 Z" fill="url(#barSideCyan)" />
       <rect x="94" y="55" width="3" height="105" fill="#ffffff" opacity="0.25" />
-      <rect x="99" y="55" width="10" height="105" fill="url(#barHighlightTeal)" />
+      <rect x="99" y="55" width="10" height="105" fill="url(#barHighlightCyan)" />
     </g>
 
-    <g filter="url(#barShadowTeal)">
-      <rect x="122" y="98" width="20" height="62" rx="2" fill="url(#barFrontTeal)" />
-      <path d="M122 98 L142 98 L150 90 L130 90 Z" fill="url(#barTopTeal)" />
-      <path d="M142 98 L142 160 L150 152 L150 90 Z" fill="url(#barSideTeal)" />
+    <g filter="url(#barShadowCyan)">
+      <rect x="122" y="98" width="20" height="62" rx="2" fill="url(#barFrontCyan)" />
+      <path d="M122 98 L142 98 L150 90 L130 90 Z" fill="url(#barTopCyan)" />
+      <path d="M142 98 L142 160 L150 152 L150 90 Z" fill="url(#barSideCyan)" />
       <rect x="122" y="98" width="3" height="62" fill="#ffffff" opacity="0.25" />
-      <rect x="127" y="98" width="10" height="62" fill="url(#barHighlightTeal)" />
+      <rect x="127" y="98" width="10" height="62" fill="url(#barHighlightCyan)" />
     </g>
 
-    <g filter="url(#barShadowTeal)">
-      <rect x="150" y="72" width="20" height="88" rx="2" fill="url(#barFrontTeal)" />
-      <path d="M150 72 L170 72 L178 64 L158 64 Z" fill="url(#barTopTeal)" />
-      <path d="M170 72 L170 160 L178 152 L178 64 Z" fill="url(#barSideTeal)" />
+    <g filter="url(#barShadowCyan)">
+      <rect x="150" y="72" width="20" height="88" rx="2" fill="url(#barFrontCyan)" />
+      <path d="M150 72 L170 72 L178 64 L158 64 Z" fill="url(#barTopCyan)" />
+      <path d="M170 72 L170 160 L178 152 L178 64 Z" fill="url(#barSideCyan)" />
       <rect x="150" y="72" width="3" height="88" fill="#ffffff" opacity="0.25" />
-      <rect x="155" y="72" width="10" height="88" fill="url(#barHighlightTeal)" />
+      <rect x="155" y="72" width="10" height="88" fill="url(#barHighlightCyan)" />
     </g>
 
     <polyline
@@ -382,13 +382,13 @@ const DashboardIcon: React.FC = () => (
       opacity="0.8"
       strokeLinecap="round"
       strokeLinejoin="round"
-      filter="url(#barGlowTeal)"
+      filter="url(#barGlowCyan)"
     />
-    <circle cx="48" cy="113" r="5" fill="#ccfbf1" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowTeal)" />
-    <circle cx="76" cy="83" r="5" fill="#ccfbf1" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowTeal)" />
-    <circle cx="104" cy="50" r="5" fill="#ccfbf1" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowTeal)" />
-    <circle cx="132" cy="93" r="5" fill="#ccfbf1" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowTeal)" />
-    <circle cx="160" cy="67" r="5" fill="#ccfbf1" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowTeal)" />
+    <circle cx="48" cy="113" r="5" fill="#cffafe" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowCyan)" />
+    <circle cx="76" cy="83" r="5" fill="#cffafe" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowCyan)" />
+    <circle cx="104" cy="50" r="5" fill="#cffafe" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowCyan)" />
+    <circle cx="132" cy="93" r="5" fill="#cffafe" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowCyan)" />
+    <circle cx="160" cy="67" r="5" fill="#cffafe" stroke="#ffffff" strokeWidth="2.5" filter="url(#barGlowCyan)" />
     <circle cx="48" cy="113" r="2" fill="#ffffff" opacity="0.8" />
     <circle cx="76" cy="83" r="2" fill="#ffffff" opacity="0.8" />
     <circle cx="104" cy="50" r="2" fill="#ffffff" opacity="0.8" />
@@ -551,7 +551,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
       } ${isDashboard ? 'border-0' : 'border border-white/10'}`}
       style={{
         background: isDashboard
-          ? 'linear-gradient(135deg, #0D4D4D 0%, #0A3D3D 25%, #083333 50%, #0D4A4A 75%, #0F5555 100%)'
+          ? 'linear-gradient(135deg, #164e63 0%, #155e75 25%, #0e4a5c 50%, #0c4a6e 75%, #0369a1 100%)'
           : '#000000',
         willChange: 'transform, opacity',
       }}
@@ -560,7 +560,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
         <div
           className="absolute inset-0 opacity-30"
           style={{
-            background: 'radial-gradient(ellipse at 30% 20%, rgba(45, 212, 191, 0.25) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(20, 184, 166, 0.15) 0%, transparent 40%)',
+            background: 'radial-gradient(ellipse at 30% 20%, rgba(34, 211, 238, 0.25) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 40%)',
           }}
         />
       )}
