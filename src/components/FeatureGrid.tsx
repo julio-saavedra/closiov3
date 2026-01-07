@@ -313,84 +313,112 @@ const MedalsIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
       <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#fcd34d" />
-        <stop offset="30%" stopColor="#fbbf24" />
-        <stop offset="70%" stopColor="#d4af37" />
-        <stop offset="100%" stopColor="#b8860b" />
+        <stop offset="0%" stopColor="#fef3c7" />
+        <stop offset="30%" stopColor="#fcd34d" />
+        <stop offset="70%" stopColor="#f59e0b" />
+        <stop offset="100%" stopColor="#d97706" />
       </linearGradient>
       <linearGradient id="goldInner" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#fef3c7" />
-        <stop offset="50%" stopColor="#fde68a" />
-        <stop offset="100%" stopColor="#fbbf24" />
+        <stop offset="0%" stopColor="#fffbeb" />
+        <stop offset="50%" stopColor="#fef3c7" />
+        <stop offset="100%" stopColor="#fde68a" />
       </linearGradient>
-      <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#e5e7eb" />
-        <stop offset="30%" stopColor="#d1d5db" />
-        <stop offset="70%" stopColor="#9ca3af" />
-        <stop offset="100%" stopColor="#6b7280" />
-      </linearGradient>
-      <linearGradient id="silverInner" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#f9fafb" />
-        <stop offset="50%" stopColor="#e5e7eb" />
-        <stop offset="100%" stopColor="#d1d5db" />
-      </linearGradient>
-      <linearGradient id="bronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#d97706" />
-        <stop offset="30%" stopColor="#b45309" />
-        <stop offset="70%" stopColor="#92400e" />
-        <stop offset="100%" stopColor="#78350f" />
-      </linearGradient>
-      <linearGradient id="bronzeInner" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#fcd34d" />
-        <stop offset="50%" stopColor="#d97706" />
+      <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#f59e0b" />
         <stop offset="100%" stopColor="#b45309" />
       </linearGradient>
-      <linearGradient id="ribbonGold" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#fbbf24" />
-        <stop offset="100%" stopColor="#b8860b" />
+      <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#f3f4f6" />
+        <stop offset="30%" stopColor="#e5e7eb" />
+        <stop offset="70%" stopColor="#d1d5db" />
+        <stop offset="100%" stopColor="#9ca3af" />
       </linearGradient>
-      <linearGradient id="ribbonSilver" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#d1d5db" />
-        <stop offset="100%" stopColor="#6b7280" />
+      <linearGradient id="silverInner" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" />
+        <stop offset="50%" stopColor="#f9fafb" />
+        <stop offset="100%" stopColor="#e5e7eb" />
       </linearGradient>
-      <linearGradient id="ribbonBronze" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="#d97706" />
-        <stop offset="100%" stopColor="#78350f" />
+      <linearGradient id="bronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#fed7aa" />
+        <stop offset="30%" stopColor="#fdba74" />
+        <stop offset="70%" stopColor="#ea580c" />
+        <stop offset="100%" stopColor="#c2410c" />
       </linearGradient>
-      <filter id="medalShadow" x="-30%" y="-30%" width="160%" height="160%">
-        <feDropShadow dx="3" dy="5" stdDeviation="6" floodColor="#000" floodOpacity="0.5" />
+      <linearGradient id="bronzeInner" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ffedd5" />
+        <stop offset="50%" stopColor="#fed7aa" />
+        <stop offset="100%" stopColor="#fdba74" />
+      </linearGradient>
+      <linearGradient id="podiumTop" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="rgba(255,255,255,0.4)" />
+        <stop offset="100%" stopColor="rgba(255,255,255,0.1)" />
+      </linearGradient>
+      <linearGradient id="podiumSide" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="rgba(255,255,255,0.2)" />
+        <stop offset="100%" stopColor="rgba(0,0,0,0.3)" />
+      </linearGradient>
+      <filter id="podiumShadow" x="-40%" y="-40%" width="180%" height="180%">
+        <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="rgba(0,0,0,0.4)"/>
       </filter>
-      <filter id="medalGlow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="3" result="blur" />
+      <filter id="medalShadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="rgba(0,0,0,0.6)" />
+        <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="rgba(0,210,255,0.15)" />
+      </filter>
+      <filter id="goldGlow" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur stdDeviation="4" result="blur" />
+        <feFlood floodColor="rgba(250,204,21,0.4)" result="color" />
+        <feComposite in="color" in2="blur" operator="in" result="glow" />
         <feMerge>
-          <feMergeNode in="blur" />
+          <feMergeNode in="glow" />
           <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
     </defs>
 
-    <g filter="url(#medalShadow)">
-      <path d="M48 30 L48 80 L55 85 L62 80 L62 30 Z" fill="url(#ribbonSilver)" />
-      <circle cx="55" cy="110" r="35" fill="url(#silverGrad)" />
-      <circle cx="55" cy="110" r="28" fill="url(#silverInner)" />
-      <circle cx="55" cy="110" r="20" fill="url(#silverGrad)" opacity="0.9" />
-      <text x="55" y="117" fontSize="20" fontWeight="bold" fill="#4b5563" textAnchor="middle">3</text>
+    <g filter="url(#podiumShadow)">
+      <rect x="20" y="140" width="35" height="45" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
+      <rect x="20" y="140" width="35" height="3" fill="url(#podiumTop)"/>
+      <path d="M55 140 L60 135 L60 180 L55 185 Z" fill="url(#podiumSide)"/>
+      <text x="37.5" y="168" fontSize="16" fontWeight="bold" fill="rgba(255,255,255,0.4)" textAnchor="middle">3</text>
+    </g>
+
+    <g filter="url(#podiumShadow)">
+      <rect x="82.5" y="120" width="35" height="65" fill="rgba(255,255,255,0.12)" stroke="rgba(0,210,255,0.3)" strokeWidth="2"/>
+      <rect x="82.5" y="120" width="35" height="3" fill="url(#podiumTop)"/>
+      <path d="M117.5 120 L122.5 115 L122.5 180 L117.5 185 Z" fill="url(#podiumSide)"/>
+      <text x="100" y="158" fontSize="16" fontWeight="bold" fill="rgba(0,210,255,0.6)" textAnchor="middle">1</text>
+    </g>
+
+    <g filter="url(#podiumShadow)">
+      <rect x="145" y="130" width="35" height="55" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
+      <rect x="145" y="130" width="35" height="3" fill="url(#podiumTop)"/>
+      <path d="M180 130 L185 125 L185 180 L180 185 Z" fill="url(#podiumSide)"/>
+      <text x="162.5" y="163" fontSize="16" fontWeight="bold" fill="rgba(255,255,255,0.4)" textAnchor="middle">2</text>
     </g>
 
     <g filter="url(#medalShadow)">
-      <path d="M138 30 L138 80 L145 85 L152 80 L152 30 Z" fill="url(#ribbonBronze)" />
-      <circle cx="145" cy="110" r="35" fill="url(#bronzeGrad)" />
-      <circle cx="145" cy="110" r="28" fill="url(#bronzeInner)" />
-      <circle cx="145" cy="110" r="20" fill="url(#bronzeGrad)" opacity="0.9" />
-      <text x="145" y="117" fontSize="20" fontWeight="bold" fill="#78350f" textAnchor="middle">2</text>
+      <circle cx="40" cy="85" r="28" fill="url(#silverGrad)" />
+      <circle cx="40" cy="85" r="23" fill="url(#silverInner)" />
+      <circle cx="40" cy="85" r="18" fill="url(#silverGrad)" opacity="0.3" />
+      <circle cx="40" cy="85" r="14" fill="rgba(255,255,255,0.5)" />
+      <text x="40" y="92" fontSize="16" fontWeight="bold" fill="#6b7280" textAnchor="middle">3</text>
     </g>
 
     <g filter="url(#medalShadow)">
-      <path d="M92 20 L92 55 L100 62 L108 55 L108 20 Z" fill="url(#ribbonGold)" />
-      <circle cx="100" cy="90" r="42" fill="url(#goldGrad)" filter="url(#medalGlow)" />
-      <circle cx="100" cy="90" r="34" fill="url(#goldInner)" />
-      <circle cx="100" cy="90" r="24" fill="url(#goldGrad)" opacity="0.9" />
-      <text x="100" y="98" fontSize="24" fontWeight="bold" fill="#92400e" textAnchor="middle">1</text>
+      <circle cx="160" cy="90" r="28" fill="url(#bronzeGrad)" />
+      <circle cx="160" cy="90" r="23" fill="url(#bronzeInner)" />
+      <circle cx="160" cy="90" r="18" fill="url(#bronzeGrad)" opacity="0.3" />
+      <circle cx="160" cy="90" r="14" fill="rgba(255,237,213,0.7)" />
+      <text x="160" y="97" fontSize="16" fontWeight="bold" fill="#9a3412" textAnchor="middle">2</text>
+    </g>
+
+    <g filter="url(#goldGlow)">
+      <circle cx="100" cy="65" r="38" fill="url(#goldGrad)" />
+      <circle cx="100" cy="65" r="32" fill="url(#goldInner)" />
+      <circle cx="100" cy="65" r="26" fill="url(#goldGrad)" opacity="0.3" />
+      <circle cx="100" cy="65" r="20" fill="rgba(255,251,235,0.8)" />
+      <circle cx="100" cy="65" r="4" fill="rgba(0,210,255,0.6)" />
+      <text x="100" y="73" fontSize="20" fontWeight="bold" fill="#92400e" textAnchor="middle">1</text>
     </g>
   </svg>
 );
