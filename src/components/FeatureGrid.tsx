@@ -570,7 +570,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
   const isLeftSide = index === 0 || index === 2;
   const slideDirection = isLeftSide ? -100 : 100;
   const staggerDelay = index * 0.15;
-  const isDashboard = feature.title === 'Dashboard Analytics';
+  const isDashboard = feature.title === '/ Dashboard Analytics';
 
   return (
     <motion.div
@@ -616,27 +616,27 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
 const FeatureGrid: React.FC = () => {
   const features = [
     {
-      title: 'Book of Business',
+      title: '/ Book of Business',
       description: 'No more digging through spreadsheets or losing track of clients. Your entire portfolio lives in one place, so you always know exactly where every deal stands.',
       icon: BookIcon,
     },
     {
-      title: 'Team Hierarchy',
+      title: '/ Team Hierarchy',
       description: 'See who reports to who and how your team is actually performing. No more confusion about splits or wondering how your downline is doing.',
       icon: HierarchyIcon,
     },
     {
-      title: 'Commission Tracking',
+      title: '/ Commission Tracking',
       description: 'Stop chasing down commission statements and second-guessing your payouts. Know exactly what you earned, when you earned it, and where it came from.',
       icon: CommissionIcon,
     },
     {
-      title: 'Dashboard Analytics',
+      title: '/ Dashboard Analytics',
       description: 'Get the full picture of your business at a glance. See what is working, what needs attention, and make smarter decisions without crunching numbers yourself.',
       icon: DashboardIcon,
     },
     {
-      title: 'Leaderboard',
+      title: '/ Leaderboard',
       description: 'Healthy competition drives results. See where you stack up against your peers and celebrate the wins that keep your team hungry for more.',
       icon: MedalsIcon,
     },
