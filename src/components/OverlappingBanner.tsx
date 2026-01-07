@@ -3,28 +3,51 @@ import { motion } from 'framer-motion';
 const GridPattern: React.FC = () => {
   return (
     <div
-      className="absolute top-0 right-0 w-64 h-64 pointer-events-none overflow-hidden"
+      className="absolute top-0 right-0 w-72 h-72 pointer-events-none overflow-hidden"
       style={{
-        maskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 70%)',
-        WebkitMaskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 70%)',
+        maskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 75%)',
+        WebkitMaskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 75%)',
       }}
     >
-      <svg width="256" height="256" className="opacity-30">
+      <svg width="288" height="288" className="opacity-50">
         <defs>
-          <pattern id="banner-grid-pattern" width="24" height="24" patternUnits="userSpaceOnUse">
+          <pattern id="banner-grid-pattern" width="20" height="20" patternUnits="userSpaceOnUse">
             <path
-              d="M 24 0 L 0 0 0 24"
+              d="M 20 0 L 0 0 0 20"
               fill="none"
               stroke="#ffffff"
-              strokeWidth="0.5"
+              strokeWidth="1"
             />
           </pattern>
         </defs>
-        <rect width="256" height="256" fill="url(#banner-grid-pattern)" />
+        <rect width="288" height="288" fill="url(#banner-grid-pattern)" />
       </svg>
     </div>
   );
 };
+
+const BottomGlow: React.FC = () => (
+  <div className="absolute bottom-0 left-0 right-0 h-48 pointer-events-none">
+    <div
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-40 blur-3xl"
+      style={{
+        background: 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.5), transparent 70%)',
+      }}
+    />
+    <div
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-28 blur-2xl"
+      style={{
+        background: 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.4), transparent 70%)',
+      }}
+    />
+    <div
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-16 blur-xl"
+      style={{
+        background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.3), transparent 70%)',
+      }}
+    />
+  </div>
+);
 
 const OverlappingBanner: React.FC = () => {
   return (
@@ -48,6 +71,7 @@ const OverlappingBanner: React.FC = () => {
           }}
         />
         <GridPattern />
+        <BottomGlow />
         <div className="relative px-8 py-16 md:py-20 flex flex-col items-center justify-center text-center z-10">
           <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-4xl"
