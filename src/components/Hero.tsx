@@ -1,6 +1,54 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import HeroBackground3D from './HeroBackground3D';
+
+interface TypewriterTextProps {
+  text: string;
+  delay: number;
+  className?: string;
+  isGradient?: boolean;
+}
+
+const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className = '', isGradient = false }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [showCursor, setShowCursor] = useState(false);
+
+  useEffect(() => {
+    const startTimeout = setTimeout(() => {
+      setShowCursor(true);
+      let currentIndex = 0;
+
+      const typeInterval = setInterval(() => {
+        if (currentIndex <= text.length) {
+          setDisplayedText(text.slice(0, currentIndex));
+          currentIndex++;
+        } else {
+          clearInterval(typeInterval);
+          setShowCursor(false);
+        }
+      }, 80);
+
+      return () => clearInterval(typeInterval);
+    }, delay);
+
+    return () => clearTimeout(startTimeout);
+  }, [text, delay]);
+
+  return (
+    <span className={`inline-block ${className}`}>
+      {displayedText}
+      {showCursor && (
+        <motion.span
+          className={isGradient ? 'text-[#35E7E0]' : 'text-white'}
+          animate={{ opacity: [1, 0, 1] }}
+          transition={{ duration: 0.8, repeat: Infinity }}
+        >
+          |
+        </motion.span>
+      )}
+    </span>
+  );
+};
 
 const FlipButton: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -10,7 +58,7 @@ const FlipButton: React.FC = () => {
       className="demo-btn relative px-8 py-4 bg-white text-black font-semibold text-base rounded-xl overflow-hidden z-30 group"
       initial={{ opacity: 0, y: 20, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.6, delay: 5.8, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)" }}
       whileTap={{ scale: 0.98 }}
       onHoverStart={() => setIsHovered(true)}
@@ -61,59 +109,38 @@ const Hero: React.FC = () => {
             className="text-xs sm:text-sm uppercase tracking-[0.2em] text-neutral-500 font-medium mb-6 relative"
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, delay: 3.2, ease: [0.16, 1, 0.3, 1] }}
           >
-            <motion.span
-              className="absolute inset-0 bg-gradient-to-r from-[#35E7E0] to-transparent opacity-0"
-              animate={{ opacity: [0, 0.3, 0] }}
-              transition={{ duration: 2, delay: 0.5 }}
-            />
             CLOS<em className="italic">I</em>O WAS BUILT FOR YOU
           </motion.span>
 
           <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.05] -tracking-[0.02em] mb-6">
-            <motion.span
-              className="inline-block relative"
-              initial={{ x: -50, opacity: 0, filter: "blur(20px)" }}
-              animate={{ x: 0, opacity: 1, filter: "blur(0px)" }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-            >
-              <motion.span
-                className="absolute -inset-2 bg-gradient-to-r from-white/20 to-transparent rounded-lg opacity-0"
-                animate={{ opacity: [0, 0.3, 0], x: [0, 200] }}
-                transition={{ duration: 1.5, delay: 0.8 }}
+            <span className="block">
+              <TypewriterText
+                text="Close More."
+                delay={3100}
+                className="text-white"
               />
-              Close More.
-            </motion.span>
-            <br />
-            <motion.span
-              className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-[#35E7E0] via-[#6ad4f2] to-[#35E7E0] bg-[length:200%_auto] relative"
-              initial={{ x: 50, opacity: 0, filter: "blur(20px)" }}
-              animate={{
-                x: 0,
-                opacity: 1,
-                filter: "blur(0px)",
-                backgroundPosition: ["0% center", "200% center"]
-              }}
-              transition={{
-                x: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 },
-                opacity: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 },
-                filter: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.6 },
-                backgroundPosition: { duration: 3, delay: 1.2, repeat: Infinity, ease: "linear" }
-              }}
+            </span>
+            <span
+              className="block text-transparent bg-clip-text bg-gradient-to-r from-[#35E7E0] via-[#6ad4f2] to-[#35E7E0]"
               style={{
                 textShadow: "0 0 30px rgba(53, 231, 224, 0.5), 0 0 60px rgba(53, 231, 224, 0.2)"
               }}
             >
-              Close Smarter.
-            </motion.span>
+              <TypewriterText
+                text="Close Smarter."
+                delay={4100}
+                isGradient={true}
+              />
+            </span>
           </h1>
 
           <motion.p
             className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-md leading-relaxed mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            transition={{ duration: 0.8, delay: 5.3 }}
           >
             / Trusted & Used by 1,000+ agents
           </motion.p>
