@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import HeroBackground3D from './HeroBackground3D';
 
 const TypewriterText: React.FC<{ text: string; delay?: number }> = ({ text, delay = 0 }) => {
   const [displayedText, setDisplayedText] = useState('');
@@ -59,18 +60,20 @@ const Hero: React.FC = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen w-full text-white flex items-center relative overflow-visible"
+      className="min-h-screen w-full text-white flex items-center relative overflow-hidden"
     >
+      <HeroBackground3D />
+
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           backgroundImage: `
-            linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px)
+            linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px)
           `,
           backgroundSize: '50px 50px',
-          maskImage: 'radial-gradient(ellipse 70% 70% at 40% 50%, black 0%, rgba(0,0,0,0.6) 30%, transparent 70%)',
-          WebkitMaskImage: 'radial-gradient(ellipse 70% 70% at 40% 50%, black 0%, rgba(0,0,0,0.6) 30%, transparent 70%)',
+          maskImage: 'radial-gradient(ellipse 55% 55% at 30% 50%, black 0%, rgba(0,0,0,0.3) 20%, transparent 55%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 55% 55% at 30% 50%, black 0%, rgba(0,0,0,0.3) 20%, transparent 55%)',
         }}
       />
 
