@@ -60,71 +60,127 @@ const SparkleEffect: React.FC<{ isHovered: boolean }> = ({ isHovered }) => {
 const BookIcon: React.FC = () => (
   <svg viewBox="0 0 96 96" role="img" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
     <defs>
-      <linearGradient id="bb_bg" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stopColor="rgba(0,210,255,0.16)"/>
-        <stop offset="1" stopColor="rgba(255,255,255,0.06)"/>
+      <linearGradient id="bobTile" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="rgba(0,210,255,0.14)"/>
+        <stop offset="1" stopColor="rgba(255,255,255,0.05)"/>
       </linearGradient>
-      <linearGradient id="bb_stroke" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stopColor="rgba(255,255,255,0.60)"/>
-        <stop offset="1" stopColor="rgba(0,210,255,0.52)"/>
+      <linearGradient id="bobTileStroke" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="rgba(255,255,255,0.55)"/>
+        <stop offset="1" stopColor="rgba(0,210,255,0.45)"/>
       </linearGradient>
-      <filter id="bb_shadow" x="-40%" y="-40%" width="180%" height="180%">
+
+      <linearGradient id="coverFront" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="rgba(255,255,255,0.14)"/>
+        <stop offset="0.45" stopColor="rgba(255,255,255,0.08)"/>
+        <stop offset="1" stopColor="rgba(0,0,0,0.22)"/>
+      </linearGradient>
+
+      <linearGradient id="coverSpine" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stopColor="rgba(0,0,0,0.34)"/>
+        <stop offset="1" stopColor="rgba(255,255,255,0.10)"/>
+      </linearGradient>
+
+      <linearGradient id="pages" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stopColor="rgba(255,255,255,0.85)"/>
+        <stop offset="0.35" stopColor="rgba(255,255,255,0.65)"/>
+        <stop offset="1" stopColor="rgba(255,255,255,0.35)"/>
+      </linearGradient>
+
+      <linearGradient id="pageEdge" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stopColor="rgba(0,0,0,0.30)"/>
+        <stop offset="1" stopColor="rgba(255,255,255,0.00)"/>
+      </linearGradient>
+
+      <linearGradient id="tealEdge" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="rgba(0,210,255,0.85)"/>
+        <stop offset="1" stopColor="rgba(0,210,255,0.20)"/>
+      </linearGradient>
+
+      <linearGradient id="spec" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stopColor="rgba(255,255,255,0)"/>
+        <stop offset="0.5" stopColor="rgba(255,255,255,0.22)"/>
+        <stop offset="1" stopColor="rgba(255,255,255,0)"/>
+      </linearGradient>
+
+      <filter id="tileShadow" x="-40%" y="-40%" width="180%" height="180%">
         <feDropShadow dx="0" dy="14" stdDeviation="10" floodColor="rgba(0,0,0,0.55)"/>
         <feDropShadow dx="0" dy="4" stdDeviation="3" floodColor="rgba(0,210,255,0.18)"/>
       </filter>
 
-      <linearGradient id="bb_shine" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stopColor="rgba(255,255,255,0)"/>
-        <stop offset="0.5" stopColor="rgba(255,255,255,0.18)"/>
-        <stop offset="1" stopColor="rgba(255,255,255,0)"/>
-      </linearGradient>
-      <clipPath id="bb_clip">
+      <filter id="objShadow" x="-60%" y="-60%" width="220%" height="220%">
+        <feDropShadow dx="0" dy="10" stdDeviation="6" floodColor="rgba(0,0,0,0.60)"/>
+      </filter>
+
+      <clipPath id="tileClip">
         <rect x="10" y="10" width="76" height="76" rx="18"/>
+      </clipPath>
+
+      <clipPath id="coverClip">
+        <polygon points="34,30 66,36 66,70 34,64"/>
       </clipPath>
     </defs>
 
-    <g filter="url(#bb_shadow)">
-      <g className="bb-float">
-        <rect x="10" y="10" width="76" height="76" rx="18" fill="url(#bb_bg)" stroke="url(#bb_stroke)" strokeWidth="2"/>
+    <g filter="url(#tileShadow)">
+      <rect x="10" y="10" width="76" height="76" rx="18" fill="url(#bobTile)" stroke="url(#bobTileStroke)" strokeWidth="2"/>
 
-        <g clipPath="url(#bb_clip)">
-          <rect className="bb-sweep" x="-30" y="10" width="28" height="76" fill="url(#bb_shine)" transform="skewX(-18)"/>
+      <g clipPath="url(#tileClip)" opacity="0.85">
+        <rect className="tileSweep" x="-30" y="10" width="28" height="76" fill="url(#spec)" transform="skewX(-18)"/>
+      </g>
+
+      <g className="bookFloat" filter="url(#objShadow)">
+        <ellipse cx="50" cy="73" rx="23" ry="6" fill="rgba(0,0,0,0.42)"/>
+
+        <polygon points="32,28 63,34 72,30 41,24" fill="rgba(255,255,255,0.38)"/>
+        <polygon points="63,34 63,68 72,64 72,30" fill="url(#pages)"/>
+        <polygon points="63,34 63,68 66,66 66,36" fill="url(#pageEdge)" opacity="0.65"/>
+
+        <polygon points="30,30 34,30 34,64 30,64" fill="url(#coverSpine)"/>
+
+        <polygon points="34,30 66,36 66,70 34,64" fill="url(#coverFront)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.2"/>
+
+        <polyline points="34,30 66,36 66,70" fill="none" stroke="url(#tealEdge)" strokeWidth="2.2" strokeLinecap="round" opacity="0.9"/>
+
+        <g opacity="0.95">
+          <rect x="40" y="40" width="20" height="8" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(0,0,0,0.22)" strokeWidth="0.8"/>
+          <rect x="40" y="52" width="24" height="8" rx="3" fill="rgba(255,255,255,0.09)" stroke="rgba(0,0,0,0.22)" strokeWidth="0.8"/>
+          <rect x="40" y="64" width="16" height="6" rx="3" fill="rgba(255,255,255,0.07)" stroke="rgba(0,0,0,0.22)" strokeWidth="0.8"/>
+          <circle cx="42.8" cy="44" r="1.6" fill="rgba(0,210,255,0.85)"/>
+          <circle cx="42.8" cy="56" r="1.6" fill="rgba(0,210,255,0.85)"/>
+          <circle cx="42.8" cy="67" r="1.4" fill="rgba(0,210,255,0.85)"/>
         </g>
 
-        <g className="bb-book">
-          <path d="M26 30 C26 26, 30 24, 34 24 H66 C70 24, 72 27, 72 31 V70 C72 72, 70 74, 68 74 H34
-                   C30 74, 26 72, 26 68 Z"
-                fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.18)" strokeWidth="2"/>
-          <path className="bb-spine" d="M34 24 V74" stroke="rgba(0,210,255,0.55)" strokeWidth="3" strokeLinecap="round"/>
+        <g clipPath="url(#coverClip)">
+          <rect className="coverSweep" x="20" y="22" width="14" height="60" fill="url(#spec)" opacity="0.0" transform="skewX(-18)"/>
         </g>
 
-        <g className="bb-cards">
-          <rect x="40" y="34" width="26" height="10" rx="4" fill="rgba(255,255,255,0.14)"/>
-          <rect x="40" y="48" width="30" height="10" rx="4" fill="rgba(255,255,255,0.16)"/>
-          <rect x="40" y="62" width="22" height="10" rx="4" fill="rgba(255,255,255,0.12)"/>
-          <circle cx="44" cy="39" r="2" fill="rgba(0,210,255,0.80)"/>
-          <circle cx="44" cy="53" r="2" fill="rgba(0,210,255,0.80)"/>
-          <circle cx="44" cy="67" r="2" fill="rgba(0,210,255,0.80)"/>
-          <rect className="bb-cardshine" x="36" y="30" width="10" height="50" fill="rgba(255,255,255,0.14)" opacity="0" transform="skewX(-18)"/>
-        </g>
+        <path d="M62 38 C64 39, 65 41, 64 42" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.2" strokeLinecap="round" opacity="0.75"/>
       </g>
     </g>
 
     <style>
       {`
-        .bb-float { transform-origin: 48px 48px; animation: float5 4.0s ease-in-out infinite; }
-        .bb-sweep { animation: sweep 3.3s ease-in-out infinite; }
-        .bb-book  { transform-origin: 34px 48px; animation: page 3.2s ease-in-out infinite; }
-        .bb-cardshine { animation: cardSweep 2.8s ease-in-out infinite; }
+        .bookFloat { transform-origin: 50px 58px; animation: bookFloat 3.6s ease-in-out infinite; }
+        .tileSweep { animation: sweep 3.1s ease-in-out infinite; }
+        .coverSweep { animation: coverSweep 2.8s ease-in-out infinite; }
 
-        @keyframes float5 { 0%,100%{ transform: translateY(0px) } 50%{ transform: translateY(-2px) } }
-        @keyframes sweep { 0%{ transform: translateX(-10px) skewX(-18deg) } 60%{ transform: translateX(130px) skewX(-18deg)} 100%{ transform: translateX(130px) skewX(-18deg)} }
-        @keyframes page  { 0%,100%{ transform: rotate(-0.6deg) } 50%{ transform: rotate(0.6deg) } }
-        @keyframes cardSweep{
-          0%{ transform: translateX(-10px) skewX(-18deg); opacity:0; }
-          25%{ opacity:0.14; }
-          55%{ transform: translateX(90px) skewX(-18deg); opacity:0; }
-          100%{ transform: translateX(90px) skewX(-18deg); opacity:0; }
+        @keyframes bookFloat {
+          0%,100% { transform: translateY(0px) rotate(-0.25deg); }
+          50%     { transform: translateY(-2.2px) rotate(0.25deg); }
+        }
+        @keyframes sweep {
+          0%   { transform: translateX(-10px) skewX(-18deg); }
+          60%  { transform: translateX(130px) skewX(-18deg); }
+          100% { transform: translateX(130px) skewX(-18deg); }
+        }
+        @keyframes coverSweep {
+          0%   { transform: translateX(-20px) skewX(-18deg); opacity: 0; }
+          18%  { opacity: 0.16; }
+          48%  { transform: translateX(90px) skewX(-18deg); opacity: 0; }
+          100% { transform: translateX(90px) skewX(-18deg); opacity: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce){
+          .bookFloat,.tileSweep,.coverSweep { animation: none !important; }
         }
       `}
     </style>
