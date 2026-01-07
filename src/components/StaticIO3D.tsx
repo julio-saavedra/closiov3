@@ -224,16 +224,16 @@ const StaticIO3D: React.FC = () => {
     io3D.add(shieldMesh);
 
     const io = new THREE.Group();
-    io.position.set(0, 0.6, 0.05);
+    io.position.set(0, 0.45, 0.0);
     io3D.add(io);
 
     const iMesh = new THREE.Mesh(
-      createHollowI({ width: 0.42, height: 1.15, stroke: 0.06, slant: 0.20, depth: 0.12 }),
-      polishedMaterial(TEAL, 1.8, 0.02)
+      createHollowI({ width: 0.42, height: 1.15, stroke: 0.06, slant: 0.20, depth: 0.10 }),
+      polishedMaterial(TEAL, 1.2, 0.03)
     );
     const oMesh = new THREE.Mesh(
-      createHollowO({ outerRadius: 0.55, ringThickness: 0.20, depth: 0.12, segments: 256 }),
-      polishedMaterial(WHITE, 1.0, 0.02)
+      createHollowO({ outerRadius: 0.55, ringThickness: 0.20, depth: 0.10, segments: 256 }),
+      polishedMaterial(WHITE, 0.7, 0.03)
     );
 
     iMesh.position.set(-0.55, 0.0, 0.0);

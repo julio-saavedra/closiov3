@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface TypewriterTextProps {
   text: string;
@@ -51,17 +52,26 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay = 0, classN
   );
 };
 
-const ShieldIO = () => (
-  <motion.svg
-    viewBox="0 0 400 480"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-full h-full max-w-[420px] mx-auto"
-    initial={{ opacity: 0, scale: 0.9 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 1, ease: "easeOut" }}
-  >
+const ShieldIO = () => {
+  const { ref, isVisible } = useScrollAnimation({
+    threshold: 0.2,
+    rootMargin: '-100px 0px -100px 0px'
+  });
+
+  return (
+    <motion.svg
+      ref={ref}
+      viewBox="0 0 400 480"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-full h-full max-w-[420px] mx-auto"
+      initial={{ opacity: 0, scale: 0.85, y: 40 }}
+      animate={isVisible
+        ? { opacity: 1, scale: 1, y: 0 }
+        : { opacity: 0, scale: 0.85, y: 40 }
+      }
+      transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
+    >
     <defs>
       <linearGradient id="shieldGradientMain" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#ffffff" stopOpacity="0.15" />
@@ -167,7 +177,8 @@ const ShieldIO = () => (
       />
     </g>
   </motion.svg>
-);
+  );
+};
 
 const GlassRingsSection = () => {
   const [line1Complete, setLine1Complete] = useState(false);
