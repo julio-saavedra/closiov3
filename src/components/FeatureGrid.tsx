@@ -510,85 +510,31 @@ const MedalsIcon: React.FC = () => (
   </svg>
 );
 
-const PipeDecoration: React.FC = () => {
+const HorizontalLine: React.FC = () => {
   return (
-    <div
-      className="absolute left-[3vw] pointer-events-none z-0"
-      style={{ top: '50%', transform: 'translateY(-50%)' }}
+    <svg
+      viewBox="0 0 1200 500"
+      className="absolute left-0 top-0 w-full h-full pointer-events-none"
+      preserveAspectRatio="none"
     >
-      <svg width="200" height="400" viewBox="0 0 200 400" className="overflow-visible">
-        <defs>
-          <linearGradient id="pipeFront" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#1a1a1a" />
-            <stop offset="15%" stopColor="#2d3748" />
-            <stop offset="35%" stopColor="#4a5568" />
-            <stop offset="50%" stopColor="#718096" />
-            <stop offset="65%" stopColor="#4a5568" />
-            <stop offset="85%" stopColor="#2d3748" />
-            <stop offset="100%" stopColor="#1a1a1a" />
-          </linearGradient>
-          <linearGradient id="pipeTop" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#718096" />
-            <stop offset="50%" stopColor="#4a5568" />
-            <stop offset="100%" stopColor="#2d3748" />
-          </linearGradient>
-          <linearGradient id="pipeBottom" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#1a1a1a" />
-            <stop offset="50%" stopColor="#2d3748" />
-            <stop offset="100%" stopColor="#4a5568" />
-          </linearGradient>
-          <linearGradient id="pipeHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#ffffff" stopOpacity="0" />
-            <stop offset="30%" stopColor="#ffffff" stopOpacity="0.15" />
-            <stop offset="50%" stopColor="#ffffff" stopOpacity="0.25" />
-            <stop offset="70%" stopColor="#ffffff" stopOpacity="0.15" />
-            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-          </linearGradient>
-          <filter id="pipeShadow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="6" dy="8" stdDeviation="12" floodColor="#000" floodOpacity="0.7" />
-          </filter>
-          <filter id="pipeInnerShadow">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
-            <feOffset dx="0" dy="2" result="offsetblur" />
-            <feComponentTransfer>
-              <feFuncA type="linear" slope="0.5" />
-            </feComponentTransfer>
-            <feMerge>
-              <feMergeNode />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-
-        <g filter="url(#pipeShadow)">
-          <ellipse cx="20" cy="150" rx="18" ry="18" fill="url(#pipeTop)" />
-
-          <rect x="20" y="150" width="120" height="36" fill="url(#pipeFront)" />
-          <rect x="20" y="150" width="120" height="8" fill="url(#pipeHighlight)" />
-
-          <ellipse cx="140" cy="168" rx="18" ry="18" fill="url(#pipeBottom)" />
-
-          <rect x="140" y="168" width="6" height="100" fill="url(#pipeFront)" />
-          <rect x="140" y="168" width="3" height="100" fill="url(#pipeHighlight)" />
-
-          <ellipse cx="143" cy="268" rx="18" ry="18" fill="url(#pipeTop)" />
-
-          <rect x="20" y="268" width="123" height="36" fill="url(#pipeFront)" />
-          <rect x="20" y="268" width="123" height="8" fill="url(#pipeHighlight)" />
-
-          <ellipse cx="20" cy="286" rx="18" ry="18" fill="url(#pipeBottom)" />
-
-          <rect x="2" y="150" width="18" height="36" fill="#0a0a0a" opacity="0.6" />
-          <rect x="2" y="268" width="18" height="36" fill="#0a0a0a" opacity="0.6" />
-
-          <ellipse cx="140" cy="168" rx="14" ry="14" fill="#1a1a1a" filter="url(#pipeInnerShadow)" />
-          <ellipse cx="143" cy="268" rx="14" ry="14" fill="#1a1a1a" filter="url(#pipeInnerShadow)" />
-
-          <ellipse cx="30" cy="163" rx="4" ry="6" fill="#ffffff" opacity="0.2" />
-          <ellipse cx="30" cy="281" rx="4" ry="6" fill="#ffffff" opacity="0.2" />
-        </g>
-      </svg>
-    </div>
+      <path
+        d="M -50 250
+           L 300 250
+           Q 370 250, 370 320
+           L 370 420
+           Q 370 490, 440 490
+           L 760 490
+           Q 830 490, 830 420
+           L 830 320
+           Q 830 250, 900 250
+           L 1250 250"
+        fill="none"
+        stroke="white"
+        strokeWidth="20"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   );
 };
 
@@ -679,7 +625,7 @@ const FeatureGrid: React.FC = () => {
 
   return (
     <section className="relative py-20 bg-black overflow-hidden">
-      <PipeDecoration />
+      <HorizontalLine />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
