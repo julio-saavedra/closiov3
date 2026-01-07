@@ -10,18 +10,13 @@ const VerticalLine: React.FC = () => {
     >
       <path
         d="M 500 -50
-           L 500 310
-           A 70 70 0 0 1 430 380
-           L 120 380
-           A 70 70 0 0 1 50 450
-           L 50 550
-           A 70 70 0 0 1 -20 620
-           L -150 620"
+           L 500 380
+           L -150 380"
         fill="none"
         stroke="white"
         strokeWidth="20"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
       />
     </svg>
   );
