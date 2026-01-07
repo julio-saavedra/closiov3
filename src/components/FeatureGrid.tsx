@@ -58,132 +58,34 @@ const SparkleEffect: React.FC<{ isHovered: boolean }> = ({ isHovered }) => {
 };
 
 const BookIcon: React.FC = () => (
-  <svg viewBox="0 0 96 96" role="img" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+  <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
-      <linearGradient id="bobTile" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stopColor="rgba(0,210,255,0.14)"/>
-        <stop offset="1" stopColor="rgba(255,255,255,0.05)"/>
+      <linearGradient id="bookFront" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#e5e7eb" />
+        <stop offset="50%" stopColor="#d1d5db" />
+        <stop offset="100%" stopColor="#9ca3af" />
       </linearGradient>
-      <linearGradient id="bobTileStroke" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stopColor="rgba(255,255,255,0.55)"/>
-        <stop offset="1" stopColor="rgba(0,210,255,0.45)"/>
+      <linearGradient id="bookTop" x1="0%" y1="100%" x2="0%" y2="0%">
+        <stop offset="0%" stopColor="#d1d5db" />
+        <stop offset="100%" stopColor="#f3f4f6" />
       </linearGradient>
-
-      <linearGradient id="coverFront" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stopColor="rgba(255,255,255,0.14)"/>
-        <stop offset="0.45" stopColor="rgba(255,255,255,0.08)"/>
-        <stop offset="1" stopColor="rgba(0,0,0,0.22)"/>
+      <linearGradient id="bookSide" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stopColor="#9ca3af" />
+        <stop offset="100%" stopColor="#6b7280" />
       </linearGradient>
-
-      <linearGradient id="coverSpine" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stopColor="rgba(0,0,0,0.34)"/>
-        <stop offset="1" stopColor="rgba(255,255,255,0.10)"/>
-      </linearGradient>
-
-      <linearGradient id="pages" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stopColor="rgba(255,255,255,0.85)"/>
-        <stop offset="0.35" stopColor="rgba(255,255,255,0.65)"/>
-        <stop offset="1" stopColor="rgba(255,255,255,0.35)"/>
-      </linearGradient>
-
-      <linearGradient id="pageEdge" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stopColor="rgba(0,0,0,0.30)"/>
-        <stop offset="1" stopColor="rgba(255,255,255,0.00)"/>
-      </linearGradient>
-
-      <linearGradient id="tealEdge" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stopColor="rgba(0,210,255,0.85)"/>
-        <stop offset="1" stopColor="rgba(0,210,255,0.20)"/>
-      </linearGradient>
-
-      <linearGradient id="spec" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0" stopColor="rgba(255,255,255,0)"/>
-        <stop offset="0.5" stopColor="rgba(255,255,255,0.22)"/>
-        <stop offset="1" stopColor="rgba(255,255,255,0)"/>
-      </linearGradient>
-
-      <filter id="tileShadow" x="-40%" y="-40%" width="180%" height="180%">
-        <feDropShadow dx="0" dy="14" stdDeviation="10" floodColor="rgba(0,0,0,0.55)"/>
-        <feDropShadow dx="0" dy="4" stdDeviation="3" floodColor="rgba(0,210,255,0.18)"/>
+      <filter id="bookShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="4" dy="6" stdDeviation="8" floodColor="#000" floodOpacity="0.4" />
       </filter>
-
-      <filter id="objShadow" x="-60%" y="-60%" width="220%" height="220%">
-        <feDropShadow dx="0" dy="10" stdDeviation="6" floodColor="rgba(0,0,0,0.60)"/>
-      </filter>
-
-      <clipPath id="tileClip">
-        <rect x="10" y="10" width="76" height="76" rx="18"/>
-      </clipPath>
-
-      <clipPath id="coverClip">
-        <polygon points="34,30 66,36 66,70 34,64"/>
-      </clipPath>
     </defs>
-
-    <g filter="url(#tileShadow)">
-      <rect x="10" y="10" width="76" height="76" rx="18" fill="url(#bobTile)" stroke="url(#bobTileStroke)" strokeWidth="2"/>
-
-      <g clipPath="url(#tileClip)" opacity="0.85">
-        <rect className="tileSweep" x="-30" y="10" width="28" height="76" fill="url(#spec)" transform="skewX(-18)"/>
-      </g>
-
-      <g className="bookFloat" filter="url(#objShadow)">
-        <ellipse cx="50" cy="73" rx="23" ry="6" fill="rgba(0,0,0,0.42)"/>
-
-        <polygon points="32,28 63,34 72,30 41,24" fill="rgba(255,255,255,0.38)"/>
-        <polygon points="63,34 63,68 72,64 72,30" fill="url(#pages)"/>
-        <polygon points="63,34 63,68 66,66 66,36" fill="url(#pageEdge)" opacity="0.65"/>
-
-        <polygon points="30,30 34,30 34,64 30,64" fill="url(#coverSpine)"/>
-
-        <polygon points="34,30 66,36 66,70 34,64" fill="url(#coverFront)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.2"/>
-
-        <polyline points="34,30 66,36 66,70" fill="none" stroke="url(#tealEdge)" strokeWidth="2.2" strokeLinecap="round" opacity="0.9"/>
-
-        <g opacity="0.95">
-          <rect x="40" y="40" width="20" height="8" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(0,0,0,0.22)" strokeWidth="0.8"/>
-          <rect x="40" y="52" width="24" height="8" rx="3" fill="rgba(255,255,255,0.09)" stroke="rgba(0,0,0,0.22)" strokeWidth="0.8"/>
-          <rect x="40" y="64" width="16" height="6" rx="3" fill="rgba(255,255,255,0.07)" stroke="rgba(0,0,0,0.22)" strokeWidth="0.8"/>
-          <circle cx="42.8" cy="44" r="1.6" fill="rgba(0,210,255,0.85)"/>
-          <circle cx="42.8" cy="56" r="1.6" fill="rgba(0,210,255,0.85)"/>
-          <circle cx="42.8" cy="67" r="1.4" fill="rgba(0,210,255,0.85)"/>
-        </g>
-
-        <g clipPath="url(#coverClip)">
-          <rect className="coverSweep" x="20" y="22" width="14" height="60" fill="url(#spec)" opacity="0.0" transform="skewX(-18)"/>
-        </g>
-
-        <path d="M62 38 C64 39, 65 41, 64 42" fill="none" stroke="rgba(255,255,255,0.45)" strokeWidth="1.2" strokeLinecap="round" opacity="0.75"/>
-      </g>
+    <g filter="url(#bookShadow)">
+      <path d="M50 45 L50 155 L145 155 L145 45 Z" fill="url(#bookFront)" />
+      <path d="M50 45 L145 45 L160 30 L65 30 Z" fill="url(#bookTop)" />
+      <path d="M145 45 L145 155 L160 140 L160 30 Z" fill="url(#bookSide)" />
     </g>
-
-    <style>
-      {`
-        .bookFloat { transform-origin: 50px 58px; animation: bookFloat 3.6s ease-in-out infinite; }
-        .tileSweep { animation: sweep 3.1s ease-in-out infinite; }
-        .coverSweep { animation: coverSweep 2.8s ease-in-out infinite; }
-
-        @keyframes bookFloat {
-          0%,100% { transform: translateY(0px) rotate(-0.25deg); }
-          50%     { transform: translateY(-2.2px) rotate(0.25deg); }
-        }
-        @keyframes sweep {
-          0%   { transform: translateX(-10px) skewX(-18deg); }
-          60%  { transform: translateX(130px) skewX(-18deg); }
-          100% { transform: translateX(130px) skewX(-18deg); }
-        }
-        @keyframes coverSweep {
-          0%   { transform: translateX(-20px) skewX(-18deg); opacity: 0; }
-          18%  { opacity: 0.16; }
-          48%  { transform: translateX(90px) skewX(-18deg); opacity: 0; }
-          100% { transform: translateX(90px) skewX(-18deg); opacity: 0; }
-        }
-
-        @media (prefers-reduced-motion: reduce){
-          .bookFloat,.tileSweep,.coverSweep { animation: none !important; }
-        }
-      `}
-    </style>
+    <rect x="62" y="62" width="70" height="5" fill="#6b7280" opacity="0.5" rx="2" />
+    <rect x="62" y="78" width="58" height="5" fill="#6b7280" opacity="0.4" rx="2" />
+    <rect x="62" y="94" width="64" height="5" fill="#6b7280" opacity="0.35" rx="2" />
+    <rect x="62" y="110" width="52" height="5" fill="#6b7280" opacity="0.3" rx="2" />
   </svg>
 );
 
@@ -369,112 +271,84 @@ const MedalsIcon: React.FC = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
       <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#fef3c7" />
-        <stop offset="30%" stopColor="#fcd34d" />
-        <stop offset="70%" stopColor="#f59e0b" />
-        <stop offset="100%" stopColor="#d97706" />
+        <stop offset="0%" stopColor="#fcd34d" />
+        <stop offset="30%" stopColor="#fbbf24" />
+        <stop offset="70%" stopColor="#d4af37" />
+        <stop offset="100%" stopColor="#b8860b" />
       </linearGradient>
       <linearGradient id="goldInner" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#fffbeb" />
-        <stop offset="50%" stopColor="#fef3c7" />
-        <stop offset="100%" stopColor="#fde68a" />
-      </linearGradient>
-      <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#f59e0b" />
-        <stop offset="100%" stopColor="#b45309" />
+        <stop offset="0%" stopColor="#fef3c7" />
+        <stop offset="50%" stopColor="#fde68a" />
+        <stop offset="100%" stopColor="#fbbf24" />
       </linearGradient>
       <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#f3f4f6" />
-        <stop offset="30%" stopColor="#e5e7eb" />
-        <stop offset="70%" stopColor="#d1d5db" />
-        <stop offset="100%" stopColor="#9ca3af" />
+        <stop offset="0%" stopColor="#e5e7eb" />
+        <stop offset="30%" stopColor="#d1d5db" />
+        <stop offset="70%" stopColor="#9ca3af" />
+        <stop offset="100%" stopColor="#6b7280" />
       </linearGradient>
       <linearGradient id="silverInner" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#ffffff" />
-        <stop offset="50%" stopColor="#f9fafb" />
-        <stop offset="100%" stopColor="#e5e7eb" />
+        <stop offset="0%" stopColor="#f9fafb" />
+        <stop offset="50%" stopColor="#e5e7eb" />
+        <stop offset="100%" stopColor="#d1d5db" />
       </linearGradient>
       <linearGradient id="bronzeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#fed7aa" />
-        <stop offset="30%" stopColor="#fdba74" />
-        <stop offset="70%" stopColor="#ea580c" />
-        <stop offset="100%" stopColor="#c2410c" />
+        <stop offset="0%" stopColor="#d97706" />
+        <stop offset="30%" stopColor="#b45309" />
+        <stop offset="70%" stopColor="#92400e" />
+        <stop offset="100%" stopColor="#78350f" />
       </linearGradient>
       <linearGradient id="bronzeInner" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#ffedd5" />
-        <stop offset="50%" stopColor="#fed7aa" />
-        <stop offset="100%" stopColor="#fdba74" />
+        <stop offset="0%" stopColor="#fcd34d" />
+        <stop offset="50%" stopColor="#d97706" />
+        <stop offset="100%" stopColor="#b45309" />
       </linearGradient>
-      <linearGradient id="podiumTop" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="rgba(255,255,255,0.4)" />
-        <stop offset="100%" stopColor="rgba(255,255,255,0.1)" />
+      <linearGradient id="ribbonGold" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#fbbf24" />
+        <stop offset="100%" stopColor="#b8860b" />
       </linearGradient>
-      <linearGradient id="podiumSide" x1="0%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stopColor="rgba(255,255,255,0.2)" />
-        <stop offset="100%" stopColor="rgba(0,0,0,0.3)" />
+      <linearGradient id="ribbonSilver" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#d1d5db" />
+        <stop offset="100%" stopColor="#6b7280" />
       </linearGradient>
-      <filter id="podiumShadow" x="-40%" y="-40%" width="180%" height="180%">
-        <feDropShadow dx="0" dy="8" stdDeviation="8" floodColor="rgba(0,0,0,0.4)"/>
+      <linearGradient id="ribbonBronze" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#d97706" />
+        <stop offset="100%" stopColor="#78350f" />
+      </linearGradient>
+      <filter id="medalShadow" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="3" dy="5" stdDeviation="6" floodColor="#000" floodOpacity="0.5" />
       </filter>
-      <filter id="medalShadow" x="-50%" y="-50%" width="200%" height="200%">
-        <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="rgba(0,0,0,0.6)" />
-        <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="rgba(0,210,255,0.15)" />
-      </filter>
-      <filter id="goldGlow" x="-80%" y="-80%" width="260%" height="260%">
-        <feGaussianBlur stdDeviation="4" result="blur" />
-        <feFlood floodColor="rgba(250,204,21,0.4)" result="color" />
-        <feComposite in="color" in2="blur" operator="in" result="glow" />
+      <filter id="medalGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
         <feMerge>
-          <feMergeNode in="glow" />
+          <feMergeNode in="blur" />
           <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
     </defs>
 
-    <g filter="url(#podiumShadow)">
-      <rect x="20" y="140" width="35" height="45" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
-      <rect x="20" y="140" width="35" height="3" fill="url(#podiumTop)"/>
-      <path d="M55 140 L60 135 L60 180 L55 185 Z" fill="url(#podiumSide)"/>
-      <text x="37.5" y="168" fontSize="16" fontWeight="bold" fill="rgba(255,255,255,0.4)" textAnchor="middle">3</text>
-    </g>
-
-    <g filter="url(#podiumShadow)">
-      <rect x="82.5" y="120" width="35" height="65" fill="rgba(255,255,255,0.12)" stroke="rgba(0,210,255,0.3)" strokeWidth="2"/>
-      <rect x="82.5" y="120" width="35" height="3" fill="url(#podiumTop)"/>
-      <path d="M117.5 120 L122.5 115 L122.5 180 L117.5 185 Z" fill="url(#podiumSide)"/>
-      <text x="100" y="158" fontSize="16" fontWeight="bold" fill="rgba(0,210,255,0.6)" textAnchor="middle">1</text>
-    </g>
-
-    <g filter="url(#podiumShadow)">
-      <rect x="145" y="130" width="35" height="55" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
-      <rect x="145" y="130" width="35" height="3" fill="url(#podiumTop)"/>
-      <path d="M180 130 L185 125 L185 180 L180 185 Z" fill="url(#podiumSide)"/>
-      <text x="162.5" y="163" fontSize="16" fontWeight="bold" fill="rgba(255,255,255,0.4)" textAnchor="middle">2</text>
+    <g filter="url(#medalShadow)">
+      <path d="M48 30 L48 80 L55 85 L62 80 L62 30 Z" fill="url(#ribbonSilver)" />
+      <circle cx="55" cy="110" r="35" fill="url(#silverGrad)" />
+      <circle cx="55" cy="110" r="28" fill="url(#silverInner)" />
+      <circle cx="55" cy="110" r="20" fill="url(#silverGrad)" opacity="0.9" />
+      <text x="55" y="117" fontSize="20" fontWeight="bold" fill="#4b5563" textAnchor="middle">3</text>
     </g>
 
     <g filter="url(#medalShadow)">
-      <circle cx="40" cy="85" r="28" fill="url(#silverGrad)" />
-      <circle cx="40" cy="85" r="23" fill="url(#silverInner)" />
-      <circle cx="40" cy="85" r="18" fill="url(#silverGrad)" opacity="0.3" />
-      <circle cx="40" cy="85" r="14" fill="rgba(255,255,255,0.5)" />
-      <text x="40" y="92" fontSize="16" fontWeight="bold" fill="#6b7280" textAnchor="middle">3</text>
+      <path d="M138 30 L138 80 L145 85 L152 80 L152 30 Z" fill="url(#ribbonBronze)" />
+      <circle cx="145" cy="110" r="35" fill="url(#bronzeGrad)" />
+      <circle cx="145" cy="110" r="28" fill="url(#bronzeInner)" />
+      <circle cx="145" cy="110" r="20" fill="url(#bronzeGrad)" opacity="0.9" />
+      <text x="145" y="117" fontSize="20" fontWeight="bold" fill="#78350f" textAnchor="middle">2</text>
     </g>
 
     <g filter="url(#medalShadow)">
-      <circle cx="160" cy="90" r="28" fill="url(#bronzeGrad)" />
-      <circle cx="160" cy="90" r="23" fill="url(#bronzeInner)" />
-      <circle cx="160" cy="90" r="18" fill="url(#bronzeGrad)" opacity="0.3" />
-      <circle cx="160" cy="90" r="14" fill="rgba(255,237,213,0.7)" />
-      <text x="160" y="97" fontSize="16" fontWeight="bold" fill="#9a3412" textAnchor="middle">2</text>
-    </g>
-
-    <g filter="url(#goldGlow)">
-      <circle cx="100" cy="65" r="38" fill="url(#goldGrad)" />
-      <circle cx="100" cy="65" r="32" fill="url(#goldInner)" />
-      <circle cx="100" cy="65" r="26" fill="url(#goldGrad)" opacity="0.3" />
-      <circle cx="100" cy="65" r="20" fill="rgba(255,251,235,0.8)" />
-      <circle cx="100" cy="65" r="4" fill="rgba(0,210,255,0.6)" />
-      <text x="100" y="73" fontSize="20" fontWeight="bold" fill="#92400e" textAnchor="middle">1</text>
+      <path d="M92 20 L92 55 L100 62 L108 55 L108 20 Z" fill="url(#ribbonGold)" />
+      <circle cx="100" cy="90" r="42" fill="url(#goldGrad)" filter="url(#medalGlow)" />
+      <circle cx="100" cy="90" r="34" fill="url(#goldInner)" />
+      <circle cx="100" cy="90" r="24" fill="url(#goldGrad)" opacity="0.9" />
+      <text x="100" y="98" fontSize="24" fontWeight="bold" fill="#92400e" textAnchor="middle">1</text>
     </g>
   </svg>
 );
