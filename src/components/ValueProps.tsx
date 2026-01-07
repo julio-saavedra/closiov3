@@ -4,19 +4,18 @@ import { motion } from 'framer-motion';
 const VerticalLine: React.FC = () => {
   return (
     <svg
-      viewBox="0 0 1000 900"
-      className="absolute right-0 top-0 h-full w-full pointer-events-none"
+      viewBox="0 0 500 1200"
+      className="absolute left-0 top-0 h-[120%] w-full pointer-events-none"
       preserveAspectRatio="none"
     >
       <path
-        d="M 500 -50
-           L 500 310
-           Q 500 380, 430 380
-           L 120 380
-           Q 50 380, 50 450
-           L 50 550
-           Q 50 620, -20 620
-           L -150 620"
+        d="M 600 -50
+           L 600 300
+           L 600 600
+           Q 600 670, 530 670
+           L 200 670
+           Q 130 670, 130 740
+           L 130 1250"
         fill="none"
         stroke="white"
         strokeWidth="20"
