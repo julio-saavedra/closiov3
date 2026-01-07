@@ -1,5 +1,53 @@
-import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+
+interface TypewriterTextProps {
+  text: string;
+  delay?: number;
+  className?: string;
+}
+
+const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay = 0, className = '' }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+
+  useEffect(() => {
+    if (isInView && !hasStarted) {
+      const startTimeout = setTimeout(() => {
+        setHasStarted(true);
+        setIsTyping(true);
+      }, delay);
+      return () => clearTimeout(startTimeout);
+    }
+  }, [isInView, delay, hasStarted]);
+
+  useEffect(() => {
+    if (!isTyping || !hasStarted) return;
+
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      if (currentIndex <= text.length) {
+        setDisplayedText(text.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(interval);
+        setIsTyping(false);
+      }
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [isTyping, text, hasStarted]);
+
+  return (
+    <span ref={ref} className={className}>
+      {displayedText}
+      {isTyping && <span className="animate-pulse">|</span>}
+    </span>
+  );
+};
 
 interface Sparkle {
   id: number;
@@ -712,9 +760,11 @@ const FeatureGrid: React.FC = () => {
           className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold md:max-w-md">
-            <span className="text-white">
-              / CORE FEATURES
-            </span>
+            <TypewriterText
+              text="/ CORE FEATURES"
+              delay={200}
+              className="text-white"
+            />
           </h2>
           <p className="text-white/50 text-lg md:max-w-xl md:text-right">
             Purpose-built tools designed specifically for life insurance agents and agencies to streamline workflows and maximize productivity.
