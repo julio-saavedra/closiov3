@@ -14,19 +14,19 @@ const VerticalLine: React.FC = () => {
 const valueItems = [
   {
     number: '01',
-    title: 'Purpose-built for life insurance workflows'
+    title: 'Stop losing track of deals in spreadsheets'
   },
   {
     number: '02',
-    title: 'Manage your book of business with ease'
+    title: "Know exactly what you're earning—before payday"
   },
   {
     number: '03',
-    title: 'Fast onboarding with pre-built templates'
+    title: 'Get your team up and running in minutes, not weeks'
   },
   {
     number: '04',
-    title: 'Complete visibility across your agency'
+    title: "See who's producing and who needs help"
   }
 ];
 
@@ -102,7 +102,7 @@ const ValueProps: React.FC = () => {
                 >I</span>O
               </h2>
               <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-[1.6]">
-                A CRM built thoughtfully for the workflows and operational demands of life-insurance teams.
+                Built by agents who know what it&apos;s like to juggle 100 policies, chase commissions, and wonder if that big deal actually closed. We solved the chaos—so you can focus on selling.
               </p>
             </motion.div>
 
