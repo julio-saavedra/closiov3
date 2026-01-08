@@ -308,37 +308,6 @@ const FeatureShowcase: React.FC = () => {
             <FeatureCard key={index} feature={feature} index={index} />
           ))}
         </div>
-
-        {/* Scroll indicators */}
-        <div className="flex justify-center gap-2 mt-8">
-          {features.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                const container = scrollContainerRef.current;
-                if (container) {
-                  container.scrollTo({
-                    left: container.offsetWidth * index,
-                    behavior: 'smooth'
-                  });
-                }
-              }}
-              className={`transition-all duration-300 ${
-                currentIndex === index
-                  ? 'w-8 h-2 bg-[#6ad4f2]'
-                  : 'w-2 h-2 bg-white/30 hover:bg-white/50'
-              } rounded-full`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Scroll hint */}
-        {currentIndex < features.length - 1 && (
-          <div className="absolute bottom-0 right-8 text-white/60 text-sm animate-pulse">
-            Scroll to explore →
-          </div>
-        )}
       </div>
     </section>
   );
