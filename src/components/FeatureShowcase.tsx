@@ -185,23 +185,30 @@ const FeatureShowcase: React.FC = () => {
 
     let isAnimating = false;
     let scrollTimeout: NodeJS.Timeout;
+    let lastScrollTime = 0;
 
     const handleWheel = (e: WheelEvent) => {
+      const now = Date.now();
       const rect = section.getBoundingClientRect();
       const sectionTop = rect.top;
       const sectionBottom = rect.bottom;
       const viewportHeight = window.innerHeight;
 
-      // Check if section is visible in viewport - triggers when section is more fully visible
+      // Check if section is visible in viewport
       const isVisible = sectionTop <= viewportHeight * 0.15 && sectionBottom > viewportHeight * 0.5;
 
       if (!isVisible) {
         return;
       }
 
+      // Debounce rapid scroll events
+      if (now - lastScrollTime < 100) {
+        e.preventDefault();
+        return;
+      }
+
       const scrollLeft = container.scrollLeft;
       const cardWidth = container.clientWidth;
-      const maxScroll = container.scrollWidth - container.clientWidth;
       const currentCard = Math.round(scrollLeft / cardWidth);
 
       const isAtStart = currentCard === 0;
@@ -209,20 +216,19 @@ const FeatureShowcase: React.FC = () => {
 
       // Scrolling down
       if (e.deltaY > 0) {
-        // Only allow vertical scroll if we're truly at the last card
+        // Only allow vertical scroll if we're at the last card
         if (isAtEnd) {
           return;
         }
 
-        // Block ALL vertical scrolling until last card
+        // Block vertical scrolling and navigate horizontally
         e.preventDefault();
         e.stopPropagation();
 
-        // Only navigate if not currently animating
         if (!isAnimating) {
           isAnimating = true;
+          lastScrollTime = now;
 
-          // Scroll to next card
           const nextCard = Math.min(currentCard + 1, features.length - 1);
           container.scrollTo({
             left: nextCard * cardWidth,
@@ -230,29 +236,27 @@ const FeatureShowcase: React.FC = () => {
           });
           setCurrentIndex(nextCard);
 
-          // Reset animation flag
           clearTimeout(scrollTimeout);
           scrollTimeout = setTimeout(() => {
             isAnimating = false;
-          }, 800);
+          }, 600);
         }
       }
       // Scrolling up
       else if (e.deltaY < 0) {
-        // If at start and section is near top, allow scroll up
-        if (isAtStart && sectionTop >= -10) {
+        // Allow vertical scroll up only if at first card AND section is at/near viewport top
+        if (isAtStart && sectionTop >= -50) {
           return;
         }
 
-        // Block ALL vertical scrolling while in section
+        // Otherwise, navigate horizontally or block if at first card mid-section
         e.preventDefault();
         e.stopPropagation();
 
-        // Only navigate if not currently animating
-        if (!isAnimating) {
+        if (!isAnimating && !isAtStart) {
           isAnimating = true;
+          lastScrollTime = now;
 
-          // Scroll to previous card
           const prevCard = Math.max(currentCard - 1, 0);
           container.scrollTo({
             left: prevCard * cardWidth,
@@ -260,16 +264,14 @@ const FeatureShowcase: React.FC = () => {
           });
           setCurrentIndex(prevCard);
 
-          // Reset animation flag
           clearTimeout(scrollTimeout);
           scrollTimeout = setTimeout(() => {
             isAnimating = false;
-          }, 800);
+          }, 600);
         }
       }
     };
 
-    // Use passive: false to allow preventDefault
     document.addEventListener('wheel', handleWheel, { passive: false });
     return () => {
       document.removeEventListener('wheel', handleWheel);
