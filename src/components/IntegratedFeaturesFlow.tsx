@@ -46,7 +46,7 @@ export default function IntegratedFeaturesFlow() {
 
         <div className="relative mx-auto mt-2 flex h-[720px] w-full max-w-[900px] items-center justify-center">
 
-          <div className="absolute left-1/2 top-[30px] -translate-x-1/2" style={{ perspective: '1200px' }}>
+          <div className="absolute left-[calc(50%-210px)] top-[30px] -translate-x-1/2" style={{ perspective: '1200px' }}>
             {/* Panel 1 - Bottom (most faded) */}
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
