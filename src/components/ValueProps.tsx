@@ -138,7 +138,7 @@ const ValueProps: React.FC = () => {
               {valueItems.map((item) => (
                 <div
                   key={item.number}
-                  className="group py-4 sm:py-5 border-b border-white/20 last:border-b-0"
+                  className="group py-4 sm:py-5 border-b-[1.5px] border-white/20 last:border-b-0"
                 >
                   <div className="flex items-start gap-3 sm:gap-4 md:gap-5">
                     <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-[10px] sm:text-xs font-semibold tracking-wider pt-1 transition-colors duration-300">
