@@ -182,7 +182,7 @@ const Hero: React.FC = () => {
           <div
             className="w-[300px] sm:w-[500px] md:w-[700px] lg:w-[800px] h-[250px] sm:h-[350px] md:h-[480px] lg:h-[550px] rounded-full blur-[60px] sm:blur-[75px] md:blur-[90px]"
             style={{
-              background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.7) 0%, rgba(106, 212, 242, 0.4) 30%, rgba(106, 212, 242, 0.15) 60%, transparent 80%)',
+              background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.3) 0%, rgba(106, 212, 242, 0.15) 30%, rgba(106, 212, 242, 0.08) 60%, transparent 80%)',
             }}
           />
         </div>
@@ -190,7 +190,7 @@ const Hero: React.FC = () => {
           <div
             className="w-[180px] sm:w-[280px] md:w-[380px] lg:w-[450px] h-[150px] sm:h-[220px] md:h-[300px] lg:h-[350px] rounded-full blur-[30px] sm:blur-[40px] md:blur-[50px]"
             style={{
-              background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.5) 0%, transparent 70%)',
+              background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.25) 0%, transparent 70%)',
             }}
           />
         </div>
