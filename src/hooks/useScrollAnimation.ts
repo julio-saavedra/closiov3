@@ -14,6 +14,7 @@ export function useScrollAnimation({
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     const element = ref.current;
@@ -23,12 +24,20 @@ export function useScrollAnimation({
       ([entry]) => {
         if (triggerOnce && hasAnimated) return;
 
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
+
         if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (triggerOnce) setHasAnimated(true);
+          timeoutRef.current = setTimeout(() => {
+            setIsVisible(true);
+            if (triggerOnce) setHasAnimated(true);
+          }, 50);
         } else {
           if (!triggerOnce) {
-            setIsVisible(false);
+            timeoutRef.current = setTimeout(() => {
+              setIsVisible(false);
+            }, 100);
           }
         }
       },
@@ -42,6 +51,9 @@ export function useScrollAnimation({
 
     return () => {
       observer.disconnect();
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
   }, [threshold, rootMargin, triggerOnce, hasAnimated]);
 

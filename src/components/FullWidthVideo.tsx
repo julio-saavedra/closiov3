@@ -41,14 +41,14 @@ const FullWidthVideo = () => {
   return (
     <motion.section
       ref={sectionRef}
-      initial={{ opacity: 0, y: 60, scale: 0.98 }}
+      initial={{ opacity: 0, y: 40, scale: 0.98 }}
       animate={isVisible
         ? { opacity: 1, y: 0, scale: 1 }
-        : { opacity: 0, y: 60, scale: 0.98 }
+        : { opacity: 0, y: 20, scale: 0.99 }
       }
       transition={{
-        duration: 0.7,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        duration: 0.8,
+        ease: [0.22, 0.61, 0.36, 1]
       }}
       className="relative w-full bg-black px-4 sm:px-6 lg:px-8 pt-4"
     >

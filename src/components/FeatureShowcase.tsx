@@ -95,15 +95,15 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 60, scale: 0.95 }}
+      initial={{ opacity: 0, y: 40, scale: 0.98 }}
       animate={isVisible
         ? { opacity: 1, y: 0, scale: 1 }
-        : { opacity: 0, y: 60, scale: 0.95 }
+        : { opacity: 0, y: 20, scale: 0.99 }
       }
       transition={{
         duration: 0.8,
         delay: 0.1,
-        ease: [0.25, 0.46, 0.45, 0.94]
+        ease: [0.22, 0.61, 0.36, 1]
       }}
       className="w-full flex items-center justify-center px-3 sm:px-4 md:px-8"
     >
@@ -182,11 +182,11 @@ const FeatureShowcase: React.FC = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={headerVisible
           ? { opacity: 1, y: 0 }
-          : { opacity: 0, y: 40 }
+          : { opacity: 0, y: 20 }
         }
         transition={{
-          duration: 0.7,
-          ease: [0.25, 0.46, 0.45, 0.94]
+          duration: 0.8,
+          ease: [0.22, 0.61, 0.36, 1]
         }}
         className="pt-6 sm:pt-8 md:pt-12 pb-8 sm:pb-12 md:pb-16 px-4 sm:px-6"
       >

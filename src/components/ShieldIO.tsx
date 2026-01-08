@@ -14,12 +14,12 @@ const ShieldIO = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="w-full h-full max-w-[420px] mx-auto drop-shadow-2xl"
-      initial={{ opacity: 0, scale: 0.85, y: 40 }}
+      initial={{ opacity: 0, scale: 0.95, y: 40 }}
       animate={isVisible
         ? { opacity: 1, scale: 1, y: 0 }
-        : { opacity: 0, scale: 0.85, y: 40 }
+        : { opacity: 0, scale: 0.97, y: 20 }
       }
-      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
     >
       <defs>
         <linearGradient id="shieldBodyGradient" x1="50%" y1="0%" x2="50%" y2="100%">

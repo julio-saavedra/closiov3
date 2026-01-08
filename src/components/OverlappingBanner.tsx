@@ -65,12 +65,12 @@ const OverlappingBanner: React.FC = () => {
           background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(255, 255, 255, 0.04) 100%)',
           boxShadow: '0 25px 80px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0.5px 0 rgba(255, 255, 255, 0.15)',
         }}
-        initial={{ opacity: 0, y: 60, scale: 0.98 }}
+        initial={{ opacity: 0, y: 40, scale: 0.98 }}
         animate={isVisible
           ? { opacity: 1, y: 0, scale: 1 }
-          : { opacity: 0, y: 60, scale: 0.98 }
+          : { opacity: 0, y: 20, scale: 0.99 }
         }
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
       >
         <div
           className="absolute inset-0 rounded-3xl pointer-events-none"
@@ -85,8 +85,8 @@ const OverlappingBanner: React.FC = () => {
           <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-4xl"
             initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
           >
             Your entire insurance operation—
             <span className="relative">
@@ -109,8 +109,8 @@ const OverlappingBanner: React.FC = () => {
           <motion.p
             className="mt-6 text-base md:text-lg text-white/70 max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
           >
             From <span className="text-[#6ad4f2] font-medium">application</span> to{' '}
             <span className="text-[#6ad4f2] font-medium">commission check</span>,{' '}
