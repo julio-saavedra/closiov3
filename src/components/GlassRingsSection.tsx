@@ -90,7 +90,6 @@ const GlassRingsSection = () => {
 
   return (
     <section className="relative py-16 sm:py-20 md:py-24 lg:py-36 bg-black">
-      <div className="absolute inset-x-0 -top-48 h-96 bg-[radial-gradient(ellipse_80%_50%_at_50%_100%,_rgba(26,155,155,0.25)_0%,_transparent_70%)] pointer-events-none" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.03)_0%,_transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(255,255,255,0.02)_0%,_transparent_50%)]" />
 
