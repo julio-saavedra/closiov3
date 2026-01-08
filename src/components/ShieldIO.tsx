@@ -152,12 +152,14 @@ const ShieldIO = () => {
       <g transform="translate(200, 230)" filter="url(#ioEmboss)">
         <g filter="url(#subtleGlow)">
           <rect
-            x="-62"
+            x="-72"
             y="-52"
-            width="20"
+            width="40"
             height="104"
-            rx="3"
-            fill="#ffffff"
+            rx="4"
+            fill="none"
+            stroke="#ffffff"
+            strokeWidth="20"
             transform="skewX(-12)"
           />
         </g>
