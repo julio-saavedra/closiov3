@@ -29,7 +29,7 @@ export default function IntegratedFeaturesFlow() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-black py-20 pb-32">
+    <section ref={sectionRef} className="relative w-full bg-black py-32 pb-48">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
           className="absolute inset-0"
