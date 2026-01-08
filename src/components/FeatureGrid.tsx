@@ -605,12 +605,12 @@ const HorizontalLine: React.FC = () => {
     offset: ["start 0.8", "end start"]
   });
 
-  const horizontalScale = useTransform(scrollYProgress, [0.4, 0.7], [0, 1]);
+  const horizontalScale = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
       <motion.div
-        className="absolute left-0 top-1/2 -translate-y-1/2 h-[2.5px] bg-gray-600/30 origin-left"
+        className="absolute left-0 top-1/2 -translate-y-1/2 h-[1.5px] bg-gray-600/30 origin-left"
         initial={{ scaleX: 0 }}
         style={{
           width: '100%',
