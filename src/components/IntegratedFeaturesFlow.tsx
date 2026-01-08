@@ -327,14 +327,9 @@ export default function IntegratedFeaturesFlow() {
               >
                 <div className="relative mb-2 h-8 w-px">
                   <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent" />
-                  <motion.div
-                    className="absolute top-0 left-1/2 -translate-x-1/2 h-1.5 w-1.5 rounded-full bg-white/50"
-                    animate={{ opacity: [0.3, 0.8, 0.3] }}
-                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
-                  />
                 </div>
-                <p className="text-xs font-medium text-white/70 leading-relaxed mb-1">{feature.headline}</p>
-                <p className="text-[11px] text-white/40 leading-relaxed">{feature.description}</p>
+                <p className="text-sm font-medium text-white/70 leading-relaxed mb-1">{feature.headline}</p>
+                <p className="text-xs text-white/40 leading-relaxed">{feature.description}</p>
               </motion.div>
             ))}
           </div>
