@@ -38,7 +38,10 @@ const AdditionalFeatures: React.FC = () => {
             .glow-shell::before {
               content: "";
               position: absolute;
-              inset: -1px;
+              top: -1px;
+              bottom: -1px;
+              left: -20px;
+              right: -20px;
               border-radius: inherit;
               background: linear-gradient(
                 180deg,
