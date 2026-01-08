@@ -6,10 +6,10 @@ const VerticalLine: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 0.7", "end 0.3"]
+    offset: ["start 0.8", "end 0.5"]
   });
 
-  const pathLength = useTransform(scrollYProgress, [0.15, 0.85], [0, 1]);
+  const pathLength = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
@@ -30,7 +30,7 @@ const VerticalLine: React.FC = () => {
           }}
           initial={{ pathLength: 0 }}
           transition={{
-            duration: 0.8,
+            duration: 0.6,
             ease: [0.25, 0.1, 0.25, 1]
           }}
         />
