@@ -90,7 +90,7 @@ const StaticIO3D: React.FC = () => {
 
     const io3D = new THREE.Group();
     scene.add(io3D);
-    io3D.position.set(0, -0.15, 0.0);
+    io3D.position.set(0, -1.2, 0.0);
 
     function createHollowI({
       width = 0.38,
@@ -222,7 +222,7 @@ const StaticIO3D: React.FC = () => {
       camera.updateProjectionMatrix();
 
       const mobile = w < 900;
-      io3D.scale.setScalar(mobile ? 1.4 : 1.8);
+      io3D.scale.setScalar(mobile ? 2.2 : 3.2);
     }
 
     const resizeObserver = new ResizeObserver(fit);
