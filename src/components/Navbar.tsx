@@ -286,7 +286,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 )}
               </div>
 
-              {/* Docs & FAQs Dropdown */}
+              {/* Resources Dropdown */}
               <div
                 className="relative flex items-center h-8"
                 ref={docsDropdownRef}
@@ -305,7 +305,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                     transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
                   }}
                 >
-                  Docs & FAQs
+                  Resources
                   <svg
                     width="10"
                     height="10"
@@ -438,10 +438,10 @@ const Navbar: React.FC<NavbarProps> = () => {
                 ))}
               </div>
 
-              {/* Docs & FAQs Section */}
+              {/* Resources Section */}
               <div className="pt-3 mt-3 border-t border-white/10">
                 <div className="px-4 py-2 text-xs font-semibold text-white/40 uppercase tracking-wider">
-                  Docs & FAQs
+                  Resources
                 </div>
                 {DOCS_ITEMS.map((item) => (
                   <Link
