@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import gsap from 'gsap';
 
 const StaticIO3D: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -20,76 +21,73 @@ const StaticIO3D: React.FC = () => {
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.8;
+    renderer.toneMappingExposure = 1.4;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 90);
-    camera.position.set(0.0, -0.3, 5.5);
+    camera.position.set(0.0, -0.2, 5.5);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.8);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.6);
     scene.add(ambient);
 
-    const key = new THREE.DirectionalLight(0xffffff, 5.0);
+    const key = new THREE.DirectionalLight(0xffffff, 3.5);
     key.position.set(5, 6, 7);
     scene.add(key);
 
-    const fill = new THREE.DirectionalLight(0xffffff, 3.0);
+    const fill = new THREE.DirectionalLight(0xffffff, 2.0);
     fill.position.set(-6, 2, 5);
     scene.add(fill);
 
-    const rim = new THREE.PointLight(0xffffff, 4.0, 40);
+    const rim = new THREE.PointLight(0xffffff, 3.0, 40);
     rim.position.set(-2.0, 2.2, -2.8);
     scene.add(rim);
 
-    const topLight = new THREE.DirectionalLight(0xffffff, 3.0);
+    const topLight = new THREE.DirectionalLight(0xffffff, 2.5);
     topLight.position.set(0, 8, 3);
     scene.add(topLight);
 
-    const frontLight = new THREE.DirectionalLight(0xffffff, 4.0);
+    const frontLight = new THREE.DirectionalLight(0xffffff, 3.0);
     frontLight.position.set(0, 0, 10);
     scene.add(frontLight);
 
-    const accentLight1 = new THREE.PointLight(0x6ad4f2, 10.0, 40);
+    const accentLight1 = new THREE.PointLight(0x6ad4f2, 6.0, 40);
     accentLight1.position.set(3, 1, 3);
     scene.add(accentLight1);
 
-    const accentLight2 = new THREE.PointLight(0x6ad4f2, 8.0, 40);
+    const accentLight2 = new THREE.PointLight(0x6ad4f2, 5.0, 40);
     accentLight2.position.set(-3, -1, 2);
     scene.add(accentLight2);
 
-    const glowLight = new THREE.PointLight(0x6ad4f2, 12.0, 45);
+    const glowLight = new THREE.PointLight(0x6ad4f2, 8.0, 45);
     glowLight.position.set(0, 0, 4);
     scene.add(glowLight);
 
     const TEAL = new THREE.Color("#6ad4f2");
-    const WHITE = new THREE.Color("#FFFFFF");
+    const WHITE = new THREE.Color("#F8F8F8");
 
-    function polishedMaterial(baseColor: THREE.Color, emissiveIntensity = 0.5, rough = 0.05) {
+    function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.25, rough = 0.3) {
       return new THREE.MeshPhysicalMaterial({
         color: baseColor,
-        metalness: 0.15,
+        metalness: 0.08,
         roughness: rough,
         transmission: 0,
         transparent: false,
-        clearcoat: 1.0,
-        clearcoatRoughness: 0.02,
-        envMapIntensity: 4.0,
-        specularIntensity: 2.0,
+        clearcoat: 0.4,
+        clearcoatRoughness: 0.15,
+        envMapIntensity: 1.2,
+        specularIntensity: 0.6,
         emissive: baseColor,
         emissiveIntensity,
-        reflectivity: 1.0,
-        sheen: 0.5,
-        sheenRoughness: 0.1,
-        sheenColor: baseColor
+        reflectivity: 0.5
       });
     }
 
     const io3D = new THREE.Group();
     scene.add(io3D);
-    io3D.position.set(0, -0.2, 0.0);
+    io3D.position.set(0, -0.15, 0.0);
 
     function createHollowI({
       width = 0.38,
@@ -121,9 +119,9 @@ const StaticIO3D: React.FC = () => {
       const g = new THREE.ExtrudeGeometry(outer, {
         depth,
         bevelEnabled: true,
-        bevelThickness: 0.025,
-        bevelSize: 0.025,
-        bevelSegments: 4
+        bevelThickness: 0.05,
+        bevelSize: 0.05,
+        bevelSegments: 5
       });
       g.center();
       return g;
@@ -143,9 +141,9 @@ const StaticIO3D: React.FC = () => {
       const g = new THREE.ExtrudeGeometry(outer, {
         depth,
         bevelEnabled: true,
-        bevelThickness: 0.025,
-        bevelSize: 0.025,
-        bevelSegments: 4,
+        bevelThickness: 0.05,
+        bevelSize: 0.05,
+        bevelSegments: 5,
         curveSegments: segments
       });
       g.center();
@@ -157,18 +155,60 @@ const StaticIO3D: React.FC = () => {
     io3D.add(io);
 
     const iMesh = new THREE.Mesh(
-      createHollowI({ width: 0.42, height: 1.15, stroke: 0.06, slant: 0.20, depth: 0.10 }),
-      polishedMaterial(TEAL, 1.2, 0.03)
+      createHollowI({ width: 0.45, height: 1.2, stroke: 0.12, slant: 0.22, depth: 0.18 }),
+      solidMaterial(TEAL, 0.35, 0.28)
     );
     const oMesh = new THREE.Mesh(
-      createHollowO({ outerRadius: 0.55, ringThickness: 0.20, depth: 0.10, segments: 256 }),
-      polishedMaterial(WHITE, 0.7, 0.03)
+      createHollowO({ outerRadius: 0.58, ringThickness: 0.22, depth: 0.18, segments: 256 }),
+      solidMaterial(WHITE, 0.15, 0.32)
     );
 
-    iMesh.position.set(-0.55, 0.0, 0.0);
-    oMesh.position.set(0.55, 0.0, 0.0);
+    iMesh.position.set(-0.58, 0.0, 0.0);
+    oMesh.position.set(0.58, 0.0, 0.0);
 
     io.add(iMesh, oMesh);
+
+    io.rotation.x = 0.12;
+
+    io.scale.set(0, 0, 0);
+    gsap.to(io.scale, {
+      x: 1,
+      y: 1,
+      z: 1,
+      duration: 1.8,
+      ease: "elastic.out(1, 0.6)",
+      delay: 0.2
+    });
+
+    gsap.fromTo(io.rotation,
+      { y: Math.PI * 0.3 },
+      {
+        y: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        delay: 0.2
+      }
+    );
+
+    gsap.to(accentLight1.position, {
+      x: -3,
+      y: -1,
+      duration: 6,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+      delay: 1
+    });
+
+    gsap.to(accentLight2.position, {
+      x: 3,
+      y: 1,
+      duration: 8,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+      delay: 1
+    });
 
     function fit() {
       const w = canvas.clientWidth;
@@ -178,7 +218,7 @@ const StaticIO3D: React.FC = () => {
       camera.updateProjectionMatrix();
 
       const mobile = w < 900;
-      io3D.scale.setScalar(mobile ? 1.5 : 2.3);
+      io3D.scale.setScalar(mobile ? 1.6 : 2.4);
     }
 
     const resizeObserver = new ResizeObserver(fit);
@@ -189,11 +229,15 @@ const StaticIO3D: React.FC = () => {
     let animationId: number;
 
     function animate() {
-      t += 0.008;
+      t += 0.012;
 
-      const swing = Math.sin(t * 0.3) * 0.02;
-      io.rotation.x = swing;
-      io.rotation.y = Math.sin(t * 0.2) * 0.01;
+      const floatY = Math.sin(t * 0.4) * 0.03;
+      const floatX = Math.cos(t * 0.3) * 0.015;
+      io.position.y = floatY;
+      io.position.x = floatX;
+
+      io.rotation.y = Math.sin(t * 0.25) * 0.08;
+      io.rotation.x = 0.12 + Math.sin(t * 0.35) * 0.04;
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(animate);
