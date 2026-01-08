@@ -9,25 +9,35 @@ const VerticalLine: React.FC = () => {
     offset: ["start 0.8", "end start"]
   });
 
-  const verticalScale = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
-  const horizontalScale = useTransform(scrollYProgress, [0.15, 0.35], [0, 1]);
+  const pathLength = useTransform(scrollYProgress, [0, 0.35], [0, 1]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
-      <motion.div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[20px] bg-gray-600/30 origin-top"
-        style={{
-          height: '42%',
-          scaleY: verticalScale,
-        }}
-      />
-      <motion.div
-        className="absolute top-[42%] left-0 h-[20px] bg-gray-600/30 origin-right"
-        style={{
-          width: '50%',
-          scaleX: horizontalScale,
-        }}
-      />
+      <svg
+        className="absolute top-0 left-0 w-full h-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        style={{ overflow: 'visible' }}
+      >
+        <defs>
+          <filter id="lineGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+        <motion.path
+          d="M 53 -5 L 53 28 Q 53 35, 46 35 L -5 35"
+          stroke="rgba(255, 255, 255, 0.2)"
+          strokeWidth="0.3"
+          fill="none"
+          filter="url(#lineGlow)"
+          strokeLinecap="round"
+          style={{
+            pathLength,
+          }}
+          initial={{ pathLength: 0 }}
+        />
+      </svg>
     </div>
   );
 };
