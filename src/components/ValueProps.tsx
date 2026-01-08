@@ -6,18 +6,28 @@ const VerticalLine: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 0.8", "end 0.5"]
+    offset: ["start 0.8", "end -0.2"]
   });
 
   const pathLength = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
+  // Scroll-based movement: down first, then left
+  const y = useTransform(scrollYProgress, [0.5, 0.8], [0, 100]);
+  const x = useTransform(scrollYProgress, [0.8, 1], [0, -150]);
+  const opacity = useTransform(scrollYProgress, [0.5, 1], [1, 0]);
+
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
-      <svg
+      <motion.svg
         className="absolute top-0 left-0 w-full h-full"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
-        style={{ overflow: 'visible' }}
+        style={{
+          overflow: 'visible',
+          y,
+          x,
+          opacity
+        }}
       >
         <motion.path
           d="M 53 -5 L 53 28 Q 53 35, 46 35 L -5 35"
@@ -34,7 +44,7 @@ const VerticalLine: React.FC = () => {
             ease: [0.25, 0.1, 0.25, 1]
           }}
         />
-      </svg>
+      </motion.svg>
     </div>
   );
 };
