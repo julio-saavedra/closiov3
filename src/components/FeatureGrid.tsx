@@ -602,18 +602,27 @@ const HorizontalLine: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 0.8", "end 0.5"]
+    offset: ["start 0.8", "end 0"]
   });
 
-  const pathLength = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  // Draw the line left to right quickly when halfway through section
+  const pathLength = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+
+  // Then move down and fade out
+  const translateY = useTransform(scrollYProgress, [0.3, 1], ['0%', '100%']);
+  const opacity = useTransform(scrollYProgress, [0.3, 0.7, 1], [1, 0.5, 0]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
-      <svg
+      <motion.svg
         className="absolute top-0 left-0 w-full h-full"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
-        style={{ overflow: 'visible' }}
+        style={{
+          overflow: 'visible',
+          translateY,
+          opacity
+        }}
       >
         <motion.path
           d="M 0 50 L 100 50"
@@ -626,11 +635,11 @@ const HorizontalLine: React.FC = () => {
           }}
           initial={{ pathLength: 0 }}
           transition={{
-            duration: 0.6,
+            duration: 0.4,
             ease: [0.25, 0.1, 0.25, 1]
           }}
         />
-      </svg>
+      </motion.svg>
     </div>
   );
 };
