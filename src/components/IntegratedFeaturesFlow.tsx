@@ -29,10 +29,10 @@ export default function IntegratedFeaturesFlow() {
       <div className="relative mx-auto w-full max-w-5xl px-6">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
 
-        <div className="relative mx-auto mt-2 flex h-[480px] w-full max-w-3xl items-start justify-center">
-          <div className="pointer-events-none absolute top-[200px] h-32 w-80 opacity-25 [background-image:radial-gradient(rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:12px_12px]" />
+        <div className="relative mx-auto mt-2 flex h-[480px] w-full max-w-3xl items-center justify-center">
+          <div className="pointer-events-none absolute top-[200px] left-1/2 -translate-x-1/2 h-32 w-80 opacity-25 [background-image:radial-gradient(rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:12px_12px]" />
 
-          <div className="relative mt-8">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             {/* Panel 1 - Bottom */}
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -95,13 +95,13 @@ export default function IntegratedFeaturesFlow() {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="pointer-events-none absolute inset-0"
-            viewBox="0 0 900 420"
+            viewBox="0 0 900 480"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g opacity="0.9">
               <motion.path
-                d="M450 235 C450 260, 450 280, 450 305"
+                d="M450 268 C450 295, 450 320, 450 350"
                 stroke="rgba(255,255,255,0.25)"
                 strokeWidth="2"
                 initial={{ pathLength: 0 }}
@@ -109,7 +109,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 305 C450 330, 330 340, 245 360"
+                d="M450 350 C450 375, 320 385, 220 400"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="2"
                 initial={{ pathLength: 0 }}
@@ -117,7 +117,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 305 C450 332, 400 340, 365 360"
+                d="M450 350 C450 378, 390 385, 340 400"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="2"
                 initial={{ pathLength: 0 }}
@@ -125,7 +125,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 305 C450 332, 500 340, 535 360"
+                d="M450 350 C450 378, 510 385, 560 400"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="2"
                 initial={{ pathLength: 0 }}
@@ -133,7 +133,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 305 C450 330, 570 340, 655 360"
+                d="M450 350 C450 375, 580 385, 680 400"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="2"
                 initial={{ pathLength: 0 }}
@@ -144,7 +144,7 @@ export default function IntegratedFeaturesFlow() {
 
             <g opacity="0.55" filter="url(#blurGlow)">
               <motion.path
-                d="M450 235 C450 260, 450 280, 450 305"
+                d="M450 268 C450 295, 450 320, 450 350"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="6"
                 initial={{ pathLength: 0 }}
@@ -152,7 +152,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 305 C450 330, 330 340, 245 360"
+                d="M450 350 C450 375, 320 385, 220 400"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="6"
                 initial={{ pathLength: 0 }}
@@ -160,7 +160,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 305 C450 332, 400 340, 365 360"
+                d="M450 350 C450 378, 390 385, 340 400"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="6"
                 initial={{ pathLength: 0 }}
@@ -168,7 +168,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 305 C450 332, 500 340, 535 360"
+                d="M450 350 C450 378, 510 385, 560 400"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="6"
                 initial={{ pathLength: 0 }}
@@ -176,7 +176,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 305 C450 330, 570 340, 655 360"
+                d="M450 350 C450 375, 580 385, 680 400"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="6"
                 initial={{ pathLength: 0 }}
