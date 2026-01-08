@@ -66,9 +66,9 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
         <div
           className="relative rounded-[12px] md:rounded-[16px] overflow-hidden"
           style={{
-            background: 'linear-gradient(180deg, #3d4249 0%, #2e3238 40%, #252930 100%)',
+            background: 'linear-gradient(180deg, #ffffff 0%, #f5f5f5 40%, #e8e8e8 100%)',
             padding: '4px 4px 16px 4px',
-            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.3)',
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.8), inset 0 -1px 0 rgba(0,0,0,0.1)',
           }}
         >
           <div
@@ -80,8 +80,8 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
           <div
             className="absolute top-[6px] md:top-[8px] left-1/2 -translate-x-1/2 w-[5px] h-[5px] md:w-[6px] md:h-[6px] rounded-full"
             style={{
-              background: 'radial-gradient(circle at 35% 35%, #1a1a1a 0%, #0a0a0a 100%)',
-              boxShadow: 'inset 0 1px 2px rgba(255,255,255,0.1), 0 1px 2px rgba(0,0,0,0.5), inset 0 0 4px rgba(0,0,0,0.8)'
+              background: 'radial-gradient(circle at 35% 35%, #2a2a2a 0%, #1a1a1a 100%)',
+              boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2), inset 0 0 4px rgba(0,0,0,0.5)'
             }}
           />
           <div
@@ -101,8 +101,8 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
             style={{
               width: '10px',
               height: '45px',
-              background: 'linear-gradient(90deg, #1e2126 0%, #2e3238 25%, #3a3f46 50%, #2e3238 75%, #1e2126 100%)',
-              boxShadow: '-3px 0 6px rgba(0,0,0,0.2), 3px 0 6px rgba(0,0,0,0.2), inset 1px 0 0 rgba(255,255,255,0.05)',
+              background: 'linear-gradient(90deg, #e8e8e8 0%, #f5f5f5 25%, #ffffff 50%, #f5f5f5 75%, #e8e8e8 100%)',
+              boxShadow: '-3px 0 6px rgba(0,0,0,0.1), 3px 0 6px rgba(0,0,0,0.1), inset 1px 0 0 rgba(255,255,255,0.5)',
             }}
           />
           <div
@@ -110,7 +110,7 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
             style={{
               width: '14px',
               height: '45px',
-              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%)',
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.8) 50%, transparent 100%)',
             }}
           />
         </div>
@@ -120,9 +120,9 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
           style={{
             width: '160px',
             height: '12px',
-            background: 'linear-gradient(180deg, #3a3f46 0%, #2e3238 40%, #252930 100%)',
+            background: 'linear-gradient(180deg, #ffffff 0%, #f5f5f5 40%, #e8e8e8 100%)',
             borderRadius: '0 0 6px 6px',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.06)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.8)',
           }}
         >
           <div
@@ -163,7 +163,7 @@ export default function DealMap() {
 
   return (
     <section ref={sectionRef} className="py-16 md:py-12 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-black to-white" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-[#1a1a1a] to-[#2a2a2a]" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-10 md:mb-8">
@@ -182,7 +182,7 @@ export default function DealMap() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-base text-[#1a1a1a] md:max-w-xl md:text-right"
+            className="text-base text-white/80 md:max-w-xl md:text-right"
           >
             Visualize your agency's reach in real-time. Watch as policies are sold across the nation.
           </motion.p>
@@ -199,11 +199,11 @@ export default function DealMap() {
               y1="30%"
               x2="27%"
               y2="30%"
-              stroke="#1a1a1a"
+              stroke="#ffffff"
               strokeWidth="1"
               strokeLinecap="round"
               initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
               transition={{ delay: 2.8, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             />
 
@@ -212,11 +212,11 @@ export default function DealMap() {
               y1="70%"
               x2="27%"
               y2="70%"
-              stroke="#1a1a1a"
+              stroke="#ffffff"
               strokeWidth="1"
               strokeLinecap="round"
               initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
               transition={{ delay: 3.2, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             />
 
@@ -225,11 +225,11 @@ export default function DealMap() {
               y1="30%"
               x2="73%"
               y2="30%"
-              stroke="#1a1a1a"
+              stroke="#ffffff"
               strokeWidth="1"
               strokeLinecap="round"
               initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
               transition={{ delay: 3.0, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             />
 
@@ -238,11 +238,11 @@ export default function DealMap() {
               y1="70%"
               x2="73%"
               y2="70%"
-              stroke="#1a1a1a"
+              stroke="#ffffff"
               strokeWidth="1"
               strokeLinecap="round"
               initial={{ pathLength: 0, opacity: 0 }}
-              animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+              animate={isInView ? { pathLength: 1, opacity: 0.6 } : { pathLength: 0, opacity: 0 }}
               transition={{ delay: 3.4, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             />
           </svg>
@@ -457,7 +457,7 @@ export default function DealMap() {
         >
           <button
             onClick={() => { window.scrollTo(0, 0); navigate('/schedule'); }}
-            className="px-8 py-4 bg-black text-white rounded-xl font-semibold text-base hover:bg-black/80 transition-all hover:scale-105 shadow-lg border border-white/20"
+            className="px-8 py-4 bg-white text-black rounded-xl font-semibold text-base hover:bg-white/90 transition-all hover:scale-105 shadow-lg border border-white/40"
           >
             Book a Demo Now
           </button>
