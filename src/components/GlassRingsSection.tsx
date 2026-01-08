@@ -158,23 +158,23 @@ const ShieldIO = () => {
       </g>
 
       <g transform="translate(200, 225)">
-        <circle
-          cx="-35"
-          cy="0"
-          r="48"
-          fill="none"
-          stroke="#ffffff"
-          strokeWidth="18"
-        />
         <rect
-          x="30"
+          x="-55"
           y="-50"
           width="18"
           height="100"
           rx="2"
           fill="#6ad4f2"
           fillOpacity="0.6"
-          transform="skewX(-8)"
+          transform="skewX(-12)"
+        />
+        <circle
+          cx="35"
+          cy="0"
+          r="48"
+          fill="none"
+          stroke="#ffffff"
+          strokeWidth="18"
         />
       </g>
     </motion.svg>
