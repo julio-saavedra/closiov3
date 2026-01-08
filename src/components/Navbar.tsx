@@ -102,10 +102,11 @@ const Navbar: React.FC<NavbarProps> = () => {
     e.preventDefault();
     e.stopPropagation();
     if (id === 'home') {
-      if (!isHomePage) {
+      if (isHomePage) {
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      } else {
         navigate('/');
       }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       if (!isHomePage) {
         navigate('/');
