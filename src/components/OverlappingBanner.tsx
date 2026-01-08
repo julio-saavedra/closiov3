@@ -88,25 +88,22 @@ const OverlappingBanner: React.FC = () => {
             animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            The <span className="relative inline-block">
-              <span className="relative z-10">all-in-one</span>
-              <span className="absolute inset-0 bg-[#6ad4f2]/20 rounded-full blur-sm scale-110"></span>
-            </span> platform to{' '}
+            Your entire insurance operation—
             <span className="relative">
-              <span className="text-[#6ad4f2]">manage</span>
+              <span className="text-[#6ad4f2]">policies</span>
               <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-[#6ad4f2]"></span>
-            </span>{' '}
-            your policies,{' '}
+            </span>
+            ,{' '}
             <span className="relative">
-              <span className="text-[#6ad4f2]">track</span>
+              <span className="text-[#6ad4f2]">commissions</span>
               <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-[#6ad4f2]"></span>
-            </span>{' '}
-            commissions, and{' '}
+            </span>
+            , and{' '}
             <span className="relative inline-block">
-              <span className="relative z-10 text-[#6ad4f2]">grow</span>
+              <span className="relative z-10 text-[#6ad4f2]">team</span>
               <span className="absolute inset-0 border-2 border-[#6ad4f2]/40 rounded-full scale-125"></span>
-            </span>{' '}
-            your book of business.
+            </span>
+            —finally in one place.
           </motion.h2>
 
           <motion.p
@@ -115,13 +112,13 @@ const OverlappingBanner: React.FC = () => {
             animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            From <span className="text-[#6ad4f2] font-medium">lead</span> to{' '}
-            <span className="text-[#6ad4f2] font-medium">issue paid</span>,{' '}
+            From <span className="text-[#6ad4f2] font-medium">application</span> to{' '}
+            <span className="text-[#6ad4f2] font-medium">commission check</span>,{' '}
             <span className="relative inline-block">
               <span className="font-semibold text-white">Closio</span>
               <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#6ad4f2]"></span>
             </span>{' '}
-            streamlines every step of your insurance workflow.
+            gives you complete visibility over every deal. No more spreadsheets. No more guessing.
           </motion.p>
         </div>
       </motion.div>
