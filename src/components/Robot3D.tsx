@@ -347,6 +347,8 @@ const Robot3D = () => {
     let scrollProgress = 0;
     let targetScrollProgress = 0;
 
+    let wasInView = false;
+
     const updateScrollProgress = () => {
       const mobileSection = document.getElementById('mobile');
       if (!mobileSection) return;
@@ -356,12 +358,20 @@ const Robot3D = () => {
       const sectionTop = rect.top;
       const sectionHeight = rect.height;
 
-      if (sectionTop < viewportHeight && sectionTop + sectionHeight > 0) {
+      const isInView = sectionTop < viewportHeight && sectionTop + sectionHeight > 0;
+
+      if (isInView) {
+        if (!wasInView) {
+          scrollProgress = 0;
+        }
         const visibleTop = Math.max(0, viewportHeight - sectionTop);
         const visibleHeight = Math.min(sectionHeight, visibleTop);
         targetScrollProgress = Math.min(1, visibleHeight / (sectionHeight * 0.6));
+        wasInView = true;
       } else {
         targetScrollProgress = 0;
+        scrollProgress = 0;
+        wasInView = false;
       }
     };
 
