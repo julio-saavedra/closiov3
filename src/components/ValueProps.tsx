@@ -11,9 +11,9 @@ const VerticalLine: React.FC = () => {
 
   const pathLength = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
-  // Scroll-based movement: down first, then left
-  const y = useTransform(scrollYProgress, [0.5, 0.8], [0, 100]);
-  const x = useTransform(scrollYProgress, [0.8, 1], [0, -150]);
+  // Move down into monitor, then left out of screen
+  const translateY = useTransform(scrollYProgress, [0.5, 0.75], ['0%', '50%']);
+  const translateX = useTransform(scrollYProgress, [0.75, 1], ['0%', '-200%']);
   const opacity = useTransform(scrollYProgress, [0.5, 1], [1, 0]);
 
   return (
@@ -24,8 +24,8 @@ const VerticalLine: React.FC = () => {
         preserveAspectRatio="none"
         style={{
           overflow: 'visible',
-          y,
-          x,
+          translateY,
+          translateX,
           opacity
         }}
       >
