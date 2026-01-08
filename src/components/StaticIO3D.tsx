@@ -5,6 +5,7 @@ import gsap from 'gsap';
 
 const StaticIO3D: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const hasSpun = useRef(false);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -240,9 +241,32 @@ const StaticIO3D: React.FC = () => {
     }
     animate();
 
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasSpun.current) {
+          hasSpun.current = true;
+          const currentRotation = io.rotation.y;
+          gsap.to(io.rotation, {
+            y: currentRotation + Math.PI * 2,
+            duration: 1.5,
+            ease: "power2.inOut",
+            delay: 0.3
+          });
+        }
+      });
+    };
+
+    const intersectionObserver = new IntersectionObserver(observerCallback, {
+      threshold: 0.5,
+      rootMargin: '0px'
+    });
+
+    intersectionObserver.observe(canvas);
+
     return () => {
       cancelAnimationFrame(animationId);
       resizeObserver.disconnect();
+      intersectionObserver.disconnect();
       renderer.dispose();
     };
   }, []);
