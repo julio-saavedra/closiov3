@@ -801,11 +801,11 @@ const FeatureGrid: React.FC = () => {
           transition={{ duration: 0.7 }}
           className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold leading-[1.15] md:max-w-md whitespace-nowrap">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light leading-relaxed md:max-w-md whitespace-nowrap">
             <TypewriterText
               text="/ Core Features"
               delay={200}
-              className="text-white"
+              className="text-gray-400"
             />
           </h2>
           <p className="text-white/50 text-lg leading-[1.6] md:max-w-xl md:text-right">
