@@ -163,7 +163,23 @@ export default function DealMap() {
 
   return (
     <section ref={sectionRef} className="py-16 md:py-12 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-tr from-black from-60% via-[#0a0a0a] via-75% to-white" />
+      <div className="absolute inset-0 bg-black" />
+      <div
+        className="absolute top-0 left-0 w-1/3 h-1/3 blur-3xl"
+        style={{ background: 'radial-gradient(circle at top left, rgba(255,255,255,0.15), transparent 70%)' }}
+      />
+      <div
+        className="absolute top-0 right-0 w-1/3 h-1/3 blur-3xl"
+        style={{ background: 'radial-gradient(circle at top right, rgba(255,255,255,0.15), transparent 70%)' }}
+      />
+      <div
+        className="absolute bottom-0 left-0 w-1/3 h-1/3 blur-3xl"
+        style={{ background: 'radial-gradient(circle at bottom left, rgba(255,255,255,0.15), transparent 70%)' }}
+      />
+      <div
+        className="absolute bottom-0 right-0 w-1/3 h-1/3 blur-3xl"
+        style={{ background: 'radial-gradient(circle at bottom right, rgba(255,255,255,0.15), transparent 70%)' }}
+      />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-10 md:mb-8">
@@ -182,7 +198,7 @@ export default function DealMap() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-base text-black/90 md:max-w-xl md:text-right"
+            className="text-base text-white/80 md:max-w-xl md:text-right"
           >
             Visualize your agency's reach in real-time. Watch as policies are sold across the nation.
           </motion.p>
