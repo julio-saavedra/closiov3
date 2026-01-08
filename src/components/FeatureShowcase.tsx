@@ -161,7 +161,6 @@ const FeatureShowcase: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isScrollLocked, setIsScrollLocked] = useState(false);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -184,64 +183,93 @@ const FeatureShowcase: React.FC = () => {
     const container = scrollContainerRef.current;
     if (!section || !container) return;
 
-    let isScrollingHorizontally = false;
+    let isScrolling = false;
+    let scrollTimeout: NodeJS.Timeout;
 
     const handleWheel = (e: WheelEvent) => {
+      // Prevent multiple rapid scroll events
+      if (isScrolling) return;
+
       const rect = section.getBoundingClientRect();
       const sectionTop = rect.top;
       const sectionBottom = rect.bottom;
       const viewportHeight = window.innerHeight;
 
-      // Check if section is in the main viewport area
-      const isInScrollZone = sectionTop <= viewportHeight * 0.3 && sectionBottom >= viewportHeight * 0.3;
+      // Check if section is visible in viewport
+      const isVisible = sectionTop < viewportHeight * 0.7 && sectionBottom > viewportHeight * 0.3;
 
-      if (!isInScrollZone) {
-        isScrollingHorizontally = false;
+      if (!isVisible) {
         return;
       }
 
       const scrollLeft = container.scrollLeft;
+      const cardWidth = container.clientWidth;
       const maxScroll = container.scrollWidth - container.clientWidth;
-      const isAtStart = scrollLeft <= 5;
-      const isAtEnd = scrollLeft >= maxScroll - 5;
+      const currentCard = Math.round(scrollLeft / cardWidth);
+
+      const isAtStart = currentCard === 0;
+      const isAtEnd = currentCard === features.length - 1;
 
       // Scrolling down
       if (e.deltaY > 0) {
-        // If we're at the end of horizontal scroll, allow vertical scroll to continue
+        // If we're at the end, allow normal scroll to continue
         if (isAtEnd) {
-          isScrollingHorizontally = false;
           return;
         }
 
-        // Otherwise, hijack and scroll horizontally
+        // Hijack the scroll
         e.preventDefault();
         e.stopPropagation();
-        container.scrollLeft += e.deltaY * 1.5;
-        isScrollingHorizontally = true;
-        setIsScrollLocked(true);
+        isScrolling = true;
+
+        // Scroll to next card
+        const nextCard = Math.min(currentCard + 1, features.length - 1);
+        container.scrollTo({
+          left: nextCard * cardWidth,
+          behavior: 'smooth'
+        });
+        setCurrentIndex(nextCard);
+
+        // Reset scrolling flag after animation
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          isScrolling = false;
+        }, 600);
       }
       // Scrolling up
       else if (e.deltaY < 0) {
-        // If we're at the start of horizontal scroll, allow vertical scroll to continue up
-        if (isAtStart && sectionTop >= -50) {
-          isScrollingHorizontally = false;
+        // If at start and section is at top, allow scroll up
+        if (isAtStart && sectionTop >= -10) {
           return;
         }
 
-        // If we're already in the section, hijack scroll
-        if (sectionTop < 0 || !isAtStart) {
-          e.preventDefault();
-          e.stopPropagation();
-          container.scrollLeft += e.deltaY * 1.5;
-          isScrollingHorizontally = true;
-          setIsScrollLocked(true);
-        }
+        // Hijack the scroll
+        e.preventDefault();
+        e.stopPropagation();
+        isScrolling = true;
+
+        // Scroll to previous card
+        const prevCard = Math.max(currentCard - 1, 0);
+        container.scrollTo({
+          left: prevCard * cardWidth,
+          behavior: 'smooth'
+        });
+        setCurrentIndex(prevCard);
+
+        // Reset scrolling flag after animation
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          isScrolling = false;
+        }, 600);
       }
     };
 
-    // Capture phase to ensure we catch the event first
-    window.addEventListener('wheel', handleWheel, { passive: false, capture: true });
-    return () => window.removeEventListener('wheel', handleWheel, { capture: true });
+    // Use passive: false to allow preventDefault
+    document.addEventListener('wheel', handleWheel, { passive: false });
+    return () => {
+      document.removeEventListener('wheel', handleWheel);
+      clearTimeout(scrollTimeout);
+    };
   }, []);
 
   return (
