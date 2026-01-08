@@ -605,19 +605,33 @@ const HorizontalLine: React.FC = () => {
     offset: ["start 0.8", "end start"]
   });
 
-  const horizontalScale = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
+  const pathLength = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
-      <motion.div
-        className="absolute left-0 top-1/2 -translate-y-1/2 h-[1.5px] bg-white/20 origin-left"
-        initial={{ scaleX: 0 }}
-        style={{
-          width: '100%',
-          scaleX: horizontalScale,
-        }}
-        transition={{ delay: 0.3 }}
-      />
+      <svg
+        className="absolute top-0 left-0 w-full h-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        style={{ overflow: 'visible' }}
+      >
+        <motion.path
+          d="M 0 50 L 100 50"
+          stroke="rgba(255, 255, 255, 0.2)"
+          strokeWidth="0.45"
+          fill="none"
+          strokeLinecap="round"
+          style={{
+            pathLength,
+          }}
+          initial={{ pathLength: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.3,
+            ease: [0.25, 0.1, 0.25, 1]
+          }}
+        />
+      </svg>
     </div>
   );
 };

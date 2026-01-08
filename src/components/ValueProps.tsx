@@ -22,7 +22,7 @@ const VerticalLine: React.FC = () => {
         <motion.path
           d="M 53 -5 L 53 28 Q 53 35, 46 35 L -5 35"
           stroke="rgba(255, 255, 255, 0.2)"
-          strokeWidth="0.15"
+          strokeWidth="0.45"
           fill="none"
           strokeLinecap="round"
           style={{
