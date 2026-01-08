@@ -158,8 +158,10 @@ const FeatureShowcase: React.FC = () => {
     triggerOnce: true
   });
 
+  const sectionRef = useRef<HTMLElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isScrollLocked, setIsScrollLocked] = useState(false);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -176,8 +178,47 @@ const FeatureShowcase: React.FC = () => {
     return () => container.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Scroll hijacking effect
+  useEffect(() => {
+    const section = sectionRef.current;
+    const container = scrollContainerRef.current;
+    if (!section || !container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      const rect = section.getBoundingClientRect();
+      const isInView = rect.top <= 100 && rect.bottom >= window.innerHeight / 2;
+
+      if (!isInView) return;
+
+      const scrollLeft = container.scrollLeft;
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      const isAtStart = scrollLeft <= 0;
+      const isAtEnd = scrollLeft >= maxScroll - 1;
+
+      // If scrolling down and not at end, hijack scroll
+      if (e.deltaY > 0 && !isAtEnd) {
+        e.preventDefault();
+        container.scrollLeft += e.deltaY;
+        setIsScrollLocked(true);
+      }
+      // If scrolling up and not at start, hijack scroll
+      else if (e.deltaY < 0 && !isAtStart) {
+        e.preventDefault();
+        container.scrollLeft += e.deltaY;
+        setIsScrollLocked(true);
+      }
+      // Otherwise allow normal scroll
+      else {
+        setIsScrollLocked(false);
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => window.removeEventListener('wheel', handleWheel);
+  }, []);
+
   return (
-    <section className="relative bg-black overflow-hidden py-12 sm:py-16 md:py-24">
+    <section ref={sectionRef} className="relative bg-black overflow-hidden py-12 sm:py-16 md:py-24">
       <motion.div
         ref={headerRef}
         initial={{ opacity: 0, y: 40 }}
@@ -231,6 +272,13 @@ const FeatureShowcase: React.FC = () => {
             />
           ))}
         </div>
+
+        {/* Scroll hint */}
+        {currentIndex < features.length - 1 && (
+          <div className="absolute bottom-0 right-8 text-white/60 text-sm animate-pulse">
+            Scroll to explore →
+          </div>
+        )}
       </div>
     </section>
   );
