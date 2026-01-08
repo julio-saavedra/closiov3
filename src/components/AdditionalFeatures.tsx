@@ -13,7 +13,7 @@ const AdditionalFeatures: React.FC = () => {
           className="text-center"
         >
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white tracking-wide">
-            ...and more additional features
+            ...more advanced features
           </h2>
         </motion.div>
       </div>
