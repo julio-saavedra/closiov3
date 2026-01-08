@@ -21,67 +21,67 @@ const StaticIO3D: React.FC = () => {
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.4;
+    renderer.toneMappingExposure = 1.0;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 90);
     camera.position.set(0.0, -0.2, 5.5);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
-    scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+    scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.02).texture;
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.6);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.3);
     scene.add(ambient);
 
-    const key = new THREE.DirectionalLight(0xffffff, 3.5);
+    const key = new THREE.DirectionalLight(0xffffff, 1.8);
     key.position.set(5, 6, 7);
     scene.add(key);
 
-    const fill = new THREE.DirectionalLight(0xffffff, 2.0);
+    const fill = new THREE.DirectionalLight(0xffffff, 1.0);
     fill.position.set(-6, 2, 5);
     scene.add(fill);
 
-    const rim = new THREE.PointLight(0xffffff, 3.0, 40);
+    const rim = new THREE.PointLight(0xffffff, 1.5, 40);
     rim.position.set(-2.0, 2.2, -2.8);
     scene.add(rim);
 
-    const topLight = new THREE.DirectionalLight(0xffffff, 2.5);
+    const topLight = new THREE.DirectionalLight(0xffffff, 1.2);
     topLight.position.set(0, 8, 3);
     scene.add(topLight);
 
-    const frontLight = new THREE.DirectionalLight(0xffffff, 3.0);
+    const frontLight = new THREE.DirectionalLight(0xffffff, 1.5);
     frontLight.position.set(0, 0, 10);
     scene.add(frontLight);
 
-    const accentLight1 = new THREE.PointLight(0x6ad4f2, 6.0, 40);
+    const accentLight1 = new THREE.PointLight(0x3A9AB8, 4.0, 40);
     accentLight1.position.set(3, 1, 3);
     scene.add(accentLight1);
 
-    const accentLight2 = new THREE.PointLight(0x6ad4f2, 5.0, 40);
+    const accentLight2 = new THREE.PointLight(0x3A9AB8, 3.0, 40);
     accentLight2.position.set(-3, -1, 2);
     scene.add(accentLight2);
 
-    const glowLight = new THREE.PointLight(0x6ad4f2, 8.0, 45);
+    const glowLight = new THREE.PointLight(0x3A9AB8, 5.0, 45);
     glowLight.position.set(0, 0, 4);
     scene.add(glowLight);
 
-    const TEAL = new THREE.Color("#6ad4f2");
-    const WHITE = new THREE.Color("#F8F8F8");
+    const TEAL = new THREE.Color("#2E8AAB");
+    const WHITE = new THREE.Color("#E8E8E8");
 
-    function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.25, rough = 0.3) {
+    function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.15, rough = 0.45) {
       return new THREE.MeshPhysicalMaterial({
         color: baseColor,
-        metalness: 0.08,
+        metalness: 0.05,
         roughness: rough,
         transmission: 0,
         transparent: false,
-        clearcoat: 0.4,
-        clearcoatRoughness: 0.15,
-        envMapIntensity: 1.2,
-        specularIntensity: 0.6,
+        clearcoat: 0.15,
+        clearcoatRoughness: 0.3,
+        envMapIntensity: 0.6,
+        specularIntensity: 0.3,
         emissive: baseColor,
         emissiveIntensity,
-        reflectivity: 0.5
+        reflectivity: 0.3
       });
     }
 
@@ -155,12 +155,12 @@ const StaticIO3D: React.FC = () => {
     io3D.add(io);
 
     const iMesh = new THREE.Mesh(
-      createHollowI({ width: 0.45, height: 1.2, stroke: 0.12, slant: 0.22, depth: 0.18 }),
-      solidMaterial(TEAL, 0.35, 0.28)
+      createHollowI({ width: 0.45, height: 1.2, stroke: 0.12, slant: 0.22, depth: 0.20 }),
+      solidMaterial(TEAL, 0.12, 0.5)
     );
     const oMesh = new THREE.Mesh(
-      createHollowO({ outerRadius: 0.58, ringThickness: 0.22, depth: 0.18, segments: 256 }),
-      solidMaterial(WHITE, 0.15, 0.32)
+      createHollowO({ outerRadius: 0.58, ringThickness: 0.22, depth: 0.20, segments: 256 }),
+      solidMaterial(WHITE, 0.08, 0.5)
     );
 
     iMesh.position.set(-0.58, 0.0, 0.0);
@@ -168,7 +168,8 @@ const StaticIO3D: React.FC = () => {
 
     io.add(iMesh, oMesh);
 
-    io.rotation.x = 0.12;
+    io.rotation.x = 0.15;
+    io.rotation.y = -0.25;
 
     io.scale.set(0, 0, 0);
     gsap.to(io.scale, {
@@ -183,7 +184,7 @@ const StaticIO3D: React.FC = () => {
     gsap.fromTo(io.rotation,
       { y: Math.PI * 0.3 },
       {
-        y: 0,
+        y: -0.25,
         duration: 1.5,
         ease: "power3.out",
         delay: 0.2
@@ -236,8 +237,8 @@ const StaticIO3D: React.FC = () => {
       io.position.y = floatY;
       io.position.x = floatX;
 
-      io.rotation.y = Math.sin(t * 0.25) * 0.08;
-      io.rotation.x = 0.12 + Math.sin(t * 0.35) * 0.04;
+      io.rotation.y = -0.25 + Math.sin(t * 0.25) * 0.06;
+      io.rotation.x = 0.15 + Math.sin(t * 0.35) * 0.03;
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(animate);
