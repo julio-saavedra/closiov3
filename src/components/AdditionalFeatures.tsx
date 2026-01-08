@@ -17,12 +17,12 @@ const AdditionalFeatures: React.FC = () => {
               className="absolute pointer-events-none"
               style={{
                 left: '50%',
-                top: '-40px',
+                top: '-80px',
                 transform: 'translateX(-50%)',
-                width: 'calc(100% + 120px)',
-                height: '200px'
+                width: 'calc(100% + 240px)',
+                height: '250px'
               }}
-              viewBox="0 0 1200 200"
+              viewBox="0 0 1200 250"
               preserveAspectRatio="none"
             >
               <defs>
@@ -35,28 +35,28 @@ const AdditionalFeatures: React.FC = () => {
                 </filter>
               </defs>
               <line
-                x1="150"
-                y1="40"
-                x2="1050"
-                y2="40"
+                x1="200"
+                y1="30"
+                x2="1000"
+                y2="30"
                 stroke="rgba(255, 255, 255, 0.4)"
                 strokeWidth="2"
                 filter="url(#glow)"
               />
               <line
-                x1="150"
-                y1="40"
-                x2="50"
-                y2="160"
+                x1="200"
+                y1="30"
+                x2="20"
+                y2="200"
                 stroke="rgba(255, 255, 255, 0.4)"
                 strokeWidth="2"
                 filter="url(#glow)"
               />
               <line
-                x1="1050"
-                y1="40"
-                x2="1150"
-                y2="160"
+                x1="1000"
+                y1="30"
+                x2="1180"
+                y2="200"
                 stroke="rgba(255, 255, 255, 0.4)"
                 strokeWidth="2"
                 filter="url(#glow)"
