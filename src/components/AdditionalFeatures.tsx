@@ -53,20 +53,16 @@ const AdditionalFeatures: React.FC = () => {
             .glow-shell::after {
               content: "";
               position: absolute;
-              left: 8%;
-              right: 8%;
-              top: 28px;
-              height: 2px;
-              border-radius: 999px;
-              background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255, 255, 255, 0.5) 30%,
-                rgba(255, 255, 255, 0.5) 70%,
-                transparent
-              );
-              filter: blur(2px);
-              opacity: 0.75;
+              left: 50%;
+              top: -68px;
+              transform: translateX(-50%);
+              width: 0;
+              height: 0;
+              border-left: 300px solid transparent;
+              border-right: 300px solid transparent;
+              border-top: 96px solid rgba(255, 255, 255, 0.15);
+              filter: blur(8px);
+              opacity: 0.4;
               z-index: 1;
               pointer-events: none;
             }
