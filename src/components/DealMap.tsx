@@ -464,20 +464,6 @@ export default function DealMap() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.9 }}
-          className="pt-8 text-center"
-        >
-          <button
-            onClick={() => { window.scrollTo(0, 0); navigate('/schedule'); }}
-            className="px-8 py-4 bg-white text-black rounded-xl font-semibold text-base hover:bg-white/90 transition-all hover:scale-105 shadow-lg border border-white/40"
-          >
-            Book a Demo Now
-          </button>
-        </motion.div>
       </div>
     </section>
   );
