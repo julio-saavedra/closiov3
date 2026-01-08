@@ -35,17 +35,17 @@ const AdditionalFeatures: React.FC = () => {
             .glow-shell::before {
               content: "";
               position: absolute;
-              inset: -2px;
+              inset: -1px;
               border-radius: inherit;
               background: linear-gradient(
                 180deg,
-                rgba(255, 255, 255, 0.22),
-                rgba(255, 255, 255, 0.06) 35%,
-                rgba(255, 255, 255, 0.02) 60%,
-                rgba(255, 255, 255, 0.00)
+                rgba(255, 255, 255, 0.25),
+                rgba(255, 255, 255, 0.12) 25%,
+                rgba(255, 255, 255, 0.04) 50%,
+                rgba(255, 255, 255, 0.00) 75%
               );
-              filter: blur(10px);
-              opacity: 0.65;
+              filter: blur(6px);
+              opacity: 0.7;
               z-index: 0;
               pointer-events: none;
             }
