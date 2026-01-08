@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import ValueProps from './components/ValueProps';
 import FeatureGrid from './components/FeatureGrid';
 import MobileSection from './components/MobileSection';
+import AdditionalFeatures from './components/AdditionalFeatures';
 import DealMap from './components/DealMap';
 import FullWidthVideo from './components/FullWidthVideo';
 import FeatureShowcase from './components/FeatureShowcase';
@@ -56,6 +57,8 @@ function HomePage() {
         <SectionWrapper className="!bg-black !bg-none !from-black !via-black !to-black">
           <MobileSection />
         </SectionWrapper>
+
+        <AdditionalFeatures />
 
         <SectionWrapper>
           <DealMap />
