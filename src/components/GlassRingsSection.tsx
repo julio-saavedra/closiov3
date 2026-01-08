@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import ShieldIO from './ShieldIO';
 
 interface TypewriterTextProps {
   text: string;
@@ -49,136 +49,6 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay = 0, classN
       {displayedText}
       {isTyping && <span className="animate-pulse">|</span>}
     </span>
-  );
-};
-
-const ShieldIO = () => {
-  const { ref, isVisible } = useScrollAnimation({
-    threshold: 0.2,
-    rootMargin: '-100px 0px -100px 0px'
-  });
-
-  return (
-    <motion.svg
-      ref={ref}
-      viewBox="0 0 400 480"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full max-w-[380px] mx-auto"
-      initial={{ opacity: 0, scale: 0.9, y: 30 }}
-      animate={isVisible
-        ? { opacity: 1, scale: 1, y: 0 }
-        : { opacity: 0, scale: 0.9, y: 30 }
-      }
-      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-    >
-      <defs>
-        <linearGradient id="shieldMatteBase" x1="50%" y1="0%" x2="50%" y2="100%">
-          <stop offset="0%" stopColor="#1a1a1a" />
-          <stop offset="50%" stopColor="#0d0d0d" />
-          <stop offset="100%" stopColor="#080808" />
-        </linearGradient>
-        <linearGradient id="shieldInnerShadow" x1="50%" y1="0%" x2="50%" y2="100%">
-          <stop offset="0%" stopColor="#000000" stopOpacity="0.6" />
-          <stop offset="40%" stopColor="#000000" stopOpacity="0.3" />
-          <stop offset="100%" stopColor="#000000" stopOpacity="0.5" />
-        </linearGradient>
-        <linearGradient id="shieldTopEdge" x1="50%" y1="0%" x2="50%" y2="100%">
-          <stop offset="0%" stopColor="#3a3a3a" />
-          <stop offset="100%" stopColor="#1a1a1a" />
-        </linearGradient>
-        <linearGradient id="shieldBottomEdge" x1="50%" y1="0%" x2="50%" y2="100%">
-          <stop offset="0%" stopColor="#0a0a0a" />
-          <stop offset="100%" stopColor="#050505" />
-        </linearGradient>
-        <filter id="imprintShadow" x="-30%" y="-30%" width="160%" height="160%">
-          <feDropShadow dx="0" dy="8" stdDeviation="12" floodColor="#000000" floodOpacity="0.6" />
-        </filter>
-        <filter id="innerDepth" x="-10%" y="-10%" width="120%" height="120%">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur" />
-          <feOffset in="blur" dx="2" dy="3" result="offsetBlur" />
-          <feFlood floodColor="#000000" floodOpacity="0.7" result="shadow" />
-          <feComposite in="shadow" in2="offsetBlur" operator="in" result="innerShadow" />
-          <feOffset in="SourceAlpha" dx="-1" dy="-1" result="highlightOffset" />
-          <feGaussianBlur in="highlightOffset" stdDeviation="1" result="highlightBlur" />
-          <feFlood floodColor="#ffffff" floodOpacity="0.08" result="highlight" />
-          <feComposite in="highlight" in2="highlightBlur" operator="in" result="innerHighlight" />
-          <feMerge>
-            <feMergeNode in="innerShadow" />
-            <feMergeNode in="innerHighlight" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-        <filter id="ioImprint" x="-20%" y="-20%" width="140%" height="140%">
-          <feOffset in="SourceAlpha" dx="1" dy="1" result="shadowOffset" />
-          <feGaussianBlur in="shadowOffset" stdDeviation="1.5" result="shadowBlur" />
-          <feFlood floodColor="#000000" floodOpacity="0.5" result="shadowColor" />
-          <feComposite in="shadowColor" in2="shadowBlur" operator="in" result="shadow" />
-          <feOffset in="SourceAlpha" dx="-0.5" dy="-0.5" result="highlightOffset" />
-          <feGaussianBlur in="highlightOffset" stdDeviation="0.5" result="highlightBlur" />
-          <feFlood floodColor="#ffffff" floodOpacity="0.15" result="highlightColor" />
-          <feComposite in="highlightColor" in2="highlightBlur" operator="in" result="highlight" />
-          <feMerge>
-            <feMergeNode in="shadow" />
-            <feMergeNode in="highlight" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-      </defs>
-
-      <g filter="url(#imprintShadow)">
-        <path
-          d="M200 30 C200 30 330 48 350 68 C370 88 375 125 375 160 C375 275 332 368 200 445 C68 368 25 275 25 160 C25 125 30 88 50 68 C70 48 200 30 200 30 Z"
-          fill="url(#shieldMatteBase)"
-          filter="url(#innerDepth)"
-        />
-        <path
-          d="M200 30 C200 30 330 48 350 68 C370 88 375 125 375 160 C375 275 332 368 200 445 C68 368 25 275 25 160 C25 125 30 88 50 68 C70 48 200 30 200 30 Z"
-          fill="url(#shieldInnerShadow)"
-        />
-        <path
-          d="M200 32 C200 32 325 49 343 67"
-          fill="none"
-          stroke="#2a2a2a"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <path
-          d="M200 30 C200 30 330 48 350 68 C370 88 375 125 375 160 C375 275 332 368 200 445 C68 368 25 275 25 160 C25 125 30 88 50 68 C70 48 200 30 200 30 Z"
-          fill="none"
-          stroke="#2a2a2a"
-          strokeWidth="1.5"
-        />
-        <path
-          d="M200 45 C200 45 315 60 332 77 C349 94 353 125 353 155 C353 260 315 345 200 415 C85 345 47 260 47 155 C47 125 51 94 68 77 C85 60 200 45 200 45 Z"
-          fill="none"
-          stroke="#1a1a1a"
-          strokeWidth="1"
-        />
-      </g>
-
-      <g transform="translate(200, 225)">
-        <rect
-          x="-60"
-          y="-50"
-          width="18"
-          height="100"
-          rx="2"
-          fill="none"
-          stroke="#6ad4f2"
-          strokeWidth="6"
-          transform="skewX(-12)"
-        />
-        <circle
-          cx="45"
-          cy="0"
-          r="48"
-          fill="none"
-          stroke="#ffffff"
-          strokeWidth="18"
-        />
-      </g>
-    </motion.svg>
   );
 };
 
@@ -304,9 +174,7 @@ const GlassRingsSection = () => {
           </div>
 
           <div className="relative order-first lg:order-last">
-            <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent rounded-3xl blur-3xl" />
-            <div className="w-full h-[500px] lg:h-[650px] flex items-center justify-center bg-black rounded-2xl relative overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.03)_0%,_transparent_60%)]" />
+            <div className="w-full h-[500px] lg:h-[650px] flex items-center justify-center relative">
               <ShieldIO />
             </div>
           </div>
