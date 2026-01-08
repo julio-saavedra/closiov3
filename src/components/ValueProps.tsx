@@ -9,25 +9,23 @@ const VerticalLine: React.FC = () => {
     offset: ["start end", "end start"]
   });
 
-  const yPosition = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
-  const xPosition = useTransform(scrollYProgress, [0, 1], ['50%', '0%']);
+  const verticalScale = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const horizontalScale = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
 
   return (
     <div ref={sectionRef} className="absolute inset-0 pointer-events-none overflow-visible">
       <motion.div
-        className="absolute top-0 w-[20px] h-[42%] bg-gray-600/30"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[20px] bg-gray-600/30 origin-top"
         style={{
-          left: xPosition,
-          y: yPosition,
-          x: '-50%'
+          height: '42%',
+          scaleY: verticalScale,
         }}
       />
       <motion.div
-        className="absolute top-[42%] right-1/2 h-[20px] bg-gray-600/30"
+        className="absolute top-[42%] left-0 h-[20px] bg-gray-600/30 origin-left"
         style={{
-          left: '0',
-          width: xPosition,
-          y: yPosition
+          width: '50%',
+          scaleX: horizontalScale,
         }}
       />
     </div>
