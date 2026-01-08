@@ -22,8 +22,6 @@ const StaticIO3D: React.FC = () => {
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.2;
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 90);
@@ -37,37 +35,18 @@ const StaticIO3D: React.FC = () => {
 
     const key = new THREE.DirectionalLight(0xffffff, 1.8);
     key.position.set(5, 6, 7);
-    key.castShadow = true;
-    key.shadow.mapSize.width = 2048;
-    key.shadow.mapSize.height = 2048;
-    key.shadow.camera.near = 0.5;
-    key.shadow.camera.far = 50;
-    key.shadow.bias = -0.0001;
-    key.shadow.radius = 4;
     scene.add(key);
 
     const fill = new THREE.DirectionalLight(0xffffff, 1.0);
     fill.position.set(-6, 2, 5);
-    fill.castShadow = true;
-    fill.shadow.mapSize.width = 1024;
-    fill.shadow.mapSize.height = 1024;
-    fill.shadow.bias = -0.0001;
     scene.add(fill);
 
     const rim = new THREE.PointLight(0xffffff, 1.5, 40);
     rim.position.set(-2.0, 2.2, -2.8);
-    rim.castShadow = true;
-    rim.shadow.mapSize.width = 1024;
-    rim.shadow.mapSize.height = 1024;
-    rim.shadow.bias = -0.0001;
     scene.add(rim);
 
     const topLight = new THREE.DirectionalLight(0xffffff, 1.2);
     topLight.position.set(0, 8, 3);
-    topLight.castShadow = true;
-    topLight.shadow.mapSize.width = 2048;
-    topLight.shadow.mapSize.height = 2048;
-    topLight.shadow.bias = -0.0001;
     scene.add(topLight);
 
     const frontLight = new THREE.DirectionalLight(0xffffff, 1.5);
@@ -170,15 +149,6 @@ const StaticIO3D: React.FC = () => {
       return g;
     }
 
-    const shadowPlane = new THREE.Mesh(
-      new THREE.PlaneGeometry(10, 10),
-      new THREE.ShadowMaterial({ opacity: 0.6 })
-    );
-    shadowPlane.rotation.x = -Math.PI / 2;
-    shadowPlane.position.y = -1.2;
-    shadowPlane.receiveShadow = true;
-    io3D.add(shadowPlane);
-
     const io = new THREE.Group();
     io.position.set(0, 0.0, 0.0);
     io3D.add(io);
@@ -187,15 +157,10 @@ const StaticIO3D: React.FC = () => {
       createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.25 }),
       solidMaterial(TEAL, 0.35, 0.3)
     );
-    iMesh.castShadow = true;
-    iMesh.receiveShadow = true;
-
     const oMesh = new THREE.Mesh(
       createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }),
       solidMaterial(WHITE, 0.15, 0.35)
     );
-    oMesh.castShadow = true;
-    oMesh.receiveShadow = true;
 
     iMesh.position.set(-0.60, 0.0, 0.0);
     oMesh.position.set(0.62, 0.0, 0.0);
