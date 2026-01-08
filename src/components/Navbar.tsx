@@ -363,7 +363,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   perspective: '600px'
                 }}
               >
-                <span className="demo-btn-text">Book a Demo</span>
+                <span className="demo-btn-text">Get in touch</span>
               </Link>
               <button
                 onClick={() => window.location.href = 'https://closio.com/login'}
@@ -466,7 +466,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   className="demo-btn bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-xl hover:bg-white/90 transition-colors block text-center"
                   style={{ perspective: '600px' }}
                 >
-                  <span className="demo-btn-text">Book a Demo</span>
+                  <span className="demo-btn-text">Get in touch</span>
                 </Link>
                 <button
                   onClick={() => window.location.href = 'https://closio.com/login'}
