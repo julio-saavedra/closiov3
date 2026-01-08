@@ -1,6 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+
+const TypewriterText: React.FC<{ text: string; isVisible: boolean }> = ({ text, isVisible }) => {
+  const [displayText, setDisplayText] = useState('');
+  const [hasTyped, setHasTyped] = useState(false);
+
+  useEffect(() => {
+    if (isVisible && !hasTyped) {
+      setHasTyped(true);
+      let index = 0;
+      const interval = setInterval(() => {
+        if (index <= text.length) {
+          setDisplayText(text.slice(0, index));
+          index++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 50);
+      return () => clearInterval(interval);
+    }
+  }, [isVisible, text, hasTyped]);
+
+  return (
+    <span>
+      {displayText}
+      {displayText.length < text.length && hasTyped && (
+        <span className="inline-block w-[3px] h-[0.9em] bg-[#6ad4f2] ml-1 animate-pulse" />
+      )}
+    </span>
+  );
+};
 
 interface FeatureSection {
   title: string;
@@ -148,7 +178,7 @@ const FeatureShowcase: React.FC = () => {
         className="pt-8 md:pt-12 pb-12 md:pb-16"
       >
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center">
-          No Limits on what you can do
+          <TypewriterText text="/No Limits on what you can do" isVisible={headerVisible} />
         </h2>
       </motion.div>
 
