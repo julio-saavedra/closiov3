@@ -17,7 +17,7 @@ export const useSmoothScroll = () => {
     };
 
     const animate = () => {
-      currentScrollY = lerp(currentScrollY, targetScrollY, 0.08);
+      currentScrollY = lerp(currentScrollY, targetScrollY, 0.06);
 
       if (Math.abs(targetScrollY - currentScrollY) < 0.1) {
         currentScrollY = targetScrollY;
@@ -36,7 +36,7 @@ export const useSmoothScroll = () => {
       e.preventDefault();
       lastUserInteraction = Date.now();
 
-      const scrollMultiplier = 0.65;
+      const scrollMultiplier = 0.45;
       const delta = e.deltaY * scrollMultiplier;
 
       targetScrollY += delta;
