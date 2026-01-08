@@ -25,10 +25,15 @@ const FacebookIcon = ({ size = 18, className = "" }: { size?: number; className?
 function HoverFooter() {
   const footerLinks = [
     {
-      title: "Resources",
+      title: "Legal",
       links: [
         { label: "Privacy Policy", href: "/privacy-policy" },
         { label: "Terms & Conditions", href: "/terms-conditions" },
+      ],
+    },
+    {
+      title: "Resources",
+      links: [
         { label: "FAQs", href: "/faqs" },
         { label: "Contact Us", href: "/contact" },
         { label: "Schedule a Demo", href: "/schedule" },
@@ -57,9 +62,9 @@ function HoverFooter() {
   return (
     <footer className="bg-black/40 backdrop-blur-xl relative h-fit border-t border-white/10 pt-[100px] sm:pt-[150px] md:pt-[200px]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-10 lg:px-14 py-12 sm:py-14 md:py-16 z-40 relative">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-6 lg:gap-8">
           {/* Company Info */}
-          <div className="lg:col-span-3 flex flex-col space-y-4">
+          <div className="lg:col-span-3 flex flex-col space-y-4 lg:items-start">
             <Link to="/" onClick={() => window.scrollTo(0, 0)} className="flex items-center">
               <img
                 src="/67ff5f5f-fc49-493f-8cb5-0467588c2623.png"
@@ -68,9 +73,29 @@ function HoverFooter() {
                 draggable={false}
               />
             </Link>
-            <p className="text-sm leading-relaxed text-gray-400 pr-4">
+            <p className="text-sm leading-relaxed text-gray-400">
               The CRM built for life insurance agencies.
             </p>
+          </div>
+
+          {/* Legal */}
+          <div className="lg:col-span-3">
+            <h4 className="text-gray-400 text-base font-semibold mb-5 tracking-tight">
+              /Legal
+            </h4>
+            <ul className="space-y-2.5 text-sm">
+              {footerLinks[0].links.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    to={link.href}
+                    onClick={() => window.scrollTo(0, 0)}
+                    className="text-gray-400 hover:text-[#6ad4f2] transition-colors inline-block"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Resources */}
@@ -79,7 +104,7 @@ function HoverFooter() {
               /Resources
             </h4>
             <ul className="space-y-2.5 text-sm">
-              {footerLinks[0].links.map((link) => (
+              {footerLinks[1].links.map((link) => (
                 <li key={link.label}>
                   <Link
                     to={link.href}
