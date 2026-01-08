@@ -253,28 +253,32 @@ export default function DealMap() {
               const descDelay = 1200 + index * 400;
 
               return (
-                <div key={fact.title} className="relative">
+                <div key={fact.title} className="relative" style={{ perspective: '1000px' }}>
                   {/* Glass Panel 2 - Furthest back */}
                   <motion.div
-                    initial={{ opacity: 0, x: -100, scale: 0.92 }}
-                    animate={isInView ? { opacity: 0.3, x: -12, scale: 0.94 } : { opacity: 0, x: -100, scale: 0.92 }}
+                    initial={{ opacity: 0, x: -100, scale: 0.92, rotateY: -8 }}
+                    animate={isInView ? { opacity: 0.35, x: -14, scale: 0.94, rotateY: -4 } : { opacity: 0, x: -100, scale: 0.92, rotateY: -8 }}
                     transition={{ delay: 0.4 + index * 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0 rounded-2xl border border-white/5 backdrop-blur-sm"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))',
-                      zIndex: -2
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
+                      boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
+                      zIndex: -2,
+                      transformStyle: 'preserve-3d'
                     }}
                   />
 
                   {/* Glass Panel 1 - Middle layer */}
                   <motion.div
-                    initial={{ opacity: 0, x: -90, scale: 0.95 }}
-                    animate={isInView ? { opacity: 0.5, x: -6, scale: 0.97 } : { opacity: 0, x: -90, scale: 0.95 }}
+                    initial={{ opacity: 0, x: -90, scale: 0.95, rotateY: -5 }}
+                    animate={isInView ? { opacity: 0.55, x: -7, scale: 0.97, rotateY: -2 } : { opacity: 0, x: -90, scale: 0.95, rotateY: -5 }}
                     transition={{ delay: 0.5 + index * 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute inset-0 rounded-2xl border border-white/8 backdrop-blur-md"
+                    className="absolute inset-0 rounded-2xl border border-white/10 backdrop-blur-md"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))',
-                      zIndex: -1
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
+                      boxShadow: '0 10px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -1px 0 rgba(0,0,0,0.2)',
+                      zIndex: -1,
+                      transformStyle: 'preserve-3d'
                     }}
                   />
 
@@ -283,9 +287,17 @@ export default function DealMap() {
                     initial={{ opacity: 0, x: -80 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -80 }}
                     transition={{ delay: 0.6 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
-                    className="relative overflow-hidden rounded-2xl border border-white/10"
-                    style={{ background: '#000000' }}
+                    className="relative overflow-hidden rounded-2xl border border-white/15"
+                    style={{
+                      background: 'linear-gradient(135deg, #000000, #0a0a0a)',
+                      boxShadow: '0 12px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.1), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(0,0,0,0.5)',
+                      transformStyle: 'preserve-3d'
+                    }}
                   >
+                  {/* Top edge highlight for 3D depth */}
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+
                   <div
                     className="absolute top-0 right-0 w-40 h-40 pointer-events-none"
                     style={{
@@ -359,28 +371,32 @@ export default function DealMap() {
               const descDelay = 1400 + index * 400;
 
               return (
-                <div key={fact.title} className="relative">
+                <div key={fact.title} className="relative" style={{ perspective: '1000px' }}>
                   {/* Glass Panel 2 - Furthest back */}
                   <motion.div
-                    initial={{ opacity: 0, x: 100, scale: 0.92 }}
-                    animate={isInView ? { opacity: 0.3, x: 12, scale: 0.94 } : { opacity: 0, x: 100, scale: 0.92 }}
+                    initial={{ opacity: 0, x: 100, scale: 0.92, rotateY: 8 }}
+                    animate={isInView ? { opacity: 0.35, x: 14, scale: 0.94, rotateY: 4 } : { opacity: 0, x: 100, scale: 0.92, rotateY: 8 }}
                     transition={{ delay: 0.6 + index * 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute inset-0 rounded-2xl border border-white/5 backdrop-blur-sm"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))',
-                      zIndex: -2
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
+                      boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
+                      zIndex: -2,
+                      transformStyle: 'preserve-3d'
                     }}
                   />
 
                   {/* Glass Panel 1 - Middle layer */}
                   <motion.div
-                    initial={{ opacity: 0, x: 90, scale: 0.95 }}
-                    animate={isInView ? { opacity: 0.5, x: 6, scale: 0.97 } : { opacity: 0, x: 90, scale: 0.95 }}
+                    initial={{ opacity: 0, x: 90, scale: 0.95, rotateY: 5 }}
+                    animate={isInView ? { opacity: 0.55, x: 7, scale: 0.97, rotateY: 2 } : { opacity: 0, x: 90, scale: 0.95, rotateY: 5 }}
                     transition={{ delay: 0.7 + index * 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute inset-0 rounded-2xl border border-white/8 backdrop-blur-md"
+                    className="absolute inset-0 rounded-2xl border border-white/10 backdrop-blur-md"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))',
-                      zIndex: -1
+                      background: 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
+                      boxShadow: '0 10px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -1px 0 rgba(0,0,0,0.2)',
+                      zIndex: -1,
+                      transformStyle: 'preserve-3d'
                     }}
                   />
 
@@ -389,9 +405,17 @@ export default function DealMap() {
                     initial={{ opacity: 0, x: 80 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 80 }}
                     transition={{ delay: 0.8 + index * 0.3, duration: 0.6, ease: 'easeOut' }}
-                    className="relative overflow-hidden rounded-2xl border border-white/10"
-                    style={{ background: '#000000' }}
+                    className="relative overflow-hidden rounded-2xl border border-white/15"
+                    style={{
+                      background: 'linear-gradient(135deg, #000000, #0a0a0a)',
+                      boxShadow: '0 12px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.1), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(0,0,0,0.5)',
+                      transformStyle: 'preserve-3d'
+                    }}
                   >
+                  {/* Top edge highlight for 3D depth */}
+                  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                  <div className="absolute top-0 left-0 right-0 h-12 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+
                   <div
                     className="absolute top-0 left-0 w-40 h-40 pointer-events-none"
                     style={{
@@ -446,30 +470,34 @@ export default function DealMap() {
 
         <div className="lg:hidden mt-8 grid grid-cols-2 gap-4">
           {benefits.map((benefit, index) => (
-            <div key={benefit.title} className="relative">
+            <div key={benefit.title} className="relative" style={{ perspective: '800px' }}>
               {/* Glass Panel 2 - Furthest back */}
               <motion.div
-                initial={{ opacity: 0, y: 30, scale: 0.92 }}
-                whileInView={{ opacity: 0.3, y: 10, scale: 0.94 }}
+                initial={{ opacity: 0, y: 30, scale: 0.92, rotateX: -5 }}
+                whileInView={{ opacity: 0.35, y: 10, scale: 0.94, rotateX: -2 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute inset-0 rounded-2xl border border-white/5 backdrop-blur-sm"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))',
-                  zIndex: -2
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01))',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)',
+                  zIndex: -2,
+                  transformStyle: 'preserve-3d'
                 }}
               />
 
               {/* Glass Panel 1 - Middle layer */}
               <motion.div
-                initial={{ opacity: 0, y: 25, scale: 0.95 }}
-                whileInView={{ opacity: 0.5, y: 5, scale: 0.97 }}
+                initial={{ opacity: 0, y: 25, scale: 0.95, rotateX: -3 }}
+                whileInView={{ opacity: 0.55, y: 5, scale: 0.97, rotateX: -1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 + index * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0 rounded-2xl border border-white/8 backdrop-blur-md"
+                className="absolute inset-0 rounded-2xl border border-white/10 backdrop-blur-md"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02))',
-                  zIndex: -1
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02))',
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1), inset 0 -1px 0 rgba(0,0,0,0.2)',
+                  zIndex: -1,
+                  transformStyle: 'preserve-3d'
                 }}
               />
 
@@ -479,9 +507,17 @@ export default function DealMap() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 + index * 0.1 }}
-                className="relative overflow-hidden rounded-2xl border border-white/10"
-                style={{ background: '#000000' }}
+                className="relative overflow-hidden rounded-2xl border border-white/15"
+                style={{
+                  background: 'linear-gradient(135deg, #000000, #0a0a0a)',
+                  boxShadow: '0 12px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.1), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(0,0,0,0.5)',
+                  transformStyle: 'preserve-3d'
+                }}
               >
+              {/* Top edge highlight for 3D depth */}
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <div className="absolute top-0 left-0 right-0 h-10 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
+
               <div
                 className="absolute top-0 right-0 w-32 h-32 pointer-events-none"
                 style={{
