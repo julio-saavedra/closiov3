@@ -18,10 +18,10 @@ export default function IntegratedFeaturesFlow() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: 'radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px)',
-            backgroundSize: '24px 24px',
-            maskImage: 'radial-gradient(ellipse 60% 50% at 50% 40%, black 0%, transparent 70%)',
-            WebkitMaskImage: 'radial-gradient(ellipse 60% 50% at 50% 40%, black 0%, transparent 70%)',
+            backgroundImage: 'radial-gradient(rgba(255,255,255,0.4) 1.5px, transparent 1.5px)',
+            backgroundSize: '28px 28px',
+            maskImage: 'radial-gradient(ellipse 80% 70% at 50% 45%, black 0%, transparent 65%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 45%, black 0%, transparent 65%)',
           }}
         />
       </div>
