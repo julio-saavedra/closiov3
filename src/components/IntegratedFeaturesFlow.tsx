@@ -29,9 +29,9 @@ export default function IntegratedFeaturesFlow() {
           <div className="pointer-events-none absolute top-[200px] h-32 w-80 opacity-25 [background-image:radial-gradient(rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:12px_12px]" />
 
           <div className="relative mt-8">
-            <div className="absolute left-1/2 -top-10 h-48 w-64 -translate-x-1/2 rotate-45 rounded-[32px] border border-white/[0.08] bg-gradient-to-br from-white/[0.02] via-white/[0.01] to-transparent shadow-[0_8px_60px_rgba(0,0,0,0.4),0_0_80px_rgba(255,255,255,0.06)] backdrop-blur-[2px]" />
+            <div className="absolute left-1/2 -top-10 h-48 w-64 -translate-x-1/2 -rotate-45 rounded-[32px] border border-white/[0.08] bg-gradient-to-br from-white/[0.02] via-white/[0.01] to-transparent shadow-[0_8px_60px_rgba(0,0,0,0.4),0_0_80px_rgba(255,255,255,0.06)] backdrop-blur-[2px]" />
 
-            <div className="absolute left-1/2 top-2 h-48 w-64 -translate-x-1/2 rotate-45 rounded-[32px] border border-white/[0.12] bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-white/[0.01] shadow-[0_8px_50px_rgba(0,0,0,0.3),0_0_70px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.15)] backdrop-blur-sm" />
+            <div className="absolute left-1/2 top-2 h-48 w-64 -translate-x-1/2 rotate-0 rounded-[32px] border border-white/[0.12] bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-white/[0.01] shadow-[0_8px_50px_rgba(0,0,0,0.3),0_0_70px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.15)] backdrop-blur-sm" />
 
             <div className="absolute left-1/2 top-14 h-48 w-64 -translate-x-1/2 rotate-45 rounded-[32px] border-2 border-white/[0.2] bg-[linear-gradient(135deg,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.12)_50%,rgba(255,255,255,0.04)_100%)] shadow-[0_8px_40px_rgba(0,0,0,0.5),0_0_100px_rgba(255,255,255,0.15),inset_0_2px_0_rgba(255,255,255,0.25),inset_0_-2px_20px_rgba(0,0,0,0.2)] backdrop-blur-md overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.08] to-transparent" />
