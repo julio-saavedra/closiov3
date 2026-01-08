@@ -22,7 +22,7 @@ const MobileSection: React.FC = () => {
             </p>
           </div>
           <img
-            src="/new_one_mobile_#1_final_edit.png"
+            src="/new_one,_hopefully_this_works.png"
             alt="Mobile app showcase"
             className="h-[75%] sm:h-[80%] md:h-[85%] lg:h-[90%] w-auto object-contain drop-shadow-2xl"
           />
