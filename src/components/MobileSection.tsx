@@ -24,7 +24,7 @@ const MobileSection: React.FC = () => {
           <img
             src="/new_one_mobile_#1_final_edit.png"
             alt="Mobile app showcase"
-            className="h-[60%] sm:h-[65%] md:h-[70%] w-auto max-w-[60%] sm:max-w-none object-contain drop-shadow-2xl"
+            className="h-[75%] sm:h-[80%] md:h-[85%] lg:h-[90%] w-auto object-contain drop-shadow-2xl"
           />
         </div>
       </div>
