@@ -345,7 +345,7 @@ const ContactSplit = React.memo(() => {
       </section>
 
       <section className="relative bg-black z-10">
-        <div className="absolute inset-x-0 -top-32 h-64 bg-[radial-gradient(ellipse_80%_60%_at_50%_100%,_rgba(106,212,242,0.35)_0%,_transparent_70%)] pointer-events-none" />
+        <div className="absolute inset-x-0 -bottom-32 h-64 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,_rgba(106,212,242,0.35)_0%,_transparent_70%)] pointer-events-none" />
         <div className="relative h-[300px] sm:h-[400px] md:h-[500px] w-full pointer-events-none select-none flex items-center justify-center -mb-[100px] sm:-mb-[150px] md:-mb-[200px]" style={{ transform: 'translateY(-40px)' }}>
           <div className="absolute inset-0 flex items-center justify-center" style={{ top: '20%' }}>
             <div
