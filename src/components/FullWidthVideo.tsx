@@ -7,7 +7,8 @@ const FullWidthVideo = () => {
   const [hasPlayed, setHasPlayed] = useState(false);
   const { ref: sectionRef, isVisible } = useScrollAnimation({
     threshold: 0.2,
-    rootMargin: '-80px 0px -80px 0px'
+    rootMargin: '-80px 0px -80px 0px',
+    triggerOnce: true
   });
 
   useEffect(() => {
@@ -42,10 +43,7 @@ const FullWidthVideo = () => {
     <motion.section
       ref={sectionRef}
       initial={{ opacity: 0, y: 40, scale: 0.98 }}
-      animate={isVisible
-        ? { opacity: 1, y: 0, scale: 1 }
-        : { opacity: 0, y: 20, scale: 0.99 }
-      }
+      animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{
         duration: 0.8,
         ease: [0.22, 0.61, 0.36, 1]

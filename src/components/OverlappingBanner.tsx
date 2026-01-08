@@ -53,7 +53,8 @@ const BottomGlow: React.FC = () => (
 const OverlappingBanner: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation({
     threshold: 0.2,
-    rootMargin: '-80px 0px -80px 0px'
+    rootMargin: '-80px 0px -80px 0px',
+    triggerOnce: true
   });
 
   return (
@@ -66,10 +67,7 @@ const OverlappingBanner: React.FC = () => {
           boxShadow: '0 25px 80px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0.5px 0 rgba(255, 255, 255, 0.15)',
         }}
         initial={{ opacity: 0, y: 40, scale: 0.98 }}
-        animate={isVisible
-          ? { opacity: 1, y: 0, scale: 1 }
-          : { opacity: 0, y: 20, scale: 0.99 }
-        }
+        animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
         transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
       >
         <div
@@ -85,7 +83,7 @@ const OverlappingBanner: React.FC = () => {
           <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-4xl"
             initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 15 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
           >
             Your entire insurance operation—
@@ -109,7 +107,7 @@ const OverlappingBanner: React.FC = () => {
           <motion.p
             className="mt-6 text-base md:text-lg text-white/70 max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
           >
             From <span className="text-[#6ad4f2] font-medium">application</span> to{' '}

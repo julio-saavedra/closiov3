@@ -89,17 +89,15 @@ interface FeatureCardProps {
 const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
   const { ref, isVisible } = useScrollAnimation({
     threshold: 0.15,
-    rootMargin: '-50px 0px -50px 0px'
+    rootMargin: '-50px 0px -50px 0px',
+    triggerOnce: true
   });
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 40, scale: 0.98 }}
-      animate={isVisible
-        ? { opacity: 1, y: 0, scale: 1 }
-        : { opacity: 0, y: 20, scale: 0.99 }
-      }
+      animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
       transition={{
         duration: 0.8,
         delay: 0.1,
@@ -172,7 +170,8 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
 const FeatureShowcase: React.FC = () => {
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation({
     threshold: 0.2,
-    rootMargin: '-50px 0px -50px 0px'
+    rootMargin: '-50px 0px -50px 0px',
+    triggerOnce: true
   });
 
   return (
@@ -180,10 +179,7 @@ const FeatureShowcase: React.FC = () => {
       <motion.div
         ref={headerRef}
         initial={{ opacity: 0, y: 40 }}
-        animate={headerVisible
-          ? { opacity: 1, y: 0 }
-          : { opacity: 0, y: 20 }
-        }
+        animate={headerVisible ? { opacity: 1, y: 0 } : {}}
         transition={{
           duration: 0.8,
           ease: [0.22, 0.61, 0.36, 1]
