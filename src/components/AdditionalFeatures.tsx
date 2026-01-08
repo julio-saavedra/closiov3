@@ -74,7 +74,7 @@ const AdditionalFeatures: React.FC = () => {
 
           <div className="relative z-10 flex flex-col items-center gap-3">
             <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-center m-0"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
               style={{
                 color: '#9CA3AF',
                 lineHeight: 1.25,
@@ -82,10 +82,10 @@ const AdditionalFeatures: React.FC = () => {
                 letterSpacing: '-0.02em'
               }}
             >
-              The platform starts here
+              The platform starts here but doesnt stop
             </motion.h2>
             <motion.p
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal text-center m-0"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
               style={{
                 color: '#9CA3AF',
                 lineHeight: 1.25,
@@ -93,7 +93,7 @@ const AdditionalFeatures: React.FC = () => {
                 letterSpacing: '-0.02em'
               }}
             >
-              more advanced capabilities continue below
+              More advanced features below
             </motion.p>
           </div>
         </motion.div>
