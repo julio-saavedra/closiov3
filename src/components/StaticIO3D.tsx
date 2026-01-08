@@ -21,14 +21,14 @@ const StaticIO3D: React.FC = () => {
     renderer.setClearColor(0x000000, 0);
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.0;
+    renderer.toneMappingExposure = 1.2;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 90);
     camera.position.set(0.0, -0.2, 5.5);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
-    scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.02).texture;
+    scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
 
     const ambient = new THREE.AmbientLight(0xffffff, 0.3);
     scene.add(ambient);
@@ -71,17 +71,20 @@ const StaticIO3D: React.FC = () => {
     function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.15, rough = 0.45) {
       return new THREE.MeshPhysicalMaterial({
         color: baseColor,
-        metalness: 0.05,
+        metalness: 0.08,
         roughness: rough,
         transmission: 0,
         transparent: false,
-        clearcoat: 0.15,
-        clearcoatRoughness: 0.3,
-        envMapIntensity: 0.6,
-        specularIntensity: 0.3,
+        clearcoat: 0.4,
+        clearcoatRoughness: 0.15,
+        envMapIntensity: 0.9,
+        specularIntensity: 0.5,
         emissive: baseColor,
         emissiveIntensity,
-        reflectivity: 0.3
+        reflectivity: 0.5,
+        sheen: 0.1,
+        sheenRoughness: 0.3,
+        sheenColor: baseColor
       });
     }
 
@@ -155,16 +158,16 @@ const StaticIO3D: React.FC = () => {
     io3D.add(io);
 
     const iMesh = new THREE.Mesh(
-      createHollowI({ width: 0.6, height: 1.5, stroke: 0.16, slant: 0.26, depth: 0.25 }),
-      solidMaterial(TEAL, 0.35, 0.3)
+      createHollowI({ width: 0.35, height: 1.0, stroke: 0.10, slant: 0.18, depth: 0.15 }),
+      solidMaterial(TEAL, 0.25, 0.35)
     );
     const oMesh = new THREE.Mesh(
-      createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }),
-      solidMaterial(WHITE, 0.15, 0.35)
+      createHollowO({ outerRadius: 0.50, ringThickness: 0.18, depth: 0.15, segments: 256 }),
+      solidMaterial(WHITE, 0.12, 0.4)
     );
 
-    iMesh.position.set(-0.60, 0.0, 0.0);
-    oMesh.position.set(0.62, 0.0, 0.0);
+    iMesh.position.set(-0.42, 0.0, 0.0);
+    oMesh.position.set(0.45, 0.0, 0.0);
 
     io.add(iMesh, oMesh);
 
@@ -219,7 +222,7 @@ const StaticIO3D: React.FC = () => {
       camera.updateProjectionMatrix();
 
       const mobile = w < 900;
-      io3D.scale.setScalar(mobile ? 1.6 : 2.4);
+      io3D.scale.setScalar(mobile ? 1.4 : 1.8);
     }
 
     const resizeObserver = new ResizeObserver(fit);
