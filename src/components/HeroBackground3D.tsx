@@ -50,20 +50,20 @@ const HeroBackground3D: React.FC = () => {
     accentLight2.position.set(-3, -1, 2);
     scene.add(accentLight2);
 
-    const TEAL = new THREE.Color("#00CFC8");
-    const WHITE = new THREE.Color("#FFFFFF");
+    const TEAL = new THREE.Color("#6ad4f2");
+    const WHITE = new THREE.Color("#F5F5F5");
 
-    function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.3, rough = 0.2) {
+    function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.2, rough = 0.35) {
       return new THREE.MeshPhysicalMaterial({
         color: baseColor,
-        metalness: 0.1,
+        metalness: 0.05,
         roughness: rough,
         transmission: 0,
         transparent: false,
-        clearcoat: 0.8,
-        clearcoatRoughness: 0.1,
-        envMapIntensity: 1.5,
-        specularIntensity: 1.0,
+        clearcoat: 0.3,
+        clearcoatRoughness: 0.2,
+        envMapIntensity: 0.8,
+        specularIntensity: 0.5,
         emissive: baseColor,
         emissiveIntensity
       });
@@ -103,9 +103,9 @@ const HeroBackground3D: React.FC = () => {
       const g = new THREE.ExtrudeGeometry(outer, {
         depth,
         bevelEnabled: true,
-        bevelThickness: 0.04,
-        bevelSize: 0.04,
-        bevelSegments: 3
+        bevelThickness: 0.06,
+        bevelSize: 0.06,
+        bevelSegments: 4
       });
       g.center();
       return g;
@@ -125,9 +125,9 @@ const HeroBackground3D: React.FC = () => {
       const g = new THREE.ExtrudeGeometry(outer, {
         depth,
         bevelEnabled: true,
-        bevelThickness: 0.04,
-        bevelSize: 0.04,
-        bevelSegments: 3,
+        bevelThickness: 0.06,
+        bevelSize: 0.06,
+        bevelSegments: 4,
         curveSegments: segments
       });
       g.center();
@@ -138,8 +138,8 @@ const HeroBackground3D: React.FC = () => {
     io.position.set(0, 0.0, 0.0);
     hero3D.add(io);
 
-    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.18 }), solidMaterial(TEAL, 0.4, 0.2));
-    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.18, segments: 256 }), solidMaterial(WHITE, 0.3, 0.2));
+    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.25 }), solidMaterial(TEAL, 0.35, 0.3));
+    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }), solidMaterial(WHITE, 0.15, 0.35));
 
     iMesh.position.set(-0.60, 0.0, 0.0);
     oMesh.position.set(0.62, 0.0, 0.0);
@@ -270,13 +270,13 @@ const HeroBackground3D: React.FC = () => {
         hover = isHover;
 
         gsap.to(iMesh.material, {
-          emissiveIntensity: hover ? 0.6 : 0.4,
+          emissiveIntensity: hover ? 0.5 : 0.35,
           duration: 0.4,
           ease: "power2.out"
         });
 
         gsap.to(oMesh.material, {
-          emissiveIntensity: hover ? 0.5 : 0.3,
+          emissiveIntensity: hover ? 0.25 : 0.15,
           duration: 0.4,
           ease: "power2.out"
         });
