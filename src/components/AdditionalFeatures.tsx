@@ -1,16 +1,27 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const AdditionalFeatures: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 0.5", "end 0.2"]
+  });
+
+  // Transition from white (rgb(255,255,255)) to gray (rgb(156,163,175))
+  const colorR = useTransform(scrollYProgress, [0, 1], [255, 156]);
+  const colorG = useTransform(scrollYProgress, [0, 1], [255, 163]);
+  const colorB = useTransform(scrollYProgress, [0, 1], [255, 175]);
+
   return (
-    <section className="py-40 sm:py-44 md:py-48 lg:py-56 bg-black">
+    <section ref={sectionRef} className="py-40 sm:py-44 md:py-48 lg:py-56 bg-black">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center relative"
+          className="text-center relative flex flex-col items-center"
         >
           <div className="relative inline-block">
             <svg
@@ -42,9 +53,30 @@ const AdditionalFeatures: React.FC = () => {
                 filter="url(#glow)"
               />
             </svg>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-white tracking-wide relative z-10 px-8">
-              ...more advanced features
-            </h2>
+            <motion.div className="relative z-10 px-8 flex flex-col items-center gap-3">
+              <motion.h2
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide"
+                style={{
+                  color: useTransform(
+                    [colorR, colorG, colorB],
+                    ([r, g, b]) => `rgb(${r}, ${g}, ${b})`
+                  )
+                }}
+              >
+                .....The platform starts here.
+              </motion.h2>
+              <motion.p
+                className="text-xl sm:text-2xl md:text-3xl font-light tracking-wide"
+                style={{
+                  color: useTransform(
+                    [colorR, colorG, colorB],
+                    ([r, g, b]) => `rgb(${r}, ${g}, ${b})`
+                  )
+                }}
+              >
+                more advanced capabilities continue below
+              </motion.p>
+            </motion.div>
           </div>
         </motion.div>
       </div>
