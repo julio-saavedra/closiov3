@@ -195,8 +195,8 @@ const FeatureShowcase: React.FC = () => {
       const sectionBottom = rect.bottom;
       const viewportHeight = window.innerHeight;
 
-      // Check if section is visible in viewport
-      const isVisible = sectionTop < viewportHeight * 0.7 && sectionBottom > viewportHeight * 0.3;
+      // Check if section is visible in viewport - triggers when section is more fully visible
+      const isVisible = sectionTop <= viewportHeight * 0.15 && sectionBottom > viewportHeight * 0.5;
 
       if (!isVisible) {
         return;
