@@ -28,17 +28,17 @@ const AdditionalFeatures: React.FC = () => {
               className="absolute pointer-events-none"
               style={{
                 left: '50%',
-                top: '-80px',
-                transform: 'translateX(-50%)',
-                width: 'calc(100% + 240px)',
-                height: '250px'
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: 'calc(100% + 180px)',
+                height: 'calc(100% + 120px)'
               }}
-              viewBox="0 0 1200 250"
+              viewBox="0 0 1000 300"
               preserveAspectRatio="none"
             >
               <defs>
                 <filter id="glow">
-                  <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                   <feMerge>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="coloredBlur"/>
@@ -47,16 +47,24 @@ const AdditionalFeatures: React.FC = () => {
                 </filter>
               </defs>
               <path
-                d="M 20 200 C 80 120, 140 30, 200 30 C 220 30, 240 20, 280 10 C 290 8, 300 8, 310 8 L 890 8 C 900 8, 910 8, 920 10 C 960 20, 980 30, 1000 30 C 1060 30, 1120 120, 1180 200"
-                stroke="rgba(255, 255, 255, 0.25)"
-                strokeWidth="1"
+                d="M 150 20
+                   C 80 20, 40 30, 20 80
+                   L 20 220
+                   C 40 270, 80 280, 150 280
+                   L 850 280
+                   C 920 280, 960 270, 980 220
+                   L 980 80
+                   C 960 30, 920 20, 850 20
+                   Z"
+                stroke="rgba(255, 255, 255, 0.3)"
+                strokeWidth="1.5"
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 filter="url(#glow)"
               />
             </svg>
-            <motion.div className="relative z-10 px-8 flex flex-col items-center gap-3">
+            <motion.div className="relative z-10 px-12 py-8 flex flex-col items-center gap-3">
               <motion.h2
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light tracking-wide text-center"
                 style={{
