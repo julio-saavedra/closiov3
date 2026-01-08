@@ -33,6 +33,7 @@ import GlassRingsSection from './components/GlassRingsSection';
 import SplashScreen from './components/SplashScreen';
 import OverlappingBanner from './components/OverlappingBanner';
 import ScrollToTop from './components/ScrollToTop';
+import IntegratedFeaturesFlow from './components/IntegratedFeaturesFlow';
 
 function HomePage() {
   return (
@@ -62,6 +63,10 @@ function HomePage() {
 
         <SectionWrapper>
           <DealMap />
+        </SectionWrapper>
+
+        <SectionWrapper className="!bg-black !bg-none">
+          <IntegratedFeaturesFlow />
         </SectionWrapper>
 
         <SectionWrapper className="!bg-black !bg-none !overflow-visible">
