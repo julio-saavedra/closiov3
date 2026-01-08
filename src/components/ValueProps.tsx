@@ -34,7 +34,7 @@ const ValueProps: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="why-closio" className="py-12 sm:py-16 md:py-20 lg:py-28 xl:py-32 bg-black relative overflow-hidden">
+    <section id="why-closio" className="py-16 sm:py-20 md:py-24 lg:py-32 xl:py-40 bg-black relative overflow-hidden">
       <div className="hidden lg:block">
         <VerticalLine />
       </div>
