@@ -14,13 +14,23 @@ export default function IntegratedFeaturesFlow() {
 
   return (
     <section ref={sectionRef} className="relative w-full bg-black py-20">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px)',
+            backgroundSize: '24px 24px',
+            maskImage: 'radial-gradient(ellipse 60% 50% at 50% 40%, black 0%, transparent 70%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 60% 50% at 50% 40%, black 0%, transparent 70%)',
+          }}
+        />
+      </div>
       <div className="relative mx-auto w-full max-w-5xl px-6">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
 
-        <div className="relative mx-auto mt-2 flex h-[580px] w-full max-w-[900px] items-center justify-center">
-          <div className="pointer-events-none absolute top-[140px] left-[calc(50%-160px)] -translate-x-1/2 h-40 w-96 opacity-25 [background-image:radial-gradient(rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:12px_12px]" />
+        <div className="relative mx-auto mt-2 flex h-[620px] w-full max-w-[900px] items-center justify-center">
 
-          <div className="absolute left-[calc(50%-160px)] top-[50px] -translate-x-1/2" style={{ perspective: '1200px' }}>
+          <div className="absolute left-[calc(50%-210px)] top-[30px] -translate-x-1/2" style={{ perspective: '1200px' }}>
             {/* Panel 1 - Bottom */}
             <motion.div
               initial={{ opacity: 0, y: 20, scale: 0.9, rotateX: 2 }}
@@ -38,7 +48,7 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 3, delay: 1.5, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
               }}
-              className="absolute left-1/2 top-[-90px] h-44 w-80 -translate-x-1/2 rounded-[32px] border border-white/[0.06] bg-gradient-to-b from-[#1a1a2e]/40 via-white/[0.02] to-transparent backdrop-blur-[2px]"
+              className="absolute left-1/2 top-[-90px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.06] bg-gradient-to-b from-[#1a1a2e]/40 via-white/[0.02] to-transparent backdrop-blur-[2px]"
               style={{
                 boxShadow: '0 8px 40px rgba(0,0,0,0.4), 0 2px 12px rgba(0,0,0,0.6), 0 0 60px rgba(26,26,46,0.4), inset 0 1px 0 rgba(255,255,255,0.08)',
                 transformStyle: 'preserve-3d'
@@ -62,7 +72,7 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 3, delay: 1.6, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
               }}
-              className="absolute left-1/2 top-[-68px] h-44 w-80 -translate-x-1/2 rounded-[32px] border border-white/[0.08] bg-gradient-to-b from-[#16213e]/50 via-white/[0.03] to-white/[0.01] backdrop-blur-[3px]"
+              className="absolute left-1/2 top-[-68px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.08] bg-gradient-to-b from-[#16213e]/50 via-white/[0.03] to-white/[0.01] backdrop-blur-[3px]"
               style={{
                 boxShadow: '0 10px 48px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.65), 0 0 70px rgba(22,33,62,0.5), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.3)',
                 transformStyle: 'preserve-3d'
@@ -86,7 +96,7 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 3, delay: 1.7, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
               }}
-              className="absolute left-1/2 top-[-45px] h-44 w-80 -translate-x-1/2 rounded-[32px] border border-white/[0.12] bg-gradient-to-b from-[#0f3460]/60 via-white/[0.05] to-white/[0.02] backdrop-blur-[4px]"
+              className="absolute left-1/2 top-[-45px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.12] bg-gradient-to-b from-[#0f3460]/60 via-white/[0.05] to-white/[0.02] backdrop-blur-[4px]"
               style={{
                 boxShadow: '0 12px 56px rgba(0,0,0,0.5), 0 6px 20px rgba(0,0,0,0.7), 0 0 80px rgba(15,52,96,0.6), inset 0 1px 0 rgba(255,255,255,0.16), inset 0 -1px 0 rgba(0,0,0,0.35)',
                 transformStyle: 'preserve-3d'
@@ -113,7 +123,7 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 3, delay: 1.8, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
               }}
-              className="absolute left-1/2 top-[-23px] h-44 w-80 -translate-x-1/2 rounded-[32px] border border-white/[0.16] bg-gradient-to-b from-[#16213e]/70 via-white/[0.08] to-white/[0.04] backdrop-blur-[6px]"
+              className="absolute left-1/2 top-[-23px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border border-white/[0.16] bg-gradient-to-b from-[#16213e]/70 via-white/[0.08] to-white/[0.04] backdrop-blur-[6px]"
               style={{
                 boxShadow: '0 14px 64px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.75), 0 0 90px rgba(22,33,62,0.7), inset 0 2px 0 rgba(255,255,255,0.22), inset 0 -2px 0 rgba(0,0,0,0.4)',
                 transformStyle: 'preserve-3d'
@@ -141,7 +151,7 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 0.6, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 3, delay: 1.9, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.5 }
               }}
-              className="absolute left-1/2 top-[0px] h-44 w-80 -translate-x-1/2 rounded-[32px] border-2 border-white/[0.22] bg-gradient-to-b from-[#1a1a2e]/80 via-white/[0.12] to-white/[0.06] backdrop-blur-[8px] overflow-hidden"
+              className="absolute left-1/2 top-[0px] h-52 w-[420px] -translate-x-1/2 rounded-[32px] border-2 border-white/[0.22] bg-gradient-to-b from-[#1a1a2e]/80 via-white/[0.12] to-white/[0.06] backdrop-blur-[8px] overflow-hidden"
               style={{
                 boxShadow: '0 16px 72px rgba(0,0,0,0.6), 0 10px 28px rgba(0,0,0,0.8), 0 0 100px rgba(26,26,46,0.8), inset 0 2px 0 rgba(255,255,255,0.28), inset 0 -2px 20px rgba(0,0,0,0.25), 0 0 1px rgba(255,255,255,0.2)',
                 transformStyle: 'preserve-3d'
@@ -161,7 +171,7 @@ export default function IntegratedFeaturesFlow() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="pointer-events-none absolute left-1/2 top-[70px] h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.12] blur-3xl"
+              className="pointer-events-none absolute left-1/2 top-[90px] h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.12] blur-3xl"
             />
           </div>
 
@@ -170,13 +180,13 @@ export default function IntegratedFeaturesFlow() {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className="pointer-events-none absolute inset-0"
-            viewBox="0 0 900 580"
+            viewBox="0 0 900 620"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g opacity="0.9">
               <motion.path
-                d="M450 224 L450 410"
+                d="M450 244 L450 420"
                 stroke="rgba(255,255,255,0.25)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -184,7 +194,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 410 C450 445, 280 455, 108 505"
+                d="M450 420 C450 455, 280 465, 108 515"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -192,7 +202,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 410 C450 445, 390 455, 336 505"
+                d="M450 420 C450 455, 390 465, 336 515"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -200,7 +210,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 410 C450 445, 510 455, 564 505"
+                d="M450 420 C450 455, 510 465, 564 515"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -208,7 +218,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 410 C450 445, 620 455, 792 505"
+                d="M450 420 C450 455, 620 465, 792 515"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="3"
                 initial={{ pathLength: 0 }}
@@ -219,7 +229,7 @@ export default function IntegratedFeaturesFlow() {
 
             <g opacity="0.55" filter="url(#blurGlow)">
               <motion.path
-                d="M450 224 L450 410"
+                d="M450 244 L450 420"
                 stroke="rgba(255,255,255,0.22)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -227,7 +237,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 410 C450 445, 280 455, 108 505"
+                d="M450 420 C450 455, 280 465, 108 515"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -235,7 +245,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.1, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 410 C450 445, 390 455, 336 505"
+                d="M450 420 C450 455, 390 465, 336 515"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -243,7 +253,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 0.9, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 410 C450 445, 510 455, 564 505"
+                d="M450 420 C450 455, 510 465, 564 515"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
@@ -251,7 +261,7 @@ export default function IntegratedFeaturesFlow() {
                 transition={{ duration: 0.6, delay: 1.0, ease: "easeInOut" }}
               />
               <motion.path
-                d="M450 410 C450 445, 620 455, 792 505"
+                d="M450 420 C450 455, 620 465, 792 515"
                 stroke="rgba(255,255,255,0.18)"
                 strokeWidth="8"
                 initial={{ pathLength: 0 }}
