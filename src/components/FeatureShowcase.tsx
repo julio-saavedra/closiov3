@@ -1,31 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-const TypewriterText: React.FC<{ text: string; isVisible: boolean }> = ({ text, isVisible }) => {
+const TypewriterText: React.FC<{ text: string }> = ({ text }) => {
   const [displayText, setDisplayText] = useState('');
-  const [hasTyped, setHasTyped] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -50px 0px', amount: 0.1 });
 
   useEffect(() => {
-    if (isVisible && !hasTyped) {
-      setHasTyped(true);
-      let index = 0;
-      const interval = setInterval(() => {
-        if (index <= text.length) {
-          setDisplayText(text.slice(0, index));
-          index++;
-        } else {
-          clearInterval(interval);
-        }
-      }, 50);
-      return () => clearInterval(interval);
+    if (isInView && !hasStarted) {
+      const timeout = setTimeout(() => {
+        setHasStarted(true);
+        setIsTyping(true);
+      }, 200);
+      return () => clearTimeout(timeout);
     }
-  }, [isVisible, text, hasTyped]);
+  }, [isInView, hasStarted]);
+
+  useEffect(() => {
+    if (!isTyping || !hasStarted) return;
+
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index <= text.length) {
+        setDisplayText(text.slice(0, index));
+        index++;
+      } else {
+        clearInterval(interval);
+        setIsTyping(false);
+      }
+    }, 50);
+    return () => clearInterval(interval);
+  }, [isTyping, text, hasStarted]);
 
   return (
-    <span>
+    <span ref={ref} className="inline-block min-w-[1px] min-h-[1em]">
       {displayText}
-      {displayText.length < text.length && hasTyped && (
+      {isTyping && (
         <span className="inline-block w-[3px] h-[0.9em] bg-[#6ad4f2] ml-1 animate-pulse" />
       )}
     </span>
@@ -178,7 +191,7 @@ const FeatureShowcase: React.FC = () => {
         className="pt-8 md:pt-12 pb-12 md:pb-16"
       >
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white text-center">
-          <TypewriterText text="/No Limits on what you can do" isVisible={headerVisible} />
+          <TypewriterText text="/No Limits on what you can do" />
         </h2>
       </motion.div>
 
