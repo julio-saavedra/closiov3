@@ -8,16 +8,16 @@ const AdditionalFeatures: React.FC = () => {
     offset: ["start 0.8", "end 0.3"]
   });
 
-  // Shadow opacity - fades up as user scrolls down
-  const shadowOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.65, 0.4, 0]);
+  // Shadow opacity - stays visible
+  const shadowOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 0.65]);
 
-  // First text animation - fades up first
-  const text1Opacity = useTransform(scrollYProgress, [0, 0.3, 0.6], [0, 1, 0]);
-  const text1Y = useTransform(scrollYProgress, [0, 0.3, 0.6], [30, 0, -20]);
+  // First text animation - fades in and stays
+  const text1Opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  const text1Y = useTransform(scrollYProgress, [0, 0.3], [30, 0]);
 
-  // Second text animation - fades up after the first
-  const text2Opacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0, 1, 0]);
-  const text2Y = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [30, 0, -20]);
+  // Second text animation - fades in and stays
+  const text2Opacity = useTransform(scrollYProgress, [0.2, 0.5], [0, 1]);
+  const text2Y = useTransform(scrollYProgress, [0.2, 0.5], [30, 0]);
 
   return (
     <section ref={sectionRef} className="py-40 sm:py-44 md:py-48 lg:py-56 bg-black">
