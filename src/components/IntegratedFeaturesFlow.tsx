@@ -25,15 +25,20 @@ export default function IntegratedFeaturesFlow() {
       <div className="relative mx-auto w-full max-w-5xl px-6">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
 
-        <div className="relative mx-auto mt-2 flex h-[420px] w-full max-w-3xl items-start justify-center">
-          <div className="pointer-events-none absolute top-[150px] h-28 w-72 opacity-30 [background-image:radial-gradient(rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:10px_10px]" />
+        <div className="relative mx-auto mt-2 flex h-[480px] w-full max-w-3xl items-start justify-center">
+          <div className="pointer-events-none absolute top-[200px] h-32 w-80 opacity-25 [background-image:radial-gradient(rgba(255,255,255,0.10)_1px,transparent_1px)] [background-size:12px_12px]" />
 
-          <div className="relative mt-2">
-            <div className="absolute left-1/2 top-0 h-44 w-60 -translate-x-1/2 rotate-45 rounded-[28px] border border-white/15 bg-white/[0.02] shadow-[0_0_60px_rgba(255,255,255,0.08)]" />
-            <div className="absolute left-1/2 top-9 h-44 w-60 -translate-x-1/2 rotate-45 rounded-[28px] border border-white/12 bg-white/[0.03] backdrop-blur-md" />
-            <div className="absolute left-1/2 top-16 h-44 w-60 -translate-x-1/2 rotate-45 rounded-[28px] border border-white/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.18),rgba(255,255,255,0.03))] shadow-[0_0_90px_rgba(255,255,255,0.10)]" />
+          <div className="relative mt-8">
+            <div className="absolute left-1/2 -top-10 h-48 w-64 -translate-x-1/2 rotate-45 rounded-[32px] border border-white/[0.08] bg-gradient-to-br from-white/[0.02] via-white/[0.01] to-transparent shadow-[0_8px_60px_rgba(0,0,0,0.4),0_0_80px_rgba(255,255,255,0.06)] backdrop-blur-[2px]" />
 
-            <div className="pointer-events-none absolute left-1/2 top-[150px] h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/10 blur-2xl" />
+            <div className="absolute left-1/2 top-2 h-48 w-64 -translate-x-1/2 rotate-45 rounded-[32px] border border-white/[0.12] bg-gradient-to-br from-white/[0.04] via-white/[0.02] to-white/[0.01] shadow-[0_8px_50px_rgba(0,0,0,0.3),0_0_70px_rgba(255,255,255,0.08),inset_0_1px_0_rgba(255,255,255,0.15)] backdrop-blur-sm" />
+
+            <div className="absolute left-1/2 top-14 h-48 w-64 -translate-x-1/2 rotate-45 rounded-[32px] border-2 border-white/[0.2] bg-[linear-gradient(135deg,rgba(255,255,255,0.22)_0%,rgba(255,255,255,0.12)_50%,rgba(255,255,255,0.04)_100%)] shadow-[0_8px_40px_rgba(0,0,0,0.5),0_0_100px_rgba(255,255,255,0.15),inset_0_2px_0_rgba(255,255,255,0.25),inset_0_-2px_20px_rgba(0,0,0,0.2)] backdrop-blur-md overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.08] to-transparent" />
+              <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-white/[0.15] to-transparent" />
+            </div>
+
+            <div className="pointer-events-none absolute left-1/2 top-[190px] h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.12] blur-3xl" />
           </div>
 
           <svg
