@@ -87,24 +87,8 @@ interface FeatureCardProps {
 }
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
-  const { ref, isVisible } = useScrollAnimation({
-    threshold: 0.15,
-    rootMargin: '-50px 0px -50px 0px',
-    triggerOnce: true
-  });
-
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 40, scale: 0.98 }}
-      animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
-      transition={{
-        duration: 0.8,
-        delay: 0.1,
-        ease: [0.22, 0.61, 0.36, 1]
-      }}
-      className="w-full flex items-center justify-center px-3 sm:px-4 md:px-8"
-    >
+    <div className="min-w-full snap-center snap-always flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12">
       <div className="w-full max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] mx-auto">
         <div
           className="bg-[#dfe8f0] backdrop-blur-xl rounded-2xl sm:rounded-3xl overflow-hidden border border-[#c5d4e0]"
@@ -163,7 +147,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -173,6 +157,24 @@ const FeatureShowcase: React.FC = () => {
     rootMargin: '-50px 0px -50px 0px',
     triggerOnce: true
   });
+
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const scrollLeft = container.scrollLeft;
+      const cardWidth = container.offsetWidth;
+      const index = Math.round(scrollLeft / cardWidth);
+      setCurrentIndex(index);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <section className="relative bg-black overflow-hidden py-12 sm:py-16 md:py-24">
@@ -191,10 +193,44 @@ const FeatureShowcase: React.FC = () => {
         </h2>
       </motion.div>
 
-      <div className="flex flex-col gap-8 sm:gap-10 md:gap-16">
-        {features.map((feature, index) => (
-          <FeatureCard key={index} feature={feature} index={index} />
-        ))}
+      {/* Horizontal scroll container */}
+      <div className="relative">
+        <div
+          ref={scrollContainerRef}
+          className="flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide"
+          style={{
+            scrollBehavior: 'smooth',
+            WebkitOverflowScrolling: 'touch',
+          }}
+        >
+          {features.map((feature, index) => (
+            <FeatureCard key={index} feature={feature} index={index} />
+          ))}
+        </div>
+
+        {/* Scroll indicators */}
+        <div className="flex justify-center gap-2 mt-8">
+          {features.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                const container = scrollContainerRef.current;
+                if (container) {
+                  container.scrollTo({
+                    left: container.offsetWidth * index,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+              className={`transition-all duration-300 ${
+                currentIndex === index
+                  ? 'w-8 h-2 bg-[#6ad4f2]'
+                  : 'w-2 h-2 bg-white/30 hover:bg-white/50'
+              } rounded-full`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
