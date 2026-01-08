@@ -72,8 +72,8 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 md:pt-52 lg:pt-[220px] pb-12 sm:pb-16 relative z-10">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 mb-12">
           <div className="col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-2">
-            <p className="text-[#A8B3C7] mb-6 leading-relaxed">
-              The proprietary CRM built exclusively for life insurance professionals. 
+            <p className="text-[#A8B3C7] mb-6 leading-[1.6]">
+              The proprietary CRM built exclusively for life insurance professionals.
               Close more deals, track commissions clearly, and grow your agency with confidence.
             </p>
             

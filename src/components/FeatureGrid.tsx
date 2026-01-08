@@ -707,10 +707,10 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
         </div>
 
         <div className="flex-1 flex flex-col">
-          <h3 className={`text-2xl font-bold mb-4 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
+          <h3 className={`text-2xl font-bold leading-[1.3] mb-4 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
             {feature.title}
           </h3>
-          <p className={`text-base leading-relaxed ${isDashboard ? 'text-gray-800' : 'text-white/60'}`}>
+          <p className={`text-base leading-[1.6] ${isDashboard ? 'text-gray-800' : 'text-white/60'}`}>
             {feature.description}
           </p>
         </div>
@@ -759,14 +759,14 @@ const FeatureGrid: React.FC = () => {
           transition={{ duration: 0.7 }}
           className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold md:max-w-md">
+          <h2 className="text-4xl sm:text-5xl font-bold leading-[1.15] md:max-w-md">
             <TypewriterText
               text="/ CORE FEATURES"
               delay={200}
               className="text-white"
             />
           </h2>
-          <p className="text-white/50 text-lg md:max-w-xl md:text-right">
+          <p className="text-white/50 text-lg leading-[1.6] md:max-w-xl md:text-right">
             Purpose-built tools designed specifically for life insurance agents and agencies to streamline workflows and maximize productivity.
           </p>
         </motion.div>

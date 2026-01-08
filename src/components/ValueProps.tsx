@@ -95,13 +95,13 @@ const ValueProps: React.FC = () => {
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-2 sm:mb-3">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.15] mb-3 sm:mb-4">
                 WHY CLOS<span
                   className="italic mx-0.5 sm:mx-1"
                   style={{ WebkitTextStroke: '1.5px currentColor', WebkitTextFillColor: 'transparent' }}
                 >I</span>O
               </h2>
-              <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-relaxed">
+              <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-[1.6]">
                 A CRM built thoughtfully for the workflows and operational demands of life-insurance teams.
               </p>
             </motion.div>
@@ -110,14 +110,14 @@ const ValueProps: React.FC = () => {
               {valueItems.map((item) => (
                 <div
                   key={item.number}
-                  className="group py-3 sm:py-4 border-b border-white/20 last:border-b-0"
+                  className="group py-4 sm:py-5 border-b border-white/20 last:border-b-0"
                 >
-                  <div className="flex items-start gap-2 sm:gap-3 md:gap-4">
-                    <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-[10px] sm:text-xs font-semibold tracking-wider pt-0.5 sm:pt-1 transition-colors duration-300">
+                  <div className="flex items-start gap-3 sm:gap-4 md:gap-5">
+                    <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-[10px] sm:text-xs font-semibold tracking-wider pt-1 transition-colors duration-300">
                       {item.number}
                     </span>
                     <h3
-                      className="text-base sm:text-lg md:text-xl font-medium text-white transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
+                      className="text-base sm:text-lg md:text-xl font-medium text-white leading-[1.4] transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
                     >
                       {item.title}
                     </h3>

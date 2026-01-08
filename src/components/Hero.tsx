@@ -188,7 +188,7 @@ const Hero: React.FC = () => {
       >
         <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl lg:max-w-2xl">
           <motion.span
-            className="text-xs sm:text-sm uppercase tracking-[0.2em] text-neutral-500 font-medium mb-6 relative"
+            className="text-xs sm:text-sm uppercase tracking-[0.25em] text-neutral-500 font-medium mb-8 relative"
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 1, delay: 3.2, ease: [0.16, 1, 0.3, 1] }}
@@ -213,7 +213,7 @@ const Hero: React.FC = () => {
             {" "}WAS BUILT FOR YOU
           </motion.span>
 
-          <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.05] -tracking-[0.02em] mb-6">
+          <h1 className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] -tracking-[0.03em] mb-8">
             <span className="block">
               <TypewriterText
                 text="Close More."
@@ -231,7 +231,7 @@ const Hero: React.FC = () => {
           </h1>
 
           <motion.p
-            className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-md leading-relaxed mb-14"
+            className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-md leading-[1.6] mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 5.3 }}

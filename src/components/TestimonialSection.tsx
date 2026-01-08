@@ -64,7 +64,7 @@ const TypewriterText: React.FC<{ text: string }> = ({ text }) => {
 
   return (
     <div ref={elementRef} className="text-center mb-8">
-      <h2 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-white/40 tracking-tight">
+      <h2 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-white/40 tracking-tight leading-[1.1]">
         {displayText}
         <span className="animate-pulse">|</span>
       </h2>
@@ -123,7 +123,7 @@ const TestimonialSection: React.FC = () => {
 
           <blockquote className="mb-8 min-h-[120px] sm:min-h-[100px] flex items-center justify-center">
             <p
-              className={`text-xl sm:text-2xl lg:text-3xl leading-relaxed text-slate-200 transition-all duration-300 ${
+              className={`text-xl sm:text-2xl lg:text-3xl leading-[1.5] text-slate-200 transition-all duration-300 ${
                 isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
               }`}
             >
