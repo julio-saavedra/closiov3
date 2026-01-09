@@ -139,7 +139,21 @@ const HeroBackground3D: React.FC = () => {
     hero3D.add(io);
 
     const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.25 }), solidMaterial(TEAL, 0.35, 0.3));
-    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }), solidMaterial(WHITE, 0.15, 0.35));
+
+    const oMaterial = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color("#C8C8C8"),
+      metalness: 0.1,
+      roughness: 0.5,
+      transmission: 0,
+      transparent: false,
+      clearcoat: 0.2,
+      clearcoatRoughness: 0.4,
+      envMapIntensity: 0.5,
+      specularIntensity: 0.3,
+      emissive: new THREE.Color("#888888"),
+      emissiveIntensity: 0.05
+    });
+    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }), oMaterial);
 
     iMesh.position.set(-0.60, 0.0, 0.0);
     oMesh.position.set(0.62, 0.0, 0.0);
@@ -276,7 +290,7 @@ const HeroBackground3D: React.FC = () => {
         });
 
         gsap.to(oMesh.material, {
-          emissiveIntensity: hover ? 0.25 : 0.15,
+          emissiveIntensity: hover ? 0.12 : 0.05,
           duration: 0.4,
           ease: "power2.out"
         });
