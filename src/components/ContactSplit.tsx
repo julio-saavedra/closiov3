@@ -234,8 +234,8 @@ const ContactSplit = React.memo(() => {
                     <p className="text-white/80 mt-1 text-sm">We'll be in touch.</p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="max-w-sm">
-                    <div className="flex flex-col sm:flex-row gap-2">
+                  <form onSubmit={handleSubmit} className="max-w-2xl">
+                    <div className="flex flex-col sm:flex-row gap-3">
                       <div className="flex-1">
                         <input
                           type="email"
@@ -248,18 +248,18 @@ const ContactSplit = React.memo(() => {
                             }
                           }}
                           placeholder="Enter your email"
-                          className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg focus:border-white/60 focus:ring-2 focus:ring-white/30 outline-none transition-all text-white placeholder:text-white/60 text-sm backdrop-blur-sm min-h-[44px]"
+                          className="w-full px-6 py-4 bg-white/20 border border-white/30 rounded-xl focus:border-white/60 focus:ring-2 focus:ring-white/30 outline-none transition-all text-white placeholder:text-white/60 text-base backdrop-blur-sm min-h-[56px]"
                           disabled={status === 'loading'}
                         />
                       </div>
                       <button
                         type="submit"
                         disabled={status === 'loading'}
-                        className="px-5 py-3 bg-white text-black font-semibold rounded-lg hover:bg-white/90 hover:shadow-lg hover:shadow-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm min-h-[44px]"
+                        className="px-8 py-4 bg-white text-black font-semibold rounded-xl hover:bg-white/90 hover:shadow-lg hover:shadow-white/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-base min-h-[56px] min-w-[180px]"
                       >
                         {status === 'loading' ? (
                           <span className="flex items-center justify-center gap-2">
-                            <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                            <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
                               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                             </svg>
@@ -272,7 +272,7 @@ const ContactSplit = React.memo(() => {
                     </div>
 
                     {status === 'error' && errorMessage && (
-                      <p className="mt-2 text-red-200 text-xs font-medium">{errorMessage}</p>
+                      <p className="mt-3 text-red-200 text-sm font-medium">{errorMessage}</p>
                     )}
                   </form>
                 )}
