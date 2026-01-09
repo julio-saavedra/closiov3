@@ -180,7 +180,7 @@ export default function DealBotAutomation() {
       tl.to(botCardRef.current, { scale: 1.03, duration: 0.25, ease: "power2.out" }, "+=0.5");
       tl.to(botCardRef.current, { scale: 1, duration: 0.35, ease: "elastic.out(1, 0.6)" }, ">");
 
-      tl.to(slackCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" }, "+=0.3");
+      tl.to(slackCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" }, "+=1.0");
       tl.to(discordCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" }, "-=0.3");
 
       tl.add(() => setPhase("done"), "+=0.15");
