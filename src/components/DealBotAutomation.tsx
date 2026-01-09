@@ -82,9 +82,6 @@ export default function DealBotAutomation() {
   const routeBotToDiscordBase = useRef<SVGPathElement | null>(null);
   const routeBotToDiscordGlow = useRef<SVGPathElement | null>(null);
 
-  const connectorLineBot = useRef<HTMLDivElement | null>(null);
-  const connectorLineSlack = useRef<HTMLDivElement | null>(null);
-
   const [phase, setPhase] = useState<Phase>("typing");
 
   const [carrier, setCarrier] = useState("");
@@ -119,23 +116,6 @@ export default function DealBotAutomation() {
     if (!wrapRef.current || !isInView) return;
 
     const ctx = gsap.context(() => {
-      // Position connector lines between cards
-      if (botCardRef.current && slackCardRef.current && connectorLineBot.current) {
-        const botRect = botCardRef.current.getBoundingClientRect();
-        const slackRect = slackCardRef.current.getBoundingClientRect();
-        const containerRect = wrapRef.current!.getBoundingClientRect();
-        const top = botRect.bottom - containerRect.top;
-        connectorLineBot.current.style.top = `${top}px`;
-      }
-
-      if (slackCardRef.current && discordCardRef.current && connectorLineSlack.current) {
-        const slackRect = slackCardRef.current.getBoundingClientRect();
-        const discordRect = discordCardRef.current.getBoundingClientRect();
-        const containerRect = wrapRef.current!.getBoundingClientRect();
-        const top = slackRect.bottom - containerRect.top;
-        connectorLineSlack.current.style.top = `${top}px`;
-      }
-
       const allPaths = [
         routeFormToBotBase.current,
         routeFormToBotGlow.current,
@@ -153,7 +133,6 @@ export default function DealBotAutomation() {
       gsap.set([slackCardRef.current, discordCardRef.current], { opacity: 0, y: 12, scale: 0.97 });
       gsap.set(botCardRef.current, { scale: 1, opacity: 1 });
       gsap.set(postBtnRef.current, { scale: 1 });
-      gsap.set([connectorLineBot.current, connectorLineSlack.current], { scaleY: 0, opacity: 0 });
 
       const tl = gsap.timeline({ repeat: -1, repeatDelay: 2.0 });
 
@@ -172,7 +151,6 @@ export default function DealBotAutomation() {
           gsap.set(p, { strokeDasharray: len, strokeDashoffset: len, opacity: 0 });
         });
         gsap.set([slackCardRef.current, discordCardRef.current], { opacity: 0, y: 12, scale: 0.97 });
-        gsap.set([connectorLineBot.current, connectorLineSlack.current], { scaleY: 0, opacity: 0 });
 
         await sleep(300);
         await typeInto(setCarrier, fake.carrier);
@@ -202,11 +180,8 @@ export default function DealBotAutomation() {
       tl.to(botCardRef.current, { scale: 1.03, duration: 0.25, ease: "power2.out" }, "+=0.5");
       tl.to(botCardRef.current, { scale: 1, duration: 0.35, ease: "elastic.out(1, 0.6)" }, ">");
 
-      tl.to(connectorLineBot.current, { scaleY: 1, opacity: 1, duration: 0.4, ease: "power2.out" }, "+=1.8");
-      tl.to(slackCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.2)" }, "-=0.2");
-
-      tl.to(connectorLineSlack.current, { scaleY: 1, opacity: 1, duration: 0.4, ease: "power2.out" }, "+=0.2");
-      tl.to(discordCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.2)" }, "-=0.2");
+      tl.to(slackCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.2)" }, "+=2.0");
+      tl.to(discordCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.2)" }, "-=0.4");
 
       tl.add(() => setPhase("done"), "+=0.15");
       tl.to({}, { duration: 2.0 });
@@ -377,7 +352,7 @@ export default function DealBotAutomation() {
               </svg>
             </div>
 
-            <div className="flex flex-col h-full space-y-7 relative">
+            <div className="flex flex-col justify-between h-full space-y-7">
               <div
                 ref={botCardRef}
                 className="rounded-3xl border border-white/[0.04] p-6"
@@ -415,12 +390,6 @@ export default function DealBotAutomation() {
               </div>
 
               <div
-                ref={connectorLineBot}
-                className="absolute w-px h-7 bg-gradient-to-b from-white/20 to-transparent left-1/2 -translate-x-1/2 pointer-events-none"
-                style={{ transformOrigin: 'top' }}
-              />
-
-              <div
                 ref={slackCardRef}
                 className="rounded-3xl border border-white/[0.04] p-5"
                 style={{
@@ -445,12 +414,6 @@ export default function DealBotAutomation() {
                   {"\n"}Premium: {fake.monthly} • Face: $250,000
                 </div>
               </div>
-
-              <div
-                ref={connectorLineSlack}
-                className="absolute w-px h-7 bg-gradient-to-b from-white/20 to-transparent left-1/2 -translate-x-1/2 pointer-events-none"
-                style={{ transformOrigin: 'top' }}
-              />
 
               <div
                 ref={discordCardRef}
