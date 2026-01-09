@@ -164,7 +164,7 @@ const ContactSplit = React.memo(() => {
   return (
     <>
       <section id="contact" className="py-24 md:py-32 relative bg-black overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="w-full max-w-[95%] sm:max-w-[90%] lg:max-w-[85%] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
