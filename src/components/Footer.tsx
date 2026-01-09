@@ -31,6 +31,7 @@ const Footer: React.FC = () => {
   ];
 
   const socialLinks = [
+    { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61572677682460' },
     { label: 'Twitter', href: '#' },
     { label: 'LinkedIn', href: '#' },
     { label: 'GitHub', href: '#' },
@@ -92,6 +93,8 @@ const Footer: React.FC = () => {
                   key={index}
                   href={social.href}
                   aria-label={social.label}
+                  target={social.href.startsWith('http') ? '_blank' : undefined}
+                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   className="px-3 py-2 bg-white/10 rounded-xl hover:bg-[#2C66FF] transition-all hover:scale-110 text-xs min-h-[44px] min-w-[44px] flex items-center justify-center"
                 >
                   {social.label}
