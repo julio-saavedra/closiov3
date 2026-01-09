@@ -101,8 +101,8 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 					const index = i * 3;
 
 					positions[index + 1] =
-						Math.sin((ix + count) * 0.3) * 50 +
-						Math.sin((iy + count) * 0.5) * 50;
+						Math.sin((ix + count) * 0.2) * 40 +
+						Math.sin((iy + count) * 0.35) * 40;
 
 					i++;
 				}
@@ -111,7 +111,7 @@ export function DottedSurface({ className, ...props }: DottedSurfaceProps) {
 			positionAttribute.needsUpdate = true;
 
 			renderer.render(scene, camera);
-			count += 0.1;
+			count += 0.04;
 		};
 
 		const handleResize = () => {
