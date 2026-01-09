@@ -48,7 +48,7 @@ function Field({
       <div className="mb-2 text-[12px] text-white/75 font-medium">
         {label} <span className="text-white/35">*</span>
       </div>
-      <div className="h-11 rounded-xl border border-white/[0.04] bg-[#0A0E13] px-4 flex items-center">
+      <div className="h-11 rounded-xl border border-white/[0.04] bg-black px-4 flex items-center">
         <div className="text-[13px] text-white/85">
           {value ? (
             <>
@@ -192,8 +192,7 @@ export default function DealBotAutomation() {
   }, [fake, isInView]);
 
   const glowStyle = {
-    filter:
-      "drop-shadow(0 0 8px rgba(125,211,252,0.70)) drop-shadow(0 0 20px rgba(125,211,252,0.45)) drop-shadow(0 0 35px rgba(125,211,252,0.25))",
+    filter: "none",
   } as React.CSSProperties;
 
   return (
@@ -251,7 +250,7 @@ export default function DealBotAutomation() {
                     <div className="mb-2 text-[12px] text-white/75 font-medium">
                       Monthly Premium <span className="text-white/35">*</span>
                     </div>
-                    <div className="h-11 rounded-xl border border-white/[0.04] bg-[#0A0E13] px-4 flex items-center">
+                    <div className="h-11 rounded-xl border border-white/[0.04] bg-black px-4 flex items-center">
                       <div className="text-[13px] text-white/85">
                         {monthly ? (
                           <>
@@ -269,7 +268,7 @@ export default function DealBotAutomation() {
                     <div className="mb-2 text-[12px] text-white/75 font-medium">
                       Annual Premium <span className="text-white/35">(Auto Calculate)</span>
                     </div>
-                    <div className="h-11 rounded-xl border border-white/[0.04] bg-[#161B22] px-4 flex items-center">
+                    <div className="h-11 rounded-xl border border-white/[0.04] bg-black px-4 flex items-center">
                       <div className="text-[13px] text-white/85">
                         {annual ? (
                           <>
@@ -291,7 +290,7 @@ export default function DealBotAutomation() {
                     Clear Form
                   </button>
                   <div className="flex gap-3">
-                    <button className="rounded-xl border border-white/[0.04] bg-[#161B22] px-5 py-3 text-sm text-white/85 hover:bg-[#1A2028] transition">
+                    <button className="rounded-xl border border-white/[0.04] bg-black px-5 py-3 text-sm text-white/85 hover:bg-[#0A0A0A] transition">
                       Cancel
                     </button>
                     <button
@@ -365,7 +364,7 @@ export default function DealBotAutomation() {
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className="h-11 w-11 rounded-2xl border border-white/[0.04] bg-[#161B22] flex items-center justify-center"
+                    className="h-11 w-11 rounded-2xl border border-white/[0.04] bg-black flex items-center justify-center"
                     style={{
                       boxShadow:
                         "0 0 0 1px rgba(255,255,255,0.05), 0 0 26px rgba(125,211,252,0.16)",
@@ -377,12 +376,12 @@ export default function DealBotAutomation() {
                     <div className="text-white/90 font-semibold">Closio Deal Bot</div>
                     <div className="text-white/55 text-sm">Connected • Listening • Posting</div>
                   </div>
-                  <span className="text-[11px] text-white/65 rounded-full border border-white/[0.04] bg-[#161B22] px-3 py-1">
+                  <span className="text-[11px] text-white/65 rounded-full border border-white/[0.04] bg-black px-3 py-1">
                     Live
                   </span>
                 </div>
 
-                <div className="mt-4 rounded-2xl border border-white/[0.04] bg-[#0A0E13] p-4 text-xs text-white/70 font-mono whitespace-pre-wrap">
+                <div className="mt-4 rounded-2xl border border-white/[0.04] bg-black p-4 text-xs text-white/70 font-mono whitespace-pre-wrap">
                   {phase === "typing" && "Waiting for new deal…"}
                   {phase === "posting" && "Deal received ✅\nFormatting message…"}
                   {phase === "routing" && "Routing to channels…"}
@@ -408,7 +407,7 @@ export default function DealBotAutomation() {
                     <div className="text-white/55 text-sm">Slack</div>
                   </div>
                 </div>
-                <div className="mt-3 rounded-2xl border border-white/[0.04] bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
+                <div className="mt-3 rounded-2xl border border-white/[0.04] bg-black p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
                   🏆 NEW DEAL CLOSED
                   {"\n"}Client: Maria R. • {fake.product}
                   {"\n"}Carrier: {fake.carrier}
@@ -434,7 +433,7 @@ export default function DealBotAutomation() {
                     <div className="text-white/55 text-sm">Discord</div>
                   </div>
                 </div>
-                <div className="mt-3 rounded-2xl border border-white/[0.04] bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
+                <div className="mt-3 rounded-2xl border border-white/[0.04] bg-black p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
                   🚨 DEAL POSTED
                   {"\n"}Policy: {fake.policy}
                   {"\n"}Draft: {fake.draftDate} • State: {fake.state}
