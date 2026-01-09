@@ -167,10 +167,10 @@ export default function DealBotAutomation() {
         await sleep(200);
         await typeInto(setPolicy, fake.policy, 20);
 
-        await sleep(300);
+        await sleep(800);
       });
 
-      tl.add(() => setPhase("posting"), "+=0.3");
+      tl.add(() => setPhase("posting"), "+=0.5");
       tl.to(postBtnRef.current, { scale: 0.97, duration: 0.15, ease: "power2.inOut" }, "<");
       tl.to(postBtnRef.current, { scale: 1, duration: 0.3, ease: "elastic.out(1, 0.5)" }, ">");
 
@@ -221,8 +221,12 @@ export default function DealBotAutomation() {
         <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_220px_1fr] gap-8 items-start">
             <div
               ref={formCardRef}
-              className="relative rounded-3xl border border-white/[0.04] bg-[#0D1117] overflow-hidden"
-              style={{ willChange: 'transform', backfaceVisibility: 'hidden' }}
+              className="relative rounded-3xl border border-white/[0.04] overflow-hidden"
+              style={{
+                willChange: 'transform',
+                backfaceVisibility: 'hidden',
+                background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)'
+              }}
             >
               <div className="px-6 py-5 border-b border-white/[0.04]">
                 <div className="flex items-start justify-between">
@@ -352,8 +356,12 @@ export default function DealBotAutomation() {
             <div className="flex flex-col justify-between h-full space-y-7">
               <div
                 ref={botCardRef}
-                className="rounded-3xl border border-white/[0.04] bg-[#0D1117] p-6"
-                style={{ willChange: 'transform, opacity', backfaceVisibility: 'hidden' }}
+                className="rounded-3xl border border-white/[0.04] p-6"
+                style={{
+                  willChange: 'transform, opacity',
+                  backfaceVisibility: 'hidden',
+                  background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)'
+                }}
               >
                 <div className="flex items-center gap-3">
                   <div
@@ -384,8 +392,12 @@ export default function DealBotAutomation() {
 
               <div
                 ref={slackCardRef}
-                className="rounded-3xl border border-white/[0.04] bg-[#0D1117] p-5"
-                style={{ willChange: 'transform, opacity, scale', backfaceVisibility: 'hidden' }}
+                className="rounded-3xl border border-white/[0.04] p-5"
+                style={{
+                  willChange: 'transform, opacity, scale',
+                  backfaceVisibility: 'hidden',
+                  background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)'
+                }}
               >
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-2xl overflow-hidden flex items-center justify-center">
@@ -406,8 +418,12 @@ export default function DealBotAutomation() {
 
               <div
                 ref={discordCardRef}
-                className="rounded-3xl border border-white/[0.04] bg-[#0D1117] p-5"
-                style={{ willChange: 'transform, opacity, scale', backfaceVisibility: 'hidden' }}
+                className="rounded-3xl border border-white/[0.04] p-5"
+                style={{
+                  willChange: 'transform, opacity, scale',
+                  backfaceVisibility: 'hidden',
+                  background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)'
+                }}
               >
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-2xl overflow-hidden flex items-center justify-center">
