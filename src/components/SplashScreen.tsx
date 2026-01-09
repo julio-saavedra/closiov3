@@ -100,7 +100,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
             }}
           >
             <motion.img
-              src="/closio_main_logo copy copy.png"
+              src="/closio_main_logo.png"
               alt="Closio"
               className="h-28 sm:h-36 w-auto"
               initial={{ filter: 'brightness(0)' }}
