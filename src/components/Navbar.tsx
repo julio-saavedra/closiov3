@@ -110,9 +110,8 @@ const Navbar: React.FC<NavbarProps> = () => {
     e.preventDefault();
     e.stopPropagation();
     if (id === 'home') {
-      if (isHomePage) {
-        window.scrollTo({ top: 0, behavior: 'auto' });
-      } else {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      if (!isHomePage) {
         navigate('/');
       }
     } else {
@@ -163,7 +162,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             <Link
               to="/"
               className="flex items-center gap-2 flex-shrink-0"
-              onClick={() => window.scrollTo(0, 0)}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
               aria-label="Closio - Back to top"
             >
               <img
