@@ -140,7 +140,7 @@ export default function DealBotAutomation() {
   }, [fake, isInView]);
 
   return (
-    <section ref={wrapRef} className="relative w-full py-32 sm:py-40 bg-black overflow-hidden">
+    <section id="deal-bot" ref={wrapRef} className="relative w-full py-32 sm:py-40 bg-black overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.5]"
         style={{

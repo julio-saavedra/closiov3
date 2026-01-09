@@ -102,7 +102,7 @@ const DealBotRobot3D = () => {
 
     const robot = new THREE.Group();
     scene.add(robot);
-    robot.position.set(0, 0.0, 0);
+    robot.position.set(-6, 0.0, 0);
     robot.rotation.y = 0.3;
 
     const bodyGeo = new THREE.BoxGeometry(2.2, 2.6, 1.25);
@@ -300,14 +300,36 @@ const DealBotRobot3D = () => {
     resizeObserver.observe(canvas);
     fit();
 
-    let t = 0;
     let animationId: number;
+    let scrollProgress = 0;
+    let targetScrollProgress = 0;
+    let hasAnimatedIn = false;
+
+    const updateScrollProgress = () => {
+      const dealBotSection = document.getElementById('deal-bot');
+      if (!dealBotSection) return;
+
+      const rect = dealBotSection.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const sectionTop = rect.top;
+      const sectionHeight = rect.height;
+
+      const isInView = sectionTop < viewportHeight * 0.8 && sectionTop + sectionHeight > 0;
+
+      if (isInView && !hasAnimatedIn) {
+        targetScrollProgress = 1;
+        hasAnimatedIn = true;
+      }
+    };
+
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
 
     const animate = () => {
-      t += 0.01;
+      scrollProgress += (targetScrollProgress - scrollProgress) * 0.06;
 
-      robot.position.y = Math.sin(t * 0.9) * 0.06;
-      head.rotation.y = Math.sin(t * 0.6) * 0.1;
+      const slideInX = -6 + scrollProgress * 6;
+      robot.position.x = slideInX;
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(animate);
@@ -315,6 +337,7 @@ const DealBotRobot3D = () => {
     animate();
 
     return () => {
+      window.removeEventListener('scroll', updateScrollProgress);
       cancelAnimationFrame(animationId);
       resizeObserver.disconnect();
       renderer.dispose();
