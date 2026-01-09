@@ -91,11 +91,24 @@ const MobileSection: React.FC = () => {
       <div className="absolute inset-0 flex items-end justify-end overflow-hidden">
         <div className="relative w-full h-full flex items-end justify-end pr-0 pb-0">
           <TypewriterText />
-          <img
-            src="/new_one,_hopefully_this_works.png"
-            alt="Mobile app showcase"
-            className="h-[60%] sm:h-[65%] md:h-[68%] lg:h-[70%] w-auto object-contain drop-shadow-2xl"
-          />
+          <div className="relative h-[60%] sm:h-[65%] md:h-[68%] lg:h-[70%]">
+            <img
+              src="/new_one,_hopefully_this_works.png"
+              alt="Mobile app showcase"
+              className="h-full w-auto object-contain drop-shadow-2xl"
+            />
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: `
+                  linear-gradient(to right, black 0%, transparent 8%),
+                  linear-gradient(to left, black 0%, transparent 8%),
+                  linear-gradient(to bottom, black 0%, transparent 12%),
+                  linear-gradient(to top, black 0%, transparent 15%)
+                `
+              }}
+            />
+          </div>
         </div>
       </div>
     </section>
