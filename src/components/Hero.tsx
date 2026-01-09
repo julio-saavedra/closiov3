@@ -241,9 +241,9 @@ const Hero: React.FC = () => {
             Every deal tracked. Every win shared. Automatically.
           </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center md:items-start gap-6 sm:gap-8 w-full">
+          <div className="flex flex-col items-center md:items-start gap-6 w-full">
             <motion.p
-              className="text-sm sm:text-base text-neutral-500 flex-shrink-0"
+              className="text-sm sm:text-base text-neutral-500"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.6, delay: 5.3 }}
