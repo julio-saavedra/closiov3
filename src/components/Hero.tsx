@@ -126,8 +126,23 @@ const FlipButton: React.FC = () => {
 const HeroGrid: React.FC = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none z-[2]">
-      <div
+      <motion.div
         className="absolute top-0 bottom-0 right-0 w-[70%]"
+        animate={{
+          backgroundPosition: [
+            '0px 0px',
+            '25px 25px',
+            '50px 50px',
+            '25px 25px',
+            '0px 0px'
+          ]
+        }}
+        transition={{
+          duration: 20,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "loop"
+        }}
         style={{
           backgroundImage: `
             linear-gradient(to right, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
@@ -142,8 +157,23 @@ const HeroGrid: React.FC = () => {
           `,
         }}
       />
-      <div
+      <motion.div
         className="absolute top-0 bottom-0 right-0 w-[70%]"
+        animate={{
+          backgroundPosition: [
+            '0px 0px',
+            '-37.5px -37.5px',
+            '-75px -75px',
+            '-37.5px -37.5px',
+            '0px 0px'
+          ]
+        }}
+        transition={{
+          duration: 25,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatType: "loop"
+        }}
         style={{
           backgroundImage: `
             linear-gradient(to right, rgba(255, 255, 255, 0.18) 1px, transparent 1px),
