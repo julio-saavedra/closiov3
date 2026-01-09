@@ -102,7 +102,7 @@ const DealBotRobot3D = () => {
 
     const robot = new THREE.Group();
     scene.add(robot);
-    robot.position.set(5, 0.0, 0);
+    robot.position.set(5, -1.8, 0);
     robot.rotation.y = 0.5;
     robot.rotation.z = -0.25;
 
@@ -329,7 +329,7 @@ const DealBotRobot3D = () => {
     const animate = () => {
       scrollProgress += (targetScrollProgress - scrollProgress) * 0.05;
 
-      const slideInX = 5 - scrollProgress * 5;
+      const slideInX = 5 - scrollProgress * 3.5;
       robot.position.x = slideInX;
 
       renderer.render(scene, camera);
