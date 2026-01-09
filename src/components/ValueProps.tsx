@@ -84,12 +84,12 @@ const ValueProps: React.FC = () => {
               {/* Mac Monitor Frame */}
               <div className="relative">
                 {/* Monitor Bezel - Ultra Slim */}
-                <div className="relative bg-gradient-to-b from-white via-[#F5F5F5] to-[#E8E8E8] rounded-[16px] p-[6px] shadow-2xl">
+                <div className="relative bg-gradient-to-b from-white via-[#F5F5F5] to-[#E8E8E8] rounded-[16px] px-[8px] py-[6px] shadow-2xl">
                   {/* Screen Reflection Overlay */}
                   <div className="absolute inset-0 rounded-[16px] bg-gradient-to-br from-white/10 via-transparent to-black/5 pointer-events-none z-10"></div>
 
                   {/* Ultra Slim Inner Bezel */}
-                  <div className="relative bg-black rounded-[12px] p-[3px]">
+                  <div className="relative bg-black rounded-[12px] px-[4px] py-[3px]">
                     {/* Screen */}
                     <div className="relative rounded-[10px] overflow-hidden bg-black">
                       <img
