@@ -175,27 +175,17 @@ export default function DealBotAutomation() {
       tl.to(postBtnRef.current, { scale: 1, duration: 0.3, ease: "elastic.out(1, 0.5)" }, ">");
 
       tl.add(() => setPhase("routing"), "+=0.15");
-      tl.to([routeFormToBotBase.current, routeFormToBotGlow.current], { opacity: 1, duration: 0.25, ease: "power1.in" }, "<");
-      tl.to(routeFormToBotBase.current, { strokeDashoffset: 0, duration: 1.0, ease: "power1.inOut" }, "<");
-      tl.to(routeFormToBotGlow.current, { strokeDashoffset: 0, duration: 1.0, ease: "power1.inOut" }, "<");
+      tl.to([routeFormToBotBase.current, routeFormToBotGlow.current], { opacity: 1, duration: 0.3, ease: "power1.in" }, "<");
 
-      tl.to(botCardRef.current, { scale: 1.02, duration: 0.2, ease: "power2.out" }, "-=0.2");
-      tl.to(botCardRef.current, { scale: 1, duration: 0.3, ease: "elastic.out(1, 0.6)" }, ">");
+      tl.to(botCardRef.current, { scale: 1.03, duration: 0.25, ease: "power2.out" }, "+=0.4");
+      tl.to(botCardRef.current, { scale: 1, duration: 0.35, ease: "elastic.out(1, 0.6)" }, ">");
 
-      tl.to([routeBotToSlackBase.current, routeBotToSlackGlow.current], { opacity: 1, duration: 0.2, ease: "power1.in" }, "+=0.15");
-      tl.to(routeBotToSlackBase.current, { strokeDashoffset: 0, duration: 0.8, ease: "power1.inOut" }, "<");
-      tl.to(routeBotToSlackGlow.current, { strokeDashoffset: 0, duration: 0.8, ease: "power1.inOut" }, "<");
-
-      tl.to([routeBotToDiscordBase.current, routeBotToDiscordGlow.current], { opacity: 1, duration: 0.2, ease: "power1.in" }, "-=0.5");
-      tl.to(routeBotToDiscordBase.current, { strokeDashoffset: 0, duration: 0.8, ease: "power1.inOut" }, "<");
-      tl.to(routeBotToDiscordGlow.current, { strokeDashoffset: 0, duration: 0.8, ease: "power1.inOut" }, "<");
-
-      tl.to(slackCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" }, "-=0.2");
+      tl.to(slackCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" }, "+=0.2");
       tl.to(discordCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" }, "-=0.3");
 
       tl.add(() => setPhase("done"), "+=0.15");
       tl.to({}, { duration: 1.5 });
-      tl.to(allPaths, { opacity: 0, duration: 0.4, ease: "power1.out" }, "<");
+      tl.to([routeFormToBotBase.current, routeFormToBotGlow.current], { opacity: 0, duration: 0.4, ease: "power1.out" }, "<");
     }, wrapRef);
 
     return () => ctx.revert();
@@ -306,62 +296,55 @@ export default function DealBotAutomation() {
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 240 520" fill="none" preserveAspectRatio="none">
                 <path
                   ref={routeFormToBotBase}
-                  d="M5 200 C 70 200, 170 120, 235 50"
-                  stroke="rgba(125,211,252,0.45)"
-                  strokeWidth="2.2"
+                  d="M5 260 Q 120 260, 235 80"
+                  stroke="rgba(125,211,252,0.35)"
+                  strokeWidth="2.5"
                   strokeLinecap="round"
-                  strokeDasharray="2 10"
+                  fill="none"
                 />
                 <path
                   ref={routeFormToBotGlow}
-                  d="M5 200 C 70 200, 170 120, 235 50"
-                  stroke="rgba(125,211,252,0.92)"
-                  strokeWidth="4"
+                  d="M5 260 Q 120 260, 235 80"
+                  stroke="rgba(125,211,252,0.85)"
+                  strokeWidth="3.5"
                   strokeLinecap="round"
-                  strokeDasharray="2 12"
+                  fill="none"
                   style={glowStyle}
                 />
 
                 <path
                   ref={routeBotToSlackBase}
-                  d="M5 80 C 80 80, 160 120, 235 180"
-                  stroke="rgba(125,211,252,0.45)"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeDasharray="2 10"
+                  d="M0 0"
+                  stroke="transparent"
+                  strokeWidth="0"
                 />
                 <path
                   ref={routeBotToSlackGlow}
-                  d="M5 80 C 80 80, 160 120, 235 180"
-                  stroke="rgba(125,211,252,0.92)"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  strokeDasharray="2 12"
-                  style={glowStyle}
+                  d="M0 0"
+                  stroke="transparent"
+                  strokeWidth="0"
                 />
 
                 <path
                   ref={routeBotToDiscordBase}
-                  d="M5 120 C 80 120, 160 240, 235 340"
-                  stroke="rgba(125,211,252,0.45)"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeDasharray="2 10"
+                  d="M0 0"
+                  stroke="transparent"
+                  strokeWidth="0"
                 />
                 <path
                   ref={routeBotToDiscordGlow}
-                  d="M5 120 C 80 120, 160 240, 235 340"
-                  stroke="rgba(125,211,252,0.92)"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  strokeDasharray="2 12"
-                  style={glowStyle}
+                  d="M0 0"
+                  stroke="transparent"
+                  strokeWidth="0"
                 />
               </svg>
 
-              <div className="absolute top-[185px] left-2 text-[11px] text-white/35">Deal →</div>
-              <div className="absolute top-[35px] right-3 text-[11px] text-white/35">→ Bot</div>
-              <div className="absolute top-[65px] left-2 text-[11px] text-white/35">Bot →</div>
+              <div className="absolute top-[252px] left-1 px-2 py-1 bg-black/80 rounded text-[10px] text-white/60 font-medium backdrop-blur-sm border border-white/5">
+                Deal
+              </div>
+              <div className="absolute top-[68px] right-1 px-2 py-1 bg-black/80 rounded text-[10px] text-white/60 font-medium backdrop-blur-sm border border-white/5">
+                Bot
+              </div>
             </div>
 
             <div className="flex flex-col justify-between h-full space-y-7">
