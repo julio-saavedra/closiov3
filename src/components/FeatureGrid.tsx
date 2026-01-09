@@ -747,8 +747,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
         style={{
           background: isDashboard
             ? '#ffffff'
-            : 'rgba(0, 0, 0, 0.4)',
-          backdropFilter: isDashboard ? 'none' : 'blur(48px)',
+            : 'linear-gradient(135deg, #0A0F1A 0%, #1A2428 100%)',
         }}
       />
       <GridPattern isDashboard={isDashboard} index={index} />
