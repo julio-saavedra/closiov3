@@ -1,22 +1,8 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
 
 const AdditionalFeatures: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  const opacity = useTransform(
-    scrollYProgress,
-    [0, 0.3, 0.5, 0.7, 1],
-    [0, 1, 1, 1, 0]
-  );
-
   return (
-    <section ref={sectionRef} className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-black">
+    <section className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-black">
       <div className="flex justify-center px-6">
         <div
           className="glow-shell"
@@ -52,10 +38,7 @@ const AdditionalFeatures: React.FC = () => {
             }
           `}</style>
 
-          <motion.div
-            className="relative z-10 flex flex-col items-center gap-3"
-            style={{ opacity }}
-          >
+          <div className="relative z-10 flex flex-col items-center gap-3">
             <h2
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
               style={{
@@ -78,7 +61,7 @@ const AdditionalFeatures: React.FC = () => {
             >
               More advanced features below
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
