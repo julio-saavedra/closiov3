@@ -57,9 +57,9 @@ const Schedule = () => {
           <div className="relative bg-white/[0.03] backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
             <div className="p-4 md:p-6">
               <div
-                className="calendly-inline-widget w-full rounded-2xl"
+                className="calendly-inline-widget w-full rounded-2xl overflow-hidden"
                 data-url="https://calendly.com/closio/closio-onboarding?hide_gdpr_banner=1&background_color=0a0a0a&text_color=e8eef5&primary_color=6ad4f2"
-                style={{ minWidth: '320px', height: '900px' }}
+                style={{ minWidth: '320px', height: '700px' }}
               />
             </div>
           </div>
