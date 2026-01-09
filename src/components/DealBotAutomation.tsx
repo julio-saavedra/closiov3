@@ -48,7 +48,7 @@ function Field({
       <div className="mb-2 text-[12px] text-white/75 font-medium">
         {label} <span className="text-white/35">*</span>
       </div>
-      <div className="h-11 rounded-xl border border-white/8 bg-[#0A0E13] px-4 flex items-center">
+      <div className="h-11 rounded-xl border border-white/6 bg-[#0A0E13] px-4 flex items-center">
         <div className="text-[13px] text-white/85">
           {value ? (
             <>
@@ -170,17 +170,17 @@ export default function DealBotAutomation() {
         await sleep(300);
       });
 
-      tl.add(() => setPhase("posting"));
+      tl.add(() => setPhase("posting"), "+=0.3");
       tl.to(postBtnRef.current, { scale: 0.97, duration: 0.15, ease: "power2.inOut" }, "<");
       tl.to(postBtnRef.current, { scale: 1, duration: 0.3, ease: "elastic.out(1, 0.5)" }, ">");
 
-      tl.add(() => setPhase("routing"), "+=0.15");
-      tl.to([routeFormToBotBase.current, routeFormToBotGlow.current], { opacity: 1, duration: 0.3, ease: "power1.in" }, "<");
+      tl.add(() => setPhase("routing"), "+=0.2");
+      tl.to([routeFormToBotBase.current, routeFormToBotGlow.current], { opacity: 1, duration: 0.3, ease: "power1.in" }, ">");
 
-      tl.to(botCardRef.current, { scale: 1.03, duration: 0.25, ease: "power2.out" }, "+=0.4");
+      tl.to(botCardRef.current, { scale: 1.03, duration: 0.25, ease: "power2.out" }, "+=0.5");
       tl.to(botCardRef.current, { scale: 1, duration: 0.35, ease: "elastic.out(1, 0.6)" }, ">");
 
-      tl.to(slackCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" }, "+=0.2");
+      tl.to(slackCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" }, "+=0.3");
       tl.to(discordCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" }, "-=0.3");
 
       tl.add(() => setPhase("done"), "+=0.15");
@@ -207,7 +207,7 @@ export default function DealBotAutomation() {
           </p>
         </div>
 
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-10">
+        <div className="relative overflow-hidden rounded-3xl border border-white/6 bg-[#0A0E13] p-6 md:p-10">
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.22]"
             style={{
@@ -229,10 +229,10 @@ export default function DealBotAutomation() {
           <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_220px_1fr] gap-8 items-start">
             <div
               ref={formCardRef}
-              className="relative rounded-3xl border border-white/8 bg-[#0D1117] overflow-hidden"
+              className="relative rounded-3xl border border-white/6 bg-[#0D1117] overflow-hidden"
               style={{ willChange: 'transform', backfaceVisibility: 'hidden' }}
             >
-              <div className="px-6 py-5 border-b border-white/8">
+              <div className="px-6 py-5 border-b border-white/6">
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="text-white font-semibold text-lg">Post A Deal</div>
@@ -256,7 +256,7 @@ export default function DealBotAutomation() {
                     <div className="mb-2 text-[12px] text-white/75 font-medium">
                       Annual Premium <span className="text-white/35">(Auto Calculate)</span>
                     </div>
-                    <div className="h-11 rounded-xl border border-white/8 bg-[#161B22] px-4 flex items-center">
+                    <div className="h-11 rounded-xl border border-white/6 bg-[#161B22] px-4 flex items-center">
                       <div className="text-[13px] text-white/85">
                         {annual ? (
                           <>
@@ -278,7 +278,7 @@ export default function DealBotAutomation() {
                     Clear Form
                   </button>
                   <div className="flex gap-3">
-                    <button className="rounded-xl border border-white/8 bg-[#161B22] px-5 py-3 text-sm text-white/85 hover:bg-[#1A2028] transition">
+                    <button className="rounded-xl border border-white/6 bg-[#161B22] px-5 py-3 text-sm text-white/85 hover:bg-[#1A2028] transition">
                       Cancel
                     </button>
                     <button
@@ -296,7 +296,7 @@ export default function DealBotAutomation() {
               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 240 520" fill="none" preserveAspectRatio="none">
                 <path
                   ref={routeFormToBotBase}
-                  d="M5 260 Q 120 260, 235 80"
+                  d="M5 465 Q 120 300, 235 80"
                   stroke="rgba(125,211,252,0.35)"
                   strokeWidth="2.5"
                   strokeLinecap="round"
@@ -304,7 +304,7 @@ export default function DealBotAutomation() {
                 />
                 <path
                   ref={routeFormToBotGlow}
-                  d="M5 260 Q 120 260, 235 80"
+                  d="M5 465 Q 120 300, 235 80"
                   stroke="rgba(125,211,252,0.85)"
                   strokeWidth="3.5"
                   strokeLinecap="round"
@@ -339,7 +339,7 @@ export default function DealBotAutomation() {
                 />
               </svg>
 
-              <div className="absolute top-[252px] left-1 px-2 py-1 bg-black/80 rounded text-[10px] text-white/60 font-medium backdrop-blur-sm border border-white/5">
+              <div className="absolute top-[458px] left-1 px-2 py-1 bg-black/80 rounded text-[10px] text-white/60 font-medium backdrop-blur-sm border border-white/5">
                 Deal
               </div>
               <div className="absolute top-[68px] right-1 px-2 py-1 bg-black/80 rounded text-[10px] text-white/60 font-medium backdrop-blur-sm border border-white/5">
@@ -350,12 +350,12 @@ export default function DealBotAutomation() {
             <div className="flex flex-col justify-between h-full space-y-7">
               <div
                 ref={botCardRef}
-                className="rounded-3xl border border-white/8 bg-[#0D1117] p-6"
+                className="rounded-3xl border border-white/6 bg-[#0D1117] p-6"
                 style={{ willChange: 'transform, opacity', backfaceVisibility: 'hidden' }}
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className="h-11 w-11 rounded-2xl border border-white/10 bg-[#161B22] flex items-center justify-center"
+                    className="h-11 w-11 rounded-2xl border border-white/6 bg-[#161B22] flex items-center justify-center"
                     style={{
                       boxShadow:
                         "0 0 0 1px rgba(255,255,255,0.05), 0 0 26px rgba(125,211,252,0.16)",
@@ -367,12 +367,12 @@ export default function DealBotAutomation() {
                     <div className="text-white/90 font-semibold">Closio Deal Bot</div>
                     <div className="text-white/55 text-sm">Connected • Listening • Posting</div>
                   </div>
-                  <span className="text-[11px] text-white/65 rounded-full border border-white/10 bg-[#161B22] px-3 py-1">
+                  <span className="text-[11px] text-white/65 rounded-full border border-white/6 bg-[#161B22] px-3 py-1">
                     Live
                   </span>
                 </div>
 
-                <div className="mt-4 rounded-2xl border border-white/8 bg-[#0A0E13] p-4 text-xs text-white/70 font-mono whitespace-pre-wrap">
+                <div className="mt-4 rounded-2xl border border-white/6 bg-[#0A0E13] p-4 text-xs text-white/70 font-mono whitespace-pre-wrap">
                   {phase === "typing" && "Waiting for new deal…"}
                   {phase === "posting" && "Deal received ✅\nFormatting message…"}
                   {phase === "routing" && "Routing to channels…"}
@@ -382,7 +382,7 @@ export default function DealBotAutomation() {
 
               <div
                 ref={slackCardRef}
-                className="rounded-3xl border border-white/8 bg-[#0D1117] p-5"
+                className="rounded-3xl border border-white/6 bg-[#0D1117] p-5"
                 style={{ willChange: 'transform, opacity, scale', backfaceVisibility: 'hidden' }}
               >
                 <div className="flex items-center gap-3">
@@ -394,7 +394,7 @@ export default function DealBotAutomation() {
                     <div className="text-white/55 text-sm">Slack</div>
                   </div>
                 </div>
-                <div className="mt-3 rounded-2xl border border-white/8 bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
+                <div className="mt-3 rounded-2xl border border-white/6 bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
                   🏆 NEW DEAL CLOSED
                   {"\n"}Client: Maria R. • {fake.product}
                   {"\n"}Carrier: {fake.carrier}
@@ -404,7 +404,7 @@ export default function DealBotAutomation() {
 
               <div
                 ref={discordCardRef}
-                className="rounded-3xl border border-white/8 bg-[#0D1117] p-5"
+                className="rounded-3xl border border-white/6 bg-[#0D1117] p-5"
                 style={{ willChange: 'transform, opacity, scale', backfaceVisibility: 'hidden' }}
               >
                 <div className="flex items-center gap-3">
@@ -416,7 +416,7 @@ export default function DealBotAutomation() {
                     <div className="text-white/55 text-sm">Discord</div>
                   </div>
                 </div>
-                <div className="mt-3 rounded-2xl border border-white/8 bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
+                <div className="mt-3 rounded-2xl border border-white/6 bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
                   🚨 DEAL POSTED
                   {"\n"}Policy: {fake.policy}
                   {"\n"}Draft: {fake.draftDate} • State: {fake.state}
