@@ -130,41 +130,32 @@ const Navbar: React.FC<NavbarProps> = () => {
     setMobileMenuOpen(false);
   };
 
-  const scrolledProgress = Math.min(Math.max((scrollProgress - 0.1) / 0.15, 0), 1);
   const isScrolled = scrollProgress > 0.15;
-
-  const blurAmount = scrolledProgress * 20;
-  const saturation = 100 + scrolledProgress * 80;
-  const bgOpacity = scrolledProgress * 0.3;
-  const shadowOpacity = scrolledProgress * 0.3;
-  const borderOpacity = scrolledProgress * 0.08;
-  const maxWidth = 1280 - (scrolledProgress * 380);
-  const borderRadius = scrolledProgress * 9999;
-  const navPadding = 16 - (scrolledProgress * 4);
-  const innerPadding = scrolledProgress * 8;
 
   return (
     <>
       <nav
         className="fixed top-0 left-0 right-0 z-50 w-full"
         style={{
-          padding: `${navPadding}px 16px`,
-          transition: 'none'
+          padding: isScrolled ? '12px 16px' : '16px',
+          transition: 'padding 700ms cubic-bezier(0.4, 0, 0.2, 1)'
         }}
       >
         <div
           className="mx-auto"
           style={{
-            maxWidth: `${maxWidth}px`,
-            padding: `${innerPadding}px 24px`,
-            borderRadius: `${borderRadius}px`,
-            backdropFilter: `blur(${blurAmount}px) saturate(${saturation}%)`,
-            WebkitBackdropFilter: `blur(${blurAmount}px) saturate(${saturation}%)`,
-            background: `linear-gradient(135deg, rgba(40, 40, 45, ${bgOpacity * 0.83}) 0%, rgba(30, 30, 35, ${bgOpacity}) 100%)`,
-            boxShadow: shadowOpacity > 0.01
-              ? `0 4px 30px rgba(0, 0, 0, ${shadowOpacity}), inset 0 0 0 1px rgba(255, 255, 255, ${borderOpacity})`
+            maxWidth: isScrolled ? '900px' : '1280px',
+            padding: isScrolled ? '8px 24px' : '0 24px',
+            borderRadius: isScrolled ? '9999px' : '0px',
+            backdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'none',
+            WebkitBackdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'none',
+            background: isScrolled
+              ? 'linear-gradient(135deg, rgba(40, 40, 45, 0.25) 0%, rgba(30, 30, 35, 0.3) 100%)'
+              : 'transparent',
+            boxShadow: isScrolled
+              ? '0 4px 30px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.08)'
               : 'none',
-            transition: 'none'
+            transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
           }}
         >
           <div className="flex items-center justify-between h-14">
@@ -179,9 +170,9 @@ const Navbar: React.FC<NavbarProps> = () => {
                 alt="Closio"
                 className="w-auto select-none"
                 style={{
-                  height: `${80 - (scrolledProgress * 32)}px`,
-                  opacity: 1 - scrolledProgress,
-                  transition: 'none'
+                  height: isScrolled ? '48px' : '80px',
+                  opacity: isScrolled ? 0 : 1,
+                  transition: 'height 700ms cubic-bezier(0.4, 0, 0.2, 1), opacity 700ms cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
                 draggable={false}
               />
@@ -190,10 +181,10 @@ const Navbar: React.FC<NavbarProps> = () => {
                 alt="Closio"
                 className="w-auto select-none absolute left-0 top-1/2 -translate-y-1/2"
                 style={{
-                  height: `${80 - (scrolledProgress * 32)}px`,
-                  opacity: scrolledProgress,
-                  transition: 'none',
-                  pointerEvents: scrolledProgress > 0.5 ? 'auto' : 'none'
+                  height: isScrolled ? '48px' : '80px',
+                  opacity: isScrolled ? 1 : 0,
+                  transition: 'height 700ms cubic-bezier(0.4, 0, 0.2, 1), opacity 700ms cubic-bezier(0.4, 0, 0.2, 1)',
+                  pointerEvents: isScrolled ? 'auto' : 'none'
                 }}
                 draggable={false}
               />
@@ -202,8 +193,8 @@ const Navbar: React.FC<NavbarProps> = () => {
             <div
               className="hidden lg:flex items-center justify-center"
               style={{
-                gap: `${32 - (scrolledProgress * 12)}px`,
-                transition: 'none'
+                gap: isScrolled ? '20px' : '32px',
+                transition: 'gap 700ms cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
               {NAV_ITEMS.map((item) => {
@@ -217,8 +208,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                       !isActive ? 'text-white/80 hover:text-white' : 'text-[#6ad4f2]'
                     } ${isActive ? 'is-active' : ''}`}
                     style={{
-                      fontSize: `${15 - scrolledProgress}px`,
-                      transition: 'color 300ms ease'
+                      fontSize: isScrolled ? '14px' : '15px',
+                      transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
                     }}
                   >
                     {item.label}
@@ -240,8 +231,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                       : 'text-white/80 hover:text-white'
                   }`}
                   style={{
-                    fontSize: `${15 - scrolledProgress}px`,
-                    transition: 'color 300ms ease'
+                    fontSize: isScrolled ? '14px' : '15px',
+                    transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
                   }}
                 >
                   Resources
@@ -296,8 +287,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                       : 'text-white/80 hover:text-white'
                   }`}
                   style={{
-                    fontSize: `${15 - scrolledProgress}px`,
-                    transition: 'color 300ms ease'
+                    fontSize: isScrolled ? '14px' : '15px',
+                    transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
                   }}
                 >
                   Docs & More
@@ -342,8 +333,8 @@ const Navbar: React.FC<NavbarProps> = () => {
             <div
               className="hidden lg:flex items-center flex-shrink-0"
               style={{
-                gap: `${12 - (scrolledProgress * 4)}px`,
-                transition: 'none'
+                gap: isScrolled ? '8px' : '12px',
+                transition: 'gap 700ms cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
               <Link
@@ -351,9 +342,9 @@ const Navbar: React.FC<NavbarProps> = () => {
                 onClick={() => window.scrollTo(0, 0)}
                 className="demo-btn bg-white text-black font-medium whitespace-nowrap rounded-xl hover:bg-white/90"
                 style={{
-                  padding: `${10 - (scrolledProgress * 2)}px ${24 - (scrolledProgress * 4)}px`,
-                  fontSize: `${15 - scrolledProgress}px`,
-                  transition: 'background 300ms ease',
+                  padding: isScrolled ? '8px 20px' : '10px 24px',
+                  fontSize: isScrolled ? '14px' : '15px',
+                  transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)',
                   perspective: '600px'
                 }}
               >
@@ -363,11 +354,11 @@ const Navbar: React.FC<NavbarProps> = () => {
                 onClick={() => window.location.href = 'https://closio.com/login'}
                 className="bg-white text-black font-medium whitespace-nowrap rounded-xl hover:bg-white/90"
                 style={{
-                  padding: `${10 - (scrolledProgress * 2)}px ${24 - (scrolledProgress * 4)}px`,
-                  fontSize: `${15 - scrolledProgress}px`,
-                  opacity: isScrollingDown && scrolledProgress < 0.5 ? 0 : 1,
-                  pointerEvents: isScrollingDown && scrolledProgress < 0.5 ? 'none' : 'auto',
-                  transition: 'opacity 300ms ease, background 300ms ease'
+                  padding: isScrolled ? '8px 20px' : '10px 24px',
+                  fontSize: isScrolled ? '14px' : '15px',
+                  opacity: isScrollingDown && !isScrolled ? 0 : 1,
+                  pointerEvents: isScrollingDown && !isScrolled ? 'none' : 'auto',
+                  transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
                 }}
               >
                 Log In
