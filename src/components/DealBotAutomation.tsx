@@ -166,8 +166,6 @@ export default function DealBotAutomation() {
         await typeInto(setAnnual, fake.annual, 20);
         await sleep(200);
         await typeInto(setPolicy, fake.policy, 20);
-
-        await sleep(50);
       });
 
       tl.add(() => setPhase("posting"), "+=0");
