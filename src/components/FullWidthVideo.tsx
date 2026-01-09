@@ -23,7 +23,10 @@ const FullWidthVideo = () => {
           }
         });
       },
-      { threshold: 0.3 }
+      {
+        threshold: 0.6,
+        rootMargin: '-15% 0px -15% 0px'
+      }
     );
 
     const handleEnded = () => {
