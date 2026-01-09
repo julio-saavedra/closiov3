@@ -238,7 +238,7 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.6, delay: 5.3 }}
           >
-            / Trusted & Used by <CountUp end={1000} duration={4000} delay={5500} />+ agents
+            Every deal tracked. Every win shared. Automatically.
           </motion.p>
 
           <FlipButton />
