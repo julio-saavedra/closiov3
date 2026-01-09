@@ -184,12 +184,12 @@ const Hero: React.FC = () => {
         <HeroGrid />
 
         <motion.div
-          className="absolute top-1/2 -translate-y-1/2 left-0 h-[70vh] w-auto overflow-visible pointer-events-none z-[3] hidden lg:block"
+          className="absolute top-[20%] left-0 h-[65vh] w-auto overflow-visible pointer-events-none z-[3] hidden lg:block"
           initial={{ opacity: 0, x: -100 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1.8, delay: 2.5, ease: [0.16, 1, 0.3, 1] }}
           style={{
-            transform: 'translateX(-25%) translateY(-50%) rotate(180deg)',
+            transform: 'translateX(-35%) rotate(180deg)',
           }}
         >
           <div className="relative h-full">
