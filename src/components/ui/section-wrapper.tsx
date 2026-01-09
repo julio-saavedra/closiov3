@@ -41,8 +41,8 @@ export function SectionWrapper({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 40, scale: 0.98 }}
-      animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
+      initial={{ opacity: 1, y: 20, scale: 0.99 }}
+      animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : { opacity: 1, y: 20, scale: 0.99 }}
       transition={{
         duration: 0.8,
         delay: animationDelay,
