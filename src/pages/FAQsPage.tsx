@@ -125,9 +125,12 @@ const FAQsPage = () => {
       {/* Hero Photo Section */}
       <section className="bg-black py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="relative w-full h-[400px] rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 to-white/10 border border-white/10 flex items-center justify-center">
-            <p className="text-white/40 text-lg">Insert your photo here</p>
-            {/* Photo will be inserted here */}
+          <div className="relative w-full h-[500px] rounded-3xl overflow-hidden bg-gradient-to-br from-white/5 to-white/10 border border-white/10">
+            <img
+              src="/faq_photo_for_top_hero_.png"
+              alt="Closio FAQ Hero"
+              className="w-full h-full object-contain"
+            />
           </div>
         </div>
       </section>
