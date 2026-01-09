@@ -186,6 +186,7 @@ const FeatureShowcase: React.FC = () => {
     let isAnimating = false;
     let scrollTimeout: NodeJS.Timeout;
     let lastScrollTime = 0;
+    const LOCK_POSITION = 150; // Consistent lock position from top of viewport
 
     const handleWheel = (e: WheelEvent) => {
       const now = Date.now();
@@ -197,11 +198,7 @@ const FeatureShowcase: React.FC = () => {
       // Check if section is in viewport
       const isInViewport = sectionTop < viewportHeight && sectionBottom > 0;
 
-      // Engage scroll hijacking when header and cards are fully in view
-      // Locks in when section top reaches ~250px from top (header fully visible)
-      const shouldEngage = sectionTop <= 250 && sectionBottom > viewportHeight * 0.4;
-
-      if (!isInViewport || !shouldEngage) {
+      if (!isInViewport) {
         return;
       }
 
@@ -209,66 +206,91 @@ const FeatureShowcase: React.FC = () => {
       const cardWidth = container.clientWidth;
       const currentCard = Math.round(scrollLeft / cardWidth);
 
-      const isAtStart = currentCard === 0;
-      const isAtEnd = currentCard >= features.length - 1;
+      // Define if section should be locked based on position and card index
+      const isNearLockPosition = Math.abs(sectionTop - LOCK_POSITION) < 50;
+      const isAboveLockPosition = sectionTop > LOCK_POSITION;
+      const isBelowLockPosition = sectionTop < LOCK_POSITION;
 
       // Scrolling down
       if (e.deltaY > 0) {
-        // Allow vertical scroll to continue down when at last card
-        if (isAtEnd) {
+        // If section is above lock position, snap it to lock position
+        if (isAboveLockPosition && sectionTop < viewportHeight * 0.8) {
+          e.preventDefault();
+          e.stopPropagation();
+          const targetScroll = window.scrollY + (sectionTop - LOCK_POSITION);
+          window.scrollTo({ top: targetScroll, behavior: 'smooth' });
           return;
         }
 
-        // Block vertical scroll and navigate horizontally
-        e.preventDefault();
-        e.stopPropagation();
+        // Section is locked at position
+        if (isNearLockPosition || isBelowLockPosition) {
+          // Allow exit only after reaching 3rd card (index 2)
+          if (currentCard >= 2) {
+            return;
+          }
 
-        // Navigate to next card if not animating and not at end
-        if (!isAnimating && !isAtEnd && now - lastScrollTime > 50) {
-          isAnimating = true;
-          lastScrollTime = now;
+          // Block vertical scroll and navigate horizontally
+          e.preventDefault();
+          e.stopPropagation();
 
-          const nextCard = Math.min(currentCard + 1, features.length - 1);
-          container.scrollTo({
-            left: nextCard * cardWidth,
-            behavior: 'smooth'
-          });
-          setCurrentIndex(nextCard);
+          // Navigate to next card if not animating
+          if (!isAnimating && now - lastScrollTime > 50) {
+            isAnimating = true;
+            lastScrollTime = now;
 
-          clearTimeout(scrollTimeout);
-          scrollTimeout = setTimeout(() => {
-            isAnimating = false;
-          }, 500);
+            const nextCard = Math.min(currentCard + 1, features.length - 1);
+            container.scrollTo({
+              left: nextCard * cardWidth,
+              behavior: 'smooth'
+            });
+            setCurrentIndex(nextCard);
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+              isAnimating = false;
+            }, 500);
+          }
         }
       }
       // Scrolling up
       else if (e.deltaY < 0) {
-        // Allow vertical scroll up when at first card
-        // Release control once at first card to let user scroll away
-        if (isAtStart) {
+        // If section is below lock position, snap it to lock position
+        if (isBelowLockPosition && !isNearLockPosition && sectionBottom > viewportHeight * 0.3) {
+          e.preventDefault();
+          e.stopPropagation();
+          const targetScroll = window.scrollY + (sectionTop - LOCK_POSITION);
+          window.scrollTo({ top: targetScroll, behavior: 'smooth' });
           return;
         }
 
-        // Block vertical scroll and navigate horizontally
-        e.preventDefault();
-        e.stopPropagation();
+        // Section is locked at position
+        if (isNearLockPosition || isAboveLockPosition) {
+          // Allow exit only when at first card
+          if (currentCard === 0) {
+            return;
+          }
 
-        // Navigate to previous card if not animating and not at start
-        if (!isAnimating && !isAtStart && now - lastScrollTime > 50) {
-          isAnimating = true;
-          lastScrollTime = now;
+          // Block vertical scroll and navigate horizontally
+          e.preventDefault();
+          e.stopPropagation();
 
-          const prevCard = Math.max(currentCard - 1, 0);
-          container.scrollTo({
-            left: prevCard * cardWidth,
-            behavior: 'smooth'
-          });
-          setCurrentIndex(prevCard);
+          // Navigate to previous card if not animating
+          if (!isAnimating && now - lastScrollTime > 50) {
+            isAnimating = true;
+            lastScrollTime = now;
 
-          clearTimeout(scrollTimeout);
-          scrollTimeout = setTimeout(() => {
-            isAnimating = false;
-          }, 500);
+            const prevCard = Math.max(currentCard - 1, 0);
+            container.scrollTo({
+              left: prevCard * cardWidth,
+              behavior: 'smooth'
+            });
+            setCurrentIndex(prevCard);
+
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+              isAnimating = false;
+            }, 500);
+          }
         }
       }
     };
