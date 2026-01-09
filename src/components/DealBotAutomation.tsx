@@ -48,7 +48,7 @@ function Field({
       <div className="mb-2 text-[12px] text-white/75 font-medium">
         {label} <span className="text-white/35">*</span>
       </div>
-      <div className="h-11 rounded-xl border border-white/6 bg-[#0A0E13] px-4 flex items-center">
+      <div className="h-11 rounded-xl border border-white/[0.04] bg-[#0A0E13] px-4 flex items-center">
         <div className="text-[13px] text-white/85">
           {value ? (
             <>
@@ -197,7 +197,18 @@ export default function DealBotAutomation() {
   } as React.CSSProperties;
 
   return (
-    <section ref={wrapRef} className="relative w-full py-20 sm:py-28 bg-black">
+    <section ref={wrapRef} className="relative w-full py-20 sm:py-28 bg-black overflow-hidden">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.12]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
+          maskImage: "radial-gradient(ellipse at 50% 40%, black 20%, transparent 70%)",
+          WebkitMaskImage: "radial-gradient(ellipse at 50% 40%, black 20%, transparent 70%)",
+        }}
+      />
+
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-12">
           <div className="text-xs tracking-[0.28em] text-white/45 uppercase">Closio Automations</div>
@@ -207,32 +218,13 @@ export default function DealBotAutomation() {
           </p>
         </div>
 
-        <div className="relative overflow-hidden rounded-3xl border border-white/6 bg-[#0A0E13] p-6 md:p-10">
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.22]"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-              maskImage: "radial-gradient(circle at 50% 35%, black 25%, transparent 70%)",
-              WebkitMaskImage: "radial-gradient(circle at 50% 35%, black 25%, transparent 70%)",
-            }}
-          />
-          <div
-            className="pointer-events-none absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(900px 500px at 40% 20%, rgba(125,211,252,0.10), transparent 55%), radial-gradient(900px 500px at 70% 60%, rgba(168,85,247,0.06), transparent 60%)",
-            }}
-          />
-
-          <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_220px_1fr] gap-8 items-start">
+        <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_220px_1fr] gap-8 items-start">
             <div
               ref={formCardRef}
-              className="relative rounded-3xl border border-white/6 bg-[#0D1117] overflow-hidden"
+              className="relative rounded-3xl border border-white/[0.04] bg-[#0D1117] overflow-hidden"
               style={{ willChange: 'transform', backfaceVisibility: 'hidden' }}
             >
-              <div className="px-6 py-5 border-b border-white/6">
+              <div className="px-6 py-5 border-b border-white/[0.04]">
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="text-white font-semibold text-lg">Post A Deal</div>
@@ -256,7 +248,7 @@ export default function DealBotAutomation() {
                     <div className="mb-2 text-[12px] text-white/75 font-medium">
                       Annual Premium <span className="text-white/35">(Auto Calculate)</span>
                     </div>
-                    <div className="h-11 rounded-xl border border-white/6 bg-[#161B22] px-4 flex items-center">
+                    <div className="h-11 rounded-xl border border-white/[0.04] bg-[#161B22] px-4 flex items-center">
                       <div className="text-[13px] text-white/85">
                         {annual ? (
                           <>
@@ -278,7 +270,7 @@ export default function DealBotAutomation() {
                     Clear Form
                   </button>
                   <div className="flex gap-3">
-                    <button className="rounded-xl border border-white/6 bg-[#161B22] px-5 py-3 text-sm text-white/85 hover:bg-[#1A2028] transition">
+                    <button className="rounded-xl border border-white/[0.04] bg-[#161B22] px-5 py-3 text-sm text-white/85 hover:bg-[#1A2028] transition">
                       Cancel
                     </button>
                     <button
@@ -339,10 +331,10 @@ export default function DealBotAutomation() {
                 />
               </svg>
 
-              <div className="absolute top-[458px] left-1 px-2 py-1 bg-black/80 rounded text-[10px] text-white/60 font-medium backdrop-blur-sm border border-white/5">
+              <div className="absolute top-[458px] left-1 px-2 py-1 bg-black/80 rounded text-[10px] text-white/60 font-medium backdrop-blur-sm border border-white/[0.04]">
                 Deal
               </div>
-              <div className="absolute top-[68px] right-1 px-2 py-1 bg-black/80 rounded text-[10px] text-white/60 font-medium backdrop-blur-sm border border-white/5">
+              <div className="absolute top-[68px] right-1 px-2 py-1 bg-black/80 rounded text-[10px] text-white/60 font-medium backdrop-blur-sm border border-white/[0.04]">
                 Bot
               </div>
             </div>
@@ -350,12 +342,12 @@ export default function DealBotAutomation() {
             <div className="flex flex-col justify-between h-full space-y-7">
               <div
                 ref={botCardRef}
-                className="rounded-3xl border border-white/6 bg-[#0D1117] p-6"
+                className="rounded-3xl border border-white/[0.04] bg-[#0D1117] p-6"
                 style={{ willChange: 'transform, opacity', backfaceVisibility: 'hidden' }}
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className="h-11 w-11 rounded-2xl border border-white/6 bg-[#161B22] flex items-center justify-center"
+                    className="h-11 w-11 rounded-2xl border border-white/[0.04] bg-[#161B22] flex items-center justify-center"
                     style={{
                       boxShadow:
                         "0 0 0 1px rgba(255,255,255,0.05), 0 0 26px rgba(125,211,252,0.16)",
@@ -367,12 +359,12 @@ export default function DealBotAutomation() {
                     <div className="text-white/90 font-semibold">Closio Deal Bot</div>
                     <div className="text-white/55 text-sm">Connected • Listening • Posting</div>
                   </div>
-                  <span className="text-[11px] text-white/65 rounded-full border border-white/6 bg-[#161B22] px-3 py-1">
+                  <span className="text-[11px] text-white/65 rounded-full border border-white/[0.04] bg-[#161B22] px-3 py-1">
                     Live
                   </span>
                 </div>
 
-                <div className="mt-4 rounded-2xl border border-white/6 bg-[#0A0E13] p-4 text-xs text-white/70 font-mono whitespace-pre-wrap">
+                <div className="mt-4 rounded-2xl border border-white/[0.04] bg-[#0A0E13] p-4 text-xs text-white/70 font-mono whitespace-pre-wrap">
                   {phase === "typing" && "Waiting for new deal…"}
                   {phase === "posting" && "Deal received ✅\nFormatting message…"}
                   {phase === "routing" && "Routing to channels…"}
@@ -382,7 +374,7 @@ export default function DealBotAutomation() {
 
               <div
                 ref={slackCardRef}
-                className="rounded-3xl border border-white/6 bg-[#0D1117] p-5"
+                className="rounded-3xl border border-white/[0.04] bg-[#0D1117] p-5"
                 style={{ willChange: 'transform, opacity, scale', backfaceVisibility: 'hidden' }}
               >
                 <div className="flex items-center gap-3">
@@ -394,7 +386,7 @@ export default function DealBotAutomation() {
                     <div className="text-white/55 text-sm">Slack</div>
                   </div>
                 </div>
-                <div className="mt-3 rounded-2xl border border-white/6 bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
+                <div className="mt-3 rounded-2xl border border-white/[0.04] bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
                   🏆 NEW DEAL CLOSED
                   {"\n"}Client: Maria R. • {fake.product}
                   {"\n"}Carrier: {fake.carrier}
@@ -404,7 +396,7 @@ export default function DealBotAutomation() {
 
               <div
                 ref={discordCardRef}
-                className="rounded-3xl border border-white/6 bg-[#0D1117] p-5"
+                className="rounded-3xl border border-white/[0.04] bg-[#0D1117] p-5"
                 style={{ willChange: 'transform, opacity, scale', backfaceVisibility: 'hidden' }}
               >
                 <div className="flex items-center gap-3">
@@ -416,7 +408,7 @@ export default function DealBotAutomation() {
                     <div className="text-white/55 text-sm">Discord</div>
                   </div>
                 </div>
-                <div className="mt-3 rounded-2xl border border-white/6 bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
+                <div className="mt-3 rounded-2xl border border-white/[0.04] bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
                   🚨 DEAL POSTED
                   {"\n"}Policy: {fake.policy}
                   {"\n"}Draft: {fake.draftDate} • State: {fake.state}
@@ -432,7 +424,6 @@ export default function DealBotAutomation() {
               <span>Deal → Closio Deal Bot → Slack / Discord</span>
             </div>
           </div>
-        </div>
       </div>
     </section>
   );
