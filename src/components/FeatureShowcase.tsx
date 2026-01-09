@@ -296,8 +296,8 @@ const FeatureShowcase: React.FC = () => {
     <section ref={sectionRef} className="relative bg-black overflow-hidden py-12 sm:py-16 md:py-24">
       <motion.div
         ref={headerRef}
-        initial={{ opacity: 0, y: 40 }}
-        animate={headerVisible ? { opacity: 1, y: 0 } : {}}
+        initial={{ opacity: 1, y: 20 }}
+        animate={headerVisible ? { opacity: 1, y: 0 } : { opacity: 1, y: 20 }}
         transition={{
           duration: 1.6,
           ease: [0.22, 0.61, 0.36, 1]
