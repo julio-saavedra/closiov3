@@ -197,7 +197,7 @@ export default function DealMap() {
             <motion.line
               x1="17.5%"
               y1="30%"
-              x2="31%"
+              x2="33.5%"
               y2="30%"
               stroke="#ffffff"
               strokeWidth="1"
@@ -210,7 +210,7 @@ export default function DealMap() {
             <motion.line
               x1="17.5%"
               y1="70%"
-              x2="31%"
+              x2="33.5%"
               y2="70%"
               stroke="#ffffff"
               strokeWidth="1"
@@ -223,7 +223,7 @@ export default function DealMap() {
             <motion.line
               x1="82.5%"
               y1="30%"
-              x2="69%"
+              x2="66.5%"
               y2="30%"
               stroke="#ffffff"
               strokeWidth="1"
@@ -236,7 +236,7 @@ export default function DealMap() {
             <motion.line
               x1="82.5%"
               y1="70%"
-              x2="69%"
+              x2="66.5%"
               y2="70%"
               stroke="#ffffff"
               strokeWidth="1"
