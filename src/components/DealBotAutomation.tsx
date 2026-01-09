@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useInView, motion } from "framer-motion";
 import gsap from "gsap";
-import Robot3D from "./Robot3D";
+import DealBotRobot3D from "./DealBotRobot3D";
 
 type Phase = "typing" | "posting" | "routing" | "done";
 
@@ -177,7 +177,7 @@ export default function DealBotAutomation() {
                   zIndex: -1,
                 }}
               >
-                <Robot3D />
+                <DealBotRobot3D />
               </div>
               <div className="px-6 py-5 border-b border-white/[0.04]">
                 <div className="flex items-start justify-between">
