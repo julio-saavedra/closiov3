@@ -1,8 +1,80 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const AdditionalFeatures: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.4 });
+
   return (
-    <section className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-black relative overflow-visible">
+    <section ref={sectionRef} className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-black relative overflow-hidden">
+      <motion.div
+        className="absolute hidden md:block"
+        style={{
+          left: 'calc(50% - min(550px, 46vw) - 48px)',
+          top: '50%',
+          transform: 'translateY(calc(-50% - 200px))',
+          height: '4px',
+          background: 'linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 100%)',
+          borderRadius: '2px',
+          boxShadow: '0 0 15px rgba(255, 255, 255, 0.4)',
+          zIndex: 5,
+        }}
+        initial={{ width: 0, x: 0 }}
+        animate={isInView ? { width: 'calc(50vw - min(550px, 46vw) + 48px)', x: '-100%' } : { width: 0, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      />
+
+      <motion.div
+        className="absolute hidden md:block"
+        style={{
+          left: 'calc(50% - min(550px, 46vw) - 48px)',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          height: '5px',
+          background: 'linear-gradient(90deg, rgba(106, 212, 242, 0) 0%, #6ad4f2 100%)',
+          borderRadius: '3px',
+          boxShadow: '0 0 20px rgba(106, 212, 242, 0.5)',
+          zIndex: 5,
+        }}
+        initial={{ width: 0, x: 0 }}
+        animate={isInView ? { width: 'calc(50vw - min(550px, 46vw) + 48px)', x: '-100%' } : { width: 0, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      />
+
+      <motion.div
+        className="absolute hidden md:block"
+        style={{
+          right: 'calc(50% - min(550px, 46vw) - 48px)',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          height: '5px',
+          background: 'linear-gradient(90deg, #6ad4f2 0%, rgba(106, 212, 242, 0) 100%)',
+          borderRadius: '3px',
+          boxShadow: '0 0 20px rgba(106, 212, 242, 0.5)',
+          zIndex: 5,
+        }}
+        initial={{ width: 0, x: 0 }}
+        animate={isInView ? { width: 'calc(50vw - min(550px, 46vw) + 48px)', x: '100%' } : { width: 0, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      />
+
+      <motion.div
+        className="absolute hidden md:block"
+        style={{
+          right: 'calc(50% - min(550px, 46vw) - 48px)',
+          top: '50%',
+          transform: 'translateY(calc(-50% + 200px))',
+          height: '4px',
+          background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%)',
+          borderRadius: '2px',
+          boxShadow: '0 0 15px rgba(255, 255, 255, 0.4)',
+          zIndex: 5,
+        }}
+        initial={{ width: 0, x: 0 }}
+        animate={isInView ? { width: 'calc(50vw - min(550px, 46vw) + 48px)', x: '100%' } : { width: 0, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      />
+
       <div className="flex justify-center px-6">
         <div
           className="glow-shell"
@@ -15,8 +87,7 @@ const AdditionalFeatures: React.FC = () => {
             overflow: 'visible',
           }}
         >
-          {/* Left Decorative Rectangle */}
-          <div
+          <motion.div
             className="absolute hidden md:block"
             style={{
               left: '-48px',
@@ -29,8 +100,11 @@ const AdditionalFeatures: React.FC = () => {
               boxShadow: '0 0 20px rgba(106, 212, 242, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3)',
               zIndex: 10,
             }}
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={isInView ? { opacity: 1, scaleY: 1 } : { opacity: 0, scaleY: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           />
-          <div
+          <motion.div
             className="absolute hidden md:block"
             style={{
               left: '-48px',
@@ -43,10 +117,12 @@ const AdditionalFeatures: React.FC = () => {
               boxShadow: '0 0 15px rgba(255, 255, 255, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6)',
               zIndex: 10,
             }}
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={isInView ? { opacity: 1, scaleY: 1 } : { opacity: 0, scaleY: 0 }}
+            transition={{ duration: 0.6, delay: 0, ease: [0.22, 1, 0.36, 1] }}
           />
 
-          {/* Right Decorative Rectangle */}
-          <div
+          <motion.div
             className="absolute hidden md:block"
             style={{
               right: '-48px',
@@ -59,8 +135,11 @@ const AdditionalFeatures: React.FC = () => {
               boxShadow: '0 0 20px rgba(106, 212, 242, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3)',
               zIndex: 10,
             }}
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={isInView ? { opacity: 1, scaleY: 1 } : { opacity: 0, scaleY: 0 }}
+            transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           />
-          <div
+          <motion.div
             className="absolute hidden md:block"
             style={{
               right: '-48px',
@@ -73,6 +152,9 @@ const AdditionalFeatures: React.FC = () => {
               boxShadow: '0 0 15px rgba(255, 255, 255, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6)',
               zIndex: 10,
             }}
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={isInView ? { opacity: 1, scaleY: 1 } : { opacity: 0, scaleY: 0 }}
+            transition={{ duration: 0.6, delay: 0, ease: [0.22, 1, 0.36, 1] }}
           />
           <style>{`
             .glow-shell::before {
@@ -98,7 +180,7 @@ const AdditionalFeatures: React.FC = () => {
           `}</style>
 
           <div className="relative z-10 flex flex-col items-center gap-3">
-            <h2
+            <motion.h2
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
               style={{
                 color: '#9CA3AF',
@@ -106,10 +188,13 @@ const AdditionalFeatures: React.FC = () => {
                 fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                 letterSpacing: '-0.02em',
               }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
               The platform starts here but doesnt stop
-            </h2>
-            <p
+            </motion.h2>
+            <motion.p
               className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
               style={{
                 color: '#9CA3AF',
@@ -117,9 +202,12 @@ const AdditionalFeatures: React.FC = () => {
                 fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                 letterSpacing: '-0.02em',
               }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
             >
               More advanced features below
-            </p>
+            </motion.p>
           </div>
         </div>
       </div>
