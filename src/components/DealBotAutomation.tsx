@@ -156,7 +156,7 @@ export default function DealBotAutomation() {
           <div className="text-xs tracking-[0.28em] text-white/45 uppercase">Closio Automations</div>
           <h2 className="mt-3 text-4xl md:text-5xl font-semibold text-gray-400">/ Closio Deal Bot</h2>
           <p className="mt-3 max-w-2xl text-base sm:text-lg text-white/60">
-            Post a deal in Closio — it instantly routes to Closio Deal Bot and announces the win in Slack & Discord.
+            Post a deal in Closio — it instantly routes to Closio Deal Bot and announces the win in Slack or Discord.
           </p>
         </div>
 
