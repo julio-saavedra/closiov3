@@ -131,7 +131,7 @@ export default function DealBotAutomation() {
       tl.to(slackCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.2)" }, "+=3.5");
       tl.to(discordCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.2)" }, "-=0.4");
 
-      tl.add(() => setPhase("done"), "+=0.15");
+      tl.add(() => setPhase("done"), "+=1.5");
       tl.to({}, { duration: 2.0 });
     }, wrapRef);
 
