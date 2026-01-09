@@ -329,8 +329,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                 onClick={() => window.scrollTo(0, 0)}
                 className="demo-btn bg-white text-black font-medium whitespace-nowrap rounded-xl hover:bg-white/90"
                 style={{
-                  padding: isScrolled ? '6px 16px' : '8px 20px',
-                  fontSize: isScrolled ? '12px' : '14px',
+                  padding: isScrolled ? '8px 20px' : '10px 24px',
+                  fontSize: isScrolled ? '14px' : '15px',
                   transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)',
                   perspective: '600px'
                 }}
@@ -339,11 +339,10 @@ const Navbar: React.FC<NavbarProps> = () => {
               </Link>
               <button
                 onClick={() => window.location.href = 'https://closio.com/login'}
-                className="bg-transparent text-white font-medium whitespace-nowrap rounded-xl hover:bg-white/10"
+                className="bg-white text-black font-medium whitespace-nowrap rounded-xl hover:bg-white/90"
                 style={{
-                  padding: isScrolled ? '6px 16px' : '8px 20px',
-                  fontSize: isScrolled ? '12px' : '14px',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  padding: isScrolled ? '8px 20px' : '10px 24px',
+                  fontSize: isScrolled ? '14px' : '15px',
                   opacity: isScrollingDown && !isScrolled ? 0 : 1,
                   pointerEvents: isScrollingDown && !isScrolled ? 'none' : 'auto',
                   transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
@@ -430,14 +429,14 @@ const Navbar: React.FC<NavbarProps> = () => {
                 <Link
                   to="/schedule"
                   onClick={() => { setMobileMenuOpen(false); window.scrollTo(0, 0); }}
-                  className="demo-btn bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-xl hover:bg-white/90 transition-colors block text-center"
+                  className="demo-btn bg-white text-black font-medium w-full px-5 py-3 text-base rounded-xl hover:bg-white/90 transition-colors block text-center"
                   style={{ perspective: '600px' }}
                 >
                   <span className="demo-btn-text">Get in touch</span>
                 </Link>
                 <button
                   onClick={() => window.location.href = 'https://closio.com/login'}
-                  className={`bg-white text-black font-medium w-full px-5 py-2.5 text-sm rounded-xl hover:bg-white/90 transition-all duration-300 ${
+                  className={`bg-white text-black font-medium w-full px-5 py-3 text-base rounded-xl hover:bg-white/90 transition-all duration-300 ${
                     isScrollingDown ? 'opacity-50' : 'opacity-100'
                   }`}
                 >
