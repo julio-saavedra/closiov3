@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useInView } from "framer-motion";
+import { useInView, motion } from "framer-motion";
 import gsap from "gsap";
+import Robot3D from "./Robot3D";
 
 type Phase = "typing" | "posting" | "routing" | "done";
 
@@ -163,13 +164,22 @@ export default function DealBotAutomation() {
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <div
               ref={formCardRef}
-              className="relative rounded-3xl border border-white/[0.04] overflow-hidden"
+              className="relative rounded-3xl border border-white/[0.04] overflow-visible"
               style={{
                 willChange: 'transform',
                 backfaceVisibility: 'hidden',
                 background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)'
               }}
             >
+              <motion.div
+                initial={{ x: -250, opacity: 0 }}
+                animate={isInView ? { x: -180, opacity: 1 } : { x: -250, opacity: 0 }}
+                transition={{ duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-[320px] h-[400px] pointer-events-none z-20"
+                style={{ transformOrigin: 'center right' }}
+              >
+                <Robot3D />
+              </motion.div>
               <div className="px-6 py-5 border-b border-white/[0.04]">
                 <div className="flex items-start justify-between">
                   <div>
