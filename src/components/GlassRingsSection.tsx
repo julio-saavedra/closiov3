@@ -93,9 +93,9 @@ const GlassRingsSection = () => {
     <section className="relative py-16 sm:py-20 md:py-24 lg:py-36 pb-32 sm:pb-40 md:pb-48 lg:pb-56 bg-black overflow-hidden min-h-screen">
       <DottedSurface className="opacity-40" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 md:gap-16 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-12 items-start">
 
-          <div className="relative z-10 space-y-6 sm:space-y-8">
+          <div className="relative z-10 space-y-6 text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -108,8 +108,8 @@ const GlassRingsSection = () => {
               </span>
             </motion.div>
 
-            <div className="space-y-2 text-center lg:text-left">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
+            <div className="space-y-2">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold leading-[1.1] tracking-tight">
                 <span className="block text-white min-h-[1.2em]">
                   <TypewriterText
                     text="Built by Experts"
@@ -133,49 +133,49 @@ const GlassRingsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-base sm:text-lg text-white/50 leading-relaxed max-w-lg mx-auto lg:mx-0 text-center lg:text-left"
+              className="text-sm sm:text-base text-white/50 leading-relaxed"
             >
               CLOSIO is powered by a dedicated team of industry professionals committed to delivering
               enterprise-grade security and continuous innovation. Your data and success are our top priorities.
             </motion.p>
+          </div>
 
-            <div className="space-y-3 sm:space-y-4 pt-4 sm:pt-6 max-w-lg mx-auto lg:mx-0">
-              {featureItems.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                  className="group relative"
-                >
-                  <div className="relative p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/15 hover:bg-white/[0.06]">
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute top-0 left-0 w-24 h-24 bg-white/[0.03] rounded-full blur-2xl -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="relative flex items-start gap-3 sm:gap-4">
-                      <div className="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center border border-white/10 text-white/70 group-hover:text-white group-hover:border-white/20 transition-all duration-300">
-                        {item.icon}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-white font-semibold text-sm sm:text-base mb-0.5 sm:mb-1 group-hover:text-white transition-colors">
-                          {item.title}
-                        </h3>
-                        <p className="text-white/40 text-xs sm:text-sm leading-relaxed group-hover:text-white/50 transition-colors">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+          <div className="relative flex items-center justify-center lg:px-8">
+            <div className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] lg:w-[350px] lg:h-[350px] flex items-center justify-center relative overflow-hidden">
+              <ShieldIO />
             </div>
           </div>
 
-          <div className="relative order-first lg:order-last">
-            <div className="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[650px] flex items-center justify-center relative overflow-hidden">
-              <ShieldIO />
-            </div>
+          <div className="space-y-3 sm:space-y-4">
+            {featureItems.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                className="group relative"
+              >
+                <div className="relative p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/15 hover:bg-white/[0.06]">
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute top-0 left-0 w-24 h-24 bg-white/[0.03] rounded-full blur-2xl -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  <div className="relative flex items-start gap-3 sm:gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center border border-white/10 text-white/70 group-hover:text-white group-hover:border-white/20 transition-all duration-300">
+                      {item.icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-white font-semibold text-sm sm:text-base mb-0.5 sm:mb-1 group-hover:text-white transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-white/40 text-xs sm:text-sm leading-relaxed group-hover:text-white/50 transition-colors">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
         </div>
