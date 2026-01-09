@@ -730,14 +730,17 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`group relative overflow-hidden rounded-2xl cursor-pointer ${
+      className={`group relative overflow-hidden rounded-2xl cursor-pointer backdrop-blur-xl ${
         isTopRow ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-2'
-      } ${isDashboard ? 'border-0' : 'border border-white/10'}`}
+      } ${isDashboard ? 'border border-black/20' : 'border border-white/20'}`}
       style={{
         background: isDashboard
-          ? '#ffffff'
-          : '#000000',
+          ? 'rgba(255, 255, 255, 0.15)'
+          : 'rgba(0, 0, 0, 0.4)',
         willChange: 'transform, opacity',
+        boxShadow: isDashboard
+          ? 'inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 8px 32px rgba(0, 0, 0, 0.1)'
+          : 'inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.3)',
       }}
     >
       <GridPattern isDashboard={isDashboard} index={index} />
