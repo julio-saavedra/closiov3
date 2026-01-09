@@ -60,30 +60,64 @@ const GlassRingsSection = () => {
     {
       title: 'Bank-Level Security',
       description: 'Enterprise-grade encryption and security protocols protect your data 24/7.',
+      accentColor: '#6ad4f2',
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-          <path d="M12 2L4 6v6c0 5.55 3.84 10.74 8 12 4.16-1.26 8-6.45 8-12V6l-8-4z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <svg viewBox="0 0 32 32" fill="none" className="w-6 h-6">
+          <defs>
+            <linearGradient id="securityGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#6ad4f2" stopOpacity="0.9"/>
+              <stop offset="100%" stopColor="#4db8d9" stopOpacity="0.6"/>
+            </linearGradient>
+          </defs>
+          <path d="M16 3L5 8v7c0 7.1 4.7 13.7 11 16 6.3-2.3 11-8.9 11-16V8L16 3z" stroke="url(#securityGrad)" strokeWidth="1.5" fill="none"/>
+          <path d="M16 7L9 10.5v5c0 4.5 3 8.7 7 10.2 4-1.5 7-5.7 7-10.2v-5L16 7z" stroke="currentColor" strokeWidth="1" strokeOpacity="0.3" fill="none"/>
+          <path d="M12 15h8M16 11v8" stroke="url(#securityGrad)" strokeWidth="1.5" strokeLinecap="round"/>
+          <circle cx="16" cy="15" r="2" fill="url(#securityGrad)" fillOpacity="0.3"/>
+          <path d="M10 12l2-1M22 12l-2-1M10 18l2 1M22 18l-2 1" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.25" strokeLinecap="round"/>
         </svg>
       )
     },
     {
       title: 'Expert Team Support',
       description: 'Our experienced team is dedicated to your success, every step of the way.',
+      accentColor: '#6ad4f2',
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-          <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.5"/>
-          <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+        <svg viewBox="0 0 32 32" fill="none" className="w-6 h-6">
+          <defs>
+            <linearGradient id="supportGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#6ad4f2" stopOpacity="0.9"/>
+              <stop offset="100%" stopColor="#4db8d9" stopOpacity="0.6"/>
+            </linearGradient>
+          </defs>
+          <circle cx="16" cy="16" r="11" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.2" strokeDasharray="2 3"/>
+          <path d="M16 5l1.5 3.5 3.8.3-2.9 2.5.9 3.7L16 13l-3.3 2-0.9-3.7-2.9-2.5 3.8-.3L16 5z" stroke="url(#supportGrad)" strokeWidth="1.5" fill="none" strokeLinejoin="round"/>
+          <circle cx="16" cy="16" r="3" fill="url(#supportGrad)" fillOpacity="0.2" stroke="url(#supportGrad)" strokeWidth="1"/>
+          <path d="M16 19v5M13 22l3 2 3-2" stroke="url(#supportGrad)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="8" cy="16" r="1" fill="currentColor" fillOpacity="0.3"/>
+          <circle cx="24" cy="16" r="1" fill="currentColor" fillOpacity="0.3"/>
         </svg>
       )
     },
     {
       title: 'Continuous Innovation',
       description: 'Regular updates and new features keep our CRM ahead of the curve.',
+      accentColor: '#6ad4f2',
       icon: (
-        <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-          <path d="M12 2v4m0 12v4M2 12h4m12 0h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-          <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.5"/>
+        <svg viewBox="0 0 32 32" fill="none" className="w-6 h-6">
+          <defs>
+            <linearGradient id="innovationGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#6ad4f2" stopOpacity="0.9"/>
+              <stop offset="100%" stopColor="#4db8d9" stopOpacity="0.6"/>
+            </linearGradient>
+          </defs>
+          <path d="M16 4v3M16 25v3M4 16h3M25 16h3" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.3" strokeLinecap="round"/>
+          <path d="M7.5 7.5l2 2M22.5 22.5l2 2M7.5 24.5l2-2M22.5 9.5l2-2" stroke="currentColor" strokeWidth="0.75" strokeOpacity="0.2" strokeLinecap="round"/>
+          <circle cx="16" cy="16" r="8" stroke="url(#innovationGrad)" strokeWidth="1.5" strokeDasharray="4 2"/>
+          <path d="M16 10c3.3 0 6 2.7 6 6" stroke="url(#innovationGrad)" strokeWidth="1.5" strokeLinecap="round"/>
+          <path d="M22 16l-2-2M22 16l-2 2" stroke="url(#innovationGrad)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M16 22c-3.3 0-6-2.7-6-6" stroke="url(#innovationGrad)" strokeWidth="1.5" strokeLinecap="round"/>
+          <path d="M10 16l2 2M10 16l2-2" stroke="url(#innovationGrad)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="16" cy="16" r="2" fill="url(#innovationGrad)" fillOpacity="0.4"/>
         </svg>
       )
     }
@@ -146,7 +180,7 @@ const GlassRingsSection = () => {
             </div>
           </div>
 
-          <div className="space-y-3 sm:space-y-4">
+          <div className="space-y-4 sm:space-y-5">
             {featureItems.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -156,19 +190,34 @@ const GlassRingsSection = () => {
                 transition={{ duration: 1.0, delay: 0.4 + index * 0.1 }}
                 className="group relative"
               >
-                <div className="relative p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/15 hover:bg-white/[0.06]">
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute top-0 left-0 w-24 h-24 bg-white/[0.03] rounded-full blur-2xl -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div
+                  className="absolute -inset-0.5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"
+                  style={{ background: `linear-gradient(135deg, ${item.accentColor}15, transparent 60%)` }}
+                />
+                <div className="relative p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.03] via-black/50 to-black/80 backdrop-blur-md overflow-hidden transition-all duration-500 hover:border-[#6ad4f2]/20">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#6ad4f2]/[0.03] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div
+                    className="absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    style={{ background: `radial-gradient(circle, ${item.accentColor}10, transparent 70%)` }}
+                  />
 
-                  <div className="relative flex items-start gap-3 sm:gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center border border-white/10 text-white/70 group-hover:text-white group-hover:border-white/20 transition-all duration-300">
-                      {item.icon}
+                  <div className="relative flex items-start gap-4">
+                    <div className="relative flex-shrink-0">
+                      <div
+                        className="absolute inset-0 rounded-xl blur-md opacity-0 group-hover:opacity-60 transition-opacity duration-500"
+                        style={{ background: item.accentColor }}
+                      />
+                      <div className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-[#0d1a1f] to-[#0a1215] flex items-center justify-center border border-[#6ad4f2]/20 group-hover:border-[#6ad4f2]/40 transition-all duration-500 shadow-lg shadow-black/50">
+                        <div className="text-white/80 group-hover:text-white transition-colors duration-300 transform group-hover:scale-110">
+                          {item.icon}
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-white font-semibold text-sm sm:text-base mb-0.5 sm:mb-1 group-hover:text-white transition-colors">
+                    <div className="flex-1 min-w-0 pt-0.5">
+                      <h3 className="text-white font-semibold text-sm sm:text-base mb-1 group-hover:text-[#e8f8fc] transition-colors duration-300">
                         {item.title}
                       </h3>
-                      <p className="text-white/40 text-xs sm:text-sm leading-relaxed group-hover:text-white/50 transition-colors">
+                      <p className="text-white/40 text-xs sm:text-sm leading-relaxed group-hover:text-white/55 transition-colors duration-300">
                         {item.description}
                       </p>
                     </div>
