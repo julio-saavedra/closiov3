@@ -25,6 +25,7 @@ import SplashScreen from './components/SplashScreen';
 import OverlappingBanner from './components/OverlappingBanner';
 import ScrollToTop from './components/ScrollToTop';
 import IntegratedFeaturesFlow from './components/IntegratedFeaturesFlow';
+import MissionStatement from './components/MissionStatement';
 
 function HomePage() {
   return (
@@ -71,6 +72,8 @@ function HomePage() {
         <SectionWrapper className="!bg-black !bg-none">
           <TestimonialSection />
         </SectionWrapper>
+
+        <MissionStatement />
 
         <FullWidthVideo />
 
