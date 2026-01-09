@@ -29,7 +29,7 @@ const MissionStatement = () => {
             }}
           />
           <img
-            src="/image copy copy.png"
+            src="/image copy copy copy.png"
             alt="Closio - Building the future of insurance"
             className="w-full h-auto object-contain"
           />
