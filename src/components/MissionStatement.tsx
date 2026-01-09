@@ -21,8 +21,13 @@ const MissionStatement = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, ease: [0.22, 0.61, 0.36, 1] }}
-          className="w-full max-w-3xl"
+          className="w-full max-w-3xl relative"
         >
+          <div className="absolute inset-0 pointer-events-none z-10"
+            style={{
+              boxShadow: 'inset 0 0 60px 40px black, inset 0 0 100px 60px rgba(0,0,0,0.8)'
+            }}
+          />
           <img
             src="/image copy copy.png"
             alt="Closio - Building the future of insurance"
