@@ -67,7 +67,7 @@ function HoverFooter() {
           <div className="lg:col-span-3 flex flex-col space-y-4 lg:items-start">
             <Link to="/" onClick={() => window.scrollTo(0, 0)} className="flex items-center">
               <img
-                src="/67ff5f5f-fc49-493f-8cb5-0467588c2623.png"
+                src="/closio_main_logo.png"
                 alt="Closio"
                 className="h-24 w-auto select-none"
                 draggable={false}
