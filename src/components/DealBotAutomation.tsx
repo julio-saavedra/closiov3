@@ -199,10 +199,10 @@ export default function DealBotAutomation() {
   return (
     <section ref={wrapRef} className="relative w-full py-20 sm:py-28 bg-black overflow-hidden">
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.12]"
+        className="pointer-events-none absolute inset-0 opacity-[0.25]"
         style={{
           backgroundImage:
-            "linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)",
+            "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
           maskImage: "radial-gradient(ellipse at 50% 40%, black 20%, transparent 70%)",
           WebkitMaskImage: "radial-gradient(ellipse at 50% 40%, black 20%, transparent 70%)",
@@ -243,7 +243,24 @@ export default function DealBotAutomation() {
                   <Field label="Draft Date" placeholder="MM-DD-YYYY" value={draftDate} typed={phase === "typing"} />
                   <Field label="Select State" placeholder="Select State" value={state} typed={phase === "typing"} />
 
-                  <Field label="Monthly Premium" placeholder="$ 00.00" value={monthly} typed={phase === "typing"} isWide={false} />
+                  <div className="col-span-6">
+                    <div className="mb-2 text-[12px] text-white/75 font-medium">
+                      Monthly Premium <span className="text-white/35">*</span>
+                    </div>
+                    <div className="h-11 rounded-xl border border-white/[0.04] bg-[#0A0E13] px-4 flex items-center">
+                      <div className="text-[13px] text-white/85">
+                        {monthly ? (
+                          <>
+                            {monthly}
+                            {phase === "typing" ? <span className="ml-1 text-[#7dd3fc] animate-pulse">▍</span> : null}
+                          </>
+                        ) : (
+                          <span className="text-white/40">$ 00.00</span>
+                        )}
+                      </div>
+                      <div className="ml-auto text-white/30">▾</div>
+                    </div>
+                  </div>
                   <div className="col-span-6">
                     <div className="mb-2 text-[12px] text-white/75 font-medium">
                       Annual Premium <span className="text-white/35">(Auto Calculate)</span>
