@@ -161,6 +161,7 @@ const FeatureShowcase: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const isLockedRef = useRef(false);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -191,27 +192,35 @@ const FeatureShowcase: React.FC = () => {
       const now = Date.now();
       const rect = section.getBoundingClientRect();
       const sectionTop = rect.top;
-      const sectionBottom = rect.bottom;
-      const viewportHeight = window.innerHeight;
 
-      // Check if section is fully in viewport (header and content completely visible)
-      const headerHeight = 200; // Approximate header height
-      const isFullyVisible = sectionTop <= 0 && sectionBottom >= viewportHeight - 100;
+      // Check if section top is in the upper portion of viewport
+      const isInLockZone = sectionTop <= 100 && sectionTop >= -50;
 
-      // Not fully visible yet, allow normal scrolling
-      if (!isFullyVisible) {
+      // If scrolling down and entering the lock zone, snap to lock position
+      if (e.deltaY > 0 && isInLockZone && !isLockedRef.current) {
+        isLockedRef.current = true;
+        const scrollTarget = window.scrollY + sectionTop;
+        window.scrollTo({ top: scrollTarget, behavior: 'smooth' });
+        e.preventDefault();
         return;
       }
 
-      // Section is fully visible, check horizontal scroll position
+      // Only hijack when section is locked at top
+      if (!isLockedRef.current || sectionTop > 50) {
+        isLockedRef.current = false;
+        return;
+      }
+
+      // Section is locked, check horizontal scroll position
       const scrollLeft = container.scrollLeft;
       const cardWidth = container.clientWidth;
       const currentCard = Math.round(scrollLeft / cardWidth);
 
       // Scrolling down
       if (e.deltaY > 0) {
-        // Only release if user has seen all 3 cards (reached card index 2)
+        // Release lock when finished all cards
         if (currentCard >= 2) {
+          isLockedRef.current = false;
           return;
         }
 
@@ -220,7 +229,7 @@ const FeatureShowcase: React.FC = () => {
         e.stopPropagation();
 
         // Navigate to next card if not animating
-        if (!isAnimating && now - lastScrollTime > 50) {
+        if (!isAnimating && now - lastScrollTime > 100) {
           isAnimating = true;
           lastScrollTime = now;
 
@@ -234,13 +243,14 @@ const FeatureShowcase: React.FC = () => {
           clearTimeout(scrollTimeout);
           scrollTimeout = setTimeout(() => {
             isAnimating = false;
-          }, 500);
+          }, 600);
         }
       }
       // Scrolling up
       else if (e.deltaY < 0) {
-        // Only release if user is at first card
+        // Release lock when at first card
         if (currentCard === 0) {
+          isLockedRef.current = false;
           return;
         }
 
@@ -249,7 +259,7 @@ const FeatureShowcase: React.FC = () => {
         e.stopPropagation();
 
         // Navigate to previous card if not animating
-        if (!isAnimating && now - lastScrollTime > 50) {
+        if (!isAnimating && now - lastScrollTime > 100) {
           isAnimating = true;
           lastScrollTime = now;
 
@@ -263,7 +273,7 @@ const FeatureShowcase: React.FC = () => {
           clearTimeout(scrollTimeout);
           scrollTimeout = setTimeout(() => {
             isAnimating = false;
-          }, 500);
+          }, 600);
         }
       }
     };
