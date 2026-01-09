@@ -366,6 +366,24 @@ const ContactSplit = React.memo(() => {
           <div className="absolute inset-0">
             <StaticIO3D />
           </div>
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: 'radial-gradient(ellipse 60% 50% at center, transparent 30%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.8) 100%)'
+            }}
+          />
+          <div
+            className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)'
+            }}
+          />
+          <div
+            className="absolute inset-x-0 top-0 h-1/4 pointer-events-none"
+            style={{
+              background: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, transparent 100%)'
+            }}
+          />
         </div>
       </section>
     </>

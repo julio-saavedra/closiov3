@@ -31,55 +31,59 @@ const StaticIO3D: React.FC = () => {
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.3);
+    const ambient = new THREE.AmbientLight(0xffffff, 0.15);
     scene.add(ambient);
 
-    const key = new THREE.DirectionalLight(0xffffff, 1.8);
-    key.position.set(5, 6, 7);
+    const key = new THREE.DirectionalLight(0xffffff, 2.2);
+    key.position.set(5, 8, 7);
     scene.add(key);
 
-    const fill = new THREE.DirectionalLight(0xffffff, 1.0);
+    const fill = new THREE.DirectionalLight(0xffffff, 0.4);
     fill.position.set(-6, 2, 5);
     scene.add(fill);
 
-    const rim = new THREE.PointLight(0xffffff, 1.5, 40);
+    const rim = new THREE.PointLight(0xffffff, 0.8, 40);
     rim.position.set(-2.0, 2.2, -2.8);
     scene.add(rim);
 
-    const topLight = new THREE.DirectionalLight(0xffffff, 1.2);
-    topLight.position.set(0, 8, 3);
+    const topLight = new THREE.DirectionalLight(0xffffff, 1.8);
+    topLight.position.set(0, 10, 3);
     scene.add(topLight);
 
-    const frontLight = new THREE.DirectionalLight(0xffffff, 1.5);
+    const frontLight = new THREE.DirectionalLight(0xffffff, 0.8);
     frontLight.position.set(0, 0, 10);
     scene.add(frontLight);
 
-    const accentLight1 = new THREE.PointLight(0x6ad4f2, 4.0, 40);
+    const bottomShadow = new THREE.DirectionalLight(0x000000, 0.5);
+    bottomShadow.position.set(0, -5, 2);
+    scene.add(bottomShadow);
+
+    const accentLight1 = new THREE.PointLight(0x6ad4f2, 2.5, 40);
     accentLight1.position.set(3, 1, 3);
     scene.add(accentLight1);
 
-    const accentLight2 = new THREE.PointLight(0x6ad4f2, 3.0, 40);
+    const accentLight2 = new THREE.PointLight(0x6ad4f2, 1.8, 40);
     accentLight2.position.set(-3, -1, 2);
     scene.add(accentLight2);
 
-    const glowLight = new THREE.PointLight(0x6ad4f2, 5.0, 45);
+    const glowLight = new THREE.PointLight(0x6ad4f2, 3.0, 45);
     glowLight.position.set(0, 0, 4);
     scene.add(glowLight);
 
     const TEAL = new THREE.Color("#6ad4f2");
     const WHITE = new THREE.Color("#F5F5F5");
 
-    function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.2, rough = 0.35) {
+    function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.1, rough = 0.35) {
       return new THREE.MeshPhysicalMaterial({
         color: baseColor,
-        metalness: 0.05,
+        metalness: 0.08,
         roughness: rough,
         transmission: 0,
         transparent: false,
-        clearcoat: 0.3,
-        clearcoatRoughness: 0.2,
-        envMapIntensity: 0.8,
-        specularIntensity: 0.5,
+        clearcoat: 0.4,
+        clearcoatRoughness: 0.25,
+        envMapIntensity: 0.6,
+        specularIntensity: 0.4,
         emissive: baseColor,
         emissiveIntensity
       });
@@ -156,11 +160,11 @@ const StaticIO3D: React.FC = () => {
 
     const iMesh = new THREE.Mesh(
       createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.25 }),
-      solidMaterial(TEAL, 0.35, 0.3)
+      solidMaterial(TEAL, 0.15, 0.32)
     );
     const oMesh = new THREE.Mesh(
       createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }),
-      solidMaterial(WHITE, 0.15, 0.35)
+      solidMaterial(WHITE, 0.05, 0.38)
     );
 
     iMesh.position.set(-0.60, 0.0, 0.0);
