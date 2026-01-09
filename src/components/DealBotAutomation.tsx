@@ -172,10 +172,10 @@ export default function DealBotAutomation() {
               }}
             >
               <div
-                className="absolute left-0 top-0 w-[220px] h-[280px] pointer-events-none"
+                className="absolute left-0 top-[15%] w-[320px] h-[520px] pointer-events-none"
                 style={{
                   zIndex: 0,
-                  transform: 'translate(-55%, -35%)',
+                  transform: 'translate(-45%, -15%)',
                 }}
               >
                 <DealBotRobot3D />

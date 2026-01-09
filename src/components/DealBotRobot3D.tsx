@@ -25,7 +25,7 @@ const DealBotRobot3D = () => {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 60);
-    camera.position.set(0.0, 2.8, 8.5);
+    camera.position.set(0.0, 0.8, 10.5);
 
     const pmrem = new THREE.PMREMGenerator(renderer);
     scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.06).texture;
