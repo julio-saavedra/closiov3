@@ -199,10 +199,10 @@ export default function DealBotAutomation() {
   return (
     <section ref={wrapRef} className="relative w-full py-20 sm:py-28 bg-black overflow-hidden">
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.25]"
+        className="pointer-events-none absolute inset-0 opacity-[0.35]"
         style={{
           backgroundImage:
-            "linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            "linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)",
           backgroundSize: "64px 64px",
           maskImage: "radial-gradient(ellipse at 50% 40%, black 20%, transparent 70%)",
           WebkitMaskImage: "radial-gradient(ellipse at 50% 40%, black 20%, transparent 70%)",
@@ -389,49 +389,53 @@ export default function DealBotAutomation() {
                 </div>
               </div>
 
-              <div
-                ref={slackCardRef}
-                className="rounded-3xl border border-white/[0.04] bg-[#0D1117] p-5"
-                style={{ willChange: 'transform, opacity, scale', backfaceVisibility: 'hidden' }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-2xl overflow-hidden flex items-center justify-center">
-                    <img src="/new_slack_icon.png" alt="Slack" className="h-full w-full object-cover" />
+              {phase !== "typing" && (
+                <div
+                  ref={slackCardRef}
+                  className="rounded-3xl border border-white/[0.04] bg-[#0D1117] p-5"
+                  style={{ willChange: 'transform, opacity, scale', backfaceVisibility: 'hidden' }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-2xl overflow-hidden flex items-center justify-center">
+                      <img src="/new_slack_icon.png" alt="Slack" className="h-full w-full object-cover" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-white/90 font-semibold">#deals</div>
+                      <div className="text-white/55 text-sm">Slack</div>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <div className="text-white/90 font-semibold">#deals</div>
-                    <div className="text-white/55 text-sm">Slack</div>
+                  <div className="mt-3 rounded-2xl border border-white/[0.04] bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
+                    🏆 NEW DEAL CLOSED
+                    {"\n"}Client: Maria R. • {fake.product}
+                    {"\n"}Carrier: {fake.carrier}
+                    {"\n"}Premium: {fake.monthly} • Face: $250,000
                   </div>
                 </div>
-                <div className="mt-3 rounded-2xl border border-white/[0.04] bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
-                  🏆 NEW DEAL CLOSED
-                  {"\n"}Client: Maria R. • {fake.product}
-                  {"\n"}Carrier: {fake.carrier}
-                  {"\n"}Premium: {fake.monthly} • Face: $250,000
-                </div>
-              </div>
+              )}
 
-              <div
-                ref={discordCardRef}
-                className="rounded-3xl border border-white/[0.04] bg-[#0D1117] p-5"
-                style={{ willChange: 'transform, opacity, scale', backfaceVisibility: 'hidden' }}
-              >
-                <div className="flex items-center gap-3">
-                  <div className="h-10 w-10 rounded-2xl overflow-hidden flex items-center justify-center">
-                    <img src="/disocrd_icon.png" alt="Discord" className="h-full w-full object-cover" />
+              {phase !== "typing" && (
+                <div
+                  ref={discordCardRef}
+                  className="rounded-3xl border border-white/[0.04] bg-[#0D1117] p-5"
+                  style={{ willChange: 'transform, opacity, scale', backfaceVisibility: 'hidden' }}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-2xl overflow-hidden flex items-center justify-center">
+                      <img src="/disocrd_icon.png" alt="Discord" className="h-full w-full object-cover" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-white/90 font-semibold">#wins</div>
+                      <div className="text-white/55 text-sm">Discord</div>
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <div className="text-white/90 font-semibold">#wins</div>
-                    <div className="text-white/55 text-sm">Discord</div>
+                  <div className="mt-3 rounded-2xl border border-white/[0.04] bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
+                    🚨 DEAL POSTED
+                    {"\n"}Policy: {fake.policy}
+                    {"\n"}Draft: {fake.draftDate} • State: {fake.state}
+                    {"\n"}Annual: {fake.annual}
                   </div>
                 </div>
-                <div className="mt-3 rounded-2xl border border-white/[0.04] bg-[#0A0E13] p-4 text-xs text-white/75 font-mono whitespace-pre-wrap">
-                  🚨 DEAL POSTED
-                  {"\n"}Policy: {fake.policy}
-                  {"\n"}Draft: {fake.draftDate} • State: {fake.state}
-                  {"\n"}Annual: {fake.annual}
-                </div>
-              </div>
+              )}
             </div>
           </div>
 
