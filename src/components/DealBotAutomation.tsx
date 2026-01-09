@@ -48,7 +48,7 @@ function Field({
       <div className="mb-2 text-[12px] text-white/70 font-medium">
         {label} <span className="text-white/30">*</span>
       </div>
-      <div className="h-11 rounded-xl border border-white/10 bg-white/[0.05] backdrop-blur-xl px-4 flex items-center">
+      <div className="h-11 rounded-xl border border-white/10 bg-white/[0.05] px-4 flex items-center">
         <div className="text-[13px] text-white/80">
           {value ? (
             <>
@@ -105,10 +105,10 @@ export default function DealBotAutomation() {
     []
   );
 
-  async function typeInto(setter: (v: string) => void, full: string, speed = 15) {
+  async function typeInto(setter: (v: string) => void, full: string, speed = 25) {
     for (let i = 0; i <= full.length; i++) {
       setter(full.slice(0, i));
-      await sleep(speed + (i % 5 === 0 ? 15 : 0));
+      await sleep(speed + (i % 4 === 0 ? 20 : 0));
     }
   }
 
@@ -134,7 +134,7 @@ export default function DealBotAutomation() {
       gsap.set(botCardRef.current, { scale: 1, opacity: 1 });
       gsap.set(postBtnRef.current, { scale: 1 });
 
-      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.5 });
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 2.0 });
 
       tl.add(async () => {
         setPhase("typing");
@@ -152,50 +152,50 @@ export default function DealBotAutomation() {
         });
         gsap.set([slackCardRef.current, discordCardRef.current], { opacity: 0, y: 12, scale: 0.97 });
 
-        await sleep(200);
+        await sleep(300);
         await typeInto(setCarrier, fake.carrier);
-        await sleep(120);
-        await typeInto(setProduct, fake.product);
-        await sleep(120);
-        await typeInto(setDraftDate, fake.draftDate, 12);
-        await sleep(120);
-        await typeInto(setState, fake.state);
-        await sleep(120);
-        await typeInto(setMonthly, fake.monthly, 12);
-        await sleep(60);
-        await typeInto(setAnnual, fake.annual, 12);
-        await sleep(120);
-        await typeInto(setPolicy, fake.policy, 12);
-
         await sleep(200);
+        await typeInto(setProduct, fake.product);
+        await sleep(200);
+        await typeInto(setDraftDate, fake.draftDate, 20);
+        await sleep(200);
+        await typeInto(setState, fake.state);
+        await sleep(200);
+        await typeInto(setMonthly, fake.monthly, 20);
+        await sleep(150);
+        await typeInto(setAnnual, fake.annual, 20);
+        await sleep(200);
+        await typeInto(setPolicy, fake.policy, 20);
+
+        await sleep(300);
       });
 
       tl.add(() => setPhase("posting"));
-      tl.to(postBtnRef.current, { scale: 0.97, duration: 0.1, ease: "power2.inOut" }, "<");
-      tl.to(postBtnRef.current, { scale: 1, duration: 0.2, ease: "elastic.out(1, 0.5)" }, ">");
+      tl.to(postBtnRef.current, { scale: 0.97, duration: 0.15, ease: "power2.inOut" }, "<");
+      tl.to(postBtnRef.current, { scale: 1, duration: 0.3, ease: "elastic.out(1, 0.5)" }, ">");
 
-      tl.add(() => setPhase("routing"), "+=0.1");
-      tl.to([routeFormToBotBase.current, routeFormToBotGlow.current], { opacity: 1, duration: 0.2, ease: "power1.in" }, "<");
-      tl.to(routeFormToBotBase.current, { strokeDashoffset: 0, duration: 0.8, ease: "power1.inOut" }, "<");
-      tl.to(routeFormToBotGlow.current, { strokeDashoffset: 0, duration: 0.8, ease: "power1.inOut" }, "<");
+      tl.add(() => setPhase("routing"), "+=0.15");
+      tl.to([routeFormToBotBase.current, routeFormToBotGlow.current], { opacity: 1, duration: 0.25, ease: "power1.in" }, "<");
+      tl.to(routeFormToBotBase.current, { strokeDashoffset: 0, duration: 1.0, ease: "power1.inOut" }, "<");
+      tl.to(routeFormToBotGlow.current, { strokeDashoffset: 0, duration: 1.0, ease: "power1.inOut" }, "<");
 
-      tl.to(botCardRef.current, { scale: 1.02, duration: 0.15, ease: "power2.out" }, "-=0.15");
-      tl.to(botCardRef.current, { scale: 1, duration: 0.25, ease: "elastic.out(1, 0.6)" }, ">");
+      tl.to(botCardRef.current, { scale: 1.02, duration: 0.2, ease: "power2.out" }, "-=0.2");
+      tl.to(botCardRef.current, { scale: 1, duration: 0.3, ease: "elastic.out(1, 0.6)" }, ">");
 
-      tl.to([routeBotToSlackBase.current, routeBotToSlackGlow.current], { opacity: 1, duration: 0.15, ease: "power1.in" }, "+=0.1");
-      tl.to(routeBotToSlackBase.current, { strokeDashoffset: 0, duration: 0.6, ease: "power1.inOut" }, "<");
-      tl.to(routeBotToSlackGlow.current, { strokeDashoffset: 0, duration: 0.6, ease: "power1.inOut" }, "<");
+      tl.to([routeBotToSlackBase.current, routeBotToSlackGlow.current], { opacity: 1, duration: 0.2, ease: "power1.in" }, "+=0.15");
+      tl.to(routeBotToSlackBase.current, { strokeDashoffset: 0, duration: 0.8, ease: "power1.inOut" }, "<");
+      tl.to(routeBotToSlackGlow.current, { strokeDashoffset: 0, duration: 0.8, ease: "power1.inOut" }, "<");
 
-      tl.to([routeBotToDiscordBase.current, routeBotToDiscordGlow.current], { opacity: 1, duration: 0.15, ease: "power1.in" }, "-=0.4");
-      tl.to(routeBotToDiscordBase.current, { strokeDashoffset: 0, duration: 0.6, ease: "power1.inOut" }, "<");
-      tl.to(routeBotToDiscordGlow.current, { strokeDashoffset: 0, duration: 0.6, ease: "power1.inOut" }, "<");
+      tl.to([routeBotToDiscordBase.current, routeBotToDiscordGlow.current], { opacity: 1, duration: 0.2, ease: "power1.in" }, "-=0.5");
+      tl.to(routeBotToDiscordBase.current, { strokeDashoffset: 0, duration: 0.8, ease: "power1.inOut" }, "<");
+      tl.to(routeBotToDiscordGlow.current, { strokeDashoffset: 0, duration: 0.8, ease: "power1.inOut" }, "<");
 
-      tl.to(slackCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.2)" }, "-=0.15");
-      tl.to(discordCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: "back.out(1.2)" }, "-=0.25");
+      tl.to(slackCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" }, "-=0.2");
+      tl.to(discordCardRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.2)" }, "-=0.3");
 
-      tl.add(() => setPhase("done"), "+=0.1");
-      tl.to({}, { duration: 1.2 });
-      tl.to(allPaths, { opacity: 0, duration: 0.3, ease: "power1.out" }, "<");
+      tl.add(() => setPhase("done"), "+=0.15");
+      tl.to({}, { duration: 1.5 });
+      tl.to(allPaths, { opacity: 0, duration: 0.4, ease: "power1.out" }, "<");
     }, wrapRef);
 
     return () => ctx.revert();
@@ -239,7 +239,8 @@ export default function DealBotAutomation() {
           <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_220px_1fr] gap-8 items-start">
             <div
               ref={formCardRef}
-              className="relative rounded-3xl border border-white/12 bg-white/[0.06] backdrop-blur-2xl overflow-hidden"
+              className="relative rounded-3xl border border-white/12 bg-gradient-to-br from-white/[0.08] to-white/[0.04] overflow-hidden"
+              style={{ willChange: 'transform', backfaceVisibility: 'hidden' }}
             >
               <div className="px-6 py-5 border-b border-white/10">
                 <div className="flex items-start justify-between">
@@ -265,7 +266,7 @@ export default function DealBotAutomation() {
                     <div className="mb-2 text-[12px] text-white/70 font-medium">
                       Annual Premium <span className="text-white/30">(Auto Calculate)</span>
                     </div>
-                    <div className="h-11 rounded-xl border border-white/10 bg-black/35 backdrop-blur-xl px-4 flex items-center">
+                    <div className="h-11 rounded-xl border border-white/10 bg-black/35 px-4 flex items-center">
                       <div className="text-[13px] text-white/80">
                         {annual ? (
                           <>
@@ -304,10 +305,10 @@ export default function DealBotAutomation() {
             </div>
 
             <div className="relative hidden lg:block h-[520px]">
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 240 520" fill="none">
+              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 240 520" fill="none" preserveAspectRatio="none">
                 <path
                   ref={routeFormToBotBase}
-                  d="M10 140 C 80 140, 160 140, 230 55"
+                  d="M5 200 C 70 200, 170 120, 235 50"
                   stroke="rgba(125,211,252,0.45)"
                   strokeWidth="2.2"
                   strokeLinecap="round"
@@ -315,7 +316,7 @@ export default function DealBotAutomation() {
                 />
                 <path
                   ref={routeFormToBotGlow}
-                  d="M10 140 C 80 140, 160 140, 230 55"
+                  d="M5 200 C 70 200, 170 120, 235 50"
                   stroke="rgba(125,211,252,0.92)"
                   strokeWidth="4"
                   strokeLinecap="round"
@@ -325,7 +326,7 @@ export default function DealBotAutomation() {
 
                 <path
                   ref={routeBotToSlackBase}
-                  d="M10 150 C 60 150, 180 150, 230 165"
+                  d="M5 80 C 80 80, 160 120, 235 180"
                   stroke="rgba(125,211,252,0.45)"
                   strokeWidth="2.2"
                   strokeLinecap="round"
@@ -333,7 +334,7 @@ export default function DealBotAutomation() {
                 />
                 <path
                   ref={routeBotToSlackGlow}
-                  d="M10 150 C 60 150, 180 150, 230 165"
+                  d="M5 80 C 80 80, 160 120, 235 180"
                   stroke="rgba(125,211,252,0.92)"
                   strokeWidth="4"
                   strokeLinecap="round"
@@ -343,7 +344,7 @@ export default function DealBotAutomation() {
 
                 <path
                   ref={routeBotToDiscordBase}
-                  d="M10 180 C 60 180, 180 210, 230 285"
+                  d="M5 120 C 80 120, 160 240, 235 340"
                   stroke="rgba(125,211,252,0.45)"
                   strokeWidth="2.2"
                   strokeLinecap="round"
@@ -351,7 +352,7 @@ export default function DealBotAutomation() {
                 />
                 <path
                   ref={routeBotToDiscordGlow}
-                  d="M10 180 C 60 180, 180 210, 230 285"
+                  d="M5 120 C 80 120, 160 240, 235 340"
                   stroke="rgba(125,211,252,0.92)"
                   strokeWidth="4"
                   strokeLinecap="round"
@@ -360,15 +361,16 @@ export default function DealBotAutomation() {
                 />
               </svg>
 
-              <div className="absolute top-[122px] left-2 text-[11px] text-white/35">Deal →</div>
-              <div className="absolute top-[40px] right-3 text-[11px] text-white/35">→ Bot</div>
-              <div className="absolute top-[135px] left-2 text-[11px] text-white/35">Bot →</div>
+              <div className="absolute top-[185px] left-2 text-[11px] text-white/35">Deal →</div>
+              <div className="absolute top-[35px] right-3 text-[11px] text-white/35">→ Bot</div>
+              <div className="absolute top-[65px] left-2 text-[11px] text-white/35">Bot →</div>
             </div>
 
             <div className="space-y-4">
               <div
                 ref={botCardRef}
-                className="rounded-3xl border border-white/12 bg-white/[0.06] backdrop-blur-2xl p-6"
+                className="rounded-3xl border border-white/12 bg-gradient-to-br from-white/[0.08] to-white/[0.04] p-6"
+                style={{ willChange: 'transform, opacity', backfaceVisibility: 'hidden' }}
               >
                 <div className="flex items-center gap-3">
                   <div
@@ -399,7 +401,8 @@ export default function DealBotAutomation() {
 
               <div
                 ref={slackCardRef}
-                className="rounded-3xl border border-white/10 bg-white/[0.05] backdrop-blur-2xl p-5"
+                className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-5"
+                style={{ willChange: 'transform, opacity, scale', backfaceVisibility: 'hidden' }}
               >
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-2xl overflow-hidden flex items-center justify-center">
@@ -420,7 +423,8 @@ export default function DealBotAutomation() {
 
               <div
                 ref={discordCardRef}
-                className="rounded-3xl border border-white/10 bg-white/[0.05] backdrop-blur-2xl p-5"
+                className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.03] p-5"
+                style={{ willChange: 'transform, opacity, scale', backfaceVisibility: 'hidden' }}
               >
                 <div className="flex items-center gap-3">
                   <div className="h-10 w-10 rounded-2xl overflow-hidden flex items-center justify-center">
