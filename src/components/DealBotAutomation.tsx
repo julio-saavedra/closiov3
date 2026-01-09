@@ -167,10 +167,10 @@ export default function DealBotAutomation() {
         await sleep(200);
         await typeInto(setPolicy, fake.policy, 20);
 
-        await sleep(150);
+        await sleep(50);
       });
 
-      tl.add(() => setPhase("posting"), "+=0.1");
+      tl.add(() => setPhase("posting"), "+=0");
       tl.to(postBtnRef.current, { scale: 0.97, duration: 0.15, ease: "power2.inOut" }, "<");
       tl.to(postBtnRef.current, { scale: 1, duration: 0.3, ease: "elastic.out(1, 0.5)" }, ">");
 
