@@ -104,7 +104,7 @@ const ContactUs = () => {
                 <div className="pt-6 border-t border-white/10">
                   <h3 className="text-lg font-medium mb-3">Response Time</h3>
                   <p className="text-white/70">
-                    We typically respond within 24 hours during business days.
+                    Closio typically responds within 24-72 hours during business hours.
                   </p>
                 </div>
               </div>
