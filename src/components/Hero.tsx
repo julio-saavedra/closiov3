@@ -184,6 +184,39 @@ const Hero: React.FC = () => {
         <HeroGrid />
 
         <motion.div
+          className="absolute top-1/2 -translate-y-1/2 left-0 h-[70vh] w-auto overflow-hidden pointer-events-none z-[3] hidden lg:block"
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1.8, delay: 2.5, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            transform: 'translateX(-5%) translateY(-50%)',
+          }}
+        >
+          <div className="relative h-full">
+            <img
+              src="/image.png"
+              alt="Dashboard Preview"
+              className="h-full w-auto object-contain"
+              style={{
+                filter: 'brightness(0.7) saturate(1.1)',
+              }}
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent"
+              style={{
+                mixBlendMode: 'multiply',
+              }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background: 'linear-gradient(to right, rgba(0,0,0,0.8) 0%, transparent 60%)',
+              }}
+            />
+          </div>
+        </motion.div>
+
+        <motion.div
           className="absolute top-0 right-0 h-[60vh] w-auto overflow-hidden pointer-events-none z-[3] hidden lg:block"
           initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
