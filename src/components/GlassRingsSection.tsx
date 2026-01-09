@@ -90,8 +90,8 @@ const GlassRingsSection = () => {
   ];
 
   return (
-    <section className="relative py-16 sm:py-20 md:py-24 lg:py-36 bg-black overflow-hidden">
-      <DottedSurface className="opacity-30" />
+    <section className="relative py-16 sm:py-20 md:py-24 lg:py-36 bg-black overflow-hidden min-h-screen">
+      <DottedSurface className="opacity-40" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 md:gap-16 lg:gap-20 items-center">
 
