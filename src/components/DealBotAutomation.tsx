@@ -172,10 +172,10 @@ export default function DealBotAutomation() {
               }}
             >
               <motion.div
-                initial={{ x: 450, opacity: 0, scale: 0.7, rotateZ: 0 }}
+                initial={{ x: 770, opacity: 0, scale: 0.7, rotateZ: 0 }}
                 animate={isInView
                   ? { x: 0, opacity: 1, scale: 1.1, rotateZ: -12 }
-                  : { x: 450, opacity: 0, scale: 0.7, rotateZ: 0 }
+                  : { x: 770, opacity: 0, scale: 0.7, rotateZ: 0 }
                 }
                 transition={{ duration: 1.3, delay: 0.7, ease: [0.34, 1.56, 0.64, 1] }}
                 className="absolute left-[-170px] top-[45%] -translate-y-1/2 w-[340px] h-[420px] pointer-events-none"
