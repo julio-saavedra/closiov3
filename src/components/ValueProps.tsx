@@ -6,10 +6,10 @@ const VerticalLine: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 1", "end 0"]
+    offset: ["start 0.8", "end -0.2"]
   });
 
-  const pathLength = useTransform(scrollYProgress, [0, 0.15], [0, 1]);
+  const pathLength = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
   // Move down into monitor, then left out of screen
   const translateY = useTransform(scrollYProgress, [0.5, 0.75], ['0%', '50%']);

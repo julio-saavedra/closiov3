@@ -602,10 +602,11 @@ const HorizontalLine: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start 1", "end 0"]
+    offset: ["start 0.8", "end 0"]
   });
 
-  const pathLength = useTransform(scrollYProgress, [0, 0.12], [0, 1]);
+  // Draw the line left to right quickly when halfway through section
+  const pathLength = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   // Then move down and fade out
   const translateY = useTransform(scrollYProgress, [0.3, 1], ['0%', '100%']);
