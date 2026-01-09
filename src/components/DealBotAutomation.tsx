@@ -171,21 +171,14 @@ export default function DealBotAutomation() {
                 background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)'
               }}
             >
-              <motion.div
-                initial={{ x: 770, opacity: 0, scale: 0.7, rotateZ: 0 }}
-                animate={isInView
-                  ? { x: 0, opacity: 1, scale: 1.1, rotateZ: -12 }
-                  : { x: 770, opacity: 0, scale: 0.7, rotateZ: 0 }
-                }
-                transition={{ duration: 1.3, delay: 0.7, ease: [0.34, 1.56, 0.64, 1] }}
-                className="absolute left-[-170px] top-[45%] -translate-y-1/2 w-[340px] h-[420px] pointer-events-none"
+              <div
+                className="absolute left-[-170px] top-[50%] -translate-y-1/2 w-[340px] h-[420px] pointer-events-none"
                 style={{
-                  transformOrigin: 'center center',
                   zIndex: -1,
                 }}
               >
                 <Robot3D />
-              </motion.div>
+              </div>
               <div className="px-6 py-5 border-b border-white/[0.04]">
                 <div className="flex items-start justify-between">
                   <div>
