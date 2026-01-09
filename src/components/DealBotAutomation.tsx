@@ -215,7 +215,7 @@ export default function DealBotAutomation() {
           </p>
         </div>
 
-        <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_220px_1fr] gap-8 items-start">
+        <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
             <div
               ref={formCardRef}
               className="relative rounded-3xl border border-white/[0.04] overflow-hidden"
@@ -300,54 +300,6 @@ export default function DealBotAutomation() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="relative hidden lg:block h-[520px]">
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 240 520" fill="none" preserveAspectRatio="none">
-                <path
-                  ref={routeFormToBotBase}
-                  d="M5 465 Q 120 300, 235 80"
-                  stroke="rgba(125,211,252,0.35)"
-                  strokeWidth="2.5"
-                  strokeLinecap="butt"
-                  fill="none"
-                />
-                <path
-                  ref={routeFormToBotGlow}
-                  d="M5 465 Q 120 300, 235 80"
-                  stroke="rgba(125,211,252,0.85)"
-                  strokeWidth="3.5"
-                  strokeLinecap="butt"
-                  fill="none"
-                  style={glowStyle}
-                />
-
-                <path
-                  ref={routeBotToSlackBase}
-                  d="M0 0"
-                  stroke="transparent"
-                  strokeWidth="0"
-                />
-                <path
-                  ref={routeBotToSlackGlow}
-                  d="M0 0"
-                  stroke="transparent"
-                  strokeWidth="0"
-                />
-
-                <path
-                  ref={routeBotToDiscordBase}
-                  d="M0 0"
-                  stroke="transparent"
-                  strokeWidth="0"
-                />
-                <path
-                  ref={routeBotToDiscordGlow}
-                  d="M0 0"
-                  stroke="transparent"
-                  strokeWidth="0"
-                />
-              </svg>
             </div>
 
             <div className="flex flex-col justify-between h-full space-y-7">
@@ -438,13 +390,6 @@ export default function DealBotAutomation() {
                   {"\n"}Annual: {fake.annual}
                 </div>
               </div>
-            </div>
-          </div>
-
-          <div className="relative mt-8 lg:hidden">
-            <div className="flex items-center gap-3 text-xs text-white/50">
-              <span className="inline-flex h-2 w-2 rounded-full bg-[#7dd3fc]" />
-              <span>Deal → Closio Deal Bot → Slack / Discord</span>
             </div>
           </div>
       </div>
