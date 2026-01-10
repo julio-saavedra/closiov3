@@ -62,7 +62,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay, className 
           clearInterval(typeInterval);
           setShowCursor(false);
         }
-      }, 150);
+      }, 70);
     }, delay);
 
     return () => {
@@ -233,7 +233,7 @@ const Hero: React.FC = () => {
             <span className="block text-[#6ad4f2] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
               <TypewriterText
                 text="Close Smarter."
-                delay={4100}
+                delay={3700}
                 isGradient={false}
               />
             </span>
