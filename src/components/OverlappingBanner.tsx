@@ -86,7 +86,7 @@ const OverlappingBanner: React.FC = () => {
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
           >
-            Your entire insurance operation—
+            Your entire insurance operation
             <span className="relative">
               <span className="text-[#6ad4f2]">policies</span>
               <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-[#6ad4f2]"></span>
@@ -101,7 +101,7 @@ const OverlappingBanner: React.FC = () => {
               <span className="relative z-10 text-[#6ad4f2]">team</span>
               <span className="absolute inset-0 border-2 border-[#6ad4f2]/40 rounded-full scale-125"></span>
             </span>
-            —finally in one place.
+            finally in one place.
           </motion.h2>
 
           <motion.p
