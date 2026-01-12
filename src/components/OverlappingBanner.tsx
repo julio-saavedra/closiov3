@@ -79,7 +79,14 @@ const OverlappingBanner: React.FC = () => {
         />
         <GridPattern />
         <BottomGlow />
-        <div className="relative px-8 py-16 md:py-20 flex flex-col items-center justify-center text-center z-10">
+        <div
+          className="relative px-8 py-16 md:py-20 flex flex-col items-center justify-center text-center z-10"
+          style={{
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            borderRadius: '24px',
+            boxShadow: '0 0 30px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.05)',
+          }}
+        >
           <motion.h2
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-4xl"
             initial={{ opacity: 0, y: 30 }}
