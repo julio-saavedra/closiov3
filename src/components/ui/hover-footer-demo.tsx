@@ -55,7 +55,7 @@ function HoverFooter() {
     {
       icon: <FacebookIcon size={18} className="text-[#6ad4f2]" />,
       text: "Facebook",
-      href: "https://facebook.com/closio",
+      href: "https://www.facebook.com/profile.php?id=61572677682460",
     },
   ];
 
