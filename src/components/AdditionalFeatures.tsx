@@ -13,6 +13,7 @@ const AdditionalFeatures: React.FC = () => {
             borderRadius: '80px',
             textAlign: 'center',
             overflow: 'visible',
+            background: 'rgba(20, 20, 20, 0.6)',
           }}
         >
           {/* Left Decorative Rectangle */}
