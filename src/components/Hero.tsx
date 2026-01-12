@@ -102,29 +102,39 @@ const FlipButton: React.FC = () => {
   return (
     <motion.button
       onClick={handleClick}
-      className="demo-btn relative px-6 sm:px-8 py-3 sm:py-4 bg-white text-black font-semibold text-sm sm:text-base rounded-xl overflow-hidden z-30 group min-h-[44px]"
+      className="demo-btn relative pl-3 pr-6 sm:pr-8 py-3 bg-white/95 hover:bg-white text-black font-semibold text-sm sm:text-base rounded-full overflow-visible z-30 group min-h-[52px] sm:min-h-[56px] backdrop-blur-sm"
       initial={{ opacity: 0, y: 20, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 1.2, delay: 5.8, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)" }}
+      whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-neutral-50 to-neutral-100"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.6 }}
-      />
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-black/20 to-transparent"
-        initial={{ x: "-200%" }}
-        animate={isHovered ? { x: "200%" } : { x: "-200%" }}
-        transition={{ duration: 2.4, ease: "easeInOut" }}
-      />
-      <span className="flex items-center justify-center overflow-visible h-6 relative z-10">
-        Get in touch
+      <span className="flex items-center gap-3 sm:gap-4 relative z-10">
+        <motion.div
+          className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-black rounded-full flex-shrink-0"
+          animate={{
+            rotate: isHovered ? 0 : 0,
+            x: isHovered ? 2 : 0
+          }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="translate-x-[1px]"
+          >
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </motion.div>
+        <span className="font-medium">Get in touch</span>
       </span>
     </motion.button>
   );
