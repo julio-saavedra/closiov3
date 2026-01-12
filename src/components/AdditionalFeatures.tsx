@@ -2,7 +2,7 @@ import React from 'react';
 
 const AdditionalFeatures: React.FC = () => {
   return (
-    <section className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-black relative overflow-visible">
+    <section className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 bg-[#0D0D0D] relative overflow-visible">
       <div className="flex justify-center px-6">
         <div
           className="glow-shell"
