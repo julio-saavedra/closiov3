@@ -26,6 +26,7 @@ import OverlappingBanner from './components/OverlappingBanner';
 import ScrollToTop from './components/ScrollToTop';
 import IntegratedFeaturesFlow from './components/IntegratedFeaturesFlow';
 import MissionStatement from './components/MissionStatement';
+import CookieBanner from './components/CookieBanner';
 
 function HomePage() {
   return (
@@ -107,6 +108,7 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/schedule" element={<Schedule />} />
         </Routes>
+        <CookieBanner />
       </div>
     </>
   );
