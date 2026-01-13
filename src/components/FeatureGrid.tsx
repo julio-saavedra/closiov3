@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView, useScroll, useTransform } from 'framer-motion';
-import { PoweredByWiring } from './PoweredBySection';
+import PoweredBySection from './PoweredBySection';
 
 interface TypewriterTextProps {
   text: string;
@@ -652,7 +652,6 @@ interface FeatureCardProps {
     icon: React.FC;
   };
   index: number;
-  cardRef?: React.RefObject<HTMLDivElement>;
 }
 
 const GridPattern: React.FC<{ isDashboard: boolean; index: number }> = ({ isDashboard, index }) => {
@@ -711,7 +710,7 @@ const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
   </div>
 );
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, cardRef }) => {
+const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const Icon = feature.icon;
   const isTopRow = index < 2;
@@ -722,7 +721,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, cardRef }) =>
 
   return (
     <motion.div
-      ref={cardRef}
       initial={{ opacity: 0, x: slideDirection }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-50px' }}
@@ -768,8 +766,6 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, cardRef }) =>
 };
 
 const FeatureGrid: React.FC = () => {
-  const cardRefs = useRef<Array<React.RefObject<HTMLDivElement>>>([]);
-
   const features = [
     {
       title: '/ Book of Business',
@@ -798,16 +794,6 @@ const FeatureGrid: React.FC = () => {
     },
   ];
 
-  if (cardRefs.current.length !== features.length) {
-    cardRefs.current = features.map(() => React.createRef<HTMLDivElement>());
-  }
-
-  const wiringTargets = features.map((feature, index) => ({
-    id: feature.title,
-    ref: cardRefs.current[index],
-    anchor: 'top' as const,
-  }));
-
   return (
     <section className="relative py-20 bg-[#0D0D0D] overflow-hidden">
       <HorizontalLine />
@@ -831,10 +817,7 @@ const FeatureGrid: React.FC = () => {
           </p>
         </motion.div>
 
-        <PoweredByWiring
-          title="Powered by Closio"
-          targets={wiringTargets}
-        />
+        <PoweredBySection />
 
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
           {features.map((feature, index) => (
@@ -842,7 +825,6 @@ const FeatureGrid: React.FC = () => {
               key={index}
               feature={feature}
               index={index}
-              cardRef={cardRefs.current[index]}
             />
           ))}
         </div>
