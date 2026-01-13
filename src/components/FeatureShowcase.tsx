@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 type TabKey = "owner" | "manager" | "agent";
 
@@ -133,6 +134,8 @@ function cn(...classes: Array<string | false | null | undefined>) {
 
 export default function ClosioAccountTypesSection() {
   const [active, setActive] = useState<TabKey>("owner");
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const cards = useMemo(
     () => [
@@ -161,7 +164,7 @@ export default function ClosioAccountTypesSection() {
   const c = CONTENT[active];
 
   return (
-    <section className="relative w-full bg-black pt-12 pb-20 sm:pt-14 sm:pb-24">
+    <section ref={sectionRef} className="relative w-full bg-black pt-32 pb-32 sm:pt-40 sm:pb-40">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-black to-transparent" />
 
       <div className="pointer-events-none absolute inset-0 opacity-[0.35]">
@@ -181,19 +184,39 @@ export default function ClosioAccountTypesSection() {
 
       <div className="relative mx-auto w-full max-w-6xl px-6">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium tracking-wide text-white/60">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-sm font-medium tracking-wide text-white/60"
+          >
             Account types
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+          >
             Built for every role in your organization
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-white/60">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-4 text-base leading-relaxed text-white/60"
+          >
             From agency owners overseeing hundreds of agents to producers focused
             on daily sales, Closio gives each role exactly what they need —
             nothing more, nothing less.
-          </p>
+          </motion.p>
 
-          <div className="mt-8 inline-flex items-center rounded-full border border-white/10 bg-white/[0.02] p-1">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-8 inline-flex items-center rounded-full border border-white/10 bg-white/[0.02] p-1"
+          >
             {tabs.map((t) => (
               <button
                 key={t.key}
@@ -208,13 +231,21 @@ export default function ClosioAccountTypesSection() {
                 {t.label}
               </button>
             ))}
-          </div>
+          </motion.div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] md:grid-cols-3">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="mt-12 grid grid-cols-1 gap-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] md:grid-cols-3"
+        >
           {cards.map((card, idx) => (
-            <button
+            <motion.button
               key={card.key}
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.6 + idx * 0.1 }}
               onClick={() => setActive(card.key)}
               className={cn(
                 "group relative w-full p-8 text-left transition",
@@ -249,12 +280,22 @@ export default function ClosioAccountTypesSection() {
               <p className="mt-3 text-sm leading-relaxed text-white/60">
                 Click to see what this role gets inside Closio.
               </p>
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 rounded-2xl border border-white/10 bg-white/[0.02] p-8 md:grid-cols-3">
-          <div className="md:col-span-1">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.9 }}
+          className="mt-10 grid grid-cols-1 gap-6 rounded-2xl border border-white/10 bg-white/[0.02] p-8 md:grid-cols-3"
+        >
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 1.0 }}
+            className="md:col-span-1"
+          >
             <div className="flex items-center gap-3 text-white/70">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-black/40">
                 <span className="text-white/80">{ICONS[active]}</span>
@@ -272,23 +313,39 @@ export default function ClosioAccountTypesSection() {
             <p className="mt-5 text-sm leading-relaxed text-white/60">
               {c.why}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="md:col-span-2">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 1.1 }}
+            className="md:col-span-2"
+          >
             <div className="rounded-xl border border-white/10 bg-black/40 p-6">
               <p className="text-sm font-medium text-white">What they get</p>
               <ul className="mt-4 space-y-3">
-                {c.bullets.map((b) => (
-                  <li key={b} className="flex gap-3 text-sm text-white/70">
+                {c.bullets.map((b, idx) => (
+                  <motion.li
+                    key={b}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: 1.2 + idx * 0.1 }}
+                    className="flex gap-3 text-sm text-white/70"
+                  >
                     <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]">
                       <span className="h-1.5 w-1.5 rounded-full bg-white/70" />
                     </span>
                     <span className="leading-relaxed">{b}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
 
-              <div className="mt-6 flex flex-wrap items-center gap-3">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 1.5 }}
+                className="mt-6 flex flex-wrap items-center gap-3"
+              >
                 <a
                   href="#"
                   className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-medium text-black transition hover:opacity-90"
@@ -301,10 +358,10 @@ export default function ClosioAccountTypesSection() {
                 >
                   See how it scales →
                 </a>
-              </div>
+              </motion.div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black to-transparent" />
       </div>
