@@ -80,17 +80,17 @@ const AdditionalFeatures: React.FC = () => {
               content: "";
               position: absolute;
               top: -1px;
-              bottom: -60px;
+              bottom: -80px;
               left: -20px;
               right: -20px;
-              border-radius: 80px 80px 0 0;
+              border-radius: 80px;
               background: linear-gradient(
                 180deg,
                 rgba(255, 255, 255, 0.2) 0%,
-                rgba(255, 255, 255, 0.08) 20%,
-                rgba(255, 255, 255, 0.02) 40%,
-                rgba(255, 255, 255, 0.01) 60%,
-                rgba(255, 255, 255, 0.00) 80%
+                rgba(255, 255, 255, 0.08) 15%,
+                rgba(255, 255, 255, 0.03) 30%,
+                rgba(255, 255, 255, 0.01) 50%,
+                rgba(255, 255, 255, 0.00) 70%
               );
               filter: blur(4px);
               opacity: 0.65;
