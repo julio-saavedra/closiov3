@@ -334,6 +334,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               className="hidden lg:flex items-center flex-shrink-0 relative z-10"
               style={{
                 gap: isScrolled ? '8px' : '12px',
+                marginRight: '-12px',
                 transition: 'gap 700ms cubic-bezier(0.4, 0, 0.2, 1)'
               }}
             >
