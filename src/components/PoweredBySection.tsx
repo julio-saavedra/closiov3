@@ -1,256 +1,328 @@
-import { motion } from 'framer-motion';
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
-const PoweredBySection: React.FC = () => {
+type Anchor = "top" | "bottom" | "left" | "right";
+type Target = {
+  id: string;
+  ref: React.RefObject<HTMLElement>;
+  anchor?: Anchor;
+};
+
+function clamp(n: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, n));
+}
+
+function getAnchorPoint(rect: DOMRect, anchor: Anchor) {
+  switch (anchor) {
+    case "top":
+      return { x: rect.left + rect.width / 2, y: rect.top };
+    case "bottom":
+      return { x: rect.left + rect.width / 2, y: rect.bottom };
+    case "left":
+      return { x: rect.left, y: rect.top + rect.height / 2 };
+    case "right":
+      return { x: rect.right, y: rect.top + rect.height / 2 };
+  }
+}
+
+function pathOrthogonal(from: { x: number; y: number }, to: { x: number; y: number }) {
+  const midY = from.y + (to.y - from.y) * 0.55;
+  const bend1 = { x: from.x, y: midY };
+  const bend2 = { x: to.x, y: midY };
+
+  const r = 16;
+
+  const b1y = bend1.y;
+  const b2y = bend2.y;
+
+  return `
+    M ${from.x} ${from.y}
+    L ${from.x} ${b1y - r}
+    Q ${from.x} ${b1y} ${from.x + Math.sign(to.x - from.x) * r} ${b1y}
+    L ${to.x - Math.sign(to.x - from.x) * r} ${b2y}
+    Q ${to.x} ${b2y} ${to.x} ${b2y + r}
+    L ${to.x} ${to.y}
+  `;
+}
+
+function useRafResize(callback: () => void) {
+  useEffect(() => {
+    let raf = 0;
+    const onResize = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(callback);
+    };
+    window.addEventListener("resize", onResize);
+    window.addEventListener("scroll", onResize, { passive: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onResize);
+    };
+  }, [callback]);
+}
+
+export function PoweredByWiring({
+  title = "Powered by Closio",
+  targets,
+  className = "",
+}: {
+  title?: string;
+  targets: Target[];
+  className?: string;
+}) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const chipRef = useRef<HTMLDivElement>(null);
+  const [paths, setPaths] = useState<
+    { id: string; d: string; from: { x: number; y: number }; to: { x: number; y: number } }[]
+  >([]);
+
+  const recalc = () => {
+    const wrap = wrapperRef.current;
+    const chip = chipRef.current;
+    if (!wrap || !chip) return;
+
+    const wrapRect = wrap.getBoundingClientRect();
+    const chipRect = chip.getBoundingClientRect();
+
+    const fromAbs = { x: chipRect.left + chipRect.width / 2, y: chipRect.bottom + 8 };
+
+    const next = targets
+      .map((t) => {
+        const el = t.ref.current;
+        if (!el) return null;
+        const rect = el.getBoundingClientRect();
+
+        const anchor: Anchor = t.anchor ?? "top";
+        const toAbs = getAnchorPoint(rect, anchor);
+
+        const from = { x: fromAbs.x - wrapRect.left, y: fromAbs.y - wrapRect.top };
+        const to = { x: toAbs.x - wrapRect.left, y: toAbs.y - wrapRect.top };
+
+        const pad = 6;
+        const toPadded =
+          anchor === "top"
+            ? { x: to.x, y: to.y - pad }
+            : anchor === "bottom"
+            ? { x: to.x, y: to.y + pad }
+            : anchor === "left"
+            ? { x: to.x - pad, y: to.y }
+            : { x: to.x + pad, y: to.y };
+
+        return {
+          id: t.id,
+          from,
+          to: toPadded,
+          d: pathOrthogonal(from, toPadded),
+        };
+      })
+      .filter(Boolean) as { id: string; d: string; from: any; to: any }[];
+
+    setPaths(next);
+  };
+
+  useRafResize(recalc);
+
+  useEffect(() => {
+    const t = setTimeout(recalc, 50);
+    return () => clearTimeout(t);
+  }, []);
+
+  const viewBox = useMemo(() => {
+    return { x: 0, y: 0, w: 1, h: 1 };
+  }, []);
+
   return (
-    <div className="relative w-full py-20 flex flex-col items-center justify-center overflow-visible">
-      <div className="relative">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative"
-          style={{
-            width: '280px',
-            height: '120px',
-            background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)',
-            borderRadius: '16px',
-            border: '2px solid rgba(60, 162, 250, 0.3)',
-            boxShadow: `
-              0 0 30px rgba(60, 162, 250, 0.15),
-              0 0 60px rgba(60, 162, 250, 0.1),
-              inset 0 2px 4px rgba(255, 255, 255, 0.1)
-            `,
-          }}
+    <div ref={wrapperRef} className={`relative w-full ${className}`}>
+      <div className="relative flex justify-center pt-2 pb-12">
+        <div
+          ref={chipRef}
+          className="relative rounded-2xl px-8 py-4 text-[26px] font-semibold tracking-tight
+                     bg-[#1b1b1b] text-[#cfcfcf]
+                     shadow-[0_18px_50px_rgba(0,0,0,0.65)]
+                     border border-white/10"
         >
-          <div className="absolute inset-0 rounded-[14px] overflow-hidden">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `
-                  repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 19px,
-                    rgba(60, 162, 250, 0.05) 20px
-                  ),
-                  repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 19px,
-                    rgba(60, 162, 250, 0.05) 20px
-                  )
-                `,
-              }}
-            />
+          <span className="relative z-10">{title}</span>
+
+          <div className="pointer-events-none absolute -left-6 top-1/2 -translate-y-1/2 flex gap-2">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <span
+                key={i}
+                className="h-1.5 w-3 rounded-full bg-white/15 shadow-[0_0_12px_rgba(255,255,255,0.08)]"
+              />
+            ))}
           </div>
-
-          <div className="relative h-full flex flex-col items-center justify-center px-8 z-10">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              className="text-center"
-            >
-              <div className="text-white/40 text-xs font-semibold tracking-[0.2em] uppercase mb-2">
-                Powered By
-              </div>
-              <div className="text-white text-3xl font-bold tracking-tight">
-                CLOSIO
-              </div>
-            </motion.div>
-          </div>
-
-          <motion.div
-            className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-2 rounded-full"
-            style={{
-              background: 'linear-gradient(90deg, transparent, rgba(60, 162, 250, 0.6), transparent)',
-            }}
-            animate={{
-              opacity: [0.3, 1, 0.3],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          />
-
-          <div className="absolute -left-4 top-1/2 -translate-y-1/2 flex flex-col gap-2">
-            {[0, 1, 2].map((i) => (
-              <motion.div
-                key={`left-${i}`}
-                className="w-3 h-1 rounded-full bg-white/20"
-                animate={{
-                  backgroundColor: ['rgba(255,255,255,0.2)', 'rgba(60,162,250,0.8)', 'rgba(255,255,255,0.2)'],
-                }}
-                transition={{
-                  duration: 1.5,
-                  delay: i * 0.2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
+          <div className="pointer-events-none absolute -right-6 top-1/2 -translate-y-1/2 flex gap-2">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <span
+                key={i}
+                className="h-1.5 w-3 rounded-full bg-white/15 shadow-[0_0_12px_rgba(255,255,255,0.08)]"
               />
             ))}
           </div>
 
-          <div className="absolute -right-4 top-1/2 -translate-y-1/2 flex flex-col gap-2">
-            {[0, 1, 2].map((i) => (
-              <motion.div
-                key={`right-${i}`}
-                className="w-3 h-1 rounded-full bg-white/20"
-                animate={{
-                  backgroundColor: ['rgba(255,255,255,0.2)', 'rgba(60,162,250,0.8)', 'rgba(255,255,255,0.2)'],
-                }}
-                transition={{
-                  duration: 1.5,
-                  delay: i * 0.2 + 0.5,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
-            ))}
-          </div>
-        </motion.div>
-
-        <svg
-          className="absolute top-full left-1/2 -translate-x-1/2 pointer-events-none"
-          width="1000"
-          height="200"
-          style={{ overflow: 'visible' }}
-        >
-          <defs>
-            <linearGradient id="beam-gradient-left">
-              <stop offset="0%" stopColor="rgba(106, 212, 242, 0.8)" />
-              <stop offset="100%" stopColor="rgba(106, 212, 242, 0)" />
-            </linearGradient>
-            <linearGradient id="beam-gradient-center" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="rgba(60, 162, 250, 0.8)" />
-              <stop offset="100%" stopColor="rgba(60, 162, 250, 0)" />
-            </linearGradient>
-            <linearGradient id="beam-gradient-right">
-              <stop offset="0%" stopColor="rgba(255, 255, 255, 0.6)" />
-              <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
-            </linearGradient>
-            <filter id="glow">
-              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-              <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
-          </defs>
-
-          <motion.path
-            d="M 356 0 L 180 0 L 180 180"
-            stroke="url(#beam-gradient-left)"
-            strokeWidth="2"
-            strokeLinecap="round"
-            fill="none"
-            filter="url(#glow)"
-            initial={{ pathLength: 0, opacity: 0 }}
-            whileInView={{ pathLength: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
-          />
-
-          <motion.path
-            d="M 644 0 L 820 0 L 820 180"
-            stroke="url(#beam-gradient-right)"
-            strokeWidth="2"
-            strokeLinecap="round"
-            fill="none"
-            filter="url(#glow)"
-            initial={{ pathLength: 0, opacity: 0 }}
-            whileInView={{ pathLength: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, delay: 0.7, ease: 'easeOut' }}
-          />
-
-          <motion.circle
-            cx="180"
-            cy="180"
-            r="4"
-            fill="rgba(106, 212, 242, 0.8)"
-            filter="url(#glow)"
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 2.0 }}
-            animate={{
-              opacity: [0.5, 1, 0.5],
-              scale: [1, 1.2, 1],
-            }}
-            style={{
-              animationDuration: '2s',
-              animationIterationCount: 'infinite',
-            }}
-          />
-
-          <motion.circle
-            cx="820"
-            cy="180"
-            r="4"
-            fill="rgba(255, 255, 255, 0.6)"
-            filter="url(#glow)"
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 2.2 }}
-            animate={{
-              opacity: [0.5, 1, 0.5],
-              scale: [1, 1.2, 1],
-            }}
-            style={{
-              animationDuration: '2s',
-              animationIterationCount: 'infinite',
-            }}
-          />
-
-          <motion.circle
-            r="2"
-            fill="rgba(106, 212, 242, 0.6)"
-            initial={{ opacity: 0 }}
-            animate={{
-              offsetDistance: ['0%', '100%'],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 2,
-              delay: 2.5,
-              repeat: Infinity,
-              repeatDelay: 1,
-              ease: 'easeInOut',
-            }}
-            style={{
-              offsetPath: 'path("M 356 0 L 180 0 L 180 180")',
-            }}
-          />
-
-          <motion.circle
-            r="2"
-            fill="rgba(255, 255, 255, 0.6)"
-            initial={{ opacity: 0 }}
-            animate={{
-              offsetDistance: ['0%', '100%'],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 2,
-              delay: 2.7,
-              repeat: Infinity,
-              repeatDelay: 1,
-              ease: 'easeInOut',
-            }}
-            style={{
-              offsetPath: 'path("M 644 0 L 820 0 L 820 180")',
-            }}
-          />
-        </svg>
+          <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/10" />
+          <div className="pointer-events-none absolute -inset-8 rounded-[28px] bg-white/5 blur-2xl opacity-30" />
+        </div>
       </div>
+
+      <svg
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="wireBase" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="rgba(255,255,255,0.35)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0.10)" />
+          </linearGradient>
+
+          <linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+            <stop offset="40%" stopColor="rgba(255,255,255,0.85)" />
+            <stop offset="60%" stopColor="rgba(255,255,255,0.85)" />
+            <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+          </linearGradient>
+
+          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2.2" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {paths.map((p, idx) => (
+          <g key={p.id}>
+            <path
+              d={p.d}
+              fill="none"
+              stroke="url(#wireBase)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              opacity="0.9"
+            />
+
+            <path
+              d={p.d}
+              fill="none"
+              stroke="rgba(255,255,255,0.10)"
+              strokeWidth="6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              filter="url(#softGlow)"
+              opacity="0.65"
+            />
+
+            <path
+              d={p.d}
+              fill="none"
+              stroke="url(#beamGrad)"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeDasharray="120 900"
+              style={{
+                animation: `beamMove 2.6s ${idx * 0.28}s linear infinite`,
+              }}
+              opacity="0.9"
+              filter="url(#softGlow)"
+            />
+
+            <circle
+              cx={p.to.x}
+              cy={p.to.y}
+              r="3"
+              fill="rgba(255,255,255,0.35)"
+            />
+            <circle
+              cx={p.to.x}
+              cy={p.to.y}
+              r="10"
+              fill="rgba(255,255,255,0.08)"
+            />
+          </g>
+        ))}
+      </svg>
+
+      <style>{`
+        @keyframes beamMove {
+          0%   { stroke-dashoffset: 900; opacity: 0.25; }
+          15%  { opacity: 0.95; }
+          100% { stroke-dashoffset: 0;   opacity: 0.25; }
+        }
+      `}</style>
     </div>
   );
+}
+
+export function WiredCard({
+  children,
+  className = "",
+  innerClassName = "",
+  cardRef,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  innerClassName?: string;
+  cardRef: React.RefObject<HTMLDivElement>;
+}) {
+  return (
+    <div
+      ref={cardRef}
+      className={`closio-wired-card relative rounded-2xl bg-[#121212] border border-white/10 ${className}`}
+    >
+      <div className={`relative z-10 ${innerClassName}`}>{children}</div>
+
+      <div className="pointer-events-none absolute inset-0 rounded-2xl closio-border-beam" />
+      <style>{`
+        .closio-wired-card {
+          box-shadow: 0 22px 70px rgba(0,0,0,0.55);
+        }
+        .closio-border-beam {
+          border-radius: 16px;
+          padding: 1px;
+          background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+          mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          -webkit-mask:
+            linear-gradient(#000 0 0) content-box,
+            linear-gradient(#000 0 0);
+          mask-composite: xor;
+          -webkit-mask-composite: xor;
+        }
+
+        .closio-wired-card::after {
+          content: "";
+          position: absolute;
+          inset: -1px;
+          border-radius: 18px;
+          background: conic-gradient(
+            from 180deg,
+            rgba(255,255,255,0) 0deg,
+            rgba(255,255,255,0) 270deg,
+            rgba(255,255,255,0.25) 305deg,
+            rgba(255,255,255,0) 345deg,
+            rgba(255,255,255,0) 360deg
+          );
+          opacity: 0.55;
+          filter: blur(6px);
+          animation: closioSweep 3.2s linear infinite;
+          pointer-events: none;
+        }
+
+        @keyframes closioSweep {
+          from { transform: rotate(0deg); }
+          to   { transform: rotate(360deg); }
+        }
+      `}</style>
+    </div>
+  );
+}
+
+const PoweredBySection: React.FC = () => {
+  return null;
 };
 
 export default PoweredBySection;
