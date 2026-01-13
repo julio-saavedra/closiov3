@@ -50,7 +50,7 @@ const PoweredBySection: React.FC = () => {
           style={{
             width: '280px',
             height: '120px',
-            background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%)',
+            background: '#0D0D0D',
             borderRadius: '16px',
             border: '2px solid rgba(128, 128, 128, 0.3)',
             boxShadow: `
@@ -60,27 +60,6 @@ const PoweredBySection: React.FC = () => {
             `,
           }}
         >
-          <div className="absolute inset-0 rounded-[14px] overflow-hidden">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `
-                  repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 19px,
-                    rgba(128, 128, 128, 0.05) 20px
-                  ),
-                  repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 19px,
-                    rgba(128, 128, 128, 0.05) 20px
-                  )
-                `,
-              }}
-            />
-          </div>
 
           <div className="relative h-full flex flex-col items-center justify-center px-8 z-10">
             <motion.div
