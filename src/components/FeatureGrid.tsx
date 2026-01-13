@@ -713,11 +713,22 @@ const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
 const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const Icon = feature.icon;
-  const isTopRow = index < 2;
-  const isLeftSide = index === 0 || index === 2;
+  const isTopRow = index < 3;
+  const isLeftSide = index === 0 || index === 2 || index === 3;
   const slideDirection = isLeftSide ? -100 : 100;
   const staggerDelay = index * 0.15;
   const isDashboard = feature.title === '/ Dashboard Analytics';
+
+  const getColumnClasses = () => {
+    if (isTopRow) {
+      return 'col-span-1 lg:col-span-2';
+    } else {
+      if (index === 3) {
+        return 'col-span-1 lg:col-span-2 lg:col-start-2';
+      }
+      return 'col-span-1 lg:col-span-2';
+    }
+  };
 
   return (
     <motion.div
@@ -731,9 +742,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`group relative overflow-hidden rounded-2xl cursor-pointer ${
-        isTopRow ? 'col-span-1 lg:col-span-3' : 'col-span-1 lg:col-span-2'
-      } ${isDashboard ? 'border-[3px] border-gray-200' : 'border-[3px] border-white/20'}`}
+      className={`group relative overflow-hidden rounded-2xl cursor-pointer ${getColumnClasses()} ${isDashboard ? 'border-[3px] border-gray-200' : 'border-[3px] border-white/20'}`}
       style={{
         background: isDashboard
           ? '#ffffff'
@@ -819,7 +828,7 @@ const FeatureGrid: React.FC = () => {
 
         <PoweredBySection />
 
-        <div className="grid grid-cols-2 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-6 gap-6 px-4 lg:px-8">
           {features.map((feature, index) => (
             <FeatureCard
               key={index}
