@@ -113,14 +113,23 @@ const FlipButton: React.FC = () => {
     >
       <span className="flex items-center gap-3 sm:gap-4 relative z-10">
         <motion.div
-          className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-black rounded-full flex-shrink-0"
+          className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-black rounded-full flex-shrink-0 relative"
           animate={{
-            rotate: isHovered ? 0 : 0,
-            x: isHovered ? 2 : 0
+            scale: isHovered ? 1.1 : 1,
+            rotate: isHovered ? 90 : 0
           }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
         >
-          <svg
+          <motion.div
+            className="absolute inset-0 rounded-full bg-black"
+            animate={{
+              boxShadow: isHovered
+                ? '0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.3)'
+                : '0 0 0px rgba(0, 0, 0, 0)'
+            }}
+            transition={{ duration: 0.4 }}
+          />
+          <motion.svg
             width="16"
             height="16"
             viewBox="0 0 24 24"
@@ -129,10 +138,14 @@ const FlipButton: React.FC = () => {
             strokeWidth="3"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="translate-x-[1px]"
+            className="translate-x-[1px] relative z-10"
+            animate={{
+              x: isHovered ? 2 : 0
+            }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           >
             <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
+          </motion.svg>
         </motion.div>
         <span className="font-medium">Get in touch</span>
       </span>

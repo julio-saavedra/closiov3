@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
@@ -70,6 +70,7 @@ const valueItems = [
 
 const ValueProps: React.FC = () => {
   const navigate = useNavigate();
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <section id="why-closio" className="py-16 sm:py-20 md:py-24 lg:py-32 xl:py-40 bg-black relative overflow-hidden">
@@ -174,10 +175,28 @@ const ValueProps: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                onHoverStart={() => setIsHovered(true)}
+                onHoverEnd={() => setIsHovered(false)}
               >
                 <span className="flex items-center gap-3 sm:gap-4 relative z-10">
-                  <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-black rounded-full flex-shrink-0">
-                    <svg
+                  <motion.div
+                    className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-black rounded-full flex-shrink-0 relative"
+                    animate={{
+                      scale: isHovered ? 1.1 : 1,
+                      rotate: isHovered ? 90 : 0
+                    }}
+                    transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
+                  >
+                    <motion.div
+                      className="absolute inset-0 rounded-full bg-black"
+                      animate={{
+                        boxShadow: isHovered
+                          ? '0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.3)'
+                          : '0 0 0px rgba(0, 0, 0, 0)'
+                      }}
+                      transition={{ duration: 0.4 }}
+                    />
+                    <motion.svg
                       width="16"
                       height="16"
                       viewBox="0 0 24 24"
@@ -186,11 +205,15 @@ const ValueProps: React.FC = () => {
                       strokeWidth="3"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="translate-x-[1px]"
+                      className="translate-x-[1px] relative z-10"
+                      animate={{
+                        x: isHovered ? 2 : 0
+                      }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
                     >
                       <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                  </div>
+                    </motion.svg>
+                  </motion.div>
                   <span className="font-medium">Book a Demo</span>
                 </span>
               </motion.button>
