@@ -158,10 +158,10 @@ const Navbar: React.FC<NavbarProps> = () => {
             transition: 'all 700ms cubic-bezier(0.4, 0, 0.2, 1)'
           }}
         >
-          <div className="flex items-center justify-between h-14">
+          <div className="flex items-center justify-between h-14 relative">
             <Link
               to="/"
-              className="flex items-center gap-2 flex-shrink-0 relative"
+              className="flex items-center gap-2 flex-shrink-0 relative z-10"
               onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
               aria-label="Closio - Back to top"
             >
@@ -191,7 +191,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             </Link>
 
             <div
-              className="hidden lg:flex items-center justify-center"
+              className="hidden lg:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
               style={{
                 gap: isScrolled ? '20px' : '32px',
                 transition: 'gap 700ms cubic-bezier(0.4, 0, 0.2, 1)'
@@ -331,7 +331,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             </div>
 
             <div
-              className="hidden lg:flex items-center flex-shrink-0"
+              className="hidden lg:flex items-center flex-shrink-0 relative z-10"
               style={{
                 gap: isScrolled ? '8px' : '12px',
                 transition: 'gap 700ms cubic-bezier(0.4, 0, 0.2, 1)'
