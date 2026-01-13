@@ -25,7 +25,6 @@ import SplashScreen from './components/SplashScreen';
 import OverlappingBanner from './components/OverlappingBanner';
 import ScrollToTop from './components/ScrollToTop';
 import IntegratedFeaturesFlow from './components/IntegratedFeaturesFlow';
-import MissionStatement from './components/MissionStatement';
 import CookieBanner from './components/CookieBanner';
 
 function HomePage() {
@@ -75,8 +74,6 @@ function HomePage() {
         </SectionWrapper>
 
         <FeatureShowcase />
-
-        <MissionStatement />
 
         <FullWidthVideo />
 
