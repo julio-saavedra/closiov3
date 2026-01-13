@@ -6,14 +6,19 @@ import { useRef } from 'react';
 const TypewriterHeading: React.FC<{ text: string }> = ({ text }) => {
   const [displayText, setDisplayText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
-  const [hasTyped, setHasTyped] = useState(false);
   const ref = useRef<HTMLHeadingElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '0px' });
+  const isInView = useInView(ref, { once: false, margin: '0px' });
 
   useEffect(() => {
-    if (!isInView || hasTyped) return;
+    setDisplayText('');
+    setShowCursor(true);
+  }, []);
 
-    setHasTyped(true);
+  useEffect(() => {
+    if (!isInView) return;
+
+    setDisplayText('');
+    setShowCursor(true);
     let currentIndex = 0;
 
     const interval = setInterval(() => {
@@ -27,7 +32,7 @@ const TypewriterHeading: React.FC<{ text: string }> = ({ text }) => {
     }, 60);
 
     return () => clearInterval(interval);
-  }, [text, isInView, hasTyped]);
+  }, [text, isInView]);
 
   return (
     <h1 ref={ref} className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-white/40 tracking-tight">
