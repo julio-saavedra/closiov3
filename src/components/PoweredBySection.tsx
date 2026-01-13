@@ -116,20 +116,20 @@ const PoweredBySection: React.FC = () => {
 
         <svg
           className="absolute top-full left-1/2 -translate-x-1/2 pointer-events-none"
-          width="800"
+          width="1000"
           height="200"
           style={{ overflow: 'visible' }}
         >
           <defs>
-            <linearGradient id="beam-gradient-1" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="rgba(60, 162, 250, 0.8)" />
-              <stop offset="100%" stopColor="rgba(60, 162, 250, 0)" />
-            </linearGradient>
-            <linearGradient id="beam-gradient-2" x1="0%" y1="0%" x2="0%" y2="100%">
+            <linearGradient id="beam-gradient-left">
               <stop offset="0%" stopColor="rgba(106, 212, 242, 0.8)" />
               <stop offset="100%" stopColor="rgba(106, 212, 242, 0)" />
             </linearGradient>
-            <linearGradient id="beam-gradient-3" x1="0%" y1="0%" x2="0%" y2="100%">
+            <linearGradient id="beam-gradient-center" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="rgba(60, 162, 250, 0.8)" />
+              <stop offset="100%" stopColor="rgba(60, 162, 250, 0)" />
+            </linearGradient>
+            <linearGradient id="beam-gradient-right">
               <stop offset="0%" stopColor="rgba(255, 255, 255, 0.6)" />
               <stop offset="100%" stopColor="rgba(255, 255, 255, 0)" />
             </linearGradient>
@@ -142,27 +142,25 @@ const PoweredBySection: React.FC = () => {
             </filter>
           </defs>
 
-          <motion.line
-            x1="400"
-            y1="0"
-            x2="150"
-            y2="180"
-            stroke="url(#beam-gradient-1)"
+          <motion.path
+            d="M 360 0 L 180 0 L 180 180"
+            stroke="url(#beam-gradient-left)"
             strokeWidth="2"
             strokeLinecap="round"
+            fill="none"
             filter="url(#glow)"
             initial={{ pathLength: 0, opacity: 0 }}
             whileInView={{ pathLength: 1, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.5, ease: 'easeOut' }}
+            transition={{ duration: 1.5, delay: 0.5, ease: 'easeOut' }}
           />
 
           <motion.line
-            x1="400"
+            x1="500"
             y1="0"
-            x2="400"
+            x2="500"
             y2="180"
-            stroke="url(#beam-gradient-2)"
+            stroke="url(#beam-gradient-center)"
             strokeWidth="2.5"
             strokeLinecap="round"
             filter="url(#glow)"
@@ -172,31 +170,29 @@ const PoweredBySection: React.FC = () => {
             transition={{ duration: 1.2, delay: 0.6, ease: 'easeOut' }}
           />
 
-          <motion.line
-            x1="400"
-            y1="0"
-            x2="650"
-            y2="180"
-            stroke="url(#beam-gradient-3)"
+          <motion.path
+            d="M 640 0 L 820 0 L 820 180"
+            stroke="url(#beam-gradient-right)"
             strokeWidth="2"
             strokeLinecap="round"
+            fill="none"
             filter="url(#glow)"
             initial={{ pathLength: 0, opacity: 0 }}
             whileInView={{ pathLength: 1, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: 0.7, ease: 'easeOut' }}
+            transition={{ duration: 1.5, delay: 0.7, ease: 'easeOut' }}
           />
 
           <motion.circle
-            cx="150"
+            cx="180"
             cy="180"
             r="4"
-            fill="rgba(60, 162, 250, 0.8)"
+            fill="rgba(106, 212, 242, 0.8)"
             filter="url(#glow)"
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 1.7 }}
+            transition={{ duration: 0.4, delay: 2.0 }}
             animate={{
               opacity: [0.5, 1, 0.5],
               scale: [1, 1.2, 1],
@@ -208,10 +204,10 @@ const PoweredBySection: React.FC = () => {
           />
 
           <motion.circle
-            cx="400"
+            cx="500"
             cy="180"
             r="4"
-            fill="rgba(106, 212, 242, 0.8)"
+            fill="rgba(60, 162, 250, 0.8)"
             filter="url(#glow)"
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
@@ -228,7 +224,7 @@ const PoweredBySection: React.FC = () => {
           />
 
           <motion.circle
-            cx="650"
+            cx="820"
             cy="180"
             r="4"
             fill="rgba(255, 255, 255, 0.6)"
@@ -236,7 +232,7 @@ const PoweredBySection: React.FC = () => {
             initial={{ scale: 0, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 1.9 }}
+            transition={{ duration: 0.4, delay: 2.2 }}
             animate={{
               opacity: [0.5, 1, 0.5],
               scale: [1, 1.2, 1],
@@ -247,26 +243,64 @@ const PoweredBySection: React.FC = () => {
             }}
           />
 
-          {[0, 1, 2].map((index) => (
-            <motion.circle
-              key={`particle-${index}`}
-              r="2"
-              fill="rgba(60, 162, 250, 0.6)"
-              initial={{ opacity: 0 }}
-              animate={{
-                cx: [400, index === 0 ? 150 : index === 1 ? 400 : 650],
-                cy: [0, 180],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                delay: 2 + index * 0.3,
-                repeat: Infinity,
-                repeatDelay: 1,
-                ease: 'easeInOut',
-              }}
-            />
-          ))}
+          <motion.circle
+            r="2"
+            fill="rgba(106, 212, 242, 0.6)"
+            initial={{ opacity: 0 }}
+            animate={{
+              offsetDistance: ['0%', '100%'],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 2,
+              delay: 2.5,
+              repeat: Infinity,
+              repeatDelay: 1,
+              ease: 'easeInOut',
+            }}
+            style={{
+              offsetPath: 'path("M 360 0 L 180 0 L 180 180")',
+            }}
+          />
+
+          <motion.circle
+            cx="500"
+            cy="0"
+            r="2"
+            fill="rgba(60, 162, 250, 0.6)"
+            initial={{ opacity: 0 }}
+            animate={{
+              cy: [0, 180],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 1.5,
+              delay: 2.4,
+              repeat: Infinity,
+              repeatDelay: 1,
+              ease: 'easeInOut',
+            }}
+          />
+
+          <motion.circle
+            r="2"
+            fill="rgba(255, 255, 255, 0.6)"
+            initial={{ opacity: 0 }}
+            animate={{
+              offsetDistance: ['0%', '100%'],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 2,
+              delay: 2.7,
+              repeat: Infinity,
+              repeatDelay: 1,
+              ease: 'easeInOut',
+            }}
+            style={{
+              offsetPath: 'path("M 640 0 L 820 0 L 820 180")',
+            }}
+          />
         </svg>
       </div>
     </div>
