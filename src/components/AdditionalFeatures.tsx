@@ -20,23 +20,7 @@ const AdditionalFeatures: React.FC = () => {
       ref={sectionRef}
       className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 relative overflow-visible rounded-3xl"
       style={{
-        background: `
-          radial-gradient(120% 120% at 10% 10%, rgba(255,255,255,0.04) 0%, rgba(0,0,0,0) 55%),
-          linear-gradient(135deg, rgba(0,0,0,0.72) 0%, rgba(18,24,40,0.55) 55%, rgba(0,0,0,0.72) 100%),
-          repeating-linear-gradient(
-            to right,
-            transparent 0,
-            transparent 39px,
-            rgba(60, 162, 250, 0.12) 40px
-          ),
-          repeating-linear-gradient(
-            to bottom,
-            transparent 0,
-            transparent 39px,
-            rgba(60, 162, 250, 0.12) 40px
-          )
-        `,
-        backgroundColor: '#0D0D0D'
+        backgroundColor: '#000000'
       }}
     >
       <div className="flex justify-center px-6">
