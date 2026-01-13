@@ -354,7 +354,7 @@ export default function DealMap() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 1.6 }}
-            className="relative w-full max-w-[580px] mx-auto"
+            className="relative w-full max-w-[720px] mx-auto"
           >
             <DesktopMonitor>
               <img
