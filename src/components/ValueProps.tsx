@@ -140,7 +140,7 @@ const ValueProps: React.FC = () => {
                   style={{ WebkitTextStroke: '1.5px currentColor', WebkitTextFillColor: 'transparent' }}
                 >I</span>O</span>
               </h2>
-              <p className="text-xs sm:text-sm md:text-base text-gray-400 leading-[1.6]">
+              <p className="text-sm sm:text-base md:text-lg text-gray-400 leading-[1.6]">
                 Built by agents who know what it&apos;s like to juggle 100 policies, chase commissions, and wonder if that big deal actually closed. We solved the chaos—so you can focus on selling.
               </p>
             </motion.div>
