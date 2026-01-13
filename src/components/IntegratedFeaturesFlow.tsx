@@ -48,9 +48,9 @@ export default function IntegratedFeaturesFlow() {
 
           {/* Left Dashboard Photo */}
           <motion.div
-            initial={{ opacity: 0, x: -30, rotateZ: -35 }}
-            animate={isInView ? { opacity: 1, x: 0, rotateZ: -35 } : { opacity: 0, x: -30, rotateZ: -35 }}
-            transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0.3, x: -30, rotateZ: -35 }}
+            animate={isInView ? { opacity: 1, x: 0, rotateZ: -35 } : { opacity: 0.3, x: -30, rotateZ: -35 }}
+            transition={{ duration: 1.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="absolute left-[-180px] top-[120px] w-[380px] h-[200px] rounded-[28px] overflow-hidden border border-white/[0.08]"
             style={{
               transformStyle: 'preserve-3d',
@@ -61,19 +61,17 @@ export default function IntegratedFeaturesFlow() {
               src="/image.png"
               alt="Dashboard Preview"
               className="w-full h-full object-cover object-left"
+              style={{ opacity: 0.85 }}
             />
-            <div
-              className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/70 to-black/80"
-              style={{ mixBlendMode: 'multiply' }}
-            />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/80 to-black/90" />
+            <div className="absolute inset-0 bg-black/50" />
           </motion.div>
 
           {/* Right Dashboard Photo */}
           <motion.div
-            initial={{ opacity: 0, x: 30, rotateZ: 35 }}
-            animate={isInView ? { opacity: 1, x: 0, rotateZ: 35 } : { opacity: 0, x: 30, rotateZ: 35 }}
-            transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0.3, x: 30, rotateZ: 35 }}
+            animate={isInView ? { opacity: 1, x: 0, rotateZ: 35 } : { opacity: 0.3, x: 30, rotateZ: 35 }}
+            transition={{ duration: 1.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="absolute right-[-180px] top-[120px] w-[380px] h-[200px] rounded-[28px] overflow-hidden border border-white/[0.08]"
             style={{
               transformStyle: 'preserve-3d',
@@ -84,12 +82,10 @@ export default function IntegratedFeaturesFlow() {
               src="/image copy.png"
               alt="Dashboard Preview"
               className="w-full h-full object-cover"
+              style={{ opacity: 0.85 }}
             />
-            <div
-              className="absolute inset-0 bg-gradient-to-bl from-black/60 via-black/70 to-black/80"
-              style={{ mixBlendMode: 'multiply' }}
-            />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-bl from-black/70 via-black/80 to-black/90" />
+            <div className="absolute inset-0 bg-black/50" />
           </motion.div>
 
           <div className="absolute left-[calc(50%-210px)] top-[30px] -translate-x-1/2" style={{ perspective: '1200px' }}>
