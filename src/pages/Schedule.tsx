@@ -50,19 +50,12 @@ const Schedule = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-[#6ad4f2]/10 via-transparent to-transparent rounded-3xl blur-3xl" />
-
-          <div className="relative bg-white/[0.03] backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
-            <div className="p-4 md:p-6">
-              <div
-                className="calendly-inline-widget w-full rounded-2xl"
-                data-url="https://calendly.com/closio/closio-onboarding?hide_gdpr_banner=1&background_color=0a0a0a&text_color=e8eef5&primary_color=6ad4f2"
-                style={{ minWidth: '320px', height: '1000px' }}
-              />
-            </div>
-          </div>
+          <div
+            className="calendly-inline-widget w-full"
+            data-url="https://calendly.com/closio/closio-onboarding?hide_gdpr_banner=1&background_color=0a0a0a&text_color=e8eef5&primary_color=6ad4f2"
+            style={{ minWidth: '320px', height: '1000px' }}
+          />
         </motion.div>
 
         <motion.div
