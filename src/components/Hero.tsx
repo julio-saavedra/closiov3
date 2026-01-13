@@ -253,7 +253,7 @@ const Hero: React.FC = () => {
                 className="text-white"
               />
             </span>
-            <span className="block text-[#6ad4f2] text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            <span className="block text-neutral-400 font-normal text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
               <TypewriterText
                 text="Close Smarter."
                 delay={3700}
