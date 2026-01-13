@@ -29,65 +29,71 @@ const AdditionalFeatures: React.FC = () => {
             overflow: 'visible',
           }}
         >
-          {/* Left Decorative Rectangle */}
-          <div
-            className="absolute hidden md:block"
+          {/* Top Left X */}
+          <svg
+            className="absolute"
             style={{
-              left: '-48px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: '16px',
-              height: '180px',
-              background: 'linear-gradient(180deg, #6ad4f2 0%, rgba(106, 212, 242, 0.4) 100%)',
-              borderRadius: '8px',
-              boxShadow: '0 0 20px rgba(106, 212, 242, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3)',
+              left: '24px',
+              top: '24px',
+              width: '48px',
+              height: '48px',
               zIndex: 10,
             }}
-          />
-          <div
-            className="absolute hidden md:block"
-            style={{
-              left: '-48px',
-              top: '50%',
-              transform: 'translateY(calc(-50% - 200px))',
-              width: '12px',
-              height: '120px',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.4) 100%)',
-              borderRadius: '6px',
-              boxShadow: '0 0 15px rgba(255, 255, 255, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6)',
-              zIndex: 10,
-            }}
-          />
+            viewBox="0 0 48 48"
+            fill="none"
+          >
+            <line
+              x1="8"
+              y1="8"
+              x2="40"
+              y2="40"
+              stroke="rgba(255, 255, 255, 0.15)"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <line
+              x1="40"
+              y1="8"
+              x2="8"
+              y2="40"
+              stroke="rgba(255, 255, 255, 0.15)"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
 
-          {/* Right Decorative Rectangle */}
-          <div
-            className="absolute hidden md:block"
+          {/* Bottom Right X */}
+          <svg
+            className="absolute"
             style={{
-              right: '-48px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: '16px',
-              height: '180px',
-              background: 'linear-gradient(180deg, #6ad4f2 0%, rgba(106, 212, 242, 0.4) 100%)',
-              borderRadius: '8px',
-              boxShadow: '0 0 20px rgba(106, 212, 242, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.3)',
+              right: '24px',
+              bottom: '24px',
+              width: '48px',
+              height: '48px',
               zIndex: 10,
             }}
-          />
-          <div
-            className="absolute hidden md:block"
-            style={{
-              right: '-48px',
-              top: '50%',
-              transform: 'translateY(calc(-50% + 200px))',
-              width: '12px',
-              height: '120px',
-              background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.4) 100%)',
-              borderRadius: '6px',
-              boxShadow: '0 0 15px rgba(255, 255, 255, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6)',
-              zIndex: 10,
-            }}
-          />
+            viewBox="0 0 48 48"
+            fill="none"
+          >
+            <line
+              x1="8"
+              y1="8"
+              x2="40"
+              y2="40"
+              stroke="rgba(255, 255, 255, 0.15)"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <line
+              x1="40"
+              y1="8"
+              x2="8"
+              y2="40"
+              stroke="rgba(255, 255, 255, 0.15)"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
           <style>{`
             .glow-shell::before {
               content: "";
