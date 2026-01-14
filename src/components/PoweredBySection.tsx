@@ -169,16 +169,18 @@ const PoweredBySection: React.FC = () => {
                 animate={{ pathLength: 1, opacity: 1 }}
                 transition={{ duration: 1.2, delay: 0.8 + index * 0.15, ease: "easeOut" }}
               />
-              <motion.circle
-                cx={line.x2}
-                cy={line.y2}
-                r="4"
-                fill="rgba(128, 128, 128, 0.6)"
-                filter="url(#lineGlow)"
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.4, delay: 2 + index * 0.15, ease: "easeOut" }}
-              />
+              {index !== 0 && index !== 2 && (
+                <motion.circle
+                  cx={line.x2}
+                  cy={line.y2}
+                  r="4"
+                  fill="rgba(128, 128, 128, 0.6)"
+                  filter="url(#lineGlow)"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 2 + index * 0.15, ease: "easeOut" }}
+                />
+              )}
             </g>
           ))}
         </svg>
