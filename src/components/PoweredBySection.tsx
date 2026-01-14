@@ -104,7 +104,7 @@ const PoweredBySection: React.FC = () => {
                 <img
                   src="/closio_main_logo.png"
                   alt="Closio"
-                  className="h-8 w-auto"
+                  className="h-12 w-auto"
                 />
               </div>
             </motion.div>
