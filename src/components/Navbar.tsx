@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { GlassShinyButton } from './ui/glass-shiny-button';
 
 interface NavbarProps {
   activeSection?: string;
@@ -350,9 +351,9 @@ const Navbar: React.FC<NavbarProps> = () => {
               >
                 <span className="demo-btn-text">Get in touch</span>
               </Link>
-              <button
+              <GlassShinyButton
                 onClick={() => window.location.href = 'https://closio.com/login'}
-                className="bg-white text-black font-medium whitespace-nowrap rounded-xl hover:bg-white/90"
+                className="font-medium whitespace-nowrap"
                 style={{
                   padding: isScrolled ? '8px 20px' : '10px 24px',
                   fontSize: isScrolled ? '14px' : '15px',
@@ -362,7 +363,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 }}
               >
                 Log In
-              </button>
+              </GlassShinyButton>
             </div>
 
             <button
@@ -447,14 +448,17 @@ const Navbar: React.FC<NavbarProps> = () => {
                 >
                   <span className="demo-btn-text">Get in touch</span>
                 </Link>
-                <button
+                <GlassShinyButton
                   onClick={() => window.location.href = 'https://closio.com/login'}
-                  className={`bg-white text-black font-medium w-full px-5 py-3 text-base rounded-xl hover:bg-white/90 transition-all duration-300 ${
-                    isScrollingDown ? 'opacity-50' : 'opacity-100'
-                  }`}
+                  className="font-medium w-full text-base"
+                  style={{
+                    padding: '12px 20px',
+                    opacity: isScrollingDown ? 0.5 : 1,
+                    transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)'
+                  }}
                 >
                   Log In
-                </button>
+                </GlassShinyButton>
               </div>
             </div>
           </div>
