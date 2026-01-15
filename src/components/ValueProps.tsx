@@ -79,100 +79,70 @@ const ValueProps: React.FC = () => {
       </div>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Header */}
+        {/* Header - Title Left, Context Right */}
         <motion.div
-          className="text-center mb-12 md:mb-16"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 md:mb-16 items-start"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15] mb-4 sm:mb-6">
-            <span className="text-gray-400">/ Why</span>{' '}<span className="text-white">CLOS<span
-              className="italic mx-0.5 sm:mx-1"
-              style={{ WebkitTextStroke: '1.5px currentColor', WebkitTextFillColor: 'transparent' }}
-            >I</span>O</span>
-          </h2>
-          <p className="text-base md:text-lg lg:text-xl text-gray-400 leading-[1.6] max-w-3xl mx-auto">
-            Built by agents who know what it&apos;s like to juggle 100 policies, chase commissions, and wonder if that big deal actually closed. We solved the chaos—so you can focus on selling.
-          </p>
+          <div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
+              <span className="text-gray-400">/ Why</span>{' '}<span className="text-white">CLOS<span
+                className="italic mx-0.5 sm:mx-1"
+                style={{ WebkitTextStroke: '1.5px currentColor', WebkitTextFillColor: 'transparent' }}
+              >I</span>O</span>
+            </h2>
+          </div>
+          <div>
+            <p className="text-base md:text-lg lg:text-xl text-gray-400 leading-[1.6]">
+              Built by agents who know what it&apos;s like to juggle 100 policies, chase commissions, and wonder if that big deal actually closed. We solved the chaos—so you can focus on selling.
+            </p>
+          </div>
         </motion.div>
 
-        {/* Main Content Grid */}
+        {/* Large Dashboard Image */}
+        <motion.div
+          className="relative mb-8 md:mb-12 px-6 sm:px-8 md:px-12"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="relative">
+            <img
+              src="/image copy copy copy copy.png"
+              alt="Closio Dashboard"
+              className="w-full h-auto rounded-2xl"
+            />
+          </div>
+        </motion.div>
+
+        {/* Stat Cards Below - 4 in a row */}
         <div className="relative mb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr_1fr] gap-8 lg:gap-12 items-center">
-
-            {/* Left Stat Cards */}
-            <div className="flex flex-col gap-4 md:gap-6">
-              {valueItems.slice(0, 2).map((item, index) => (
-                <motion.div
-                  key={item.number}
-                  className="group relative p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 hover:border-white/20 transition-all duration-300 hover:bg-white/[0.05]"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <div className="flex flex-col gap-3">
-                    <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-xs font-semibold tracking-wider transition-colors duration-300">
-                      {item.number}
-                    </span>
-                    <h3
-                      className="text-sm sm:text-base font-medium text-white leading-[1.4] transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
-                    >
-                      {item.title}
-                    </h3>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Central Dashboard Image */}
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="relative">
-                <img
-                  src="/main_desktop_photo_dashboard.png"
-                  alt="Closio Dashboard"
-                  className="w-full h-auto rounded-2xl opacity-30"
-                  style={{
-                    maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%)',
-                    WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 65%, rgba(0,0,0,0) 100%)'
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/50 pointer-events-none rounded-2xl"></div>
-              </div>
-            </motion.div>
-
-            {/* Right Stat Cards */}
-            <div className="flex flex-col gap-4 md:gap-6">
-              {valueItems.slice(2, 4).map((item, index) => (
-                <motion.div
-                  key={item.number}
-                  className="group relative p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 hover:border-white/20 transition-all duration-300 hover:bg-white/[0.05]"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <div className="flex flex-col gap-3">
-                    <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-xs font-semibold tracking-wider transition-colors duration-300">
-                      {item.number}
-                    </span>
-                    <h3
-                      className="text-sm sm:text-base font-medium text-white leading-[1.4] transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
-                    >
-                      {item.title}
-                    </h3>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {valueItems.map((item, index) => (
+              <motion.div
+                key={item.number}
+                className="group relative p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-white/[0.03] to-white/[0.01] border border-white/10 hover:border-white/20 transition-all duration-300 hover:bg-white/[0.05]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+              >
+                <div className="flex flex-col gap-3">
+                  <span className="text-[#6ad4f2] group-hover:text-[#d593c0] text-xs font-semibold tracking-wider transition-colors duration-300">
+                    {item.number}
+                  </span>
+                  <h3
+                    className="text-sm sm:text-base font-medium text-white leading-[1.4] transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-[#d593c0] group-hover:to-[#6ad4f2] group-hover:bg-clip-text group-hover:text-transparent"
+                  >
+                    {item.title}
+                  </h3>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
 
