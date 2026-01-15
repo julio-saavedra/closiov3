@@ -662,6 +662,7 @@ interface FeatureCardProps {
     icon: React.FC;
   };
   index: number;
+  gridArea: string;
 }
 
 const GridPattern: React.FC<{ isDashboard: boolean; index: number }> = ({ isDashboard, index }) => {
@@ -720,60 +721,62 @@ const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
   </div>
 );
 
-const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index }) => {
+const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) => {
   const [isHovered, setIsHovered] = useState(false);
   const Icon = feature.icon;
-  const isTopRow = index < 3;
-  const isLeftSide = index === 0 || index === 2 || index === 3;
-  const slideDirection = isLeftSide ? -100 : 100;
   const staggerDelay = index * 0.15;
   const isDashboard = feature.title === '/ Dashboard Analytics';
 
+  const iconSizes: Record<number, string> = {
+    0: 'w-48 h-48',
+    1: 'w-40 h-40',
+    2: 'w-36 h-36',
+    3: 'w-44 h-44',
+    4: 'w-40 h-40',
+  };
+
+  const paddingSizes: Record<number, string> = {
+    0: 'p-10',
+    1: 'p-8',
+    2: 'p-6',
+    3: 'p-9',
+    4: 'p-8',
+  };
+
   return (
     <motion.div
-      initial={{ opacity: 0, x: slideDirection }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{
-        duration: 1.6,
+        duration: 1.2,
         delay: staggerDelay,
         ease: [0.25, 0.1, 0.25, 1],
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`group relative overflow-hidden rounded-2xl cursor-pointer col-span-1 ${isDashboard ? 'border-[3px] border-gray-200' : 'border-[3px] border-white/10'}`}
+      className={`group relative overflow-hidden cursor-pointer ${paddingSizes[index]}`}
       style={{
+        gridArea,
         background: isDashboard
           ? '#ffffff'
           : 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.2) 100%)',
         willChange: 'transform, opacity',
-        boxShadow: isDashboard
-          ? '0 8px 24px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.05)'
-          : '0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 12px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.05)',
       }}
     >
       <GridPattern isDashboard={isDashboard} index={index} />
       <BottomGlow isDashboard={isDashboard} />
       <SparkleEffect isHovered={isHovered} isDashboard={isDashboard} />
-      <div
-        className={`relative p-10 flex flex-col h-full z-10`}
-        style={{
-          minHeight: index === 0 ? '480px' :
-                     index === 1 ? '420px' :
-                     index === 2 ? '460px' :
-                     index === 3 ? '440px' :
-                     '400px'
-        }}
-      >
-        <div className="w-56 h-56 mb-8 mx-auto lg:mx-0">
+      <div className="relative flex flex-col h-full z-10">
+        <div className={`${iconSizes[index]} mb-6 mx-auto lg:mx-0 flex-shrink-0`}>
           <Icon />
         </div>
 
-        <div className="flex-1 flex flex-col">
-          <h3 className={`text-3xl font-bold leading-[1.3] mb-5 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
+        <div className="flex-1 flex flex-col min-h-0">
+          <h3 className={`text-2xl lg:text-3xl font-bold leading-[1.3] mb-4 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
             {feature.title}
           </h3>
-          <p className={`text-lg leading-[1.7] ${isDashboard ? 'text-gray-800' : 'text-white/65'}`}>
+          <p className={`text-base lg:text-lg leading-[1.7] ${isDashboard ? 'text-gray-800' : 'text-white/65'}`}>
             {feature.description}
           </p>
         </div>
@@ -837,24 +840,81 @@ const FeatureGrid: React.FC = () => {
         <PoweredBySection />
 
         <div className="px-2 lg:px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-            {features.slice(0, 3).map((feature, index) => (
-              <FeatureCard
-                key={index}
-                feature={feature}
-                index={index}
-              />
-            ))}
-          </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:max-w-[calc(66.666%-0.5rem)] lg:mx-auto">
-            {features.slice(3, 5).map((feature, index) => (
-              <FeatureCard
-                key={index + 3}
-                feature={feature}
-                index={index + 3}
-              />
-            ))}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
+            className="relative rounded-3xl overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.3) 100%)',
+              border: '2px solid rgba(255, 255, 255, 0.08)',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.06)',
+            }}
+          >
+            <div
+              className="hidden lg:grid gap-[10px] p-[10px] min-h-[900px] relative"
+              style={{
+                gridTemplateColumns: 'repeat(12, 1fr)',
+                gridTemplateRows: 'repeat(12, 1fr)',
+                gridTemplateAreas: `
+                  "a a a a a a a b b b b b"
+                  "a a a a a a a b b b b b"
+                  "a a a a a a a b b b b b"
+                  "a a a a a a a b b b b b"
+                  "a a a a a a a b b b b b"
+                  "a a a a a a a c c c c c"
+                  "a a a a a a a c c c c c"
+                  "a a a a a a a c c c c c"
+                  "d d d d d e e e e e e e"
+                  "d d d d d e e e e e e e"
+                  "d d d d d e e e e e e e"
+                  "d d d d d e e e e e e e"
+                `
+              }}
+            >
+              <div style={{ gridArea: 'a', position: 'relative' }}>
+                <div className="absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-transparent via-white/8 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+                <FeatureCard feature={features[0]} index={0} gridArea="a" />
+              </div>
+              <div style={{ gridArea: 'b', position: 'relative' }}>
+                <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+                <FeatureCard feature={features[1]} index={1} gridArea="b" />
+              </div>
+              <div style={{ gridArea: 'c', position: 'relative' }}>
+                <div className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-white/8 to-transparent" />
+                <FeatureCard feature={features[2]} index={2} gridArea="c" />
+              </div>
+              <div style={{ gridArea: 'd', position: 'relative' }}>
+                <div className="absolute inset-y-0 right-0 w-[1px] bg-gradient-to-b from-transparent via-white/8 to-transparent" />
+                <FeatureCard feature={features[3]} index={3} gridArea="d" />
+              </div>
+              <FeatureCard feature={features[4]} index={4} gridArea="e" />
+            </div>
+
+            <div className="lg:hidden flex flex-col gap-6 p-4">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="relative overflow-hidden rounded-2xl"
+                  style={{
+                    background: feature.title === '/ Dashboard Analytics'
+                      ? '#ffffff'
+                      : 'linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.2) 100%)',
+                    border: feature.title === '/ Dashboard Analytics'
+                      ? '3px solid rgb(229, 231, 235)'
+                      : '3px solid rgba(255, 255, 255, 0.1)',
+                    boxShadow: feature.title === '/ Dashboard Analytics'
+                      ? '0 8px 24px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1)'
+                      : '0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 12px rgba(0, 0, 0, 0.3)',
+                  }}
+                >
+                  <FeatureCard feature={feature} index={index} gridArea="auto" />
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
