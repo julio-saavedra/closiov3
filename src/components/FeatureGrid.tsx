@@ -685,41 +685,40 @@ const BottomGlow: React.FC<{ isDashboard: boolean }> = ({ isDashboard }) => (
 );
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) => {
-  const [isHovered, setIsHovered] = useState(false);
   const Icon = feature.icon;
   const staggerDelay = index * 0.15;
   const isDashboard = feature.title === '/ Dashboard Analytics';
 
   const iconSizes: Record<number, string> = {
-    0: 'w-[280px] h-[280px]',
-    1: 'w-[240px] h-[240px]',
-    2: 'w-[220px] h-[220px]',
-    3: 'w-[200px] h-[200px]',
-    4: 'w-[240px] h-[240px]',
+    0: 'w-[260px] h-[260px]',
+    1: 'w-[260px] h-[260px]',
+    2: 'w-[260px] h-[260px]',
+    3: 'w-[220px] h-[220px]',
+    4: 'w-[260px] h-[260px]',
   };
 
   const iconPositions: Record<number, string> = {
-    0: 'absolute top-4 left-6',
-    1: 'absolute top-4 right-6',
-    2: 'absolute bottom-4 right-6',
-    3: 'absolute top-1/2 left-4 -translate-y-1/2',
-    4: 'absolute top-1/2 right-4 -translate-y-1/2',
+    0: 'absolute -top-8 -left-8',
+    1: 'absolute -top-8 -right-8',
+    2: 'absolute -bottom-8 -right-8',
+    3: 'absolute top-1/2 -left-8 -translate-y-1/2',
+    4: 'absolute top-1/2 -right-8 -translate-y-1/2',
   };
 
   const paddingSizes: Record<number, string> = {
     0: 'p-10',
-    1: 'p-8',
-    2: 'p-6',
-    3: 'p-9',
-    4: 'p-8',
+    1: 'p-10',
+    2: 'p-10',
+    3: 'p-10',
+    4: 'p-10',
   };
 
   const contentAlignments: Record<number, string> = {
-    0: 'items-start justify-end',
-    1: 'items-start justify-end',
+    0: 'items-end justify-end',
+    1: 'items-end justify-start',
     2: 'items-start justify-start',
-    3: 'items-end justify-center',
-    4: 'items-start justify-center',
+    3: 'items-center justify-end',
+    4: 'items-center justify-start',
   };
 
   return (
@@ -732,9 +731,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
         delay: staggerDelay,
         ease: [0.25, 0.1, 0.25, 1],
       }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`group relative overflow-hidden cursor-pointer ${paddingSizes[index]}`}
+      className={`group relative overflow-hidden ${paddingSizes[index]}`}
       style={{
         gridArea,
         background: isDashboard
@@ -745,14 +742,13 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
     >
       <GridPattern isDashboard={isDashboard} index={index} />
       <BottomGlow isDashboard={isDashboard} />
-      <SparkleEffect isHovered={isHovered} isDashboard={isDashboard} />
 
-      <div className={`${iconPositions[index]} ${iconSizes[index]} flex-shrink-0 opacity-40 z-0 pointer-events-none`}>
+      <div className={`${iconPositions[index]} ${iconSizes[index]} flex-shrink-0 opacity-30 z-0 pointer-events-none`}>
         <Icon />
       </div>
 
       <div className={`relative flex flex-col h-full z-20 ${contentAlignments[index]}`}>
-        <div className="flex flex-col max-w-md">
+        <div className={`flex flex-col ${index === 3 || index === 4 ? 'max-w-xs' : 'max-w-sm'}`}>
           <h3 className={`text-2xl lg:text-3xl font-bold leading-[1.3] mb-4 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
             {feature.title}
           </h3>
