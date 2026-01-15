@@ -110,7 +110,7 @@ const Navbar: React.FC<NavbarProps> = () => {
     e.preventDefault();
     e.stopPropagation();
     if (id === 'home') {
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       if (!isHomePage) {
         navigate('/');
       }
@@ -119,12 +119,22 @@ const Navbar: React.FC<NavbarProps> = () => {
         navigate('/');
         setTimeout(() => {
           const el = document.getElementById(id);
-          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          if (el) {
+            const offset = 80; // Account for fixed navbar
+            const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - offset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }
         }, 100);
       } else {
         setActiveSection(id);
         const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (el) {
+          const offset = 80; // Account for fixed navbar
+          const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - offset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
       }
     }
     setMobileMenuOpen(false);
@@ -162,7 +172,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             <Link
               to="/"
               className="flex items-center gap-2 flex-shrink-0 relative z-10"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               aria-label="Closio - Back to top"
             >
               <img

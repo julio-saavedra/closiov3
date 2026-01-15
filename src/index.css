@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global overflow prevention */
+/* Global overflow prevention and smooth scrolling */
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for fixed navbar */
 }
 
 html, body {
@@ -23,6 +24,10 @@ html, body {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  
+  * {
+    scroll-behavior: auto !important;
   }
 }
 
@@ -56,6 +61,11 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Smooth scrolling performance */
+body {
+  -webkit-overflow-scrolling: touch; /* iOS momentum scrolling */
+}
+
 /* GPU acceleration for transforms and animations */
 [class*="motion-"],
 [class*="animate-"],
@@ -69,6 +79,11 @@ html, body {
 
 .scramble {
   will-change: contents;
+}
+
+/* Smooth focus scrolling for accessibility */
+:target {
+  scroll-margin-top: 100px;
 }
 
 @media (prefers-reduced-motion: reduce) {
