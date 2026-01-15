@@ -88,18 +88,18 @@ const OverlappingBanner: React.FC = () => {
           >
             Your entire insurance operation{' '}
             <span className="relative">
-              <span className="text-[#6ad4f2]">policies</span>
-              <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-[#6ad4f2]"></span>
+              <span className="text-gray-400">policies</span>
+              <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-gray-400"></span>
             </span>
             ,{' '}
             <span className="relative">
-              <span className="text-[#6ad4f2]">commissions</span>
-              <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-[#6ad4f2]"></span>
+              <span className="text-gray-400">commissions</span>
+              <span className="absolute bottom-1 left-0 right-0 h-[2px] bg-gray-400"></span>
             </span>
             , and{' '}
             <span className="relative inline-block">
-              <span className="relative z-10 text-[#6ad4f2]">team</span>
-              <span className="absolute inset-0 border-2 border-[#6ad4f2]/40 rounded-full scale-125"></span>
+              <span className="relative z-10 text-gray-400">team</span>
+              <span className="absolute inset-0 border-2 border-gray-400/40 rounded-full scale-125"></span>
             </span>
             {' '}finally in one place.
           </motion.h2>
