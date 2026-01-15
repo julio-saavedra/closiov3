@@ -195,15 +195,6 @@ const Hero: React.FC = () => {
           </motion.p>
 
           <div className="flex flex-col items-center md:items-start gap-6 w-full">
-            <motion.p
-              className="text-sm sm:text-base text-neutral-500"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.6, delay: 5.3 }}
-            >
-              / Trusted & Used by <CountUp end={1000} duration={4000} delay={5500} />+ agents
-            </motion.p>
-
             <GetInTouchButton />
           </div>
         </div>
