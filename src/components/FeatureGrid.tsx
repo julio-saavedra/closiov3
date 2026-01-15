@@ -689,37 +689,50 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
   const staggerDelay = index * 0.15;
   const isDashboard = feature.title === '/ Dashboard Analytics';
 
-  const iconSizes: Record<number, string> = {
-    0: 'w-[240px] h-[240px]',
-    1: 'w-[200px] h-[200px]',
-    2: 'w-[200px] h-[200px]',
-    3: 'w-[180px] h-[180px]',
-    4: 'w-[200px] h-[200px]',
+  const layoutTemplates = {
+    0: {
+      artPosition: 'absolute -left-4 top-1/2 -translate-y-1/2 w-[300px] h-[300px]',
+      artOpacity: 'opacity-[0.55]',
+      contentPosition: 'absolute right-0 top-1/2 -translate-y-1/2 pr-12',
+      contentMaxWidth: 'max-w-[52%]',
+      contentAlign: 'items-end text-right',
+      artGradient: 'after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:to-black/20',
+    },
+    1: {
+      artPosition: 'absolute -right-4 top-1/2 -translate-y-1/2 w-[260px] h-[260px]',
+      artOpacity: 'opacity-[0.60]',
+      contentPosition: 'absolute left-0 top-1/2 -translate-y-1/2 pl-12',
+      contentMaxWidth: 'max-w-[58%]',
+      contentAlign: 'items-start text-left',
+      artGradient: 'after:absolute after:inset-0 after:bg-gradient-to-l after:from-transparent after:to-black/20',
+    },
+    2: {
+      artPosition: 'absolute -bottom-6 left-1/2 -translate-x-1/2 w-[340px] h-[240px]',
+      artOpacity: 'opacity-[0.65]',
+      contentPosition: 'absolute top-0 left-0 pt-12 pl-12',
+      contentMaxWidth: 'max-w-[68%]',
+      contentAlign: 'items-start text-left',
+      artGradient: 'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:to-black/10',
+    },
+    3: {
+      artPosition: 'absolute -top-6 left-1/2 -translate-x-1/2 w-[300px] h-[220px]',
+      artOpacity: 'opacity-[0.70]',
+      contentPosition: 'absolute bottom-0 left-0 pb-12 pl-12',
+      contentMaxWidth: 'max-w-[72%]',
+      contentAlign: 'items-start text-left',
+      artGradient: 'after:absolute after:inset-0 after:bg-gradient-to-t after:from-transparent after:to-white/10',
+    },
+    4: {
+      artPosition: 'absolute -bottom-6 -right-6 w-[280px] h-[280px]',
+      artOpacity: 'opacity-[0.60]',
+      contentPosition: 'absolute top-0 left-0 pt-12 pl-12',
+      contentMaxWidth: 'max-w-[62%]',
+      contentAlign: 'items-start text-left',
+      artGradient: 'after:absolute after:inset-0 after:bg-gradient-to-br after:from-transparent after:via-transparent after:to-black/15',
+    },
   };
 
-  const iconPositions: Record<number, string> = {
-    0: 'absolute top-6 left-6',
-    1: 'absolute top-6 right-6',
-    2: 'absolute bottom-6 right-6',
-    3: 'absolute top-1/2 left-6 -translate-y-1/2',
-    4: 'absolute top-1/2 right-6 -translate-y-1/2',
-  };
-
-  const paddingSizes: Record<number, string> = {
-    0: 'p-8',
-    1: 'p-8',
-    2: 'p-8',
-    3: 'p-8',
-    4: 'p-8',
-  };
-
-  const contentAlignments: Record<number, string> = {
-    0: 'items-end justify-end',
-    1: 'items-end justify-start',
-    2: 'items-start justify-start',
-    3: 'items-center justify-end',
-    4: 'items-center justify-start',
-  };
+  const template = layoutTemplates[index as keyof typeof layoutTemplates];
 
   return (
     <motion.div
@@ -731,7 +744,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
         delay: staggerDelay,
         ease: [0.25, 0.1, 0.25, 1],
       }}
-      className={`group relative overflow-hidden ${paddingSizes[index]}`}
+      className="group relative overflow-hidden"
       style={{
         gridArea,
         background: isDashboard
@@ -743,12 +756,12 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
       <GridPattern isDashboard={isDashboard} index={index} />
       <BottomGlow isDashboard={isDashboard} />
 
-      <div className={`${iconPositions[index]} ${iconSizes[index]} flex-shrink-0 opacity-30 z-0 pointer-events-none`}>
-        <Icon />
+      <div className={`${template.artPosition} ${template.artOpacity} z-[1] pointer-events-none flex items-center justify-center relative ${template.artGradient}`}>
+        <Icon className="w-full h-full" />
       </div>
 
-      <div className={`relative flex flex-col h-full z-20 ${contentAlignments[index]}`}>
-        <div className={`flex flex-col ${index === 0 ? 'max-w-[420px]' : index === 1 ? 'max-w-[380px]' : index === 2 ? 'max-w-[400px]' : index === 3 ? 'max-w-[320px]' : 'max-w-[360px]'}`}>
+      <div className={`${template.contentPosition} z-[2] ${template.contentAlign}`}>
+        <div className={`flex flex-col ${template.contentMaxWidth}`}>
           <h3 className={`text-2xl lg:text-3xl font-bold leading-[1.3] mb-4 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
             {feature.title}
           </h3>
@@ -828,7 +841,7 @@ const FeatureGrid: React.FC = () => {
             }}
           >
             <div
-              className="hidden lg:grid gap-[10px] p-[10px] min-h-[1100px] relative"
+              className="hidden lg:grid gap-[12px] p-[12px] min-h-[1100px] relative"
               style={{
                 gridTemplateColumns: 'repeat(12, 1fr)',
                 gridTemplateRows: 'repeat(12, 1fr)',
