@@ -63,13 +63,13 @@ const ValueProps: React.FC = () => {
           <div className="relative">
             {/* Glass Monitor Frame */}
             <div
-              className="relative rounded-3xl p-3 sm:p-4 md:p-6"
+              className="relative rounded-3xl p-2 sm:p-3 md:p-4"
               style={{
                 background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
                 border: '1px solid rgba(255, 255, 255, 0.08)',
-                boxShadow: 'inset 0 0 20px rgba(255, 255, 255, 0.03), 0 8px 32px rgba(0, 0, 0, 0.3)'
+                boxShadow: 'inset 0 0 20px rgba(255, 255, 255, 0.03), 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 80px rgba(255, 255, 255, 0.08), 0 0 120px rgba(255, 255, 255, 0.04)'
               }}
             >
               <div className="relative opacity-30">
