@@ -52,7 +52,7 @@ const ValueProps: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Large Dashboard Image */}
+        {/* Large Dashboard Image with Monitor Frame */}
         <motion.div
           className="relative mb-8 md:mb-12 px-0 sm:px-2 md:px-4"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -61,19 +61,39 @@ const ValueProps: React.FC = () => {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="relative">
-            <div className="relative opacity-30">
-              <img
-                src="/image copy copy copy copy.png"
-                alt="Closio Dashboard"
-                className="w-full h-auto rounded-2xl"
-              />
-              <div
-                className="absolute inset-0 rounded-2xl pointer-events-none"
-                style={{
-                  background: 'linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0,0,0,0.8) 85%, black 100%)'
-                }}
-              />
+            {/* Glass Monitor Frame */}
+            <div
+              className="relative rounded-3xl p-3 sm:p-4 md:p-6"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                boxShadow: 'inset 0 0 20px rgba(255, 255, 255, 0.03), 0 8px 32px rgba(0, 0, 0, 0.3)'
+              }}
+            >
+              <div className="relative opacity-30">
+                <img
+                  src="/image copy copy copy copy.png"
+                  alt="Closio Dashboard"
+                  className="w-full h-auto rounded-2xl"
+                />
+                <div
+                  className="absolute inset-0 rounded-2xl pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(to bottom, transparent 0%, transparent 50%, rgba(0,0,0,0.8) 85%, black 100%)'
+                  }}
+                />
+              </div>
             </div>
+
+            {/* Fade out effect for the monitor frame */}
+            <div
+              className="absolute inset-0 rounded-3xl pointer-events-none"
+              style={{
+                background: 'linear-gradient(to bottom, transparent 0%, transparent 60%, rgba(0,0,0,0.5) 85%, black 100%)'
+              }}
+            />
           </div>
         </motion.div>
 
