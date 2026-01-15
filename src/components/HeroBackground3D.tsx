@@ -444,7 +444,7 @@ const HeroBackground3D: React.FC = () => {
   }, []);
 
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 z-[2]">
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full block pointer-events-auto"

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import HeroBackground3D from './HeroBackground3D';
+import PerspectiveGrid3D from './PerspectiveGrid3D';
 
 interface CountUpProps {
   end: number;
@@ -172,6 +173,7 @@ const Hero: React.FC = () => {
       className="min-h-screen w-full text-white flex items-center relative overflow-hidden bg-black"
     >
       <motion.div style={{ opacity, scale }} className="absolute inset-0">
+        <PerspectiveGrid3D />
         <HeroBackground3D />
       </motion.div>
 
