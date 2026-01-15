@@ -116,28 +116,32 @@ const BookIcon: React.FC = () => (
         <stop offset="50%" stopColor="#0d0d0d" />
         <stop offset="100%" stopColor="#1a1625" />
       </linearGradient>
-      <linearGradient id="glassPanel1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.06" />
-        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.02" />
-      </linearGradient>
-      <linearGradient id="glassPanel2" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.08" />
+      <linearGradient id="dealCard1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.09" />
         <stop offset="100%" stopColor="#ffffff" stopOpacity="0.03" />
       </linearGradient>
+      <linearGradient id="dealCard2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.07" />
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.02" />
+      </linearGradient>
+      <linearGradient id="dealCard3" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.05" />
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0.015" />
+      </linearGradient>
       <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="3" result="blur" />
-        <feFlood floodColor="#8b5cf6" floodOpacity="0.15" />
+        <feGaussianBlur stdDeviation="2" result="blur" />
+        <feFlood floodColor="#8b5cf6" floodOpacity="0.2" />
         <feComposite in2="blur" operator="in" />
         <feMerge>
           <feMergeNode />
           <feMergeNode in="SourceGraphic" />
         </feMerge>
       </filter>
-      <filter id="cardShadow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="4" />
-        <feOffset dx="0" dy="2" />
+      <filter id="dealShadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="5" />
+        <feOffset dx="0" dy="3" />
         <feComponentTransfer>
-          <feFuncA type="linear" slope="0.2" />
+          <feFuncA type="linear" slope="0.25" />
         </feComponentTransfer>
         <feMerge>
           <feMergeNode />
@@ -148,38 +152,42 @@ const BookIcon: React.FC = () => (
 
     <rect width="200" height="200" fill="url(#bookBg)" />
 
-    <g filter="url(#cardShadow)">
-      <rect x="20" y="30" width="160" height="140" rx="18" fill="url(#glassPanel1)" stroke="#ffffff" strokeWidth="0.5" strokeOpacity="0.1" />
-
-      <rect x="35" y="50" width="50" height="8" rx="4" fill="#6b7280" opacity="0.3" />
-      <rect x="90" y="50" width="35" height="8" rx="4" fill="#6b7280" opacity="0.25" />
-      <rect x="130" y="50" width="35" height="8" rx="4" fill="#8b5cf6" opacity="0.35" filter="url(#softGlow)" />
-
-      <line x1="35" y1="70" x2="165" y2="70" stroke="#ffffff" strokeWidth="0.5" strokeOpacity="0.08" />
-
-      <rect x="35" y="80" width="75" height="6" rx="3" fill="#9ca3af" opacity="0.25" />
-      <rect x="115" y="80" width="30" height="6" rx="3" fill="#7c3aed" opacity="0.3" />
-      <circle cx="157" cy="83" r="4" fill="#8b5cf6" opacity="0.35" />
-
-      <rect x="35" y="98" width="85" height="6" rx="3" fill="#9ca3af" opacity="0.22" />
-      <rect x="125" y="98" width="25" height="6" rx="3" fill="#6366f1" opacity="0.28" />
-      <circle cx="157" cy="101" r="4" fill="#8b5cf6" opacity="0.3" />
-
-      <rect x="35" y="116" width="70" height="6" rx="3" fill="#9ca3af" opacity="0.2" />
-      <rect x="110" y="116" width="35" height="6" rx="3" fill="#8b5cf6" opacity="0.32" />
-      <circle cx="157" cy="119" r="4" fill="#7c3aed" opacity="0.35" />
-
-      <line x1="35" y1="135" x2="165" y2="135" stroke="#ffffff" strokeWidth="0.5" strokeOpacity="0.08" />
+    <g filter="url(#dealShadow)" opacity="0.4">
+      <rect x="15" y="120" width="170" height="65" rx="14" fill="url(#dealCard3)" stroke="#ffffff" strokeWidth="0.4" strokeOpacity="0.08" />
+      <text x="25" y="138" fontSize="8" fill="#9ca3af" opacity="0.6" fontWeight="500">S. Anderson</text>
+      <text x="25" y="152" fontSize="7" fill="#6b7280" opacity="0.5">Term Life Policy</text>
+      <text x="175" y="152" fontSize="9" fill="#8b5cf6" opacity="0.6" textAnchor="end" fontWeight="600">$8,200</text>
+      <text x="175" y="162" fontSize="6" fill="#a78bfa" opacity="0.5" textAnchor="end">Annual</text>
+      <rect x="25" y="167" width="30" height="10" rx="5" fill="#6366f1" opacity="0.2" />
+      <text x="40" y="174" fontSize="6" fill="#818cf8" opacity="0.6" textAnchor="middle">Active</text>
     </g>
 
-    <g filter="url(#cardShadow)">
-      <rect x="35" y="145" width="55" height="18" rx="9" fill="url(#glassPanel2)" stroke="#7c3aed" strokeWidth="0.8" strokeOpacity="0.2" />
-      <text x="62.5" y="157" fontSize="9" fill="#a78bfa" opacity="0.7" textAnchor="middle" fontWeight="500">Metric A</text>
+    <g filter="url(#dealShadow)" opacity="0.6">
+      <rect x="12" y="75" width="176" height="68" rx="15" fill="url(#dealCard2)" stroke="#ffffff" strokeWidth="0.45" strokeOpacity="0.1" />
+      <text x="24" y="94" fontSize="9" fill="#d1d5db" opacity="0.65" fontWeight="500">M. Rodriguez</text>
+      <text x="24" y="109" fontSize="7.5" fill="#9ca3af" opacity="0.6">Whole Life Policy</text>
+      <text x="176" y="109" fontSize="10" fill="#8b5cf6" opacity="0.7" textAnchor="end" fontWeight="600">$12,450</text>
+      <text x="176" y="120" fontSize="6.5" fill="#a78bfa" opacity="0.6" textAnchor="end">Annual</text>
+      <rect x="24" y="124" width="35" height="11" rx="5.5" fill="#7c3aed" opacity="0.25" />
+      <text x="41.5" y="131.5" fontSize="6.5" fill="#a78bfa" opacity="0.7" textAnchor="middle">Pending</text>
     </g>
 
-    <g filter="url(#cardShadow)">
-      <rect x="98" y="145" width="67" height="18" rx="9" fill="url(#glassPanel2)" stroke="#6366f1" strokeWidth="0.8" strokeOpacity="0.2" />
-      <text x="131.5" y="157" fontSize="9" fill="#818cf8" opacity="0.7" textAnchor="middle" fontWeight="500">Data Set</text>
+    <g filter="url(#dealShadow)" opacity="0.95">
+      <rect x="10" y="20" width="180" height="72" rx="16" fill="url(#dealCard1)" stroke="#ffffff" strokeWidth="0.5" strokeOpacity="0.12" />
+      <circle cx="25" cy="40" r="8" fill="#8b5cf6" opacity="0.3" filter="url(#softGlow)" />
+      <text x="25" y="43" fontSize="7" fill="#ffffff" opacity="0.8" textAnchor="middle" fontWeight="700">JD</text>
+
+      <text x="40" y="38" fontSize="10" fill="#f9fafb" opacity="0.75" fontWeight="600">Jennifer Davis</text>
+      <text x="40" y="50" fontSize="8" fill="#d1d5db" opacity="0.65">Universal Life Policy</text>
+
+      <text x="180" y="42" fontSize="12" fill="#8b5cf6" opacity="0.85" textAnchor="end" fontWeight="700" filter="url(#softGlow)">$18,900</text>
+      <text x="180" y="53" fontSize="7" fill="#a78bfa" opacity="0.7" textAnchor="end">Annual Premium</text>
+
+      <rect x="40" y="60" width="38" height="13" rx="6.5" fill="#7c3aed" opacity="0.3" />
+      <text x="59" y="68.5" fontSize="7" fill="#c4b5fd" opacity="0.85" textAnchor="middle" fontWeight="500">In Review</text>
+
+      <rect x="85" y="60" width="25" height="13" rx="6.5" fill="#6366f1" opacity="0.25" />
+      <text x="97.5" y="68.5" fontSize="6.5" fill="#818cf8" opacity="0.75" textAnchor="middle">+New</text>
     </g>
   </svg>
 );
