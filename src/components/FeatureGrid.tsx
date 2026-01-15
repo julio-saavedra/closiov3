@@ -691,44 +691,44 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
 
   const layoutTemplates = {
     0: {
-      artPosition: 'absolute left-0 top-1/2 -translate-y-1/2 w-[200px] h-[200px]',
-      artOpacity: 'opacity-[0.30]',
-      contentPosition: 'absolute right-0 top-1/2 -translate-y-1/2 pr-8',
-      contentMaxWidth: 'max-w-[38%]',
+      artPosition: 'absolute left-0 top-0 bottom-0 w-[40%]',
+      artOpacity: 'opacity-[0.25]',
+      contentPosition: 'absolute right-0 top-0 bottom-0 w-[60%] flex items-center justify-end pr-10',
+      contentMaxWidth: 'max-w-full',
       contentAlign: 'items-end text-right',
-      artGradient: 'after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:via-transparent after:to-black/40',
+      artGradient: '',
     },
     1: {
-      artPosition: 'absolute right-0 top-1/2 -translate-y-1/2 w-[180px] h-[180px]',
-      artOpacity: 'opacity-[0.32]',
-      contentPosition: 'absolute left-0 top-1/2 -translate-y-1/2 pl-8',
-      contentMaxWidth: 'max-w-[42%]',
+      artPosition: 'absolute right-0 top-0 bottom-0 w-[40%]',
+      artOpacity: 'opacity-[0.25]',
+      contentPosition: 'absolute left-0 top-0 bottom-0 w-[60%] flex items-center justify-start pl-10',
+      contentMaxWidth: 'max-w-full',
       contentAlign: 'items-start text-left',
-      artGradient: 'after:absolute after:inset-0 after:bg-gradient-to-l after:from-transparent after:via-transparent after:to-black/40',
+      artGradient: '',
     },
     2: {
-      artPosition: 'absolute bottom-0 left-1/2 -translate-x-1/2 w-[280px] h-[160px]',
-      artOpacity: 'opacity-[0.35]',
-      contentPosition: 'absolute top-0 left-0 right-0 pt-8 px-8',
-      contentMaxWidth: 'max-w-[75%]',
+      artPosition: 'absolute bottom-0 left-0 right-0 h-[45%]',
+      artOpacity: 'opacity-[0.28]',
+      contentPosition: 'absolute top-0 left-0 right-0 h-[55%] flex items-start justify-start pt-10 px-10',
+      contentMaxWidth: 'max-w-[85%]',
       contentAlign: 'items-start text-left',
-      artGradient: 'after:absolute after:inset-0 after:bg-gradient-to-b after:from-transparent after:via-transparent after:to-black/35',
+      artGradient: '',
     },
     3: {
-      artPosition: 'absolute top-0 left-1/2 -translate-x-1/2 w-[240px] h-[140px]',
-      artOpacity: 'opacity-[0.38]',
-      contentPosition: 'absolute bottom-0 left-0 right-0 pb-8 px-8',
-      contentMaxWidth: 'max-w-[80%]',
+      artPosition: 'absolute top-0 left-0 right-0 h-[40%]',
+      artOpacity: 'opacity-[0.30]',
+      contentPosition: 'absolute bottom-0 left-0 right-0 h-[60%] flex items-end justify-start pb-10 px-10',
+      contentMaxWidth: 'max-w-[85%]',
       contentAlign: 'items-start text-left',
-      artGradient: 'after:absolute after:inset-0 after:bg-gradient-to-t after:from-transparent after:via-transparent after:to-white/25',
+      artGradient: '',
     },
     4: {
-      artPosition: 'absolute bottom-0 right-0 w-[200px] h-[200px]',
-      artOpacity: 'opacity-[0.32]',
-      contentPosition: 'absolute top-0 left-0 pt-8 pl-8',
-      contentMaxWidth: 'max-w-[45%]',
+      artPosition: 'absolute bottom-0 right-0 w-[45%] h-[50%]',
+      artOpacity: 'opacity-[0.25]',
+      contentPosition: 'absolute top-0 left-0 right-[45%] bottom-[50%] flex items-start justify-start pt-10 pl-10',
+      contentMaxWidth: 'max-w-full',
       contentAlign: 'items-start text-left',
-      artGradient: 'after:absolute after:inset-0 after:bg-gradient-to-br after:from-transparent after:via-transparent after:to-black/35',
+      artGradient: '',
     },
   };
 
@@ -756,12 +756,12 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
       <GridPattern isDashboard={isDashboard} index={index} />
       <BottomGlow isDashboard={isDashboard} />
 
-      <div className={`${template.artPosition} ${template.artOpacity} z-[1] pointer-events-none flex items-center justify-center relative ${template.artGradient}`}>
-        <Icon className="w-full h-full" />
+      <div className={`${template.artPosition} ${template.artOpacity} z-[1] pointer-events-none flex items-center justify-center`}>
+        <Icon className="w-full h-full object-contain" />
       </div>
 
-      <div className={`${template.contentPosition} z-[2] ${template.contentAlign}`}>
-        <div className={`flex flex-col ${template.contentMaxWidth}`}>
+      <div className={`${template.contentPosition} z-[2]`}>
+        <div className={`flex flex-col ${template.contentMaxWidth} ${template.contentAlign}`}>
           <h3 className={`text-2xl lg:text-3xl font-bold leading-[1.3] mb-4 ${isDashboard ? 'text-gray-900' : 'text-white'}`}>
             {feature.title}
           </h3>
