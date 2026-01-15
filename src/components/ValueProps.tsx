@@ -111,11 +111,19 @@ const ValueProps: React.FC = () => {
           transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="relative">
-            <img
-              src="/image copy copy copy copy.png"
-              alt="Closio Dashboard"
-              className="w-full h-auto rounded-2xl"
-            />
+            <div className="relative opacity-50">
+              <img
+                src="/image copy copy copy copy.png"
+                alt="Closio Dashboard"
+                className="w-full h-auto rounded-2xl"
+              />
+              <div
+                className="absolute inset-0 rounded-2xl pointer-events-none"
+                style={{
+                  background: 'linear-gradient(to bottom, transparent 0%, transparent 60%, black 100%)'
+                }}
+              />
+            </div>
           </div>
         </motion.div>
 
