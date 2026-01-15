@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -23,6 +24,44 @@ const GridPattern: React.FC = () => {
         </defs>
         <rect width="288" height="288" fill="url(#banner-grid-pattern)" />
       </svg>
+    </div>
+  );
+};
+
+const TopGlow: React.FC = () => {
+  const [opacity, setOpacity] = useState(0.6);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setOpacity((prev) => {
+        const newOpacity = prev + 0.015;
+        return newOpacity > 1 ? 0.6 : newOpacity;
+      });
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="absolute top-0 left-0 right-0 h-64 pointer-events-none overflow-hidden">
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-56 blur-3xl transition-opacity duration-100"
+        style={{
+          background: `radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, ${opacity * 0.5}), transparent 70%)`,
+        }}
+      />
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[85%] h-40 blur-2xl transition-opacity duration-100"
+        style={{
+          background: `radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, ${opacity * 0.4}), transparent 70%)`,
+        }}
+      />
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-24 blur-xl transition-opacity duration-100"
+        style={{
+          background: `radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, ${opacity * 0.6}), transparent 70%)`,
+        }}
+      />
     </div>
   );
 };
@@ -78,6 +117,7 @@ const OverlappingBanner: React.FC = () => {
           }}
         />
         <GridPattern />
+        <TopGlow />
         <BottomGlow />
         <div className="relative px-8 py-16 md:py-20 flex flex-col items-center justify-center text-center z-10">
           <motion.h2

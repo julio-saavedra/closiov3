@@ -27,10 +27,10 @@ const PerspectiveGrid3D: React.FC = () => {
     const gridGroup = new THREE.Group();
     scene.add(gridGroup);
 
-    const gridColor = new THREE.Color('#a5b4fc');
-    const horizonGlowColor = new THREE.Color('#8b5cf6');
+    const gridColor = new THREE.Color('#ffffff');
+    const horizonGlowColor = new THREE.Color('#ffffff');
 
-    const gridWidth = 40;
+    const gridWidth = 80;
     const gridDepth = 60;
     const gridSpacing = 1.5;
     const linesX = Math.floor(gridWidth / gridSpacing);
@@ -138,7 +138,8 @@ const PerspectiveGrid3D: React.FC = () => {
           float centerDist = length(vUv - vec2(0.5, 0.5));
           float glow = 1.0 - smoothstep(0.0, 0.6, centerDist);
           float verticalFade = smoothstep(0.0, 0.4, vUv.y);
-          float finalGlow = glow * verticalFade * 0.12;
+          float pulse = sin(time * 2.0) * 0.3 + 0.7;
+          float finalGlow = glow * verticalFade * 0.35 * pulse;
 
           gl_FragColor = vec4(color, finalGlow);
         }
@@ -157,7 +158,7 @@ const PerspectiveGrid3D: React.FC = () => {
       depthWrite: false,
       uniforms: {
         topColor: { value: new THREE.Color('#000000') },
-        bottomColor: { value: new THREE.Color('#1e1b4b') }
+        bottomColor: { value: new THREE.Color('#0a0a0a') }
       },
       vertexShader: `
         varying vec2 vUv;
@@ -235,7 +236,7 @@ const PerspectiveGrid3D: React.FC = () => {
         height: '150vh',
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-indigo-950/30 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-transparent" />
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full block pointer-events-none"
