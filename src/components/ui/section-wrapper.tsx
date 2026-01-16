@@ -48,6 +48,10 @@ export function SectionWrapper({
         delay: animationDelay,
         ease: [0.22, 0.61, 0.36, 1]
       }}
+      style={{
+        transform: 'translateZ(0)',
+        willChange: isVisible ? 'auto' : 'opacity, transform'
+      }}
       className={cn(
         "rounded-3xl overflow-hidden",
         "bg-gradient-to-br from-black via-[#0A0F1A] to-[#1A2428]",

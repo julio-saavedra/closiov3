@@ -33,12 +33,57 @@ html, body {
   width: 100%;
   max-width: 100vw;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
   overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
+}
+
+/* Performance optimizations for smooth scrolling */
+section {
+  contain: layout style;
+  transform: translateZ(0);
+}
+
+/* Optimize framer-motion animations */
+[data-framer-component-type] {
+  transform: translateZ(0);
+  will-change: auto;
+}
+
+/* GPU acceleration for animated elements */
+[class*="motion"] {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reduce layout thrashing during scroll animations */
+[data-scroll-section] {
+  contain: layout paint;
+  content-visibility: auto;
+}
+
+/* Optimize heavy animation sections */
+.rounded-3xl {
+  transform: translateZ(0);
+}
+
+/* Prevent unnecessary repaints on scroll */
+.bg-gradient-to-br,
+.bg-gradient-to-r,
+.bg-gradient-to-t,
+.bg-gradient-to-b {
+  will-change: auto;
+}
+
+/* Optimize fixed elements */
+.fixed {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
