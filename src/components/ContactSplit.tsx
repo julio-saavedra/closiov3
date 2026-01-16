@@ -344,8 +344,89 @@ const ContactSplit = React.memo(() => {
         </div>
       </section>
 
-      <section className="relative bg-black z-10">
+      <section className="relative bg-black z-10 overflow-hidden">
         <div className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full pointer-events-none select-none flex items-center justify-center -mb-20 sm:-mb-24 md:-mb-32" style={{ transform: 'translateY(-20px)' }}>
+          
+          {/* Purple Swooping Light - Left Side */}
+          <motion.div
+            className="absolute left-0 top-1/2 -translate-y-1/2 w-[600px] h-[800px] pointer-events-none"
+            initial={{ opacity: 0, x: -200, rotate: -15 }}
+            whileInView={{ opacity: 1, x: -100, rotate: -20 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div
+              className="absolute inset-0 blur-[100px]"
+              style={{
+                background: 'radial-gradient(ellipse 50% 80% at 80% 30%, rgba(168, 85, 247, 0.4) 0%, rgba(168, 85, 247, 0.25) 30%, transparent 70%)',
+              }}
+            />
+          </motion.div>
+
+          {/* Purple Swooping Light - Right Side */}
+          <motion.div
+            className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[800px] pointer-events-none"
+            initial={{ opacity: 0, x: 200, rotate: 15 }}
+            whileInView={{ opacity: 1, x: -100, rotate: 20 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div
+              className="absolute inset-0 blur-[100px]"
+              style={{
+                background: 'radial-gradient(ellipse 50% 80% at 20% 30%, rgba(168, 85, 247, 0.4) 0%, rgba(168, 85, 247, 0.25) 30%, transparent 70%)',
+              }}
+            />
+          </motion.div>
+
+          {/* Fast-Moving Light Trail - Left Swoop */}
+          <motion.div
+            className="absolute left-[-10%] top-[20%] w-[500px] h-[600px] pointer-events-none"
+            initial={{ opacity: 0, y: -100, x: -100 }}
+            whileInView={{ opacity: [0, 0.8, 0], y: 400, x: -150 }}
+            viewport={{ once: true }}
+            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+          >
+            <div
+              className="absolute inset-0 blur-[80px]"
+              style={{
+                background: 'linear-gradient(180deg, rgba(168, 85, 247, 0.6) 0%, rgba(168, 85, 247, 0.3) 50%, transparent 100%)',
+              }}
+            />
+          </motion.div>
+
+          {/* Fast-Moving Light Trail - Right Swoop */}
+          <motion.div
+            className="absolute right-[-10%] top-[20%] w-[500px] h-[600px] pointer-events-none"
+            initial={{ opacity: 0, y: -100, x: 100 }}
+            whileInView={{ opacity: [0, 0.8, 0], y: 400, x: 150 }}
+            viewport={{ once: true }}
+            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+          >
+            <div
+              className="absolute inset-0 blur-[80px]"
+              style={{
+                background: 'linear-gradient(180deg, rgba(168, 85, 247, 0.6) 0%, rgba(168, 85, 247, 0.3) 50%, transparent 100%)',
+              }}
+            />
+          </motion.div>
+
+          {/* Center Purple Glow Around IO */}
+          <motion.div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] pointer-events-none"
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div
+              className="absolute inset-0 blur-[90px]"
+              style={{
+                background: 'radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, rgba(168, 85, 247, 0.15) 40%, transparent 70%)',
+              }}
+            />
+          </motion.div>
+
           {/* IO on top */}
           <div className="absolute inset-0 z-50">
             <StaticIO3D />

@@ -79,9 +79,9 @@ const Footer: React.FC = () => {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="flex-1 px-4 py-3 sm:py-2 bg-white/10 border border-white/20 rounded-xl sm:rounded-l-xl sm:rounded-r-none focus:border-[#2C66FF] focus:ring-2 focus:ring-[#2C66FF]/20 outline-none transition-all text-sm min-h-[44px]"
+                  className="flex-1 px-4 py-3 sm:py-2 bg-white/10 border border-white/20 rounded-xl sm:rounded-l-xl sm:rounded-r-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 outline-none transition-all text-sm min-h-[44px]"
                 />
-                <button className="px-4 py-3 sm:py-2 bg-gradient-to-r from-[#2C66FF] to-[#2B4FB3] rounded-xl sm:rounded-l-none sm:rounded-r-xl hover:scale-105 transition-all text-sm min-h-[44px]">
+                <button className="px-4 py-3 sm:py-2 bg-gradient-to-r from-purple-500 to-white text-black rounded-xl sm:rounded-l-none sm:rounded-r-xl hover:scale-105 transition-all text-sm min-h-[44px]">
                   Subscribe
                 </button>
               </div>
@@ -95,7 +95,7 @@ const Footer: React.FC = () => {
                   aria-label={social.label}
                   target={social.href.startsWith('http') ? '_blank' : undefined}
                   rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="px-3 py-2 bg-white/10 rounded-xl hover:bg-[#2C66FF] transition-all hover:scale-110 text-xs min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  className="px-3 py-2 bg-white/10 rounded-xl hover:bg-purple-500/80 transition-all hover:scale-110 text-xs min-h-[44px] min-w-[44px] flex items-center justify-center"
                 >
                   {social.label}
                 </a>
@@ -144,7 +144,7 @@ const Footer: React.FC = () => {
             </div>
             <button
               onClick={scrollToTop}
-              className="w-11 h-11 bg-white/10 hover:bg-[#2C66FF] rounded-xl flex items-center justify-center transition-all hover:scale-110 text-xl min-w-[44px] min-h-[44px]"
+              className="w-11 h-11 bg-white/10 hover:bg-purple-500/80 rounded-xl flex items-center justify-center transition-all hover:scale-110 text-xl min-w-[44px] min-h-[44px]"
               aria-label="Back to top"
             >
               ↑

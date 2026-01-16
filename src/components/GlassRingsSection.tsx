@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import ShieldIO from './ShieldIO';
 import { DottedSurface } from './ui/dotted-surface';
@@ -15,7 +15,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay = 0, classN
   const [isTyping, setIsTyping] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '0px 0px -50px 0px', amount: 0.1 });
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -15% 0px' });
 
   useEffect(() => {
     if (isInView && !hasStarted) {
@@ -54,7 +54,6 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay = 0, classN
 };
 
 const GlassRingsSection = () => {
-  const [line1Complete, setLine1Complete] = useState(false);
 
   const featureItems = [
     {
@@ -91,8 +90,33 @@ const GlassRingsSection = () => {
 
   return (
     <section className="relative py-16 sm:py-20 md:py-24 lg:py-36 pb-32 sm:pb-40 md:pb-48 lg:pb-56 bg-black overflow-hidden min-h-screen">
+      {/* Top Decorative Line with Fade - Purple to White */}
+      <div className="absolute top-0 left-0 right-0 flex justify-center pointer-events-none z-20">
+        <div className="w-full max-w-6xl px-8">
+          <div 
+            className="h-[2px]"
+            style={{
+              background: 'linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.6) 20%, rgba(255, 255, 255, 0.8) 50%, rgba(168, 85, 247, 0.6) 80%, transparent 100%)'
+            }}
+          />
+        </div>
+      </div>
+      
       <DottedSurface className="opacity-40" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Badge above shield */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.0 }}
+          className="text-center mb-8"
+        >
+          <span className="text-white/80 text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase">
+            SECURE & RELIABLE PLATFORM
+          </span>
+        </motion.div>
+
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-12 items-start">
 
           {/* Shield IO - First on mobile, center on desktop */}
@@ -104,34 +128,17 @@ const GlassRingsSection = () => {
 
           {/* Text content - Second on mobile, first on desktop */}
           <div className="relative z-10 space-y-6 text-center lg:text-left order-2 lg:order-1">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.0 }}
-              className="flex justify-center lg:justify-start"
-            >
-              <span className="text-white/80 text-[10px] sm:text-xs font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">
-                Secure & Reliable Platform
-              </span>
-            </motion.div>
 
             <div className="space-y-2">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight">
                 <span className="block text-white min-h-[1.2em]">
-                  <TypewriterText
-                    text="Built by Experts"
-                    delay={300}
-                    onComplete={() => setLine1Complete(true)}
-                  />
+                  Built by Experts
                 </span>
                 <span className="block text-white/70 min-h-[1.2em]">
-                  {line1Complete && (
-                    <TypewriterText
-                      text="Built for You"
-                      delay={100}
-                    />
-                  )}
+                  <TypewriterText
+                    text="Built for You"
+                    delay={300}
+                  />
                 </span>
               </h2>
             </div>
@@ -143,8 +150,7 @@ const GlassRingsSection = () => {
               transition={{ duration: 1.2, delay: 0.3 }}
               className="text-sm sm:text-base text-white/50 leading-relaxed max-w-md mx-auto lg:mx-0"
             >
-              CLOSIO is powered by a dedicated team of industry professionals committed to delivering
-              enterprise-grade security and continuous innovation. Your data and success are our top priorities.
+              Enterprise-grade security and continuous innovation from industry professionals. Your data and success are our priority.
             </motion.p>
           </div>
 
@@ -157,25 +163,18 @@ const GlassRingsSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.0, delay: 0.4 + index * 0.1 }}
-                className="group relative"
+                className="group relative flex items-start gap-3 sm:gap-4"
               >
-                <div className="relative p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.04] to-transparent backdrop-blur-sm overflow-hidden transition-all duration-300 hover:border-white/15 hover:bg-white/[0.06]">
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute top-0 left-0 w-24 h-24 bg-white/[0.03] rounded-full blur-2xl -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                  <div className="relative flex items-start gap-3 sm:gap-4">
-                    <div className="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center border border-white/10 text-white/70 group-hover:text-white group-hover:border-white/20 transition-all duration-300">
-                      {item.icon}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-white font-semibold text-sm sm:text-base mb-0.5 sm:mb-1 group-hover:text-white transition-colors">
-                        {item.title}
-                      </h3>
-                      <p className="text-white/40 text-xs sm:text-sm leading-relaxed group-hover:text-white/50 transition-colors">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
+                <div className="flex-shrink-0 text-white/70 group-hover:text-white transition-colors">
+                  {item.icon}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-white font-semibold text-sm sm:text-base mb-0.5 sm:mb-1 group-hover:text-white transition-colors">
+                    / {item.title}
+                  </h3>
+                  <p className="text-white/40 text-xs sm:text-sm leading-relaxed group-hover:text-white/50 transition-colors">
+                    {item.description}
+                  </p>
                 </div>
               </motion.div>
             ))}

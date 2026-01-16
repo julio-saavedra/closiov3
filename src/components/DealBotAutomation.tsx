@@ -44,7 +44,7 @@ function Field({
 
 export default function DealBotAutomation() {
   const wrapRef = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(wrapRef, { once: true, margin: "-100px" });
+  const isInView = useInView(wrapRef, { once: true, margin: "0px 0px -20% 0px" });
 
   const formCardRef = useRef<HTMLDivElement | null>(null);
   const postBtnRef = useRef<HTMLButtonElement | null>(null);

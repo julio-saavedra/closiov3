@@ -1,24 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 interface Testimonial {
-  quoteBefore: string;
-  highlight: string;
-  quoteAfter: string;
-  role: string;
+  text: string;
 }
 
 const testimonials: Testimonial[] = [
   {
-    quoteBefore: "We're not spreadsheet experts, but",
-    highlight: "Closio is so intuitive and powerful",
-    quoteAfter: "— it lets us focus on what matters most: our clients and commissions.",
-    role: "Agency Director, Premier Life Insurance"
+    text: "Finally, a tool that understands how we work. Our team productivity doubled in the first month. The visibility into our pipeline changed everything."
   },
   {
-    quoteBefore: "Finally, a tool that understands how we work.",
-    highlight: "Our team productivity doubled",
-    quoteAfter: "in the first month. The visibility into our pipeline changed everything.",
-    role: "Regional Manager, Pacific Insurance Group"
+    text: "We're not spreadsheet experts, but Closio is so intuitive and powerful — it lets us focus on what matters most: our clients and commissions."
+  },
+  {
+    text: "The automation alone saves us 15+ hours a week. Deal Bot handles the busy work so we can focus on closing deals."
+  },
+  {
+    text: "Real-time insights into our pipeline performance have transformed how we coach our team. The results speak for themselves."
+  },
+  {
+    text: "Onboarding was seamless. Our entire team was up and running in less than a day. Best investment we've made this year."
+  },
+  {
+    text: "We've tried multiple CRMs, but Closio actually fits how insurance agencies operate. It's like it was built by people who get our business."
   }
 ];
 
@@ -36,7 +39,7 @@ const TypewriterText: React.FC<{ text: string }> = ({ text }) => {
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.2, rootMargin: '0px 0px -15% 0px' }
     );
 
     if (elementRef.current) {
@@ -75,71 +78,123 @@ const TypewriterText: React.FC<{ text: string }> = ({ text }) => {
 const TestimonialSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [direction, setDirection] = useState(1);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
+    const interval = setInterval(() => {
+      setDirection(1);
+      setActiveIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
 
-      const rect = sectionRef.current.getBoundingClientRect();
-      const sectionHeight = rect.height;
-      const viewportHeight = window.innerHeight;
-      const scrollProgress = (viewportHeight - rect.top) / (viewportHeight + sectionHeight);
-      const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
-      const newIndex = Math.min(
-        testimonials.length - 1,
-        Math.floor(clampedProgress * testimonials.length)
-      );
+    return () => clearInterval(interval);
+  }, []);
 
-      if (newIndex !== activeIndex) {
-        setIsTransitioning(true);
-        setTimeout(() => {
-          setActiveIndex(newIndex);
-          setTimeout(() => setIsTransitioning(false), 50);
-        }, 150);
-      }
-    };
+  const getPrevIndex = (index: number) => (index - 1 + testimonials.length) % testimonials.length;
+  const getNextIndex = (index: number) => (index + 1) % testimonials.length;
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [activeIndex]);
-
-  const current = testimonials[activeIndex];
+  const prevIndex = getPrevIndex(activeIndex);
+  const nextIndex = getNextIndex(activeIndex);
 
   return (
-    <section ref={sectionRef} className="relative py-12 sm:py-14 lg:py-16">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+    <section ref={sectionRef} className="relative py-12 sm:py-14 lg:py-16 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <TypewriterText text="Testimonials" />
-        <div className="bg-black rounded-3xl p-6 sm:p-8 lg:p-10 text-center">
-          <div className="mb-6">
-            <img
-              src="/closio_main_logo.png"
-              alt="Closio"
-              className="h-14 mx-auto"
-            />
+        
+        <div className="relative h-[400px] flex items-center justify-center">
+          {/* Left Blurred Card */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[280px] opacity-40 blur-[3px] pointer-events-none hidden lg:block">
+            <div className="bg-gradient-to-b from-white/5 via-white/5 to-transparent rounded-3xl p-6 border border-white/10">
+              <div className="mb-4">
+                <img
+                  src="/closio_main_logo.png"
+                  alt="Closio"
+                  className="h-10 mx-auto opacity-50"
+                />
+              </div>
+              <blockquote>
+                <p className="text-base text-slate-400 line-clamp-4">
+                  "{testimonials[prevIndex].text}"
+                </p>
+              </blockquote>
+            </div>
           </div>
 
-          <blockquote className="mb-8 min-h-[120px] sm:min-h-[100px] flex items-center justify-center">
-            <p
-              className={`text-xl sm:text-2xl lg:text-3xl leading-[1.5] text-slate-200 transition-all duration-300 ${
-                isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
-              }`}
-            >
-              "{current.quoteBefore} <span className="text-white font-semibold">{current.highlight}</span> {current.quoteAfter}"
-            </p>
-          </blockquote>
+          {/* Center Main Card */}
+          <div className="relative z-10 w-full max-w-3xl mx-auto px-4">
+            <div className="bg-black rounded-3xl p-6 sm:p-8 lg:p-10 text-center border border-white/10 shadow-2xl">
+              {/* Fixed Logo - doesn't animate */}
+              <div className="mb-6">
+                <img
+                  src="/closio_main_logo.png"
+                  alt="Closio"
+                  className="h-14 mx-auto"
+                />
+              </div>
 
-          <div
-            className={`flex flex-col items-center transition-all duration-300 ${
-              isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'
-            }`}
-          >
-            <p className="text-slate-300 text-sm">{current.role}</p>
+              {/* Animated Testimonial Content */}
+              <div className="relative overflow-hidden">
+                <blockquote className="min-h-[180px] flex items-center justify-center">
+                  <p
+                    key={activeIndex}
+                    className="text-xl sm:text-2xl lg:text-3xl leading-[1.5] text-slate-200 animate-[slideIn_0.6s_ease-out]"
+                  >
+                    "{testimonials[activeIndex].text}"
+                  </p>
+                </blockquote>
+              </div>
+
+              {/* Progress dots - fixed position */}
+              <div className="flex justify-center gap-2 mt-6">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setDirection(index > activeIndex ? 1 : -1);
+                      setActiveIndex(index);
+                    }}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === activeIndex 
+                        ? 'w-8 bg-gradient-to-r from-purple-500 to-white' 
+                        : 'w-2 bg-white/20 hover:bg-white/40'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Blurred Card */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[280px] opacity-40 blur-[3px] pointer-events-none hidden lg:block">
+            <div className="bg-gradient-to-b from-white/5 via-white/5 to-transparent rounded-3xl p-6 border border-white/10">
+              <div className="mb-4">
+                <img
+                  src="/closio_main_logo.png"
+                  alt="Closio"
+                  className="h-10 mx-auto opacity-50"
+                />
+              </div>
+              <blockquote>
+                <p className="text-base text-slate-400 line-clamp-4">
+                  "{testimonials[nextIndex].text}"
+                </p>
+              </blockquote>
+            </div>
           </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(${direction > 0 ? '30px' : '-30px'});
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      `}</style>
     </section>
   );
 };

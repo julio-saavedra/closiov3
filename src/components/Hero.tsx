@@ -132,13 +132,16 @@ const Hero: React.FC = () => {
       className="min-h-screen w-full text-white flex items-center relative bg-black"
       style={{ overflow: 'visible' }}
     >
-      <motion.div style={{ opacity, scale }} className="absolute inset-0">
+      <motion.div 
+        style={{ opacity, scale, willChange: 'opacity, transform' }} 
+        className="absolute inset-0"
+      >
         <PerspectiveGrid3D />
         <HeroBackground3D />
       </motion.div>
 
       <motion.div
-        style={{ opacity }}
+        style={{ opacity, willChange: 'opacity' }}
         className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-30 py-32 lg:py-0"
       >
         <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl lg:max-w-2xl">
@@ -150,7 +153,7 @@ const Hero: React.FC = () => {
           >
             CLOS
             <motion.span
-              className="inline-block text-[0.85em] italic text-[#6ad4f2]"
+              className="inline-block text-[0.85em] italic text-[#a855f7]"
               initial={{ opacity: 0, y: 15, scale: 0.5 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 2.4, delay: 3.8, ease: [0.16, 1, 0.3, 1] }}

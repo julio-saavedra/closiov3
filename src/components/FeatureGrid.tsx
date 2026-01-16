@@ -13,7 +13,7 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({ text, delay = 0, classN
   const [isTyping, setIsTyping] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -15% 0px' });
 
   useEffect(() => {
     if (isInView && !hasStarted) {
@@ -114,25 +114,30 @@ const BookIcon: React.FC = () => {
   const [count2, setCount2] = useState(0);
   const [count3, setCount3] = useState(0);
   const svgRef = useRef<SVGSVGElement>(null);
-  const isInView = useInView(svgRef, { once: true, margin: '-100px' });
+  const isInView = useInView(svgRef, { once: true, margin: '0px 0px -15% 0px' });
 
   useEffect(() => {
     if (isInView && !animated) {
       setAnimated(true);
       
+      // Store interval IDs so they can be cleaned up
+      let interval1: NodeJS.Timeout | null = null;
+      let interval2: NodeJS.Timeout | null = null;
+      let interval3: NodeJS.Timeout | null = null;
+      
       // Small delay before starting
-      setTimeout(() => {
+      const timeoutId = setTimeout(() => {
         // Animate first number to 4,100
         const duration1 = 2500;
         const steps1 = 80;
         const increment1 = 4100 / steps1;
         let current1 = 0;
         
-        const interval1 = setInterval(() => {
+        interval1 = setInterval(() => {
           current1 += increment1;
           if (current1 >= 4100) {
             setCount1(4100);
-            clearInterval(interval1);
+            if (interval1) clearInterval(interval1);
           } else {
             setCount1(Math.floor(current1));
           }
@@ -144,11 +149,11 @@ const BookIcon: React.FC = () => {
         const increment2 = 6225 / steps2;
         let current2 = 0;
         
-        const interval2 = setInterval(() => {
+        interval2 = setInterval(() => {
           current2 += increment2;
           if (current2 >= 6225) {
             setCount2(6225);
-            clearInterval(interval2);
+            if (interval2) clearInterval(interval2);
           } else {
             setCount2(Math.floor(current2));
           }
@@ -160,22 +165,24 @@ const BookIcon: React.FC = () => {
         const increment3 = 9450 / steps3;
         let current3 = 0;
         
-        const interval3 = setInterval(() => {
+        interval3 = setInterval(() => {
           current3 += increment3;
           if (current3 >= 9450) {
             setCount3(9450);
-            clearInterval(interval3);
+            if (interval3) clearInterval(interval3);
           } else {
             setCount3(Math.floor(current3));
           }
         }, duration3 / steps3);
-
-        return () => {
-          clearInterval(interval1);
-          clearInterval(interval2);
-          clearInterval(interval3);
-        };
       }, 200);
+
+      // Proper cleanup function returned from useEffect
+      return () => {
+        clearTimeout(timeoutId);
+        if (interval1) clearInterval(interval1);
+        if (interval2) clearInterval(interval2);
+        if (interval3) clearInterval(interval3);
+      };
     }
   }, [isInView, animated]);
 
@@ -754,11 +761,11 @@ const MedalsIcon: React.FC = () => (
       
       {/* Name & info */}
       <text x="65" y="44" fontSize="8" fill="#e9d5ff" opacity="0.85" fontWeight="600">Sarah Mitchell</text>
-      <text x="65" y="54" fontSize="6" fill="#c4b5fd" opacity="0.65">142 policies closed</text>
+      <text x="65" y="54" fontSize="6" fill="#c4b5fd" opacity="0.65">Weekly performance</text>
       
       {/* Sales amount */}
-      <text x="195" y="46" fontSize="12" fill="#c4b5fd" opacity="0.9" textAnchor="end" fontWeight="700">$487K</text>
-      <text x="195" y="55" fontSize="5.5" fill="#a78bfa" opacity="0.65" textAnchor="end">Q4 2025</text>
+      <text x="195" y="46" fontSize="12" fill="#c4b5fd" opacity="0.9" textAnchor="end" fontWeight="700">$28K</text>
+      <text x="195" y="55" fontSize="5.5" fill="#a78bfa" opacity="0.65" textAnchor="end">AP This Week</text>
     </g>
 
     {/* 2nd Place - Mike Chen */}
@@ -775,11 +782,11 @@ const MedalsIcon: React.FC = () => (
       
       {/* Name & info */}
       <text x="59" y="90" fontSize="7.5" fill="#ddd6fe" opacity="0.8" fontWeight="600">Mike Chen</text>
-      <text x="59" y="99" fontSize="5.5" fill="#c4b5fd" opacity="0.6">118 policies closed</text>
+      <text x="59" y="99" fontSize="5.5" fill="#c4b5fd" opacity="0.6">Weekly performance</text>
       
       {/* Sales amount */}
-      <text x="195" y="93" fontSize="11" fill="#c4b5fd" opacity="0.85" textAnchor="end" fontWeight="700">$392K</text>
-      <text x="195" y="101" fontSize="5" fill="#a78bfa" opacity="0.6" textAnchor="end">Q4 2025</text>
+      <text x="195" y="93" fontSize="11" fill="#c4b5fd" opacity="0.85" textAnchor="end" fontWeight="700">$22K</text>
+      <text x="195" y="101" fontSize="5" fill="#a78bfa" opacity="0.6" textAnchor="end">AP This Week</text>
     </g>
 
     {/* 3rd Place - Jessica Torres */}
@@ -796,11 +803,11 @@ const MedalsIcon: React.FC = () => (
       
       {/* Name & info */}
       <text x="55" y="134" fontSize="7" fill="#e5e7eb" opacity="0.75" fontWeight="600">Jessica Torres</text>
-      <text x="55" y="142" fontSize="5" fill="#d1d5db" opacity="0.6">97 policies closed</text>
+      <text x="55" y="142" fontSize="5" fill="#d1d5db" opacity="0.6">Weekly performance</text>
       
       {/* Sales amount */}
-      <text x="195" y="137" fontSize="10" fill="#d1d5db" opacity="0.8" textAnchor="end" fontWeight="700">$328K</text>
-      <text x="195" y="144" fontSize="4.5" fill="#9ca3af" opacity="0.55" textAnchor="end">Q4 2025</text>
+      <text x="195" y="137" fontSize="10" fill="#d1d5db" opacity="0.8" textAnchor="end" fontWeight="700">$17K</text>
+      <text x="195" y="144" fontSize="4.5" fill="#9ca3af" opacity="0.55" textAnchor="end">AP This Week</text>
     </g>
 
     {/* 4th Place - David Park */}
@@ -817,11 +824,11 @@ const MedalsIcon: React.FC = () => (
       
       {/* Name & info */}
       <text x="52" y="174" fontSize="6.5" fill="#d1d5db" opacity="0.7" fontWeight="600">David Park</text>
-      <text x="52" y="182" fontSize="4.5" fill="#9ca3af" opacity="0.55">84 policies closed</text>
+      <text x="52" y="182" fontSize="4.5" fill="#9ca3af" opacity="0.55">Weekly performance</text>
       
       {/* Sales amount */}
-      <text x="195" y="177" fontSize="9" fill="#9ca3af" opacity="0.75" textAnchor="end" fontWeight="700">$275K</text>
-      <text x="195" y="184" fontSize="4" fill="#6b7280" opacity="0.5" textAnchor="end">Q4 2025</text>
+      <text x="195" y="177" fontSize="9" fill="#9ca3af" opacity="0.75" textAnchor="end" fontWeight="700">$13K</text>
+      <text x="195" y="184" fontSize="4" fill="#6b7280" opacity="0.5" textAnchor="end">AP This Week</text>
     </g>
   </svg>
 );
@@ -849,7 +856,8 @@ const HorizontalLine: React.FC = () => {
         style={{
           overflow: 'visible',
           translateY,
-          opacity
+          opacity,
+          willChange: 'transform, opacity'
         }}
       >
         <motion.path
@@ -950,7 +958,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({ feature, index, gridArea }) =
     <motion.div
       initial={{ opacity: 0, scale: 0.92, y: 18 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
+      viewport={{ once: true, margin: '0px 0px -15% 0px' }}
       transition={{
         duration: 1.15,
         delay: staggerDelay,
@@ -1030,7 +1038,7 @@ const FeatureGrid: React.FC = () => {
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
+            viewport={{ once: true, margin: '0px 0px -15% 0px' }}
             transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
             className="relative overflow-visible"
             style={{

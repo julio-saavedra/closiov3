@@ -33,6 +33,7 @@ function HoverFooter() {
     {
       title: "Resources",
       links: [
+        { label: "Pricing", href: "/pricing" },
         { label: "FAQs", href: "/faqs" },
         { label: "Contact Us", href: "/contact" },
         { label: "Schedule a Demo", href: "/schedule" },
@@ -42,17 +43,17 @@ function HoverFooter() {
 
   const socialLinks = [
     {
-      icon: <TwitterIcon size={18} className="text-[#6ad4f2]" />,
+      icon: <TwitterIcon size={18} className="text-white" />,
       text: "Twitter",
       href: "https://twitter.com/closio",
     },
     {
-      icon: <InstagramIcon size={18} className="text-[#6ad4f2]" />,
+      icon: <InstagramIcon size={18} className="text-white" />,
       text: "Instagram",
       href: "https://www.instagram.com/closio.app",
     },
     {
-      icon: <FacebookIcon size={18} className="text-[#6ad4f2]" />,
+      icon: <FacebookIcon size={18} className="text-white" />,
       text: "Facebook",
       href: "https://www.facebook.com/profile.php?id=61572677682460",
     },
@@ -60,49 +61,6 @@ function HoverFooter() {
 
   return (
     <footer className="bg-black relative h-fit border-t border-white/5">
-      {/* Blue light black hole effect around logo area - extends upward into section above */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-50">
-        {/* Outer ring - widest glow - extends well above footer */}
-        <div className="absolute top-[-400px] left-[-50px] sm:left-[20px] lg:left-[50px]">
-          <div
-            className="w-[600px] sm:w-[750px] md:w-[900px] h-[500px] sm:h-[600px] md:h-[700px] rounded-full blur-[130px]"
-            style={{
-              background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.18) 0%, rgba(106, 212, 242, 0.25) 10%, rgba(106, 212, 242, 0.2) 22%, rgba(106, 212, 242, 0.12) 40%, rgba(0, 0, 0, 0.1) 60%, transparent 75%)',
-            }}
-          />
-        </div>
-        
-        {/* Middle ring - concentrated glow - extends into section above */}
-        <div className="absolute top-[-300px] left-[0px] sm:left-[50px] lg:left-[80px]">
-          <div
-            className="w-[450px] sm:w-[550px] md:w-[650px] h-[400px] sm:h-[500px] md:h-[600px] rounded-full blur-[100px]"
-            style={{
-              background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.3) 0%, rgba(106, 212, 242, 0.38) 8%, rgba(106, 212, 242, 0.28) 20%, rgba(106, 212, 242, 0.16) 38%, rgba(0, 0, 0, 0.15) 58%, transparent 70%)',
-            }}
-          />
-        </div>
-        
-        {/* Inner bright core - black hole center */}
-        <div className="absolute top-[-200px] left-[30px] sm:left-[80px] lg:left-[110px]">
-          <div
-            className="w-[320px] sm:w-[400px] md:w-[480px] h-[320px] sm:h-[400px] md:h-[480px] rounded-full blur-[80px]"
-            style={{
-              background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.42) 0%, rgba(106, 212, 242, 0.48) 6%, rgba(106, 212, 242, 0.35) 18%, rgba(106, 212, 242, 0.2) 35%, rgba(0, 0, 0, 0.2) 55%, transparent 68%)',
-            }}
-          />
-        </div>
-        
-        {/* Intense center glow - right around "IO" */}
-        <div className="absolute top-[-100px] left-[50px] sm:left-[100px] lg:left-[130px]">
-          <div
-            className="w-[240px] sm:w-[300px] md:w-[360px] h-[250px] sm:h-[300px] md:h-[350px] rounded-full blur-[60px]"
-            style={{
-              background: 'radial-gradient(ellipse at center, rgba(106, 212, 242, 0.5) 0%, rgba(106, 212, 242, 0.55) 4%, rgba(106, 212, 242, 0.4) 16%, rgba(106, 212, 242, 0.22) 32%, rgba(0, 0, 0, 0.25) 52%, transparent 62%)',
-            }}
-          />
-        </div>
-      </div>
-
       <div 
         className="max-w-7xl mx-auto px-6 sm:px-8 md:px-10 lg:px-14 py-16 sm:py-20 md:py-24 z-40 relative"
       >
@@ -119,7 +77,7 @@ function HoverFooter() {
               />
             </Link>
             <p className="text-sm leading-relaxed text-gray-400">
-              The CRM built for life insurance agencies.
+              Built by insurance professionals, for insurance professionals. Track every deal, commission, and win—automatically.
             </p>
           </div>
 
@@ -134,7 +92,7 @@ function HoverFooter() {
                   <Link
                     to={link.href}
                     onClick={() => window.scrollTo(0, 0)}
-                    className="text-gray-400 hover:text-[#6ad4f2] transition-colors inline-block"
+                    className="text-gray-400 hover:text-white transition-colors inline-block"
                   >
                     {link.label}
                   </Link>
@@ -154,7 +112,7 @@ function HoverFooter() {
                   <Link
                     to={link.href}
                     onClick={() => window.scrollTo(0, 0)}
-                    className="text-gray-400 hover:text-[#6ad4f2] transition-colors inline-block"
+                    className="text-gray-400 hover:text-white transition-colors inline-block"
                   >
                     {link.label}
                   </Link>
@@ -174,7 +132,7 @@ function HoverFooter() {
                   {item.icon}
                   <a
                     href={item.href}
-                    className="text-gray-400 hover:text-[#6ad4f2] transition-colors"
+                    className="text-gray-400 hover:text-white transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

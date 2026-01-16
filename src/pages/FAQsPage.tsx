@@ -129,7 +129,7 @@ const FAQsPage = () => {
                 onClick={() => setActiveCategory(category)}
                 className={`px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                   activeCategory === category
-                    ? 'bg-[#6ad4f2] text-black shadow-lg shadow-[#6ad4f2]/20'
+                    ? 'bg-gradient-to-r from-purple-500 to-white text-black shadow-lg shadow-purple-500/20'
                     : 'bg-gradient-to-br from-white/[0.07] to-white/[0.03] text-white/70 hover:text-white border border-white/[0.08] hover:border-white/20 hover:from-white/[0.12] hover:to-white/[0.05] backdrop-blur-sm'
                 }`}
               >
@@ -147,7 +147,7 @@ const FAQsPage = () => {
                 transition={{ duration: 0.3, delay: index * 0.03 }}
                 className="group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#6ad4f2]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 rounded-2xl blur-xl transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 rounded-2xl blur-xl transition-opacity duration-500" />
                 <div className="relative bg-gradient-to-br from-white/[0.06] to-white/[0.02] backdrop-blur-md rounded-2xl border border-white/[0.08] overflow-hidden hover:border-white/20 transition-all duration-300">
                   <button
                     onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -159,8 +159,8 @@ const FAQsPage = () => {
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="flex-shrink-0"
                     >
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6ad4f2]/20 to-[#6ad4f2]/5 flex items-center justify-center border border-[#6ad4f2]/20">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-[#6ad4f2]">
+                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500/20 to-purple-500/5 flex items-center justify-center border border-purple-500/20">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-purple-400">
                           <path d="M6 9l6 6 6-6"/>
                         </svg>
                       </div>
@@ -192,9 +192,9 @@ const FAQsPage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-20 relative group"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-[#6ad4f2]/20 via-[#6ad4f2]/10 to-transparent rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-            <div className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.03] backdrop-blur-xl rounded-3xl p-10 border border-[#6ad4f2]/20 overflow-hidden">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#6ad4f2]/10 rounded-full blur-3xl" />
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-purple-500/10 to-transparent rounded-3xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+            <div className="relative bg-gradient-to-br from-white/[0.08] to-white/[0.03] backdrop-blur-xl rounded-3xl p-10 border border-purple-500/20 overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
               <div className="relative z-10">
                 <h3 className="text-3xl font-bold mb-4 text-white">Still have questions?</h3>
                 <p className="text-white/60 text-lg mb-8 max-w-2xl">
@@ -203,7 +203,7 @@ const FAQsPage = () => {
                 <Link
                   to="/contact"
                   onClick={() => window.scrollTo(0, 0)}
-                  className="inline-flex items-center gap-3 bg-[#6ad4f2] text-black font-semibold px-8 py-4 rounded-xl hover:bg-[#6ad4f2]/90 transition-all duration-300 shadow-lg shadow-[#6ad4f2]/20 hover:shadow-xl hover:shadow-[#6ad4f2]/30 hover:scale-105"
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-white text-black font-semibold px-8 py-4 rounded-xl hover:opacity-90 transition-all duration-300 shadow-lg shadow-purple-500/20 hover:shadow-xl hover:shadow-purple-500/30 hover:scale-105"
                 >
                   Contact Support
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

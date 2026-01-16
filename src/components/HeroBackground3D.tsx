@@ -42,28 +42,29 @@ const HeroBackground3D: React.FC = () => {
     rim.position.set(-2.0, 2.2, -2.8);
     scene.add(rim);
 
-    const accentLight1 = new THREE.PointLight(0x35E7E0, 2.0, 15);
+    const accentLight1 = new THREE.PointLight(0x8b45d6, 1.5, 15);
     accentLight1.position.set(3, 1, 3);
     scene.add(accentLight1);
 
-    const accentLight2 = new THREE.PointLight(0x6ad4f2, 1.5, 15);
+    const accentLight2 = new THREE.PointLight(0x8b45d6, 1.2, 15);
     accentLight2.position.set(-3, -1, 2);
     scene.add(accentLight2);
 
     const TEAL = new THREE.Color("#6ad4f2");
+    const PURPLE = new THREE.Color("#8b45d6");
     const WHITE = new THREE.Color("#F5F5F5");
 
     function solidMaterial(baseColor: THREE.Color, emissiveIntensity = 0.2, rough = 0.35) {
       return new THREE.MeshPhysicalMaterial({
         color: baseColor,
-        metalness: 0.05,
+        metalness: 0.02,
         roughness: rough,
         transmission: 0,
         transparent: false,
-        clearcoat: 0.3,
-        clearcoatRoughness: 0.2,
-        envMapIntensity: 0.8,
-        specularIntensity: 0.5,
+        clearcoat: 0.15,
+        clearcoatRoughness: 0.4,
+        envMapIntensity: 0.6,
+        specularIntensity: 0.3,
         emissive: baseColor,
         emissiveIntensity
       });
@@ -71,7 +72,7 @@ const HeroBackground3D: React.FC = () => {
 
     const hero3D = new THREE.Group();
     scene.add(hero3D);
-    hero3D.position.set(2.5, 0.0, 0.0);
+    hero3D.position.set(2.2, 0.0, 0.0);
 
     function createItalicHollowI({
       width = 0.38,
@@ -217,15 +218,15 @@ const HeroBackground3D: React.FC = () => {
     io.position.set(0, 0.0, 0.0);
     hero3D.add(io);
 
-    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.25 }), solidMaterial(TEAL, 0.35, 0.3));
-    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }), solidMaterial(WHITE, 0.15, 0.35));
+    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.25 }), solidMaterial(PURPLE, 0.18, 0.55));
+    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }), solidMaterial(WHITE, 0.12, 0.45));
 
     const shadowMaterial = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color("#000000"),
       metalness: 0.0,
       roughness: 1.0,
       transparent: true,
-      opacity: 0.92,
+      opacity: 0.95,
       envMapIntensity: 0.0,
     });
 
@@ -239,7 +240,7 @@ const HeroBackground3D: React.FC = () => {
       metalness: 0.0,
       roughness: 1.0,
       transparent: true,
-      opacity: 0.88,
+      opacity: 0.92,
       envMapIntensity: 0.0,
     });
 
@@ -253,7 +254,7 @@ const HeroBackground3D: React.FC = () => {
       metalness: 0.0,
       roughness: 1.0,
       transparent: true,
-      opacity: 0.75,
+      opacity: 0.82,
       envMapIntensity: 0.0,
     });
 
@@ -267,7 +268,7 @@ const HeroBackground3D: React.FC = () => {
       metalness: 0.0,
       roughness: 1.0,
       transparent: true,
-      opacity: 0.7,
+      opacity: 0.78,
       envMapIntensity: 0.0,
     });
 
@@ -335,7 +336,7 @@ const HeroBackground3D: React.FC = () => {
       camera.updateProjectionMatrix();
 
       const mobile = w < 900;
-      hero3D.position.x = mobile ? 0 : 2.5;
+      hero3D.position.x = mobile ? 0 : 2.2;
       hero3D.scale.setScalar(mobile ? 0.9 : 1.65);
     }
 
@@ -409,13 +410,13 @@ const HeroBackground3D: React.FC = () => {
         hover = isHover;
 
         gsap.to(iMesh.material, {
-          emissiveIntensity: hover ? 0.5 : 0.35,
+          emissiveIntensity: hover ? 0.28 : 0.18,
           duration: 0.4,
           ease: "power2.out"
         });
 
         gsap.to(oMesh.material, {
-          emissiveIntensity: hover ? 0.25 : 0.15,
+          emissiveIntensity: hover ? 0.18 : 0.12,
           duration: 0.4,
           ease: "power2.out"
         });

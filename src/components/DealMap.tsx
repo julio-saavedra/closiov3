@@ -155,7 +155,7 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
 
 export default function DealMap() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: false, margin: '-100px' });
+  const isInView = useInView(sectionRef, { once: true, margin: '0px 0px -20% 0px' });
   const navigate = useNavigate();
 
   const leftFacts = [benefits[0], benefits[1]];
@@ -316,26 +316,26 @@ export default function DealMap() {
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none">
                     <div
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-28 blur-3xl"
+                      className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-full h-28 blur-3xl"
                       style={{
-                        background: 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.5), transparent 70%)',
+                        background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.35), transparent 70%)',
                       }}
                     />
                     <div
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-20 blur-2xl"
+                      className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[85%] h-20 blur-2xl"
                       style={{
-                        background: 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.4), transparent 70%)',
+                        background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.25), transparent 70%)',
                       }}
                     />
                     <div
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-12 blur-xl"
+                      className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[60%] h-12 blur-xl"
                       style={{
-                        background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.3), transparent 70%)',
+                        background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.2), transparent 70%)',
                       }}
                     />
                   </div>
                   <div className="relative p-7 z-10">
-                    <span className="text-[#6ad4f2] text-sm font-medium tracking-wider mb-2.5 block">{fact.number}</span>
+                    <span className="bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent text-sm font-medium tracking-wider mb-2.5 block">{fact.number}</span>
                     <h4 className="font-semibold text-white text-lg mb-2">
                       <TypewriterText text={fact.title} delay={titleDelay} isVisible={isInView} />
                     </h4>
@@ -434,26 +434,26 @@ export default function DealMap() {
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none">
                     <div
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-28 blur-3xl"
+                      className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-full h-28 blur-3xl"
                       style={{
-                        background: 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.5), transparent 70%)',
+                        background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.35), transparent 70%)',
                       }}
                     />
                     <div
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-20 blur-2xl"
+                      className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[85%] h-20 blur-2xl"
                       style={{
-                        background: 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.4), transparent 70%)',
+                        background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.25), transparent 70%)',
                       }}
                     />
                     <div
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-12 blur-xl"
+                      className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[60%] h-12 blur-xl"
                       style={{
-                        background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.3), transparent 70%)',
+                        background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.2), transparent 70%)',
                       }}
                     />
                   </div>
                   <div className="relative p-7 z-10">
-                    <span className="text-[#6ad4f2] text-sm font-medium tracking-wider mb-2.5 block">{fact.number}</span>
+                    <span className="bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent text-sm font-medium tracking-wider mb-2.5 block">{fact.number}</span>
                     <h4 className="font-semibold text-white text-lg mb-2">
                       <TypewriterText text={fact.title} delay={titleDelay} isVisible={isInView} />
                     </h4>
@@ -536,26 +536,26 @@ export default function DealMap() {
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none">
                 <div
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-20 blur-2xl"
+                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-full h-20 blur-2xl"
                   style={{
-                    background: 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.5), transparent 70%)',
+                    background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.35), transparent 70%)',
                   }}
                 />
                 <div
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[85%] h-16 blur-xl"
+                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[85%] h-16 blur-xl"
                   style={{
-                    background: 'radial-gradient(ellipse at 50% 100%, rgba(106, 212, 242, 0.4), transparent 70%)',
+                    background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.25), transparent 70%)',
                   }}
                 />
                 <div
-                  className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-10 blur-lg"
+                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[60%] h-10 blur-lg"
                   style={{
-                    background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.3), transparent 70%)',
+                    background: 'radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.2), transparent 70%)',
                   }}
                 />
               </div>
               <div className="relative p-6 z-10">
-                <span className="text-[#6ad4f2] text-xs font-medium tracking-wider mb-2 block">{benefit.number}</span>
+                <span className="bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent text-xs font-medium tracking-wider mb-2 block">{benefit.number}</span>
                 <h4 className="font-semibold text-white text-base mb-1.5">{benefit.title}</h4>
                 <p className="text-sm text-white/60">{benefit.description}</p>
               </div>

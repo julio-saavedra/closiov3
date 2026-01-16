@@ -27,7 +27,7 @@ const TermsConditions = () => {
 
           <div className="space-y-10">
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">1. Acceptance of Terms</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">1. Acceptance of Terms</h2>
               <div className="text-white/70 leading-relaxed space-y-3">
                 <p>By creating an account or using the Service, you confirm that:</p>
                 <ul className="list-disc pl-6 space-y-2">
@@ -40,7 +40,7 @@ const TermsConditions = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">2. Description of Service</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">2. Description of Service</h2>
               <div className="text-white/70 leading-relaxed space-y-3">
                 <p>Closio provides a cloud-based CRM software platform.</p>
                 <p>Closio does not:</p>
@@ -54,7 +54,7 @@ const TermsConditions = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">3. Account Responsibilities</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">3. Account Responsibilities</h2>
               <div className="text-white/70 leading-relaxed space-y-3">
                 <p>You are responsible for:</p>
                 <ul className="list-disc pl-6 space-y-2">
@@ -72,7 +72,7 @@ const TermsConditions = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">4. Data & Content</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">4. Data & Content</h2>
               <div className="text-white/70 leading-relaxed space-y-3">
                 <ul className="list-disc pl-6 space-y-2">
                   <li>You retain full ownership of your data</li>
@@ -83,7 +83,7 @@ const TermsConditions = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">5. Fees & Billing (If Applicable)</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">5. Fees & Billing (If Applicable)</h2>
               <div className="text-white/70 leading-relaxed space-y-3">
                 <p>If subscription fees apply:</p>
                 <ul className="list-disc pl-6 space-y-2">
@@ -95,7 +95,7 @@ const TermsConditions = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">6. Service Availability</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">6. Service Availability</h2>
               <div className="text-white/70 leading-relaxed space-y-3">
                 <p>Closio strives for reliable uptime but does not guarantee uninterrupted access.</p>
                 <p>We may:</p>
@@ -108,7 +108,7 @@ const TermsConditions = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">7. Termination</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">7. Termination</h2>
               <div className="text-white/70 leading-relaxed space-y-3">
                 <p>Closio may suspend or terminate access if:</p>
                 <ul className="list-disc pl-6 space-y-2">
@@ -121,7 +121,7 @@ const TermsConditions = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">8. Disclaimers</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">8. Disclaimers</h2>
               <div className="text-white/70 leading-relaxed space-y-3">
                 <p>The Service is provided "as is" and "as available."</p>
                 <p>Closio disclaims all warranties, including:</p>
@@ -134,7 +134,7 @@ const TermsConditions = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">9. Limitation of Liability</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">9. Limitation of Liability</h2>
               <div className="text-white/70 leading-relaxed space-y-3">
                 <p>To the maximum extent permitted by law:</p>
                 <ul className="list-disc pl-6 space-y-2">
@@ -145,7 +145,7 @@ const TermsConditions = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">10. Indemnification</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">10. Indemnification</h2>
               <div className="text-white/70 leading-relaxed space-y-3">
                 <p>You agree to indemnify and hold harmless Closio from any claims arising from:</p>
                 <ul className="list-disc pl-6 space-y-2">
@@ -157,21 +157,21 @@ const TermsConditions = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">11. Governing Law</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">11. Governing Law</h2>
               <p className="text-white/70 leading-relaxed">
                 These Terms are governed by the laws of the State of New York, without regard to conflict of law principles.
               </p>
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">12. Changes to Terms</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">12. Changes to Terms</h2>
               <p className="text-white/70 leading-relaxed">
                 Closio may update these Terms from time to time. Continued use of the Service constitutes acceptance of the updated Terms.
               </p>
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">13. Contact Information</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">13. Contact Information</h2>
               <div className="text-white/70 leading-relaxed space-y-2">
                 <p className="font-medium">Closio</p>
                 <p>New York, New York</p>

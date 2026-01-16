@@ -18,6 +18,7 @@ import TermsConditions from './pages/TermsConditions';
 import FAQsPage from './pages/FAQsPage';
 import ContactUs from './pages/ContactUs';
 import Schedule from './pages/Schedule';
+import Pricing from './pages/Pricing';
 import TestimonialSection from './components/TestimonialSection';
 import GlassRingsSection from './components/GlassRingsSection';
 import SplashScreen from './components/SplashScreen';
@@ -25,6 +26,7 @@ import OverlappingBanner from './components/OverlappingBanner';
 import ScrollToTop from './components/ScrollToTop';
 import IntegratedFeaturesFlow from './components/IntegratedFeaturesFlow';
 import CookieBanner from './components/CookieBanner';
+import PricingSection from './components/PricingSection';
 
 function HomePage() {
   return (
@@ -72,6 +74,8 @@ function HomePage() {
           <TestimonialSection />
         </SectionWrapper>
 
+        <PricingSection />
+
         <FeatureShowcase />
 
         <SectionWrapper className="!overflow-visible !bg-black !bg-none">
@@ -101,6 +105,7 @@ function App() {
           <Route path="/faqs" element={<FAQsPage />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/schedule" element={<Schedule />} />
+          <Route path="/pricing" element={<Pricing />} />
         </Routes>
         <CookieBanner />
       </div>

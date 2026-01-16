@@ -61,7 +61,7 @@ const AdditionalFeatures: React.FC = () => {
               y1="8"
               x2="40"
               y2="40"
-              stroke="rgba(255, 255, 255, 0.15)"
+              stroke="rgba(168, 85, 247, 0.4)"
               strokeWidth="2"
               strokeLinecap="round"
             />
@@ -70,7 +70,7 @@ const AdditionalFeatures: React.FC = () => {
               y1="8"
               x2="8"
               y2="40"
-              stroke="rgba(255, 255, 255, 0.15)"
+              stroke="rgba(168, 85, 247, 0.4)"
               strokeWidth="2"
               strokeLinecap="round"
             />
@@ -94,7 +94,7 @@ const AdditionalFeatures: React.FC = () => {
               y1="8"
               x2="40"
               y2="40"
-              stroke="rgba(255, 255, 255, 0.15)"
+              stroke="rgba(168, 85, 247, 0.4)"
               strokeWidth="2"
               strokeLinecap="round"
             />
@@ -103,7 +103,7 @@ const AdditionalFeatures: React.FC = () => {
               y1="8"
               x2="8"
               y2="40"
-              stroke="rgba(255, 255, 255, 0.15)"
+              stroke="rgba(168, 85, 247, 0.4)"
               strokeWidth="2"
               strokeLinecap="round"
             />
@@ -155,7 +155,7 @@ const AdditionalFeatures: React.FC = () => {
             <motion.h2
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, margin: '0px 0px -15% 0px' }}
               transition={{ 
                 duration: 1.2, 
                 ease: [0.25, 0.1, 0.25, 1],
@@ -167,6 +167,7 @@ const AdditionalFeatures: React.FC = () => {
                 lineHeight: 1.25,
                 fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                 letterSpacing: '-0.02em',
+                willChange: 'color',
               }}
             >
               The platform starts here but doesn't stop
@@ -174,7 +175,7 @@ const AdditionalFeatures: React.FC = () => {
             <motion.p
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, margin: '0px 0px -15% 0px' }}
               transition={{ 
                 duration: 1.2, 
                 ease: [0.25, 0.1, 0.25, 1],
@@ -186,6 +187,7 @@ const AdditionalFeatures: React.FC = () => {
                 lineHeight: 1.25,
                 fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                 letterSpacing: '-0.02em',
+                willChange: 'color',
               }}
             >
               More advanced features below

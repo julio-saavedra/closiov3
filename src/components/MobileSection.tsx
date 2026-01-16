@@ -12,7 +12,7 @@ const Robot3DContainer: React.FC = () => {
 
 const TypewriterText: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -20% 0px' });
   const [displayedText, setDisplayedText] = useState('');
   const fullText = '/ Experience the power,\nMobile friendly';
 

@@ -170,45 +170,17 @@ const ShieldIO = () => {
         />
       </g>
 
-      {/* IO Text - centered in shield */}
-      <g transform="translate(200, 250)">
-        {/* "I" - outlined/stroked italic style like header */}
-        <g filter="url(#whiteGlow)">
-          <text
-            x="-52"
-            y="5"
-            fontSize="140"
-            fontFamily="Arial, sans-serif"
-            fontStyle="italic"
-            fontWeight="700"
-            fill="none"
-            stroke="#ffffff"
-            strokeWidth="8"
-            opacity="0.95"
-            textAnchor="middle"
-          >
-            I
-          </text>
-        </g>
-
-        {/* "O" - white filled (not hollow) */}
-        <g filter="url(#whiteGlow)">
-          <text
-            x="48"
-            y="5"
-            fontSize="140"
-            fontFamily="Arial, sans-serif"
-            fontWeight="700"
-            fill="#ffffff"
-            stroke="#ffffff"
-            strokeWidth="4"
-            opacity="0.95"
-            textAnchor="middle"
-          >
-            O
-          </text>
-        </g>
-      </g>
+      {/* Logo - centered in shield */}
+      <foreignObject x="100" y="180" width="200" height="120">
+        <div className="flex items-center justify-center w-full h-full">
+          <img
+            src="/favicon_and_logo_for_closio.png"
+            alt="Closio"
+            className="w-auto h-24"
+            style={{ filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.6))' }}
+          />
+        </div>
+      </foreignObject>
     </motion.svg>
   );
 };

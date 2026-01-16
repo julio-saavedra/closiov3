@@ -158,8 +158,17 @@ const PoweredBySection: React.FC = () => {
               <div className="text-sm font-semibold tracking-[0.25em] text-gray-300/90 uppercase">
                 Powered By Closio
               </div>
-              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
-                / Core Features
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+                <span className="text-gray-400">/ Core </span>
+                <motion.span
+                  initial={{ backgroundImage: 'linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255))' }}
+                  whileInView={{ backgroundImage: 'linear-gradient(to right, rgb(168, 85, 247), rgb(255, 255, 255))' }}
+                  viewport={{ once: true, margin: '0px 0px -15% 0px' }}
+                  transition={{ duration: 1.2, ease: 'easeOut' }}
+                  className="bg-clip-text text-transparent"
+                >
+                  Features
+                </motion.span>
               </div>
             </motion.div>
           </div>

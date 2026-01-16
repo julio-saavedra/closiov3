@@ -101,7 +101,7 @@ const Schedule = () => {
           </p>
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 text-[#6ad4f2] hover:text-[#6ad4f2]/80 transition-colors text-sm font-medium"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent hover:opacity-80 transition-opacity text-sm font-medium"
           >
             Contact our team
             <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4">

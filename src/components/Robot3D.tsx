@@ -94,9 +94,19 @@ const Robot3D = () => {
       reflectivity: 0.88,
     });
 
+    const purpleMetal = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color('#a855f7'),
+      metalness: 0.88,
+      roughness: 0.2,
+      clearcoat: 0.85,
+      clearcoatRoughness: 0.1,
+      envMapIntensity: 1.6,
+      reflectivity: 0.88,
+    });
+
     const eyeGlowL = new THREE.MeshStandardMaterial({
       color: new THREE.Color('#FFFFFF'),
-      emissive: new THREE.Color('#6ad4f2'),
+      emissive: new THREE.Color('#a855f7'),
       emissiveIntensity: 1.25,
       transparent: true,
       opacity: 0.28,
@@ -287,7 +297,7 @@ const Robot3D = () => {
       return g;
     };
 
-    const iMesh = new THREE.Mesh(createItalicHollowI(), tealMetal);
+    const iMesh = new THREE.Mesh(createItalicHollowI(), purpleMetal);
     const oMesh = new THREE.Mesh(createHollowO(), whiteMetalBright);
 
     iMesh.position.set(-0.5, 0.0, 0.0);

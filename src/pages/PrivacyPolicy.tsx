@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
 
           <div className="space-y-10">
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">1. Information We Collect</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">1. Information We Collect</h2>
               <p className="text-white/70 leading-relaxed mb-4">
                 We collect only the information necessary to operate and provide the Service.
               </p>
@@ -59,7 +59,7 @@ const PrivacyPolicy = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">2. How We Use Information</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">2. How We Use Information</h2>
               <p className="text-white/70 leading-relaxed mb-4">
                 We use collected information solely to:
               </p>
@@ -76,7 +76,7 @@ const PrivacyPolicy = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">3. Data Storage & Security</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">3. Data Storage & Security</h2>
               <ul className="list-disc list-inside text-white/70 leading-relaxed space-y-2 mb-4">
                 <li>All data is securely stored using Amazon Web Services (AWS)</li>
                 <li>Industry-standard security measures are used, including access controls and encryption where applicable</li>
@@ -88,7 +88,7 @@ const PrivacyPolicy = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">4. Data Sharing & Disclosure</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">4. Data Sharing & Disclosure</h2>
               <p className="text-white/70 leading-relaxed mb-4">
                 Closio does not:
               </p>
@@ -109,7 +109,7 @@ const PrivacyPolicy = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">5. Data Ownership</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">5. Data Ownership</h2>
               <p className="text-white/70 leading-relaxed mb-4">
                 All data uploaded into Closio remains the property of the customer.
               </p>
@@ -119,7 +119,7 @@ const PrivacyPolicy = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">6. Data Retention</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">6. Data Retention</h2>
               <p className="text-white/70 leading-relaxed mb-4">
                 We retain user data only for as long as:
               </p>
@@ -133,7 +133,7 @@ const PrivacyPolicy = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">7. Cookies & Tracking</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">7. Cookies & Tracking</h2>
               <p className="text-white/70 leading-relaxed mb-4">
                 Closio uses minimal cookies necessary for:
               </p>
@@ -147,21 +147,21 @@ const PrivacyPolicy = () => {
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">8. Children's Privacy</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">8. Children's Privacy</h2>
               <p className="text-white/70 leading-relaxed">
                 Closio is not intended for individuals under the age of 18. We do not knowingly collect data from minors.
               </p>
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">9. Changes to This Policy</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">9. Changes to This Policy</h2>
               <p className="text-white/70 leading-relaxed">
                 We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised "Last Updated" date.
               </p>
             </section>
 
             <section className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">10. Contact Information</h2>
+              <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">10. Contact Information</h2>
               <p className="text-white/70 leading-relaxed mb-4">
                 If you have questions about this Privacy Policy, contact us at:
               </p>

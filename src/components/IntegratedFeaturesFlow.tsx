@@ -30,7 +30,7 @@ const features = [
 
 export default function IntegratedFeaturesFlow() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
+  const isInView = useInView(sectionRef, { once: true, margin: "0px 0px -15% 0px" });
 
   return (
     <section ref={sectionRef} className="relative w-full bg-black pt-24 pb-24 sm:pt-32 sm:pb-32 lg:pt-48 lg:pb-48">
@@ -49,48 +49,6 @@ export default function IntegratedFeaturesFlow() {
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
 
         <div className="relative mx-auto mt-2 flex min-h-[500px] sm:min-h-[600px] lg:h-[720px] w-full max-w-full lg:max-w-[900px] items-center justify-center">
-
-          {/* Left Dashboard Photo - Hidden on mobile */}
-          <motion.div
-            initial={{ opacity: 0.3, x: -30, rotateZ: -35 }}
-            animate={isInView ? { opacity: 1, x: 0, rotateZ: -35 } : { opacity: 0.3, x: -30, rotateZ: -35 }}
-            transition={{ duration: 1.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden lg:block absolute left-[-180px] top-[120px] w-[380px] h-[200px] rounded-[28px] overflow-hidden border border-white/[0.08]"
-            style={{
-              transformStyle: 'preserve-3d',
-              boxShadow: '0 12px 48px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.8)'
-            }}
-          >
-            <img
-              src="/image.png"
-              alt="Dashboard Preview"
-              className="w-full h-full object-cover object-left"
-              style={{ opacity: 0.85 }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/80 to-black/90" />
-            <div className="absolute inset-0 bg-black/50" />
-          </motion.div>
-
-          {/* Right Dashboard Photo - Hidden on mobile */}
-          <motion.div
-            initial={{ opacity: 0.3, x: 30, rotateZ: 35 }}
-            animate={isInView ? { opacity: 1, x: 0, rotateZ: 35 } : { opacity: 0.3, x: 30, rotateZ: 35 }}
-            transition={{ duration: 1.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden lg:block absolute right-[-180px] top-[120px] w-[380px] h-[200px] rounded-[28px] overflow-hidden border border-white/[0.08]"
-            style={{
-              transformStyle: 'preserve-3d',
-              boxShadow: '0 12px 48px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.8)'
-            }}
-          >
-            <img
-              src="/image copy.png"
-              alt="Dashboard Preview"
-              className="w-full h-full object-cover"
-              style={{ opacity: 0.85 }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-bl from-black/70 via-black/80 to-black/90" />
-            <div className="absolute inset-0 bg-black/50" />
-          </motion.div>
 
           <div className="absolute left-1/2 top-[10px] sm:top-[20px] lg:top-[30px] lg:left-[calc(50%-210px)] -translate-x-1/2 scale-[0.65] sm:scale-[0.8] lg:scale-100" style={{ perspective: '1200px' }}>
             {/* Panel 2 - with unfold animation */}
@@ -204,8 +162,52 @@ export default function IntegratedFeaturesFlow() {
               <div className="absolute bottom-0 left-0 right-0 h-14 sm:h-16 lg:h-20 bg-gradient-to-t from-black/[0.25] to-transparent" />
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.3] to-transparent" />
               <div className="absolute inset-0 rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] ring-1 ring-inset ring-white/[0.1]" />
-              <div className="absolute inset-0 flex items-center justify-center px-4">
-                <span className="text-base sm:text-xl lg:text-2xl font-semibold text-white/95 whitespace-nowrap tracking-tight">Core Dashboard</span>
+              <div className="absolute inset-0 flex flex-col p-3 sm:p-4 lg:p-5">
+                {/* Dashboard Header with IO Logo */}
+                <div className="flex items-center justify-between mb-2 sm:mb-3">
+                  <div className="flex items-center gap-1.5 sm:gap-2">
+                    {/* IO Logo */}
+                    <img
+                      src="/favicon_and_logo_for_closio.png"
+                      alt="Closio"
+                      className="w-auto h-4 sm:h-5 lg:h-6"
+                      draggable={false}
+                    />
+                    <span className="text-[10px] sm:text-xs lg:text-sm font-semibold text-white/95">CLOSIO</span>
+                  </div>
+                  <div className="flex gap-1">
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/30" />
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/30" />
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white/30" />
+                  </div>
+                </div>
+
+                {/* Stats Grid */}
+                <div className="grid grid-cols-3 gap-1.5 sm:gap-2 lg:gap-3 mb-2 sm:mb-3">
+                  <div className="bg-white/5 backdrop-blur-sm rounded-lg sm:rounded-xl p-1.5 sm:p-2 lg:p-3 border border-white/10">
+                    <div className="text-[8px] sm:text-[10px] lg:text-xs text-white/60 mb-0.5 sm:mb-1">Active Deals</div>
+                    <div className="text-xs sm:text-sm lg:text-lg font-bold text-white/95">247</div>
+                  </div>
+                  <div className="bg-white/5 backdrop-blur-sm rounded-lg sm:rounded-xl p-1.5 sm:p-2 lg:p-3 border border-white/10">
+                    <div className="text-[8px] sm:text-[10px] lg:text-xs text-white/60 mb-0.5 sm:mb-1">Revenue</div>
+                    <div className="text-xs sm:text-sm lg:text-lg font-bold text-white/95">$1.2M</div>
+                  </div>
+                  <div className="bg-white/5 backdrop-blur-sm rounded-lg sm:rounded-xl p-1.5 sm:p-2 lg:p-3 border border-white/10">
+                    <div className="text-[8px] sm:text-[10px] lg:text-xs text-white/60 mb-0.5 sm:mb-1">Team</div>
+                    <div className="text-xs sm:text-sm lg:text-lg font-bold text-white/95">42</div>
+                  </div>
+                </div>
+
+                {/* Chart Representation */}
+                <div className="flex-1 bg-white/5 backdrop-blur-sm rounded-lg sm:rounded-xl p-1.5 sm:p-2 lg:p-3 border border-white/10 flex items-end gap-0.5 sm:gap-1">
+                  <div className="flex-1 bg-gradient-to-t from-purple-500/80 to-purple-400/40 rounded-sm" style={{ height: '40%' }} />
+                  <div className="flex-1 bg-gradient-to-t from-purple-500/80 to-purple-400/40 rounded-sm" style={{ height: '65%' }} />
+                  <div className="flex-1 bg-gradient-to-t from-purple-500/80 to-purple-400/40 rounded-sm" style={{ height: '85%' }} />
+                  <div className="flex-1 bg-gradient-to-t from-purple-500/80 to-purple-400/40 rounded-sm" style={{ height: '70%' }} />
+                  <div className="flex-1 bg-gradient-to-t from-purple-500/80 to-purple-400/40 rounded-sm" style={{ height: '95%' }} />
+                  <div className="flex-1 bg-gradient-to-t from-purple-500/80 to-purple-400/40 rounded-sm" style={{ height: '75%' }} />
+                  <div className="flex-1 bg-gradient-to-t from-purple-500/80 to-purple-400/40 rounded-sm" style={{ height: '60%' }} />
+                </div>
               </div>
             </motion.div>
 
@@ -228,17 +230,18 @@ export default function IntegratedFeaturesFlow() {
           >
             <defs>
               <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="rgba(255,255,255,0.4)" />
-                <stop offset="100%" stopColor="rgba(255,255,255,0.15)" />
+                <stop offset="0%" stopColor="rgba(168, 85, 247, 0.7)" />
+                <stop offset="50%" stopColor="rgba(255, 255, 255, 0.5)" />
+                <stop offset="100%" stopColor="rgba(168, 85, 247, 0.3)" />
               </linearGradient>
               <filter id="blurGlow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="5" result="blur" />
+                <feGaussianBlur stdDeviation="4" result="blur" />
                 <feComponentTransfer>
                   <feFuncA type="linear" slope="1.5" />
                 </feComponentTransfer>
               </filter>
               <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="3" />
+                <feGaussianBlur stdDeviation="2" />
               </filter>
             </defs>
 
@@ -247,8 +250,8 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M435 238 L435 420"
                 stroke="url(#lineGradient)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
+                strokeWidth="3"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.6, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -256,8 +259,8 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M435 420 C435 465, 240 485, 75 520"
                 stroke="url(#lineGradient)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
+                strokeWidth="3"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.3, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
@@ -265,8 +268,8 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M435 420 C435 460, 370 480, 225 520"
                 stroke="url(#lineGradient)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
+                strokeWidth="3"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.3, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
@@ -274,8 +277,8 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M435 420 C435 455, 410 475, 375 520"
                 stroke="url(#lineGradient)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
+                strokeWidth="3"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.3, delay: 0.95, ease: [0.22, 1, 0.36, 1] }}
@@ -283,8 +286,8 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M435 420 C435 455, 490 475, 525 520"
                 stroke="url(#lineGradient)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
+                strokeWidth="3"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.3, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
@@ -292,8 +295,8 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M435 420 C435 460, 530 480, 675 520"
                 stroke="url(#lineGradient)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
+                strokeWidth="3"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.3, delay: 1.05, ease: [0.22, 1, 0.36, 1] }}
@@ -301,8 +304,8 @@ export default function IntegratedFeaturesFlow() {
               <motion.path
                 d="M435 420 C435 465, 660 485, 825 520"
                 stroke="url(#lineGradient)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
+                strokeWidth="3"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.3, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
@@ -310,66 +313,66 @@ export default function IntegratedFeaturesFlow() {
             </g>
 
             {/* Glow effect layer */}
-            <g opacity="0.6" filter="url(#blurGlow)">
+            <g opacity="0.5" filter="url(#blurGlow)">
               <motion.path
                 d="M435 238 L435 420"
-                stroke="rgba(255,255,255,0.35)"
-                strokeWidth="6"
-                strokeLinecap="round"
+                stroke="rgba(168, 85, 247, 0.4)"
+                strokeWidth="5"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.6, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
               />
               <motion.path
                 d="M435 420 C435 465, 240 485, 75 520"
-                stroke="rgba(255,255,255,0.25)"
-                strokeWidth="6"
-                strokeLinecap="round"
+                stroke="rgba(168, 85, 247, 0.3)"
+                strokeWidth="5"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.3, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
               />
               <motion.path
                 d="M435 420 C435 460, 370 480, 225 520"
-                stroke="rgba(255,255,255,0.25)"
-                strokeWidth="6"
-                strokeLinecap="round"
+                stroke="rgba(168, 85, 247, 0.3)"
+                strokeWidth="5"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.3, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
               />
               <motion.path
                 d="M435 420 C435 455, 410 475, 375 520"
-                stroke="rgba(255,255,255,0.25)"
-                strokeWidth="6"
-                strokeLinecap="round"
+                stroke="rgba(168, 85, 247, 0.3)"
+                strokeWidth="5"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.3, delay: 0.95, ease: [0.22, 1, 0.36, 1] }}
               />
               <motion.path
                 d="M435 420 C435 455, 490 475, 525 520"
-                stroke="rgba(255,255,255,0.25)"
-                strokeWidth="6"
-                strokeLinecap="round"
+                stroke="rgba(168, 85, 247, 0.3)"
+                strokeWidth="5"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.3, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
               />
               <motion.path
                 d="M435 420 C435 460, 530 480, 675 520"
-                stroke="rgba(255,255,255,0.25)"
-                strokeWidth="6"
-                strokeLinecap="round"
+                stroke="rgba(168, 85, 247, 0.3)"
+                strokeWidth="5"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.3, delay: 1.05, ease: [0.22, 1, 0.36, 1] }}
               />
               <motion.path
                 d="M435 420 C435 465, 660 485, 825 520"
-                stroke="rgba(255,255,255,0.25)"
-                strokeWidth="6"
-                strokeLinecap="round"
+                stroke="rgba(168, 85, 247, 0.3)"
+                strokeWidth="5"
+                strokeLinecap="butt"
                 initial={{ pathLength: 0 }}
                 animate={isInView ? { pathLength: 1 } : { pathLength: 0 }}
                 transition={{ duration: 1.3, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}

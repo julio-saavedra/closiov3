@@ -74,14 +74,14 @@ const ContactUs = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
             >
-              <h2 className="text-2xl font-semibold mb-6 text-[#6ad4f2]">Get in Touch</h2>
+              <h2 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">Get in Touch</h2>
 
               <div className="space-y-6">
                 <div>
                   <h3 className="text-lg font-medium mb-2">Email Support</h3>
                   <a
                     href="mailto:support@closio.com"
-                    className="text-[#6ad4f2] hover:text-[#6ad4f2]/80 transition-colors text-lg"
+                    className="bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent hover:opacity-80 transition-opacity text-lg"
                   >
                     support@closio.com
                   </a>
@@ -117,7 +117,7 @@ const ContactUs = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
             >
-              <h2 className="text-2xl font-semibold mb-6 text-[#6ad4f2]">Send a Message</h2>
+              <h2 className="text-2xl font-semibold mb-6 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">Send a Message</h2>
 
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
@@ -131,7 +131,7 @@ const ContactUs = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-[#6ad4f2] transition-colors text-white"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 transition-colors text-white"
                     placeholder="Your name"
                   />
                 </div>
@@ -147,7 +147,7 @@ const ContactUs = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-[#6ad4f2] transition-colors text-white"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 transition-colors text-white"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -162,7 +162,7 @@ const ContactUs = () => {
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-[#6ad4f2] transition-colors text-white"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 transition-colors text-white"
                     placeholder="How can we help?"
                   />
                 </div>
@@ -178,7 +178,7 @@ const ContactUs = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-[#6ad4f2] transition-colors text-white resize-none"
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-purple-500 transition-colors text-white resize-none"
                     placeholder="Tell us more about your inquiry..."
                   />
                 </div>
@@ -202,7 +202,7 @@ const ContactUs = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 px-6 bg-[#6ad4f2] text-black font-semibold rounded-xl hover:bg-[#6ad4f2]/90 hover:shadow-lg hover:shadow-[#6ad4f2]/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3 px-6 bg-gradient-to-r from-purple-500 to-white text-black font-semibold rounded-xl hover:opacity-90 hover:shadow-lg hover:shadow-purple-500/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
@@ -216,14 +216,14 @@ const ContactUs = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 text-center"
           >
-            <h2 className="text-2xl font-semibold mb-4 text-[#6ad4f2]">Frequently Asked Questions</h2>
+            <h2 className="text-2xl font-semibold mb-4 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent">Frequently Asked Questions</h2>
             <p className="text-white/70 mb-4">
               Before reaching out, you might find your answer in our FAQ section.
             </p>
             <Link
               to="/faqs"
               onClick={() => window.scrollTo(0, 0)}
-              className="inline-block px-6 py-2 border border-[#6ad4f2] text-[#6ad4f2] rounded-xl hover:bg-[#6ad4f2]/10 transition-colors"
+              className="inline-block px-6 py-2 border border-purple-500 bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent rounded-xl hover:bg-purple-500/10 transition-colors"
             >
               Visit FAQs
             </Link>

@@ -227,6 +227,22 @@ const Navbar: React.FC<NavbarProps> = () => {
                 );
               })}
 
+              <Link
+                to="/pricing"
+                onClick={() => window.scrollTo(0, 0)}
+                className={`nav-underline-glow font-medium inline-flex items-center h-8 ${
+                  location.pathname === '/pricing'
+                    ? 'text-white is-active'
+                    : 'text-white/80 hover:text-white'
+                }`}
+                style={{
+                  fontSize: isScrolled ? '14px' : '15px',
+                  transition: 'font-size 700ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms ease'
+                }}
+              >
+                Pricing
+              </Link>
+
               <div
                 className="relative flex items-center h-8"
                 ref={resourcesDropdownRef}
@@ -419,6 +435,18 @@ const Navbar: React.FC<NavbarProps> = () => {
                   {item.label}
                 </button>
               ))}
+
+              <Link
+                to="/pricing"
+                onClick={() => { setMobileMenuOpen(false); window.scrollTo(0, 0); }}
+                className={`w-full block text-left px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                  location.pathname === '/pricing'
+                    ? 'bg-white/20 text-white'
+                    : 'text-gray-300 hover:bg-white/5 hover:text-white'
+                }`}
+              >
+                Pricing
+              </Link>
 
               <div className="pt-3 mt-3 border-t border-white/10">
                 <div className="px-4 py-2 text-xs font-semibold text-white/40 uppercase tracking-wider">
