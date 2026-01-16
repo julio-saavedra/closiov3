@@ -3,18 +3,19 @@ import Lenis from 'lenis';
 
 export const useSmoothScroll = () => {
   useEffect(() => {
-    // Initialize Lenis smooth scroll with smooth, non-glitchy settings
+    // Initialize Lenis smooth scroll with buttery smooth, slower scroll settings
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.5,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.0,
+      wheelMultiplier: 0.7,
       smoothTouch: false,
-      touchMultiplier: 2.0,
+      touchMultiplier: 1.8,
       infinite: false,
       syncTouch: false,
+      lerp: 0.08,
     });
 
     // Expose Lenis instance globally for Framer Motion integration
