@@ -247,8 +247,8 @@ const ContactSplit = React.memo(() => {
                       <p className="text-white/90 mt-2 text-base drop-shadow-sm">We'll be in touch soon.</p>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="max-w-lg mr-8 -ml-2">
-                      <div className="flex items-center bg-white/10 backdrop-blur-md border-2 border-purple-500/40 rounded-xl overflow-hidden shadow-lg focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/30 transition-all">
+                    <form onSubmit={handleSubmit} className="max-w-md mr-12 -ml-2">
+                      <div className="flex items-center bg-white/10 backdrop-blur-md border-2 border-purple-500/40 rounded-xl shadow-lg focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/30 transition-all">
                         <input
                           type="email"
                           value={email}
@@ -266,7 +266,7 @@ const ContactSplit = React.memo(() => {
                         <button
                           type="submit"
                           disabled={status === 'loading'}
-                          className="px-10 py-4 bg-gradient-to-r from-purple-500 to-white text-black font-semibold hover:scale-105 hover:shadow-xl hover:shadow-purple-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-base min-h-[56px] rounded-r-lg"
+                          className="px-6 py-4 bg-gradient-to-r from-purple-500 to-white text-black font-semibold hover:scale-105 hover:shadow-xl hover:shadow-purple-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm min-h-[56px] rounded-r-lg flex-shrink-0"
                         >
                           {status === 'loading' ? (
                             <span className="flex items-center justify-center gap-2">
