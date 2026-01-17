@@ -340,9 +340,9 @@ const HeroBackground3D: React.FC = () => {
       
       // Position logo on right side
       if (mobile) {
-        ioRight.ioGroup.position.set(4.0, 3.5, 0.0);
+        ioRight.ioGroup.position.set(3.0, 2.8, 0.0);
       } else {
-        ioRight.ioGroup.position.set(5.5, 3.0, 0.0);
+        ioRight.ioGroup.position.set(4.5, 2.2, 0.0);
       }
     }
 
