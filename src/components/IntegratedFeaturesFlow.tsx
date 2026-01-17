@@ -38,10 +38,10 @@ export default function IntegratedFeaturesFlow() {
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: 'radial-gradient(rgba(255,255,255,0.4) 1.5px, transparent 1.5px)',
-            backgroundSize: '28px 28px',
-            maskImage: 'radial-gradient(ellipse 80% 70% at 50% 45%, black 0%, transparent 65%)',
-            WebkitMaskImage: 'radial-gradient(ellipse 80% 70% at 50% 45%, black 0%, transparent 65%)',
+            backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)',
+            backgroundSize: '64px 64px',
+            maskImage: 'radial-gradient(ellipse 85% 75% at 50% 45%, black 0%, transparent 70%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 85% 75% at 50% 45%, black 0%, transparent 70%)',
           }}
         />
       </div>
@@ -399,7 +399,7 @@ export default function IntegratedFeaturesFlow() {
                     scale: 1.05,
                     transition: { duration: 0.3, ease: "easeOut" }
                   }}
-                  className="relative flex w-full flex-col items-center justify-center gap-2 sm:gap-2.5 rounded-xl sm:rounded-2xl border border-white/[0.12] bg-gradient-to-b from-white/[0.08] via-white/[0.04] to-white/[0.02] px-2 py-4 sm:px-3 sm:py-5 lg:px-4 lg:py-7 backdrop-blur-xl cursor-pointer group"
+                  className="relative flex w-full flex-col items-center justify-center gap-2 sm:gap-2.5 rounded-xl sm:rounded-2xl border border-white/[0.12] bg-gradient-to-b from-white/[0.08] via-white/[0.04] to-white/[0.02] px-2 py-4 sm:px-3 sm:py-5 lg:px-4 lg:py-7 backdrop-blur-xl cursor-pointer group overflow-hidden"
                   style={{
                     boxShadow: '0 10px 40px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.6), 0 0 40px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.15), inset 0 -1px 0 rgba(0,0,0,0.25)',
                     transformStyle: 'preserve-3d',
@@ -407,6 +407,22 @@ export default function IntegratedFeaturesFlow() {
                     minHeight: '90px'
                   }}
                 >
+                  {/* Animated shimmer effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent"
+                    animate={{
+                      x: ['-100%', '200%'],
+                    }}
+                    transition={{
+                      duration: 3,
+                      delay: index * 0.5,
+                      repeat: Infinity,
+                      repeatDelay: 2,
+                      ease: "easeInOut"
+                    }}
+                    style={{ width: '50%' }}
+                  />
+
                   {/* Enhanced top glow line */}
                   <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
                   <div className="absolute top-0 left-0 right-0 h-10 sm:h-12 lg:h-14 bg-gradient-to-b from-white/[0.08] to-transparent rounded-t-xl sm:rounded-t-2xl pointer-events-none" />
@@ -416,6 +432,44 @@ export default function IntegratedFeaturesFlow() {
                   
                   {/* Corner accent */}
                   <div className="absolute top-0 right-0 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-white/[0.08] to-transparent rounded-tr-xl sm:rounded-tr-2xl rounded-bl-[100%] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  {/* Pulsing status indicator */}
+                  <motion.div
+                    className="absolute top-2 right-2 sm:top-3 sm:right-3"
+                    animate={{
+                      opacity: [0.4, 1, 0.4],
+                      scale: [1, 1.2, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      delay: index * 0.3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  >
+                    <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-purple-400" style={{
+                      boxShadow: '0 0 8px rgba(168, 85, 247, 0.6), 0 0 16px rgba(168, 85, 247, 0.3)'
+                    }} />
+                  </motion.div>
+
+                  {/* Animated border gradient on hover */}
+                  <motion.div
+                    className="absolute inset-0 rounded-xl sm:rounded-2xl"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(255, 255, 255, 0.2), rgba(168, 85, 247, 0.3))',
+                      backgroundSize: '200% 200%',
+                      opacity: 0,
+                    }}
+                    animate={{
+                      backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                    whileHover={{ opacity: 0.15 }}
+                  />
 
                   <div className="text-center relative z-10 space-y-1.5 sm:space-y-2">
                     <div className="text-xs sm:text-sm lg:text-sm font-semibold text-white/90 group-hover:text-white transition-colors duration-300 leading-tight sm:leading-relaxed">{feature.title}</div>
