@@ -169,7 +169,7 @@ const AdditionalFeatures: React.FC = () => {
                 willChange: 'color',
               }}
             >
-              Stop chasing commissions and missing renewals
+              This is just the start
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 60 }}
