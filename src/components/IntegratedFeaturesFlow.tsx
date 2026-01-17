@@ -428,7 +428,7 @@ export default function IntegratedFeaturesFlow() {
                   <motion.div
                     className="absolute inset-0 rounded-xl sm:rounded-2xl"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(255, 255, 255, 0.2), rgba(168, 85, 247, 0.3))',
+                      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15))',
                       backgroundSize: '200% 200%',
                       opacity: 0,
                     }}
