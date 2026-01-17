@@ -171,7 +171,7 @@ const Hero: React.FC = () => {
             {" "}WAS BUILT FOR YOU
           </motion.span>
 
-          <h1 className="hero-title font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] -tracking-[0.03em] mb-8">
+          <h1 className="hero-title font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] -tracking-[0.03em] mb-8">
             <span className="block">
               <TypewriterText
                 text="Close More."
