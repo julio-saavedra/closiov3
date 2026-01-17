@@ -112,7 +112,7 @@ export const TextHoverEffect = ({
         textAnchor="middle"
         dominantBaseline="middle"
         strokeWidth="0.3"
-        className="fill-transparent stroke-white font-[helvetica] text-5xl font-bold"
+        className="fill-transparent stroke-white font-heading text-5xl font-bold"
         style={{ opacity: hovered ? 0.7 : 0 }}
       >
         {renderTextWithItalicI(text)}
@@ -126,7 +126,7 @@ export const TextHoverEffect = ({
         stroke="url(#textGradient)"
         strokeWidth="0.3"
         mask="url(#textMask)"
-        className="fill-transparent font-[helvetica] text-5xl font-bold"
+        className="fill-transparent font-heading text-5xl font-bold"
       >
         {renderTextWithItalicI(text)}
       </text>

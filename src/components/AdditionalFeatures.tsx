@@ -161,11 +161,10 @@ const AdditionalFeatures: React.FC = () => {
                 ease: [0.25, 0.1, 0.25, 1],
                 delay: 0.2
               }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0 font-heading"
               style={{
                 color: textColor,
                 lineHeight: 1.25,
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                 letterSpacing: '-0.02em',
                 willChange: 'color',
               }}
@@ -181,11 +180,10 @@ const AdditionalFeatures: React.FC = () => {
                 ease: [0.25, 0.1, 0.25, 1],
                 delay: 0.5
               }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0 font-heading"
               style={{
                 color: textColor,
                 lineHeight: 1.25,
-                fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
                 letterSpacing: '-0.02em',
                 willChange: 'color',
               }}

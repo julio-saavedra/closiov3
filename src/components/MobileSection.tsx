@@ -199,7 +199,7 @@ const MobileSection: React.FC = () => {
             />
 
             <img
-              src="/new_one,_hopefully_this_works.png"
+              src="/closio_mobile_app_showcase.png"
               alt="Mobile app showcase"
               className="h-full w-auto object-contain drop-shadow-2xl relative z-10"
             />
