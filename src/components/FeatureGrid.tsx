@@ -981,7 +981,7 @@ const GridPattern: React.FC<{ isDashboard: boolean; index: number }> = ({ isDash
         WebkitMaskImage: 'radial-gradient(ellipse at 100% 0%, black 0%, transparent 75%)',
       }}
     >
-      <svg width="224" height="224" className="opacity-40">
+      <svg width="224" height="224" className="opacity-25">
         <defs>
           <pattern id={patternId} width="20" height="20" patternUnits="userSpaceOnUse">
             <path
