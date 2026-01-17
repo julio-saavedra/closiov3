@@ -102,17 +102,42 @@ const OverlappingBanner: React.FC = () => {
         ref={ref}
         className="relative w-full rounded-3xl overflow-hidden backdrop-blur-2xl"
         style={{
-          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.15) 50%, rgba(255, 255, 255, 0.04) 100%)',
+          background: '#000000',
           boxShadow: '0 25px 80px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0.5px 0 rgba(255, 255, 255, 0.15)',
         }}
         initial={{ opacity: 0, y: 30, scale: 0.98 }}
         animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
         transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
+        {/* Background Image - Outdoor/Nature Scene */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop)',
+            opacity: 0.5,
+          }}
+        />
+
+        {/* Purple Gradient Overlay */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(135deg, rgba(80, 0, 120, 0.7) 0%, rgba(0, 0, 0, 0.85) 50%, rgba(30, 30, 35, 0.85) 100%)',
+          }}
+        />
+
+        {/* Purple Accent Glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse at center, rgba(168, 85, 247, 0.15) 0%, transparent 60%)',
+          }}
+        />
+
         <div
           className="absolute inset-0 rounded-3xl pointer-events-none"
           style={{
-            border: '1px solid rgba(255, 255, 255, 0.12)',
+            border: '1px solid rgba(168, 85, 247, 0.3)',
             boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
           }}
         />
