@@ -199,20 +199,20 @@ const MobileSection: React.FC = () => {
             />
 
             <img
-              src="/closio_mobile_app_showcase.png"
+              src="/new_one,_hopefully_this_works.png"
               alt="Mobile app showcase"
               className="h-full w-auto object-contain drop-shadow-2xl relative z-10"
             />
             
-            {/* Edge fade with enhanced top/bottom shadowing */}
+            {/* Edge fade with enhanced black blending on all sides */}
             <div
               className="absolute inset-0 pointer-events-none z-20"
               style={{
                 background: `
-                  linear-gradient(to right, rgba(0,0,0,0.9) 0%, transparent 8%),
-                  linear-gradient(to left, rgba(0,0,0,0.8) 0%, transparent 8%),
-                  linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 8%, transparent 18%),
-                  linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 10%, transparent 22%)
+                  linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 5%, transparent 12%),
+                  linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 5%, transparent 12%),
+                  linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 8%, transparent 20%),
+                  linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 10%, transparent 25%)
                 `
               }}
             />
