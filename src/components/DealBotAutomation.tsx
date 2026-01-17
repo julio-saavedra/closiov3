@@ -153,7 +153,7 @@ export default function DealBotAutomation() {
       />
 
       <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12">
+        <div className="mb-12 text-left">
           <div className="text-xs tracking-[0.28em] text-white/45 uppercase">Closio Automations</div>
           <h2 className="mt-3 text-4xl md:text-5xl font-semibold text-gray-400">/ Closio Deal Bot</h2>
           <p className="mt-3 max-w-2xl text-base sm:text-lg text-white/60">
