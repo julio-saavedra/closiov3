@@ -72,7 +72,7 @@ const HeroBackground3D: React.FC = () => {
 
     const hero3D = new THREE.Group();
     scene.add(hero3D);
-    hero3D.position.set(0.0, -0.8, 0.0);
+    hero3D.position.set(0.0, 0.0, 0.0);
 
     function createItalicHollowI({
       width = 0.38,
@@ -214,13 +214,7 @@ const HeroBackground3D: React.FC = () => {
       return g;
     }
 
-    const io = new THREE.Group();
-    io.position.set(0, 0.5, 0.0);
-    hero3D.add(io);
-
-    const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.25 }), solidMaterial(PURPLE, 0.18, 0.55));
-    const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }), solidMaterial(WHITE, 0.12, 0.45));
-
+    // Create shared materials
     const shadowMaterial = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color("#000000"),
       metalness: 0.0,
@@ -229,11 +223,6 @@ const HeroBackground3D: React.FC = () => {
       opacity: 0.95,
       envMapIntensity: 0.0,
     });
-
-    const innerShadowMesh = new THREE.Mesh(
-      createInnerShadowRing({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }),
-      shadowMaterial
-    );
 
     const outerShadowMaterial = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color("#000000"),
@@ -244,11 +233,6 @@ const HeroBackground3D: React.FC = () => {
       envMapIntensity: 0.0,
     });
 
-    const outerShadowMesh = new THREE.Mesh(
-      createOuterShadowRing({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }),
-      outerShadowMaterial
-    );
-
     const backShadowMaterial = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color("#000000"),
       metalness: 0.0,
@@ -257,11 +241,6 @@ const HeroBackground3D: React.FC = () => {
       opacity: 0.82,
       envMapIntensity: 0.0,
     });
-
-    const backShadowMesh = new THREE.Mesh(
-      createBackShadowDisc({ outerRadius: 0.75, ringThickness: 0.30, segments: 256 }),
-      backShadowMaterial
-    );
 
     const edgeShadowMaterial = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color("#000000"),
@@ -272,26 +251,42 @@ const HeroBackground3D: React.FC = () => {
       envMapIntensity: 0.0,
     });
 
-    const edgeShadowMesh = new THREE.Mesh(
-      createEdgeShadowRing({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }),
-      edgeShadowMaterial
-    );
+    // Function to create an IO logo group
+    function createIOGroup() {
+      const ioGroup = new THREE.Group();
 
-    iMesh.position.set(-0.60, 0.0, 0.0);
-    oMesh.position.set(0.62, 0.0, 0.0);
-    innerShadowMesh.position.set(0.62, 0.0, 0.04);
-    outerShadowMesh.position.set(0.62, 0.0, -0.02);
-    backShadowMesh.position.set(0.62, 0.0, -0.14);
-    edgeShadowMesh.position.set(0.62, 0.0, -0.04);
+      const iMesh = new THREE.Mesh(createItalicHollowI({ width: 0.6, height: 1.5, stroke: 0.16, depth: 0.25 }), solidMaterial(PURPLE, 0.18, 0.55));
+      const oMesh = new THREE.Mesh(createHollowO({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }), solidMaterial(WHITE, 0.12, 0.45));
+      const innerShadowMesh = new THREE.Mesh(createInnerShadowRing({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }), shadowMaterial);
+      const outerShadowMesh = new THREE.Mesh(createOuterShadowRing({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }), outerShadowMaterial);
+      const backShadowMesh = new THREE.Mesh(createBackShadowDisc({ outerRadius: 0.75, ringThickness: 0.30, segments: 256 }), backShadowMaterial);
+      const edgeShadowMesh = new THREE.Mesh(createEdgeShadowRing({ outerRadius: 0.75, ringThickness: 0.30, depth: 0.25, segments: 256 }), edgeShadowMaterial);
 
-    io.add(iMesh, oMesh, innerShadowMesh, outerShadowMesh, backShadowMesh, edgeShadowMesh);
+      iMesh.position.set(-0.60, 0.0, 0.0);
+      oMesh.position.set(0.62, 0.0, 0.0);
+      innerShadowMesh.position.set(0.62, 0.0, 0.04);
+      outerShadowMesh.position.set(0.62, 0.0, -0.02);
+      backShadowMesh.position.set(0.62, 0.0, -0.14);
+      edgeShadowMesh.position.set(0.62, 0.0, -0.04);
 
-    io.rotation.x = 0.15;
+      ioGroup.add(iMesh, oMesh, innerShadowMesh, outerShadowMesh, backShadowMesh, edgeShadowMesh);
+      ioGroup.rotation.x = 0.15;
+
+      return { ioGroup, iMesh, oMesh };
+    }
+
+    // Create two IO logos
+    const ioLeft = createIOGroup();
+    const ioRight = createIOGroup();
+
+    hero3D.add(ioLeft.ioGroup);
+    hero3D.add(ioRight.ioGroup);
 
     const raycaster = new THREE.Raycaster();
     const pointerNDC = new THREE.Vector2(0, 0);
 
-    let hover = false;
+    let hoverLeft = false;
+    let hoverRight = false;
 
     function updatePointerNDC(e: MouseEvent) {
       const rect = canvas.getBoundingClientRect();
@@ -302,27 +297,50 @@ const HeroBackground3D: React.FC = () => {
     }
 
     let tx = 0, ty = 0;
-    let targetIORotationY = -0.18;
-    let targetIORotationX = 0.15;
+    let targetIORotationYLeft = -0.18;
+    let targetIORotationXLeft = 0.15;
+    let targetIORotationYRight = -0.18;
+    let targetIORotationXRight = 0.15;
+    
     const handleMouseMove = (e: MouseEvent) => {
       updatePointerNDC(e);
       if (window.innerWidth < 900) return;
       tx = (e.clientX / window.innerWidth - 0.5) * 0.2;
       ty = (e.clientY / window.innerHeight - 0.5) * 0.15;
-      targetIORotationY = -0.18 - (e.clientX / window.innerWidth - 0.5) * 0.5;
-      targetIORotationX = 0.15 + (e.clientY / window.innerHeight - 0.5) * 0.35;
+      targetIORotationYLeft = -0.18 - (e.clientX / window.innerWidth - 0.5) * 0.3;
+      targetIORotationXLeft = 0.15 + (e.clientY / window.innerHeight - 0.5) * 0.2;
+      targetIORotationYRight = -0.18 + (e.clientX / window.innerWidth - 0.5) * 0.3;
+      targetIORotationXRight = 0.15 + (e.clientY / window.innerHeight - 0.5) * 0.2;
     };
 
     const handleClick = () => {
-      gsap.to(io.scale, {
-        x: 1.15,
-        y: 1.15,
-        z: 1.15,
-        duration: 0.5,
-        ease: "back.out(3)",
-        yoyo: true,
-        repeat: 1
-      });
+      raycaster.setFromCamera(pointerNDC, camera);
+      const hitLeft = raycaster.intersectObjects([ioLeft.iMesh, ioLeft.oMesh], true);
+      const hitRight = raycaster.intersectObjects([ioRight.iMesh, ioRight.oMesh], true);
+      
+      if (hitLeft.length > 0) {
+        gsap.to(ioLeft.ioGroup.scale, {
+          x: 1.15,
+          y: 1.15,
+          z: 1.15,
+          duration: 0.5,
+          ease: "back.out(3)",
+          yoyo: true,
+          repeat: 1
+        });
+      }
+      
+      if (hitRight.length > 0) {
+        gsap.to(ioRight.ioGroup.scale, {
+          x: 1.15,
+          y: 1.15,
+          z: 1.15,
+          duration: 0.5,
+          ease: "back.out(3)",
+          yoyo: true,
+          repeat: 1
+        });
+      }
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -337,15 +355,25 @@ const HeroBackground3D: React.FC = () => {
 
       const mobile = w < 900;
       hero3D.position.x = 0;
-      hero3D.position.y = mobile ? 0.5 : -0.8;
-      hero3D.scale.setScalar(mobile ? 0.9 : 2.2);
+      hero3D.position.y = 0;
+      hero3D.scale.setScalar(mobile ? 0.4 : 0.6);
+      
+      // Position logos in corners
+      if (mobile) {
+        ioLeft.ioGroup.position.set(-4.0, 3.5, 0.0);
+        ioRight.ioGroup.position.set(4.0, 3.5, 0.0);
+      } else {
+        ioLeft.ioGroup.position.set(-5.5, 3.0, 0.0);
+        ioRight.ioGroup.position.set(5.5, 3.0, 0.0);
+      }
     }
 
     const resizeObserver = new ResizeObserver(fit);
     resizeObserver.observe(canvas);
     fit();
 
-    gsap.fromTo(io.scale,
+    // Animate left IO
+    gsap.fromTo(ioLeft.ioGroup.scale,
       { x: 0, y: 0, z: 0 },
       {
         x: 1,
@@ -357,13 +385,36 @@ const HeroBackground3D: React.FC = () => {
       }
     );
 
-    gsap.fromTo(io.rotation,
+    gsap.fromTo(ioLeft.ioGroup.rotation,
       { y: Math.PI * 0.5 },
       {
         y: -0.18,
         duration: 2,
         ease: "power3.out",
         delay: 0.5
+      }
+    );
+
+    // Animate right IO
+    gsap.fromTo(ioRight.ioGroup.scale,
+      { x: 0, y: 0, z: 0 },
+      {
+        x: 1,
+        y: 1,
+        z: 1,
+        duration: 2.2,
+        ease: "elastic.out(1, 0.7)",
+        delay: 0.6
+      }
+    );
+
+    gsap.fromTo(ioRight.ioGroup.rotation,
+      { y: -Math.PI * 0.5 },
+      {
+        y: -0.18,
+        duration: 2,
+        ease: "power3.out",
+        delay: 0.6
       }
     );
 
@@ -404,20 +455,40 @@ const HeroBackground3D: React.FC = () => {
       t += 0.010;
 
       raycaster.setFromCamera(pointerNDC, camera);
-      const hit = raycaster.intersectObjects([iMesh, oMesh], true);
-      const isHover = hit.length > 0;
+      const hitLeft = raycaster.intersectObjects([ioLeft.iMesh, ioLeft.oMesh], true);
+      const hitRight = raycaster.intersectObjects([ioRight.iMesh, ioRight.oMesh], true);
+      const isHoverLeft = hitLeft.length > 0;
+      const isHoverRight = hitRight.length > 0;
 
-      if (isHover !== hover) {
-        hover = isHover;
+      // Handle left IO hover
+      if (isHoverLeft !== hoverLeft) {
+        hoverLeft = isHoverLeft;
 
-        gsap.to(iMesh.material, {
-          emissiveIntensity: hover ? 0.28 : 0.18,
+        gsap.to(ioLeft.iMesh.material, {
+          emissiveIntensity: hoverLeft ? 0.28 : 0.18,
           duration: 0.4,
           ease: "power2.out"
         });
 
-        gsap.to(oMesh.material, {
-          emissiveIntensity: hover ? 0.18 : 0.12,
+        gsap.to(ioLeft.oMesh.material, {
+          emissiveIntensity: hoverLeft ? 0.18 : 0.12,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+      }
+
+      // Handle right IO hover
+      if (isHoverRight !== hoverRight) {
+        hoverRight = isHoverRight;
+
+        gsap.to(ioRight.iMesh.material, {
+          emissiveIntensity: hoverRight ? 0.28 : 0.18,
+          duration: 0.4,
+          ease: "power2.out"
+        });
+
+        gsap.to(ioRight.oMesh.material, {
+          emissiveIntensity: hoverRight ? 0.18 : 0.12,
           duration: 0.4,
           ease: "power2.out"
         });
@@ -428,8 +499,11 @@ const HeroBackground3D: React.FC = () => {
       hero3D.rotation.y += (targetRotY - hero3D.rotation.y) * 0.06;
       hero3D.rotation.x += (targetRotX - hero3D.rotation.x) * 0.06;
 
-      io.rotation.y += (targetIORotationY - io.rotation.y) * 0.08;
-      io.rotation.x += (targetIORotationX - io.rotation.x) * 0.08;
+      ioLeft.ioGroup.rotation.y += (targetIORotationYLeft - ioLeft.ioGroup.rotation.y) * 0.08;
+      ioLeft.ioGroup.rotation.x += (targetIORotationXLeft - ioLeft.ioGroup.rotation.x) * 0.08;
+
+      ioRight.ioGroup.rotation.y += (targetIORotationYRight - ioRight.ioGroup.rotation.y) * 0.08;
+      ioRight.ioGroup.rotation.x += (targetIORotationXRight - ioRight.ioGroup.rotation.x) * 0.08;
 
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(animate);
