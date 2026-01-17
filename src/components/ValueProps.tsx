@@ -125,13 +125,13 @@ const ValueProps: React.FC = () => {
                   <span className="bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent text-[10px] sm:text-xs font-semibold tracking-[0.12em] uppercase shrink-0">
                     {item.number}
                   </span>
-                  <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-medium text-white leading-[1.4] break-words">
+                  <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-white leading-[1.4] break-words">
                     {item.title}
                   </h3>
                 </motion.div>
 
                 {index < valueItems.length - 1 && (
-                  <div className="hidden sm:block h-8 sm:h-10 w-px bg-gradient-to-b from-transparent via-white/60 to-transparent rotate-12" />
+                  <div className="hidden sm:block h-10 sm:h-12 md:h-14 w-px bg-gradient-to-b from-transparent via-white/60 to-transparent rotate-12" />
                 )}
               </React.Fragment>
             ))}
