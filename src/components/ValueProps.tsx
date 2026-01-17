@@ -26,7 +26,7 @@ const ValueProps: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="why-closio" className="py-16 sm:py-20 md:py-24 lg:py-32 xl:py-40 bg-black relative overflow-hidden">
+    <section id="why-closio" className="py-24 sm:py-28 md:py-32 lg:py-40 xl:py-48 bg-black relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header - Title Left, Context Right */}
