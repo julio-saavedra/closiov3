@@ -315,50 +315,50 @@ const HierarchyIcon: React.FC = () => (
     <g filter="url(#nodeShadow)">
       <rect x="75" y="25" width="50" height="40" rx="12" fill="url(#hierNode1)" stroke="#a78bfa" strokeWidth="2" strokeOpacity="0.4" />
       <circle cx="100" cy="35" r="5" fill="#c4b5fd" opacity="0.6" filter="url(#hierGlow)" />
-      <text x="100" y="52" fontSize="7" fill="#e9d5ff" opacity="0.8" textAnchor="middle" fontWeight="600">Agency Owner</text>
-      <text x="100" y="60" fontSize="6" fill="#d8b4fe" opacity="0.6" textAnchor="middle">$280K</text>
+      <text x="100" y="52" fontSize="6" fill="#e9d5ff" opacity="0.8" textAnchor="middle" fontWeight="600">Agency Owner</text>
+      <text x="100" y="60" fontSize="5" fill="#d8b4fe" opacity="0.6" textAnchor="middle">$280K</text>
     </g>
 
     <g filter="url(#nodeShadow)">
       <rect x="35" y="95" width="50" height="40" rx="10" fill="url(#hierNode2)" stroke="#8b5cf6" strokeWidth="1.8" strokeOpacity="0.35" />
       <circle cx="60" cy="105" r="4" fill="#a78bfa" opacity="0.55" />
-      <text x="60" y="120" fontSize="6.5" fill="#c4b5fd" opacity="0.75" textAnchor="middle" fontWeight="500">Manager</text>
-      <text x="60" y="128" fontSize="5.5" fill="#a78bfa" opacity="0.55" textAnchor="middle">$145K</text>
+      <text x="60" y="120" fontSize="5.5" fill="#c4b5fd" opacity="0.75" textAnchor="middle" fontWeight="500">Manager</text>
+      <text x="60" y="128" fontSize="4.5" fill="#a78bfa" opacity="0.55" textAnchor="middle">$145K</text>
     </g>
 
     <g filter="url(#nodeShadow)">
       <rect x="115" y="95" width="50" height="40" rx="10" fill="url(#hierNode2)" stroke="#8b5cf6" strokeWidth="1.8" strokeOpacity="0.35" />
       <circle cx="140" cy="105" r="4" fill="#a78bfa" opacity="0.55" />
-      <text x="140" y="120" fontSize="6.5" fill="#c4b5fd" opacity="0.75" textAnchor="middle" fontWeight="500">Manager</text>
-      <text x="140" y="128" fontSize="5.5" fill="#a78bfa" opacity="0.55" textAnchor="middle">$152K</text>
+      <text x="140" y="120" fontSize="5.5" fill="#c4b5fd" opacity="0.75" textAnchor="middle" fontWeight="500">Manager</text>
+      <text x="140" y="128" fontSize="4.5" fill="#a78bfa" opacity="0.55" textAnchor="middle">$152K</text>
     </g>
 
     <g filter="url(#nodeShadow)">
       <rect x="15" y="160" width="50" height="35" rx="8" fill="url(#hierNode3)" stroke="#6b7280" strokeWidth="1.5" strokeOpacity="0.3" />
       <circle cx="40" cy="168" r="3" fill="#9ca3af" opacity="0.5" />
-      <text x="40" y="181" fontSize="6" fill="#d1d5db" opacity="0.65" textAnchor="middle">Agent</text>
-      <text x="40" y="188" fontSize="5" fill="#9ca3af" opacity="0.5" textAnchor="middle">$42K</text>
+      <text x="40" y="181" fontSize="5" fill="#d1d5db" opacity="0.65" textAnchor="middle">Agent</text>
+      <text x="40" y="188" fontSize="4" fill="#9ca3af" opacity="0.5" textAnchor="middle">$42K</text>
     </g>
 
     <g filter="url(#nodeShadow)">
       <rect x="55" y="160" width="50" height="35" rx="8" fill="url(#hierNode3)" stroke="#6b7280" strokeWidth="1.5" strokeOpacity="0.3" />
       <circle cx="80" cy="168" r="3" fill="#9ca3af" opacity="0.5" />
-      <text x="80" y="181" fontSize="6" fill="#d1d5db" opacity="0.65" textAnchor="middle">Agent</text>
-      <text x="80" y="188" fontSize="5" fill="#9ca3af" opacity="0.5" textAnchor="middle">$38K</text>
+      <text x="80" y="181" fontSize="5" fill="#d1d5db" opacity="0.65" textAnchor="middle">Agent</text>
+      <text x="80" y="188" fontSize="4" fill="#9ca3af" opacity="0.5" textAnchor="middle">$38K</text>
     </g>
 
     <g filter="url(#nodeShadow)">
       <rect x="95" y="160" width="50" height="35" rx="8" fill="url(#hierNode3)" stroke="#6b7280" strokeWidth="1.5" strokeOpacity="0.3" />
       <circle cx="120" cy="168" r="3" fill="#9ca3af" opacity="0.5" />
-      <text x="120" y="181" fontSize="6" fill="#d1d5db" opacity="0.65" textAnchor="middle">Agent</text>
-      <text x="120" y="188" fontSize="5" fill="#9ca3af" opacity="0.5" textAnchor="middle">$51K</text>
+      <text x="120" y="181" fontSize="5" fill="#d1d5db" opacity="0.65" textAnchor="middle">Agent</text>
+      <text x="120" y="188" fontSize="4" fill="#9ca3af" opacity="0.5" textAnchor="middle">$51K</text>
     </g>
 
     <g filter="url(#nodeShadow)">
       <rect x="135" y="160" width="50" height="35" rx="8" fill="url(#hierNode3)" stroke="#6b7280" strokeWidth="1.5" strokeOpacity="0.3" />
       <circle cx="160" cy="168" r="3" fill="#9ca3af" opacity="0.5" />
-      <text x="160" y="181" fontSize="6" fill="#d1d5db" opacity="0.65" textAnchor="middle">Agent</text>
-      <text x="160" y="188" fontSize="5" fill="#9ca3af" opacity="0.5" textAnchor="middle">$47K</text>
+      <text x="160" y="181" fontSize="5" fill="#d1d5db" opacity="0.65" textAnchor="middle">Agent</text>
+      <text x="160" y="188" fontSize="4" fill="#9ca3af" opacity="0.5" textAnchor="middle">$47K</text>
     </g>
   </svg>
 );
