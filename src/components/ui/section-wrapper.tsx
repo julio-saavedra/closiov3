@@ -29,7 +29,7 @@ export function SectionWrapper({
       <div
         className={cn(
           "rounded-3xl overflow-hidden",
-          "bg-gradient-to-br from-black via-[#0A0F1A] to-[#1A2428]",
+          "bg-black",
           className
         )}
       >
@@ -54,7 +54,7 @@ export function SectionWrapper({
       }}
       className={cn(
         "rounded-3xl overflow-hidden",
-        "bg-gradient-to-br from-black via-[#0A0F1A] to-[#1A2428]",
+        "bg-black",
         className
       )}
     >
