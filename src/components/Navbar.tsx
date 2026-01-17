@@ -324,7 +324,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </button>
 
                 {resourcesDropdownOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3">
+                  <div className="absolute top-full left-0 pt-3">
                     <div className="w-48 py-2 bg-black/90 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl">
                       {RESOURCES_ITEMS.map((item) => (
                         <Link
@@ -388,7 +388,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </button>
 
                 {legalDropdownOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-3">
+                  <div className="absolute top-full left-0 pt-3">
                     <div className="w-48 py-2 bg-black/90 backdrop-blur-xl rounded-xl border border-white/10 shadow-2xl">
                       {LEGAL_ITEMS.map((item) => (
                         <Link
