@@ -275,17 +275,14 @@ const HeroBackground3D: React.FC = () => {
       return { ioGroup, iMesh, oMesh };
     }
 
-    // Create two IO logos
-    const ioLeft = createIOGroup();
+    // Create single IO logo (right side)
     const ioRight = createIOGroup();
 
-    hero3D.add(ioLeft.ioGroup);
     hero3D.add(ioRight.ioGroup);
 
     const raycaster = new THREE.Raycaster();
     const pointerNDC = new THREE.Vector2(0, 0);
 
-    let hoverLeft = false;
     let hoverRight = false;
 
     function updatePointerNDC(e: MouseEvent) {
@@ -297,8 +294,6 @@ const HeroBackground3D: React.FC = () => {
     }
 
     let tx = 0, ty = 0;
-    let targetIORotationYLeft = -0.18;
-    let targetIORotationXLeft = 0.15;
     let targetIORotationYRight = -0.18;
     let targetIORotationXRight = 0.15;
     
@@ -307,28 +302,13 @@ const HeroBackground3D: React.FC = () => {
       if (window.innerWidth < 900) return;
       tx = (e.clientX / window.innerWidth - 0.5) * 0.2;
       ty = (e.clientY / window.innerHeight - 0.5) * 0.15;
-      targetIORotationYLeft = -0.18 - (e.clientX / window.innerWidth - 0.5) * 0.3;
-      targetIORotationXLeft = 0.15 + (e.clientY / window.innerHeight - 0.5) * 0.2;
       targetIORotationYRight = -0.18 + (e.clientX / window.innerWidth - 0.5) * 0.3;
       targetIORotationXRight = 0.15 + (e.clientY / window.innerHeight - 0.5) * 0.2;
     };
 
     const handleClick = () => {
       raycaster.setFromCamera(pointerNDC, camera);
-      const hitLeft = raycaster.intersectObjects([ioLeft.iMesh, ioLeft.oMesh], true);
       const hitRight = raycaster.intersectObjects([ioRight.iMesh, ioRight.oMesh], true);
-      
-      if (hitLeft.length > 0) {
-        gsap.to(ioLeft.ioGroup.scale, {
-          x: 1.15,
-          y: 1.15,
-          z: 1.15,
-          duration: 0.5,
-          ease: "back.out(3)",
-          yoyo: true,
-          repeat: 1
-        });
-      }
       
       if (hitRight.length > 0) {
         gsap.to(ioRight.ioGroup.scale, {
@@ -356,14 +336,12 @@ const HeroBackground3D: React.FC = () => {
       const mobile = w < 900;
       hero3D.position.x = 0;
       hero3D.position.y = 0;
-      hero3D.scale.setScalar(mobile ? 0.4 : 0.6);
+      hero3D.scale.setScalar(mobile ? 0.5 : 0.8);
       
-      // Position logos in corners
+      // Position logo on right side
       if (mobile) {
-        ioLeft.ioGroup.position.set(-4.0, 3.5, 0.0);
         ioRight.ioGroup.position.set(4.0, 3.5, 0.0);
       } else {
-        ioLeft.ioGroup.position.set(-5.5, 3.0, 0.0);
         ioRight.ioGroup.position.set(5.5, 3.0, 0.0);
       }
     }
@@ -371,29 +349,6 @@ const HeroBackground3D: React.FC = () => {
     const resizeObserver = new ResizeObserver(fit);
     resizeObserver.observe(canvas);
     fit();
-
-    // Animate left IO
-    gsap.fromTo(ioLeft.ioGroup.scale,
-      { x: 0, y: 0, z: 0 },
-      {
-        x: 1,
-        y: 1,
-        z: 1,
-        duration: 2.2,
-        ease: "elastic.out(1, 0.7)",
-        delay: 0.5
-      }
-    );
-
-    gsap.fromTo(ioLeft.ioGroup.rotation,
-      { y: Math.PI * 0.5 },
-      {
-        y: -0.18,
-        duration: 2,
-        ease: "power3.out",
-        delay: 0.5
-      }
-    );
 
     // Animate right IO
     gsap.fromTo(ioRight.ioGroup.scale,
@@ -404,7 +359,7 @@ const HeroBackground3D: React.FC = () => {
         z: 1,
         duration: 2.2,
         ease: "elastic.out(1, 0.7)",
-        delay: 0.6
+        delay: 0.5
       }
     );
 
@@ -414,7 +369,7 @@ const HeroBackground3D: React.FC = () => {
         y: -0.18,
         duration: 2,
         ease: "power3.out",
-        delay: 0.6
+        delay: 0.5
       }
     );
 
@@ -455,27 +410,8 @@ const HeroBackground3D: React.FC = () => {
       t += 0.010;
 
       raycaster.setFromCamera(pointerNDC, camera);
-      const hitLeft = raycaster.intersectObjects([ioLeft.iMesh, ioLeft.oMesh], true);
       const hitRight = raycaster.intersectObjects([ioRight.iMesh, ioRight.oMesh], true);
-      const isHoverLeft = hitLeft.length > 0;
       const isHoverRight = hitRight.length > 0;
-
-      // Handle left IO hover
-      if (isHoverLeft !== hoverLeft) {
-        hoverLeft = isHoverLeft;
-
-        gsap.to(ioLeft.iMesh.material, {
-          emissiveIntensity: hoverLeft ? 0.28 : 0.18,
-          duration: 0.4,
-          ease: "power2.out"
-        });
-
-        gsap.to(ioLeft.oMesh.material, {
-          emissiveIntensity: hoverLeft ? 0.18 : 0.12,
-          duration: 0.4,
-          ease: "power2.out"
-        });
-      }
 
       // Handle right IO hover
       if (isHoverRight !== hoverRight) {
@@ -498,9 +434,6 @@ const HeroBackground3D: React.FC = () => {
       const targetRotX = -ty * 0.25;
       hero3D.rotation.y += (targetRotY - hero3D.rotation.y) * 0.06;
       hero3D.rotation.x += (targetRotX - hero3D.rotation.x) * 0.06;
-
-      ioLeft.ioGroup.rotation.y += (targetIORotationYLeft - ioLeft.ioGroup.rotation.y) * 0.08;
-      ioLeft.ioGroup.rotation.x += (targetIORotationXLeft - ioLeft.ioGroup.rotation.x) * 0.08;
 
       ioRight.ioGroup.rotation.y += (targetIORotationYRight - ioRight.ioGroup.rotation.y) * 0.08;
       ioRight.ioGroup.rotation.x += (targetIORotationXRight - ioRight.ioGroup.rotation.x) * 0.08;
