@@ -29,28 +29,37 @@ const ValueProps: React.FC = () => {
     <section id="why-closio" className="py-24 sm:py-28 md:py-32 lg:py-40 xl:py-48 bg-black relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Header - Title Left, Context Right */}
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12 md:mb-16 items-start"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '0px 0px -15% 0px' }}
-          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
-              <span className="text-gray-400">/ Why</span>{' '}<span className="text-white">CLOS<span
+        {/* Header - Centered with better spacing */}
+        <div className="mb-16 md:mb-20 lg:mb-24">
+          <motion.div
+            className="text-center mb-6 md:mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '0px 0px -15% 0px' }}
+            transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+              <span className="text-gray-500">/ Why</span>{' '}
+              <span className="text-white">CLOS<span
                 className="italic mx-0.5 sm:mx-1"
                 style={{ WebkitTextStroke: '1.5px currentColor', WebkitTextFillColor: 'transparent' }}
               >I</span>O</span>
             </h2>
-          </div>
-          <div>
-            <p className="text-base md:text-lg lg:text-xl text-gray-400 leading-[1.6]">
-              Built by agents who know what it&apos;s like to juggle 100 policies, chase commissions, and wonder if that big deal actually closed. We solved the chaos—so you can focus on selling.
+          </motion.div>
+          
+          <motion.div
+            className="max-w-3xl mx-auto text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '0px 0px -15% 0px' }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-400 leading-[1.7] font-light">
+              Built by agents who know what it&apos;s like to juggle 100 policies, chase commissions, and wonder if that big deal actually closed.{' '}
+              <span className="text-white font-normal">We solved the chaos—so you can focus on selling.</span>
             </p>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Large Dashboard Image */}
         <motion.div
