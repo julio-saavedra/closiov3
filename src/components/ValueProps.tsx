@@ -26,7 +26,7 @@ const ValueProps: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="why-closio" className="py-24 sm:py-28 md:py-32 lg:py-40 xl:py-48 bg-black relative overflow-hidden">
+    <section id="why-closio" className="py-16 sm:py-28 md:py-32 lg:py-40 xl:py-48 bg-black relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header - Centered with better spacing */}
@@ -54,9 +54,14 @@ const ValueProps: React.FC = () => {
             viewport={{ once: true, margin: '0px 0px -15% 0px' }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-400 leading-[1.7] font-light">
-              Built by agents who know what it&apos;s like to juggle 100 policies, chase commissions, and wonder if that big deal actually closed.{' '}
-              <span className="text-white font-normal">We solved the chaos—so you can focus on selling.</span>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 leading-[1.6] sm:leading-[1.7] font-light">
+              <span className="sm:hidden">
+                Built by agents for agents. Focus on selling, not chasing deals.
+              </span>
+              <span className="hidden sm:inline">
+                Built by agents who know what it&apos;s like to juggle 100 policies, chase commissions, and wonder if that big deal actually closed.{' '}
+                <span className="text-white font-normal">We solved the chaos—so you can focus on selling.</span>
+              </span>
             </p>
           </motion.div>
         </div>
@@ -116,7 +121,7 @@ const ValueProps: React.FC = () => {
         {/* Stat Line - inline stats with dividers */}
         <div className="relative mb-8 sm:mb-12">
           <div 
-            className="flex flex-wrap sm:flex-nowrap items-start gap-4 sm:gap-6 md:gap-8 opacity-[0.92] text-transparent bg-clip-text text-left w-full"
+            className="grid grid-cols-2 gap-6 sm:flex sm:flex-nowrap items-start sm:gap-6 md:gap-8 opacity-[0.92] text-transparent bg-clip-text text-left w-full"
             style={{
               backgroundImage: 'linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 0, 1) 100%)',
               WebkitBackgroundClip: 'text'

@@ -21,23 +21,13 @@ export const useSmoothScroll = () => {
     // Expose Lenis instance globally for Framer Motion integration
     (window as any).lenis = lenis;
 
-    // Optimized Lenis RAF loop with frame skipping for performance
+    // Lenis RAF loop (no frame skipping to avoid stutter)
     let rafId: number;
-    let lastTime = 0;
-    const targetFPS = 60;
-    const frameTime = 1000 / targetFPS;
-    
-    function raf(time: number) {
-      // Throttle to maintain smooth 60fps without overworking
-      const elapsed = time - lastTime;
-      
-      if (elapsed >= frameTime) {
-        lenis.raf(time);
-        lastTime = time - (elapsed % frameTime);
-      }
-      
+
+    const raf = (time: number) => {
+      lenis.raf(time);
       rafId = requestAnimationFrame(raf);
-    }
+    };
 
     rafId = requestAnimationFrame(raf);
 

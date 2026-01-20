@@ -338,9 +338,9 @@ const HeroBackground3D: React.FC = () => {
       hero3D.position.y = 0;
       hero3D.scale.setScalar(mobile ? 0.5 : 0.8);
       
-      // Position logo on right side
+      // Position logo (mobile above text, desktop right side)
       if (mobile) {
-        ioRight.ioGroup.position.set(3.0, 2.8, 0.0);
+        ioRight.ioGroup.position.set(0.0, 4.2, 0.0);
       } else {
         ioRight.ioGroup.position.set(4.5, 2.2, 0.0);
       }

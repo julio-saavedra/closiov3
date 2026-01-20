@@ -1112,7 +1112,7 @@ const FeatureGrid: React.FC = () => {
 
   return (
     <section 
-      className="relative py-20 bg-black overflow-hidden"
+      className="relative py-14 sm:py-20 bg-black overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <PoweredBySection />
@@ -1154,7 +1154,7 @@ const FeatureGrid: React.FC = () => {
               <FeatureCard feature={features[4]} index={4} gridArea="e" />
             </div>
 
-            <div className="lg:hidden flex flex-col gap-4 sm:gap-6 px-4 sm:px-6">
+            <div className="lg:hidden flex flex-col gap-4 sm:gap-6 px-0 sm:px-6 -mx-2 sm:mx-0">
               {features.map((feature, index) => (
                 <div
                   key={index}

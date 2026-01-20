@@ -67,7 +67,7 @@ const TypewriterText: React.FC<{ text: string }> = ({ text }) => {
 
   return (
     <div ref={elementRef} className="text-center mb-8">
-      <h2 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-white/40 tracking-tight leading-[1.1]">
+      <h2 className="text-4xl sm:text-7xl lg:text-8xl font-bold text-white/40 tracking-tight leading-[1.1]">
         {displayText}
         <span className="animate-pulse">|</span>
       </h2>
@@ -100,7 +100,7 @@ const TestimonialSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <TypewriterText text="Testimonials" />
         
-        <div className="relative h-[400px] flex items-center justify-center">
+        <div className="relative h-[340px] sm:h-[400px] flex items-center justify-center">
           {/* Left Blurred Card */}
           <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[280px] opacity-40 blur-[3px] pointer-events-none hidden lg:block">
             <div className="bg-gradient-to-b from-white/5 via-white/5 to-transparent rounded-3xl p-6 border border-white/10">
@@ -120,23 +120,23 @@ const TestimonialSection: React.FC = () => {
           </div>
 
           {/* Center Main Card */}
-          <div className="relative z-10 w-full max-w-3xl mx-auto px-4">
-            <div className="bg-black rounded-3xl p-6 sm:p-8 lg:p-10 text-center border border-white/10 shadow-2xl">
+          <div className="relative z-10 w-full max-w-none sm:max-w-3xl mx-auto px-2 sm:px-4">
+            <div className="bg-black rounded-3xl p-5 sm:p-8 lg:p-10 text-center border border-white/10 shadow-2xl">
               {/* Fixed Logo - doesn't animate */}
-              <div className="mb-6">
+              <div className="mb-5 sm:mb-6">
                 <img
                   src="/closio_main_logo.png"
                   alt="Closio"
-                  className="h-14 mx-auto"
+                  className="h-12 sm:h-14 mx-auto"
                 />
               </div>
 
               {/* Animated Testimonial Content */}
               <div className="relative overflow-hidden">
-                <blockquote className="min-h-[180px] flex items-center justify-center">
+                <blockquote className="min-h-[140px] sm:min-h-[180px] flex items-center justify-center">
                   <p
                     key={activeIndex}
-                    className="text-xl sm:text-2xl lg:text-3xl leading-[1.5] text-slate-200 animate-[slideIn_0.6s_ease-out]"
+                    className="text-base sm:text-2xl lg:text-3xl leading-[1.5] text-slate-200 animate-[slideIn_0.6s_ease-out]"
                   >
                     "{testimonials[activeIndex].text}"
                   </p>

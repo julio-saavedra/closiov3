@@ -155,7 +155,7 @@ const GlassRingsSection = () => {
           </div>
 
           {/* Feature items - Third on mobile, third on desktop */}
-          <div className="space-y-4 sm:space-y-5 order-3 lg:pt-12">
+          <div className="space-y-4 sm:space-y-5 order-3 lg:pt-12 rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-md p-4 sm:p-0 sm:bg-transparent sm:border-0 sm:backdrop-blur-0">
             {featureItems.map((item, index) => (
               <motion.div
                 key={item.title}

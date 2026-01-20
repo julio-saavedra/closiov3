@@ -162,9 +162,23 @@ export default function DealBotAutomation() {
         </div>
 
         <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            {/* Mobile-only clean text box */}
+            <div className="lg:hidden rounded-3xl border border-white/10 bg-black/80 backdrop-blur-md p-6 shadow-2xl">
+              <div className="text-xs uppercase tracking-[0.28em] text-white/40 mb-3">Closio Automations</div>
+              <h3 className="text-xl font-semibold text-white mb-3">Connect deals to Slack + Discord</h3>
+              <p className="text-sm text-white/70 leading-relaxed">
+                Closio Deal Bot automatically posts every new deal to your team channels. 
+                Keep everyone aligned with instant win alerts, deal details, and commission updates—without lifting a finger.
+              </p>
+              <div className="mt-5 rounded-xl border border-white/10 bg-black px-4 py-3 text-xs text-white/60">
+                Example: “New deal closed • Carrier: Mutual of Omaha • Premium: $1,464”
+              </div>
+            </div>
+
+            {/* Desktop form card */}
             <div
               ref={formCardRef}
-              className="relative rounded-3xl border border-white/[0.04]"
+              className="relative rounded-3xl border border-white/[0.04] hidden lg:block"
               style={{
                 willChange: 'transform',
                 backfaceVisibility: 'hidden',
@@ -172,7 +186,7 @@ export default function DealBotAutomation() {
               }}
             >
               <div
-                className="absolute left-0 top-[15%] w-[320px] h-[520px] pointer-events-none"
+                className="absolute left-0 top-[15%] w-[320px] h-[520px] pointer-events-none hidden sm:block"
                 style={{
                   zIndex: 0,
                   transform: 'translate(-45%, -15%)',
@@ -190,7 +204,7 @@ export default function DealBotAutomation() {
                 </div>
               </div>
 
-              <div className="relative z-10 p-6" style={{ background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)', borderBottomLeftRadius: '1.5rem', borderBottomRightRadius: '1.5rem' }}>
+              <div className="relative z-10 p-4 sm:p-6" style={{ background: 'linear-gradient(135deg, #000000 0%, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%, #000000 100%)', borderBottomLeftRadius: '1.5rem', borderBottomRightRadius: '1.5rem' }}>
                 <div className="text-white/85 font-semibold text-sm mb-3">Insurance Details</div>
 
                 <div className="grid grid-cols-12 gap-4">
@@ -238,17 +252,17 @@ export default function DealBotAutomation() {
                   <Field label="Policy Number" placeholder="Enter Policy Number" value={policy} typed={phase === "typing"} />
                 </div>
 
-                <div className="mt-6 flex items-center justify-between">
-                  <button className="text-white/75 text-sm underline underline-offset-4 hover:text-white transition">
+                <div className="mt-4 sm:mt-6 flex items-center justify-between">
+                  <button className="text-white/75 text-xs sm:text-sm underline underline-offset-4 hover:text-white transition">
                     Clear Form
                   </button>
-                  <div className="flex gap-3">
-                    <button className="rounded-xl border border-white/[0.04] bg-black px-5 py-3 text-sm text-white/85 hover:bg-[#0A0A0A] transition">
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                    <button className="rounded-xl border border-white/[0.04] bg-black px-4 py-2 sm:px-5 sm:py-3 text-xs sm:text-sm text-white/85 hover:bg-[#0A0A0A] transition">
                       Cancel
                     </button>
                     <button
                       ref={postBtnRef}
-                      className="rounded-xl px-5 py-3 text-sm font-semibold text-black bg-white hover:opacity-95 transition"
+                      className="rounded-xl px-4 py-2 sm:px-5 sm:py-3 text-xs sm:text-sm font-semibold text-black bg-white hover:opacity-95 transition"
                     >
                       {phase === "posting" ? "Posting…" : "Post Deal"}
                     </button>
@@ -257,7 +271,23 @@ export default function DealBotAutomation() {
               </div>
             </div>
 
-            <div className="flex flex-col justify-between h-full space-y-7">
+            {/* Mobile-only simple icon container */}
+            <div className="lg:hidden rounded-2xl border border-white/10 bg-black/80 backdrop-blur-md p-5">
+              <div className="text-xs uppercase tracking-[0.28em] text-white/40 mb-4">Channels</div>
+              <div className="flex items-center justify-between gap-3">
+                <div className="h-12 w-12 rounded-2xl border border-white/10 bg-black flex items-center justify-center">
+                  <img src="/favicon_and_logo_for_closio.png" alt="Closio" className="h-7 w-7 object-contain" />
+                </div>
+                <div className="h-12 w-12 rounded-2xl border border-white/10 bg-black flex items-center justify-center overflow-hidden">
+                  <img src="/new_slack_icon.png" alt="Slack" className="h-full w-full object-cover" />
+                </div>
+                <div className="h-12 w-12 rounded-2xl border border-white/10 bg-black flex items-center justify-center overflow-hidden">
+                  <img src="/disocrd_icon.png" alt="Discord" className="h-full w-full object-cover" />
+                </div>
+              </div>
+            </div>
+
+            <div className="hidden lg:flex flex-col justify-between h-full space-y-7">
               <div
                 ref={botCardRef}
                 className="rounded-3xl border border-white/[0.04] p-6"

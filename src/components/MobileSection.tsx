@@ -129,7 +129,9 @@ const MobileSection: React.FC = () => {
         />
       </div>
 
-      <Robot3DContainer />
+      <div className="hidden sm:block">
+        <Robot3DContainer />
+      </div>
 
       {/* Solid black overlay on right side for complete darkness around phone */}
       <div className="absolute top-0 bottom-0 right-0 w-[50%] bg-black pointer-events-none z-[8]" />

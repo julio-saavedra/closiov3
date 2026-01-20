@@ -18,7 +18,7 @@ const AdditionalFeatures: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="pt-40 pb-28 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 relative overflow-visible rounded-3xl"
+      className="pt-24 pb-16 sm:pt-44 sm:pb-32 md:pt-48 md:pb-36 lg:pt-56 lg:pb-40 relative overflow-visible rounded-3xl"
       style={{
         backgroundColor: '#000000'
       }}
@@ -149,9 +149,20 @@ const AdditionalFeatures: React.FC = () => {
               z-index: -2;
               pointer-events: none;
             }
+            @media (max-width: 640px) {
+              .glow-shell {
+                padding: 86px 20px 72px;
+                border-radius: 56px;
+                width: min(1100px, 96vw);
+              }
+              .glow-shell svg {
+                width: 56px;
+                height: 56px;
+              }
+            }
           `}</style>
 
-          <div className="relative z-10 flex flex-col items-center gap-3">
+          <div className="relative z-10 flex flex-col items-center gap-2 sm:gap-3">
             <motion.h2
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -180,7 +191,7 @@ const AdditionalFeatures: React.FC = () => {
                 ease: [0.25, 0.1, 0.25, 1],
                 delay: 0.5
               }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0 font-heading"
+              className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-center m-0 font-heading"
               style={{
                 color: textColor,
                 lineHeight: 1.25,

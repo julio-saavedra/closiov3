@@ -385,7 +385,17 @@ const Robot3D = () => {
       }
     };
 
-    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    let scrollTicking = false;
+    const handleScroll = () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        updateScrollProgress();
+        scrollTicking = false;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     updateScrollProgress();
 
     const animate = () => {
@@ -456,7 +466,7 @@ const Robot3D = () => {
     return () => {
       window.removeEventListener('mousemove', updatePointer);
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('scroll', updateScrollProgress);
+      window.removeEventListener('scroll', handleScroll);
       cancelAnimationFrame(animationId);
       resizeObserver.disconnect();
       renderer.dispose();

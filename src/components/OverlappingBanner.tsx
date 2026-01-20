@@ -143,23 +143,31 @@ const OverlappingBanner: React.FC = () => {
         />
         <GridPattern />
         <BottomGlow />
-        <div className="relative px-8 py-12 md:py-14 flex flex-col items-center justify-center text-center z-10">
+        <div className="relative px-6 py-14 sm:px-8 sm:py-12 md:py-14 flex flex-col items-center justify-center text-center z-10 -mt-6 sm:mt-0 min-h-[240px] sm:min-h-0">
           <motion.h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-4xl"
+            className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight max-w-[20rem] sm:max-w-4xl"
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}
           >
-            Your entire insurance operation policies, commissions, and team finally in one place.
+            <span className="sm:hidden">All your deals and team, finally in one place.</span>
+            <span className="hidden sm:inline">
+              Your entire insurance operation policies, commissions, and team finally in one place.
+            </span>
           </motion.h2>
 
           <motion.p
-            className="mt-6 text-base md:text-lg text-white/70 max-w-2xl"
+            className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-white/70 max-w-[18rem] sm:max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
           >
-            From application to commission check, Closio gives you complete visibility over every deal. No more spreadsheets. No more guessing.
+            <span className="sm:hidden">
+              Track every deal. See commissions clearly.
+            </span>
+            <span className="hidden sm:inline">
+              From application to commission check, Closio gives you complete visibility over every deal. No more spreadsheets. No more guessing.
+            </span>
           </motion.p>
         </div>
       </motion.div>

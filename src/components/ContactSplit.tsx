@@ -221,20 +221,20 @@ const ContactSplit = React.memo(() => {
 
             <div className="relative z-10 flex flex-col md:flex-row items-stretch min-h-[350px] md:min-h-[400px] lg:min-h-[450px]">
               {/* Left Side - Newsletter Form */}
-              <div className="flex-1 md:w-1/2 p-8 md:p-10 lg:p-14 flex flex-col justify-center relative z-10">
+              <div className="flex-1 md:w-1/2 p-6 sm:p-8 md:p-10 lg:p-14 flex flex-col justify-center relative z-10">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium mb-4 text-white leading-tight drop-shadow-md">
+                  <h2 className="text-2xl sm:text-4xl lg:text-5xl font-medium mb-3 sm:mb-4 text-white leading-tight drop-shadow-md">
                     Stay in the Loop with{' '}
                     <span className="bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">
                       Closio
                     </span>
                   </h2>
-                  <p className="text-base lg:text-lg text-white/90 max-w-lg mb-8 leading-relaxed drop-shadow-sm">
+                  <p className="text-sm sm:text-base lg:text-lg text-white/90 max-w-lg mb-6 sm:mb-8 leading-relaxed drop-shadow-sm">
                     Be the first to hear about updates, early access offers, and exclusive insights.
                   </p>
 
@@ -247,8 +247,8 @@ const ContactSplit = React.memo(() => {
                       <p className="text-white/90 mt-2 text-base drop-shadow-sm">We'll be in touch soon.</p>
                     </div>
                   ) : (
-                    <form onSubmit={handleSubmit} className="max-w-md mr-12 -ml-2">
-                      <div className="flex items-center bg-white/10 backdrop-blur-md border-2 border-purple-500/40 rounded-xl shadow-lg focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/30 transition-all">
+                    <form onSubmit={handleSubmit} className="w-full max-w-md sm:mr-12 sm:-ml-2">
+                      <div className="flex flex-col sm:flex-row sm:items-center bg-white/10 backdrop-blur-md border-2 border-purple-500/40 rounded-xl shadow-lg focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/30 transition-all">
                         <input
                           type="email"
                           value={email}
@@ -260,13 +260,13 @@ const ContactSplit = React.memo(() => {
                             }
                           }}
                           placeholder="Enter your email"
-                          className="flex-1 px-6 py-4 bg-transparent border-0 outline-none text-white placeholder:text-white/60 text-base min-h-[56px]"
+                          className="flex-1 px-5 py-3 sm:px-6 sm:py-4 bg-transparent border-0 outline-none text-white placeholder:text-white/60 text-sm sm:text-base min-h-[48px] sm:min-h-[56px]"
                           disabled={status === 'loading'}
                         />
                         <button
                           type="submit"
                           disabled={status === 'loading'}
-                          className="px-6 py-4 bg-gradient-to-r from-purple-500 to-white text-black font-semibold hover:scale-105 hover:shadow-xl hover:shadow-purple-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm min-h-[56px] rounded-r-lg flex-shrink-0"
+                          className="w-full sm:w-auto px-5 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-purple-500 to-white text-black font-semibold hover:scale-105 hover:shadow-xl hover:shadow-purple-500/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-xs sm:text-sm min-h-[48px] sm:min-h-[56px] sm:rounded-r-lg sm:rounded-l-none rounded-b-lg sm:rounded-b-none flex-shrink-0"
                         >
                           {status === 'loading' ? (
                             <span className="flex items-center justify-center gap-2">
@@ -441,7 +441,7 @@ const ContactSplit = React.memo(() => {
           </motion.div>
 
           {/* IO on top */}
-          <div className="absolute inset-0 z-50">
+          <div className="absolute inset-0 z-50 flex items-center justify-center scale-[1.1] sm:scale-100">
             <StaticIO3D />
           </div>
         </div>

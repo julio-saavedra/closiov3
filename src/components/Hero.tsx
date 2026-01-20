@@ -137,16 +137,18 @@ const Hero: React.FC = () => {
         className="absolute inset-0"
       >
         <PerspectiveGrid3D />
-        <HeroBackground3D />
+        <div className="hidden sm:block">
+          <HeroBackground3D />
+        </div>
       </motion.div>
 
       <motion.div
         style={{ opacity, willChange: 'opacity' }}
-        className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-30 py-32 lg:py-0"
+        className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-30 py-18 sm:py-32 lg:py-0"
       >
-        <div className="flex flex-col items-center text-center mx-auto max-w-4xl">
+        <div className="flex flex-col items-center text-center mx-auto max-w-[22rem] sm:max-w-4xl -mt-4 sm:mt-0">
           <motion.span
-            className="text-xs sm:text-sm uppercase tracking-[0.25em] text-neutral-500 font-medium mb-8 relative"
+            className="text-[10px] sm:text-sm uppercase tracking-[0.25em] text-neutral-500 font-medium mb-6 sm:mb-8 relative"
             initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 2, delay: 3.2, ease: [0.16, 1, 0.3, 1] }}
@@ -171,25 +173,30 @@ const Hero: React.FC = () => {
             {" "}WAS BUILT FOR YOU
           </motion.span>
 
-          <h1 className="hero-title font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.1] -tracking-[0.03em] mb-8 w-full">
-            <span className="block">
-              <TypewriterText
-                text="Close More."
-                delay={3100}
-                className="text-white"
-              />
-            </span>
-            <span className="block text-neutral-400 font-normal text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-              <TypewriterText
-                text="Close Smarter."
-                delay={3700}
-                isGradient={false}
-              />
-            </span>
+          <h1 className="hero-title font-heading text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-[1.15] sm:leading-[1.1] -tracking-[0.03em] mb-6 sm:mb-8 w-full">
+            <div className="flex flex-col sm:grid sm:grid-cols-[1fr_auto_1fr] items-center sm:items-baseline w-full gap-2 sm:gap-4">
+              <span className="text-center sm:text-left">
+                <TypewriterText
+                  text="Close More."
+                  delay={3100}
+                  className="text-white"
+                />
+              </span>
+              <span className="hidden sm:inline text-neutral-400 font-normal text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+                /
+              </span>
+              <span className="text-center sm:text-right text-neutral-400 font-normal text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+                <TypewriterText
+                  text="Close Smarter."
+                  delay={3700}
+                  isGradient={false}
+                />
+              </span>
+            </div>
           </h1>
 
           <motion.p
-            className="text-base sm:text-lg md:text-xl text-neutral-400 max-w-2xl leading-[1.7] mb-12"
+            className="text-[15px] sm:text-lg md:text-xl text-neutral-400 max-w-[20rem] sm:max-w-2xl leading-[1.6] sm:leading-[1.7] mb-10 sm:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.6, delay: 5.3 }}

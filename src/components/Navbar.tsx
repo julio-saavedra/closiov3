@@ -179,7 +179,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           <div className="flex items-center justify-between h-14 relative">
             <Link
               to="/"
-              className="flex items-center gap-2 flex-shrink-0 relative z-10"
+              className="flex items-center gap-2 flex-shrink-0 relative z-10 -ml-4 sm:ml-0"
               onClick={(e) => {
                 if (isHomePage) {
                   e.preventDefault();
@@ -459,7 +459,7 @@ const Navbar: React.FC<NavbarProps> = () => {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+              className="lg:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors -mr-3 sm:mr-0"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -474,8 +474,8 @@ const Navbar: React.FC<NavbarProps> = () => {
             className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <div className="mobile-menu-glass fixed top-[72px] left-0 right-0 mx-4 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="py-4 px-2 space-y-1">
+          <div className="mobile-menu-glass fixed top-[88px] left-0 right-0 mx-4 rounded-2xl shadow-2xl overflow-hidden bg-black">
+            <div className="py-4 px-2 space-y-1 bg-black">
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.id}
@@ -557,11 +557,9 @@ const Navbar: React.FC<NavbarProps> = () => {
                   style={{
                     padding: '12px 20px',
                     opacity: isScrollingDown ? 0.5 : 1,
-                    background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%)',
-                    backdropFilter: 'blur(20px) saturate(180%)',
-                    WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                    boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 4px 20px rgba(0, 0, 0, 0.2)',
+                    background: 'black',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    boxShadow: 'inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 4px 20px rgba(0, 0, 0, 0.25)',
                     color: 'white',
                     transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)'
                   }}

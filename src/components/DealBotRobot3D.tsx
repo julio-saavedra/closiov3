@@ -333,7 +333,17 @@ const DealBotRobot3D = () => {
       }
     };
 
-    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    let scrollTicking = false;
+    const handleScroll = () => {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        updateScrollProgress();
+        scrollTicking = false;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     updateScrollProgress();
 
     const animate = () => {
@@ -348,7 +358,7 @@ const DealBotRobot3D = () => {
     animate();
 
     return () => {
-      window.removeEventListener('scroll', updateScrollProgress);
+      window.removeEventListener('scroll', handleScroll);
       cancelAnimationFrame(animationId);
       resizeObserver.disconnect();
       renderer.dispose();

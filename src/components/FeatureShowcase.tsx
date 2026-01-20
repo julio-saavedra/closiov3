@@ -132,7 +132,9 @@ const CONTENT: Record<
     eyebrow: string;
     title: string;
     bullets: string[];
+    bulletsShort?: string[];
     why: string;
+    whyShort?: string;
     stats: { label: string; value: string }[];
     keyFeatures: string[];
   }
@@ -147,7 +149,13 @@ const CONTENT: Record<
       "Custom reporting exports to share with investors, partners, or executives without reformatting data",
       "Multi-location management with consolidated metrics and branch-level performance comparisons",
     ],
+    bulletsShort: [
+      "Instant org-wide visibility",
+      "Live production metrics",
+      "Automated commissions",
+    ],
     why: "Built for leaders managing 50+ agents who need complete visibility without the chaos. Make strategic decisions based on real-time data, identify top performers instantly, and scale your agency with confidence.",
+    whyShort: "Built for leaders who need clear visibility and fast, confident decisions.",
     stats: [
       { label: "Time saved weekly", value: "12+ hrs" },
       { label: "Reporting accuracy", value: "100%" },
@@ -164,7 +172,13 @@ const CONTENT: Record<
       "One-click coaching insights highlighting which agents need attention and specific action items",
       "Goal tracking with progress indicators to keep your team aligned and motivated on targets",
     ],
+    bulletsShort: [
+      "Clear agent performance",
+      "Pipeline coaching signals",
+      "Team goals on track",
+    ],
     why: "Perfect for managers overseeing 5-30 agents who need to coach effectively and drive results. Spend less time hunting for data and more time developing your team to hit quota.",
+    whyShort: "Coach faster with clear visibility and team progress at a glance.",
     stats: [
       { label: "Coaching efficiency", value: "+40%" },
       { label: "Team visibility", value: "Real-time" },
@@ -181,7 +195,13 @@ const CONTENT: Record<
       "Daily task list auto-generated from your pipeline so nothing falls through the cracks",
       "Mobile-optimized interface to update deals, check commissions, and manage clients on the go",
     ],
+    bulletsShort: [
+      "Pipeline at a glance",
+      "Clear commissions",
+      "Fast mobile updates",
+    ],
     why: "Designed for producers who want to focus on selling, not software. Everything you need to track your book of business and commissions without the clutter of enterprise tools.",
+    whyShort: "Everything you need to sell and track commissions—without the clutter.",
     stats: [
       { label: "Daily time saved", value: "45+ min" },
       { label: "Deal tracking", value: "100%" },
@@ -226,7 +246,7 @@ export default function ClosioAccountTypesSection() {
   const c = CONTENT[active];
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-black pt-24 pb-24 sm:pt-28 sm:pb-28">
+    <section ref={sectionRef} className="relative w-full bg-black pt-16 pb-16 sm:pt-28 sm:pb-28">
       {/* Top gradient with purple accent */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black via-purple-900/5 to-transparent" />
 
@@ -246,13 +266,13 @@ export default function ClosioAccountTypesSection() {
         />
       </div>
 
-      <div className="relative mx-auto w-full max-w-5xl px-6">
-        <div className="mx-auto max-w-2xl text-center mb-12">
+      <div className="relative mx-auto w-full max-w-5xl px-4 sm:px-6">
+        <div className="mx-auto max-w-2xl text-center mb-8 sm:mb-12">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xs font-semibold tracking-[0.2em] uppercase text-white/50"
+            className="text-[10px] sm:text-xs font-semibold tracking-[0.2em] uppercase text-white/50"
           >
             / Account Types
           </motion.p>
@@ -260,7 +280,7 @@ export default function ClosioAccountTypesSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-3xl font-normal tracking-tight text-white sm:text-4xl lg:text-5xl"
+            className="mt-3 sm:mt-4 text-2xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-white"
           >
             Built for every role
           </motion.h2>
@@ -268,7 +288,7 @@ export default function ClosioAccountTypesSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-4 text-sm leading-relaxed text-white/40 max-w-xl mx-auto"
+            className="mt-3 sm:mt-4 text-xs sm:text-sm leading-relaxed text-white/40 max-w-[20rem] sm:max-w-xl mx-auto"
           >
             Tailored experiences for owners, managers, and agents—each with the tools they need to succeed.
           </motion.p>
@@ -277,14 +297,14 @@ export default function ClosioAccountTypesSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="mt-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 backdrop-blur-sm p-1.5"
+            className="mt-6 sm:mt-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/40 backdrop-blur-sm p-1 sm:p-1.5"
           >
             {tabs.map((t) => (
               <button
                 key={t.key}
                 onClick={() => setActive(t.key)}
                 className={cn(
-                  "rounded-full px-5 py-2 text-sm font-medium transition-all duration-300",
+                  "rounded-full px-3 py-1.5 text-xs sm:px-5 sm:py-2 sm:text-sm font-medium transition-all duration-300",
                   active === t.key
                     ? "bg-gradient-to-r from-purple-500 to-white text-black shadow-lg"
                     : "text-white/60 hover:text-white hover:bg-white/5"
@@ -300,7 +320,7 @@ export default function ClosioAccountTypesSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="grid grid-cols-1 gap-4 md:grid-cols-3"
+          className="hidden sm:grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-3"
         >
           {cards.map((card, idx) => (
             <motion.button
@@ -310,7 +330,7 @@ export default function ClosioAccountTypesSection() {
               transition={{ duration: 0.6, delay: 0.6 + idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
               onClick={() => setActive(card.key)}
               className={cn(
-                "group relative w-full p-6 text-left transition-all duration-300 ease-out rounded-xl overflow-hidden",
+                "group relative w-full p-4 sm:p-6 text-left transition-all duration-300 ease-out rounded-xl overflow-hidden",
                 "hover:scale-[1.01]",
                 active === card.key 
                   ? "bg-gradient-to-br from-white/[0.08] via-white/[0.05] to-transparent border border-white/20 shadow-[0_10px_40px_rgba(168,85,247,0.15)]" 
@@ -375,7 +395,7 @@ export default function ClosioAccountTypesSection() {
             className="mt-8"
           >
             {/* Main content - single consolidated panel */}
-            <div className="rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.03] via-black/40 to-transparent p-6 backdrop-blur-sm">
+            <div className="rounded-xl border border-white/10 ring-1 ring-white/10 bg-[#141418] sm:shadow-none sm:ring-0 sm:bg-gradient-to-br sm:from-white/[0.03] sm:via-black/40 sm:to-transparent p-6 backdrop-blur-0 sm:backdrop-blur-sm">
               {/* Header with icon (no container) */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -383,18 +403,19 @@ export default function ClosioAccountTypesSection() {
                 transition={{ duration: 0.3 }}
                 className="flex items-start gap-4 mb-6 pb-6 border-b border-white/10"
               >
-                <div className="text-white/80 flex-shrink-0 mt-1">
+                <div className="text-white/80 flex-shrink-0 mt-1 hidden sm:block">
                   {ICONS[active]}
                 </div>
-                <div className="flex-1 min-w-0">
+                <div className="flex-1 min-w-0 text-center sm:text-left">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50 mb-1">
                     {c.eyebrow}
                   </p>
                   <h4 className="text-xl font-medium text-white leading-tight mb-2">
                     {c.title}
                   </h4>
-                  <p className="text-sm leading-relaxed text-white/60">
-                    {c.why}
+                  <p className="text-xs sm:text-sm leading-relaxed text-white/60">
+                    <span className="sm:hidden">{c.whyShort ?? c.why}</span>
+                    <span className="hidden sm:inline">{c.why}</span>
                   </p>
                 </div>
               </motion.div>
@@ -409,11 +430,27 @@ export default function ClosioAccountTypesSection() {
                   <p className="text-xs font-medium text-white/70">
                     Key Features
                   </p>
-                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-white/10 text-white/60">
+                  <span className="hidden sm:inline-flex text-xs px-2.5 py-0.5 rounded-full bg-white/10 text-white/60">
                     {c.bullets.length}
                   </span>
                 </div>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3 sm:hidden">
+                  {(c.bulletsShort ?? c.bullets).map((b, idx) => (
+                    <motion.li
+                      key={`short-${b}`}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.25, delay: 0.15 + idx * 0.03 }}
+                      className="flex gap-2 text-xs text-white/70 group/item hover:text-white/90 transition-colors"
+                    >
+                      <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-md bg-gradient-to-br from-purple-500/20 to-white/10 flex-shrink-0 text-white/80 [&>svg]:h-4 [&>svg]:w-4">
+                        {cards[idx]?.icon ?? ICONS[active]}
+                      </span>
+                      <span className="leading-relaxed flex-1">{b}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+                <ul className="hidden sm:block space-y-3">
                   {c.bullets.map((b, idx) => (
                     <motion.li
                       key={b}
@@ -434,7 +471,7 @@ export default function ClosioAccountTypesSection() {
               </motion.div>
 
               {/* Key features tags */}
-              <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-white/10">
+              <div className="hidden sm:flex flex-wrap gap-2 mt-6 pt-6 border-t border-white/10">
                 {c.keyFeatures.map((feature, idx) => (
                   <motion.span
                     key={feature}
@@ -452,7 +489,7 @@ export default function ClosioAccountTypesSection() {
         </AnimatePresence>
 
         {/* Bottom gradient fade */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black via-black/80 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black via-black/80 to-transparent hidden sm:block" />
       </div>
     </section>
   );

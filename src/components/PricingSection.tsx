@@ -80,7 +80,7 @@ const PricingSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
           {/* Left Side - Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -122,7 +122,7 @@ const PricingSection: React.FC = () => {
               whileInView={{ opacity: 0.4, x: 0, scale: 0.9 }}
               viewport={{ once: true, margin: '0px 0px -15% 0px' }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-0 blur-[2px]"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-0 blur-[2px] hidden sm:block"
             >
               <div className="w-[240px] h-[350px] rounded-xl backdrop-blur-xl bg-gradient-to-b from-purple-500/10 via-white/5 to-transparent border border-purple-400/20 p-5">
                 <div className="h-full flex flex-col">
@@ -148,7 +148,7 @@ const PricingSection: React.FC = () => {
                 <div className="h-full flex flex-col text-center">
                   <div className="flex-1">
                     <div className="inline-block px-3 py-1 rounded-full bg-purple-500/20 border border-purple-400/40 mb-4">
-                      <span className="text-xs font-semibold text-purple-200">Most Popular</span>
+                      <span className="text-xs font-semibold text-purple-200">Single-Agent</span>
                     </div>
                     <h3 className="text-xl font-semibold text-gray-300 mb-2">Pricing Plans</h3>
                     <div className="text-5xl font-bold text-white mb-2">
@@ -190,7 +190,7 @@ const PricingSection: React.FC = () => {
               whileInView={{ opacity: 0.4, x: 0, scale: 0.9 }}
               viewport={{ once: true, margin: '0px 0px -15% 0px' }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-0 blur-[2px]"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-0 blur-[2px] hidden sm:block"
             >
               <div className="w-[240px] h-[350px] rounded-xl backdrop-blur-xl bg-gradient-to-b from-purple-500/10 via-white/5 to-transparent border border-purple-400/20 p-5">
                 <div className="h-full flex flex-col">

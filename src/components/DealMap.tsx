@@ -55,7 +55,7 @@ const TypewriterText = ({ text, delay = 0, isVisible }: { text: string; delay?: 
 
 const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="relative pb-8">
+    <div className="relative pb-6 sm:pb-8">
       <div
         className="relative mx-auto"
         style={{
@@ -65,10 +65,9 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
       >
         {/* Monitor Bezel */}
         <div
-          className="relative rounded-[14px] md:rounded-[18px] overflow-hidden"
+          className="relative rounded-[14px] md:rounded-[18px] overflow-hidden pt-[2px] px-[4px] pb-[16px] sm:pt-[3px] sm:px-[6px] sm:pb-[24px]"
           style={{
             background: 'linear-gradient(145deg, #3a3a3a 0%, #2a2a2a 45%, #1a1a1a 100%)',
-            padding: '3px 6px 24px 6px',
             boxShadow: `
               inset 0 2px 4px rgba(255,255,255,0.15),
               inset 0 -2px 4px rgba(0,0,0,0.8),
@@ -108,8 +107,8 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
           </div>
           
           {/* Bottom bezel brand mark */}
-          <div
-            className="absolute bottom-[8px] left-1/2 -translate-x-1/2 text-xs font-semibold tracking-wider"
+        <div
+          className="absolute bottom-[4px] sm:bottom-[8px] left-1/2 -translate-x-1/2 text-xs font-semibold tracking-wider"
             style={{
               color: 'rgba(255, 255, 255, 0.15)',
               fontSize: '8px',
@@ -122,11 +121,11 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
 
         {/* Stand - Neck */}
         <div className="relative flex flex-col items-center">
-          <div
-            className="relative"
-            style={{
-              width: '14px',
-              height: '55px',
+        <div
+          className="relative"
+          style={{
+            width: '14px',
+            height: '40px',
               background: 'linear-gradient(90deg, #2a2a2a 0%, #3a3a3a 20%, #4a4a4a 50%, #3a3a3a 80%, #2a2a2a 100%)',
               boxShadow: `
                 -4px 0 8px rgba(0,0,0,0.3),
@@ -141,7 +140,7 @@ const DesktopMonitor = ({ children }: { children: React.ReactNode }) => {
             className="absolute top-0 left-1/2 -translate-x-1/2"
             style={{
               width: '18px',
-              height: '55px',
+              height: '40px',
               background: 'linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)',
             }}
           />
@@ -215,7 +214,7 @@ export default function DealMap() {
             viewport={{ once: true }}
             transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-gray-500">
+            <h2 className="text-2xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-gray-500 whitespace-nowrap sm:whitespace-normal">
               <TypewriterText text="/ Policy Map Solutions" delay={200} isVisible={isInView} />
             </h2>
           </motion.div>
@@ -227,7 +226,7 @@ export default function DealMap() {
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-400 leading-[1.7] font-light">
+            <p className="text-sm sm:text-lg md:text-xl lg:text-2xl text-gray-400 leading-[1.7] font-light">
               Visualize your agency's reach in real-time.{' '}
               <span className="text-white font-normal">Watch as policies are sold across the nation.</span>
             </p>
@@ -357,24 +356,24 @@ export default function DealMap() {
                 />
                 
                 {/* Top bar */}
-                <div className="absolute top-0 left-0 right-0 h-12 bg-black/60 backdrop-blur-sm border-b border-purple-500/20 flex items-center justify-between px-6">
-                  <div className="flex items-center gap-3">
+                <div className="absolute top-0 left-0 right-0 h-9 sm:h-12 bg-black/60 backdrop-blur-sm border-b border-purple-500/20 flex items-start justify-between px-3 sm:px-6 pt-1 sm:pt-2">
+                  <div className="flex flex-col items-start gap-0.5">
                     <img 
                       src="/favicon_and_logo_for_closio.png" 
                       alt="Closio Logo" 
-                      className="w-6 h-6 object-contain"
+                      className="w-3.5 h-3.5 sm:w-5 sm:h-5 object-contain"
                     />
-                    <span className="text-white text-xs font-semibold">Policy Map Dashboard</span>
+                    <span className="text-white text-[8px] sm:text-[10px] font-semibold">Policy Map Dashboard</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-16 h-2 rounded-full bg-purple-500/30" />
-                    <div className="w-16 h-2 rounded-full bg-white/20" />
-                    <div className="w-16 h-2 rounded-full bg-white/20" />
+                    <div className="w-8 sm:w-16 h-1.5 sm:h-2 rounded-full bg-purple-500/30" />
+                    <div className="w-8 sm:w-16 h-1.5 sm:h-2 rounded-full bg-white/20" />
+                    <div className="w-8 sm:w-16 h-1.5 sm:h-2 rounded-full bg-white/20" />
                   </div>
                 </div>
 
                 {/* Map illustration - US Map with white state borders */}
-                <div className="absolute inset-0 w-full h-full flex items-center justify-center" style={{ paddingTop: '48px', paddingLeft: '2rem', paddingRight: '10rem', paddingBottom: '3.5rem' }}>
+                <div className="absolute inset-0 w-full h-full flex items-center justify-center pt-10 px-3 pb-6 sm:pt-12 sm:pl-8 sm:pr-40 sm:pb-14">
                   <img 
                     src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Blank_US_Map_%28states_only%29.svg"
                     alt="United States Map"
@@ -387,8 +386,8 @@ export default function DealMap() {
                 </div>
                 
                 {/* State Tracker - Right Side */}
-                <div className="absolute right-2 top-[60px] bottom-[60px] w-36 overflow-hidden">
-                  <div className="backdrop-blur-md bg-black/50 border border-white/10 rounded-lg h-full overflow-y-auto p-2">
+                <div className="absolute right-1 sm:right-2 top-[44px] sm:top-[60px] bottom-[44px] sm:bottom-[60px] w-20 sm:w-36 overflow-hidden hidden sm:block">
+                  <div className="backdrop-blur-md bg-black/50 border border-white/10 rounded-lg h-full overflow-y-auto p-1.5 sm:p-2">
                     <div className="space-y-1">
                       {[
                         { state: 'California', count: 342 },
@@ -424,7 +423,7 @@ export default function DealMap() {
                       ].map((item, index) => (
                         <div 
                           key={item.state}
-                          className="flex items-center justify-between text-[9px] py-0.5 px-1.5 rounded hover:bg-white/5 transition-colors"
+                          className="flex items-center justify-between text-[7px] sm:text-[9px] py-0.5 px-1 sm:px-1.5 rounded hover:bg-white/5 transition-colors"
                         >
                           <span className="text-white/70 truncate flex-1">{item.state}</span>
                           <span className="text-white font-semibold ml-1">{item.count}</span>
@@ -435,20 +434,20 @@ export default function DealMap() {
                 </div>
 
                 {/* Stats overlay - Bottom */}
-                <div className="absolute bottom-2 left-6 right-6 flex items-center justify-between">
-                  <div className="backdrop-blur-md bg-black/40 border border-purple-500/30 rounded-lg px-3 py-2 flex flex-col">
-                    <span className="text-[9px] text-white/60 uppercase tracking-wider mb-0.5">Total Policies</span>
-                    <span className="text-sm font-bold bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">2,847</span>
+                <div className="absolute bottom-2 left-4 right-4 sm:left-6 sm:right-6 flex items-center justify-between">
+                  <div className="backdrop-blur-md bg-black/40 border border-purple-500/30 rounded-lg px-2 py-1 sm:px-3 sm:py-2 flex flex-col">
+                    <span className="text-[7px] sm:text-[9px] text-white/60 uppercase tracking-wider mb-0.5">Total Policies</span>
+                    <span className="text-[11px] sm:text-sm font-bold bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">2,847</span>
                   </div>
                   
-                  <div className="backdrop-blur-md bg-black/40 border border-white/20 rounded-lg px-3 py-2 flex flex-col">
-                    <span className="text-[9px] text-white/60 uppercase tracking-wider mb-0.5">Active States</span>
-                    <span className="text-sm font-bold text-white">34</span>
+                  <div className="backdrop-blur-md bg-black/40 border border-white/20 rounded-lg px-2 py-1 sm:px-3 sm:py-2 flex flex-col">
+                    <span className="text-[7px] sm:text-[9px] text-white/60 uppercase tracking-wider mb-0.5">Active States</span>
+                    <span className="text-[11px] sm:text-sm font-bold text-white">34</span>
                   </div>
                   
-                  <div className="backdrop-blur-md bg-black/40 border border-purple-500/30 rounded-lg px-3 py-2 flex flex-col">
-                    <span className="text-[9px] text-white/60 uppercase tracking-wider mb-0.5">This Month</span>
-                    <span className="text-sm font-bold bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">+342</span>
+                  <div className="backdrop-blur-md bg-black/40 border border-purple-500/30 rounded-lg px-2 py-1 sm:px-3 sm:py-2 flex flex-col">
+                    <span className="text-[7px] sm:text-[9px] text-white/60 uppercase tracking-wider mb-0.5">This Month</span>
+                    <span className="text-[11px] sm:text-sm font-bold bg-gradient-to-r from-purple-400 to-white bg-clip-text text-transparent">+342</span>
                   </div>
                 </div>
 
@@ -572,7 +571,7 @@ export default function DealMap() {
           </div>
         </div>
 
-        <div className="lg:hidden mt-8 grid grid-cols-2 gap-4">
+        <div className="lg:hidden mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           {benefits.map((benefit, index) => (
             <div key={benefit.title} className="relative" style={{ perspective: '800px' }}>
               {/* Glass Panel 2 - Furthest back */}
@@ -658,7 +657,7 @@ export default function DealMap() {
                   }}
                 />
               </div>
-              <div className="relative p-6 z-10">
+              <div className="relative p-4 sm:p-6 z-10">
                 <span className="bg-gradient-to-r from-purple-500 to-white bg-clip-text text-transparent text-xs font-medium tracking-wider mb-2 block">{benefit.number}</span>
                 <h4 className="font-semibold text-white text-base mb-1.5">{benefit.title}</h4>
                 <p className="text-sm text-white/60">{benefit.description}</p>

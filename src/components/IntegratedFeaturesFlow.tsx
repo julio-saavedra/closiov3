@@ -36,21 +36,19 @@ export default function IntegratedFeaturesFlow() {
     <section ref={sectionRef} className="relative w-full bg-black pt-24 pb-24 sm:pt-32 sm:pb-32 lg:pt-48 lg:pb-48">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 opacity-20 sm:opacity-[0.08] [mask-image:radial-gradient(ellipse_95%_85%_at_50%_40%,black_0%,transparent_75%)] sm:[mask-image:radial-gradient(ellipse_85%_75%_at_50%_45%,black_0%,transparent_70%)] [-webkit-mask-image:radial-gradient(ellipse_95%_85%_at_50%_40%,black_0%,transparent_75%)] sm:[-webkit-mask-image:radial-gradient(ellipse_85%_75%_at_50%_45%,black_0%,transparent_70%)]"
           style={{
-            backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)',
-            backgroundSize: '64px 64px',
-            maskImage: 'radial-gradient(ellipse 85% 75% at 50% 45%, black 0%, transparent 70%)',
-            WebkitMaskImage: 'radial-gradient(ellipse 85% 75% at 50% 45%, black 0%, transparent 70%)',
+            backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.12) 1px, transparent 1px)',
+            backgroundSize: '56px 56px',
           }}
         />
       </div>
       <div className="relative mx-auto w-full max-w-5xl px-4 sm:px-6">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_55%)]" />
 
-        <div className="relative mx-auto mt-2 flex min-h-[500px] sm:min-h-[600px] lg:h-[720px] w-full max-w-full lg:max-w-[900px] items-center justify-center">
+        <div className="relative mx-auto mt-2 flex min-h-[500px] sm:min-h-[600px] lg:h-[720px] w-full max-w-full lg:max-w-[900px] flex-col items-center justify-start gap-6 sm:items-center sm:justify-center">
 
-          <div className="absolute left-1/2 top-[10px] sm:top-[20px] lg:top-[30px] lg:left-[calc(50%-210px)] -translate-x-1/2 scale-[0.65] sm:scale-[0.8] lg:scale-100" style={{ perspective: '1200px' }}>
+          <div className="relative w-screen left-1/2 -translate-x-1/2 mx-auto mt-2 flex justify-center scale-[0.65] origin-center sm:absolute sm:left-1/2 sm:-translate-x-1/2 sm:w-full sm:top-[20px] lg:top-[30px] sm:mt-0 sm:scale-[0.8] lg:scale-100" style={{ perspective: '1200px' }}>
             {/* Panel 2 - with unfold animation */}
             <motion.div
               initial={{ opacity: 0, y: 20, scaleY: 0, rotateX: -90 }}
@@ -68,7 +66,7 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 8.4, delay: 1.6, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
               }}
-              className="absolute left-1/2 top-[-68px] h-40 sm:h-48 lg:h-52 w-[300px] sm:w-[380px] lg:w-[420px] -translate-x-1/2 rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] border border-white/[0.06] bg-gradient-to-b from-white/[0.03] via-white/[0.02] to-white/[0.01] backdrop-blur-[3px]"
+              className="absolute left-1/2 -translate-x-1/2 top-[-68px] h-40 sm:h-48 lg:h-52 w-[92vw] sm:w-[380px] lg:w-[420px] rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] border border-white/[0.06] bg-gradient-to-b from-white/[0.03] via-white/[0.02] to-white/[0.01] backdrop-blur-[3px]"
               style={{
                 boxShadow: '0 10px 48px rgba(0,0,0,0.45), 0 4px 16px rgba(0,0,0,0.65), 0 0 50px rgba(255,255,255,0.03), inset 0 1px 0 rgba(255,255,255,0.08), inset 0 -1px 0 rgba(0,0,0,0.3)',
                 transformStyle: 'preserve-3d',
@@ -93,7 +91,7 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 1.2, delay: 0.3, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 8.8, delay: 1.7, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
               }}
-              className="absolute left-1/2 top-[-45px] h-40 sm:h-48 lg:h-52 w-[300px] sm:w-[380px] lg:w-[420px] -translate-x-1/2 rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] via-white/[0.03] to-white/[0.01] backdrop-blur-[4px]"
+              className="absolute left-1/2 -translate-x-1/2 top-[-45px] h-40 sm:h-48 lg:h-52 w-[92vw] sm:w-[380px] lg:w-[420px] rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] border border-white/[0.08] bg-gradient-to-b from-white/[0.05] via-white/[0.03] to-white/[0.01] backdrop-blur-[4px]"
               style={{
                 boxShadow: '0 12px 56px rgba(0,0,0,0.5), 0 6px 20px rgba(0,0,0,0.7), 0 0 60px rgba(255,255,255,0.04), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.35)',
                 transformStyle: 'preserve-3d',
@@ -121,7 +119,7 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 9.2, delay: 1.8, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
               }}
-              className="absolute left-1/2 top-[-23px] h-40 sm:h-48 lg:h-52 w-[300px] sm:w-[380px] lg:w-[420px] -translate-x-1/2 rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] border border-white/[0.12] bg-gradient-to-b from-white/[0.07] via-white/[0.04] to-white/[0.02] backdrop-blur-[6px]"
+              className="absolute left-1/2 -translate-x-1/2 top-[-23px] h-40 sm:h-48 lg:h-52 w-[92vw] sm:w-[380px] lg:w-[420px] rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] border border-white/[0.12] bg-gradient-to-b from-white/[0.07] via-white/[0.04] to-white/[0.02] backdrop-blur-[6px]"
               style={{
                 boxShadow: '0 14px 64px rgba(0,0,0,0.55), 0 8px 24px rgba(0,0,0,0.75), 0 0 70px rgba(255,255,255,0.05), inset 0 2px 0 rgba(255,255,255,0.16), inset 0 -2px 0 rgba(0,0,0,0.4)',
                 transformStyle: 'preserve-3d',
@@ -150,7 +148,7 @@ export default function IntegratedFeaturesFlow() {
                 rotateX: { duration: 1.2, delay: 0.5, ease: [0.22, 1, 0.36, 1] },
                 rotateZ: { duration: 9.6, delay: 1.9, ease: "easeInOut", repeat: Infinity, repeatDelay: 0.3 }
               }}
-              className="absolute left-1/2 top-[0px] h-40 sm:h-48 lg:h-52 w-[300px] sm:w-[380px] lg:w-[420px] -translate-x-1/2 rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] border border-white/[0.18] bg-gradient-to-b from-white/[0.1] via-white/[0.06] to-white/[0.03] backdrop-blur-[8px] overflow-hidden"
+              className="absolute left-1/2 -translate-x-1/2 top-[0px] h-40 sm:h-48 lg:h-52 w-[92vw] sm:w-[380px] lg:w-[420px] rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] border border-white/[0.18] bg-gradient-to-b from-white/[0.1] via-white/[0.06] to-white/[0.03] backdrop-blur-[8px] overflow-hidden"
               style={{
                 boxShadow: '0 16px 72px rgba(0,0,0,0.6), 0 10px 28px rgba(0,0,0,0.8), 0 0 80px rgba(255,255,255,0.06), inset 0 2px 0 rgba(255,255,255,0.22), inset 0 -2px 20px rgba(0,0,0,0.25), 0 0 1px rgba(255,255,255,0.15)',
                 transformStyle: 'preserve-3d',
@@ -162,7 +160,7 @@ export default function IntegratedFeaturesFlow() {
               <div className="absolute bottom-0 left-0 right-0 h-14 sm:h-16 lg:h-20 bg-gradient-to-t from-black/[0.25] to-transparent" />
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.3] to-transparent" />
               <div className="absolute inset-0 rounded-[24px] sm:rounded-[28px] lg:rounded-[32px] ring-1 ring-inset ring-white/[0.1]" />
-              <div className="absolute inset-0 flex flex-col p-3 sm:p-4 lg:p-5">
+              <div className="absolute inset-0 flex flex-col p-2 sm:p-4 lg:p-5">
                 {/* Dashboard Header with IO Logo */}
                 <div className="flex items-center justify-between mb-2 sm:mb-3">
                   <div className="flex items-center gap-1.5 sm:gap-2">
@@ -381,7 +379,7 @@ export default function IntegratedFeaturesFlow() {
           </motion.svg>
 
           {/* Feature cards - Grid on mobile, row on desktop */}
-          <div className="absolute bottom-[20px] sm:bottom-[25px] lg:bottom-[30px] left-1/2 -translate-x-1/2 w-full px-4 sm:px-6 lg:px-2">
+          <div className="relative mt-28 w-full px-4 sm:absolute sm:bottom-[25px] lg:bottom-[30px] sm:left-1/2 sm:-translate-x-1/2 sm:px-6 lg:px-2">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:flex lg:justify-between gap-2.5 sm:gap-3 lg:gap-3.5 max-w-full lg:max-w-[920px] mx-auto" style={{ perspective: '1200px' }}>
               {features.map((feature, index) => (
                 <motion.div
